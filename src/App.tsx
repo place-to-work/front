@@ -9,16 +9,16 @@ import {
 import {hot} from 'react-hot-loader/root';
 
 import {Delme} from '@pages/useless/Delme';
-import {Shit} from '@pages/useless/HolyShit';
 import MobxPage from '@pages/useless/MobxPage';
 
 import {CurrentTime} from '@models/useless/CurrentTime';
+import {FormikPage} from '@pages/useless/FormikPage';
 
 const App: React.FC = () => <Router>
 	<Switch>
-		<Route path="/delme"><Delme/></Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
-		<Route path="/"><Shit/></Route>
+		<Route path="/formik"><FormikPage/></Route>
+		<Route path="/"><Delme/></Route>
 	</Switch>
 </Router>;
 

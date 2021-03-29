@@ -7,7 +7,6 @@ export class CurrentTime {
 		makeAutoObservable(this);
 		setInterval(() => {
 			this.time = new Date();
-			console.log(`new time = ${this.time.toISOString()}`);
 		}, 1000);
 	}
 }
