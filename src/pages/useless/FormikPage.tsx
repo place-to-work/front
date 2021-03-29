@@ -1,4 +1,4 @@
 import React from 'react';
-import {MyFirstForm} from '@components/useless/MyFirstForm';
+import {MyYupForm} from '@components/useless/MyYupForm';
 
-export const FormikPage: React.FC = () => <MyFirstForm/>;
+export const FormikPage: React.FC = () => <MyYupForm/>;
