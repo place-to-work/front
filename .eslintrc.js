@@ -49,6 +49,7 @@ module.exports = {
 		'arrow-parens': [
 			'error',
 			'always',
-		]
+		],
+		"react/prop-types": 0,
 	}
 };

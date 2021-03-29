@@ -34,6 +34,9 @@ const codeRules = {
 			'@babel/preset-typescript',
 		],
 		plugins: [
+			['@babel/plugin-proposal-decorators', {
+				legacy: true,
+			}],
 			'@babel/plugin-proposal-export-default-from',
 			'@babel/plugin-syntax-dynamic-import',
 			'@babel/plugin-proposal-class-properties',
@@ -48,6 +51,8 @@ const codeRules = {
 const aliases = {
 	'@components': path.resolve(__dirname, '../', 'src/components'),
 	'@pages': path.resolve(__dirname, '../', 'src/pages'),
+	'@models': path.resolve(__dirname, '../', 'src/models'),
+	'@network': path.resolve(__dirname, '../', 'src/network'),
 };
 
 module.exports = {
