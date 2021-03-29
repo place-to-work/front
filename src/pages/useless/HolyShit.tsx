@@ -1,5 +1,3 @@
 import React  from 'react';
 
-export const Shit = () => {
-	return <div className="holy">shit</div>
-};
+export const Shit: React.FC = () => <div className="holy">shit</div>;

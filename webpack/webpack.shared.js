@@ -1,14 +1,26 @@
 const path = require('path');
 const paths = require('./paths');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DevServer = require('webpack-dev-server');
 
 const styleRules = {
 	test: /\.((c|sa|sc)ss)$/i,
 	use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+};
+
+const eslintLoader = {
+	test: /\.(js|ts)x?$/,
+	exclude: /(node_modules)/,
+	loader: 'eslint-loader',
+	include: paths.src,
+	enforce: 'pre',
+	options: {
+		fix: true,
+		emitError: true,
+		emitWarning: true,
+		failOnError: true,
+		failOnWarning: true,
+	},
 };
 
 const codeRules = {
@@ -46,7 +58,7 @@ module.exports = {
 		path: paths.outputPath,
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.ts', ".tsx"],
+		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: aliases,
 	},
 	devServer: {
@@ -59,6 +71,7 @@ module.exports = {
 	devtool: 'eval',
 	module: {
 		rules: [
+			eslintLoader,
 			styleRules,
 			codeRules,
 		]

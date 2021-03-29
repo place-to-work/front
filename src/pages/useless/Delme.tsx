@@ -1,5 +1,3 @@
 import React  from 'react';
 
-export const Delme = () => {
-	return <div className="delme">world</div>
-};
+export const Delme: React.FC = () => <div className="delme">world</div>;

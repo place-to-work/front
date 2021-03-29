@@ -11,13 +11,11 @@ import {Shit} from '@pages/useless/HolyShit';
 import './test.scss';
 import './shared.scss';
 
-const App: React.FC = () => {
-	return <Router>
-		<Switch>
-			<Route path="/delme"><Delme/></Route>
-			<Route path="/"><Shit/></Route>
-		</Switch>
-	</Router>
-};
+const App: React.FC = () => <Router>
+	<Switch>
+		<Route path="/delme"><Delme/></Route>
+		<Route path="/"><Shit/></Route>
+	</Switch>
+</Router>;
 
 export default hot(App);
