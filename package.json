@@ -1,0 +1,43 @@
+{
+	"name": "cov",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev-run": "cross-env NODE_ENV=development webpack serve --progress --color",
+		"dev-build": "cross-env NODE_ENV=development webpack --progress --color",
+		"prod-build": "cross-env NODE_ENV= production --progress --no-devtool --color"
+	},
+	"author": "",
+	"dependencies": {
+		"@babel/core": "^7.13.13",
+		"@babel/plugin-proposal-export-default-from": "^7.12.13",
+		"@babel/plugin-syntax-dynamic-import": "^7.8.3",
+		"@babel/preset-env": "^7.13.12",
+		"@babel/preset-react": "^7.13.13",
+		"@babel/preset-typescript": "^7.13.0",
+		"babel-loader": "^8.2.2",
+		"cache-loader": "^4.1.0",
+		"cross-env": "^7.0.3",
+		"css-loader": "^5.2.0",
+		"html-webpack-plugin": "^5.3.1",
+		"mini-css-extract-plugin": "^1.4.0",
+		"postcss-loader": "^5.2.0",
+		"prop-types": "^15.7.2",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-hot-loader": "^4.13.0",
+		"sass": "^1.32.8",
+		"sass-loader": "^11.0.1",
+		"webpack": "^5.28.0",
+		"webpack-merge": "^5.7.3"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6"
+	},
+	"devDependencies": {
+		"webpack-cli": "^4.6.0",
+		"webpack-dev-server": "^3.11.2"
+	}
+}
