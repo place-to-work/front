@@ -1,7 +1,5 @@
 import React  from 'react';
 
-const Delme = () => {
+export const Delme = () => {
 	return <div className="delme">world</div>
 };
-
-export default Delme;

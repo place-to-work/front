@@ -12,20 +12,30 @@ const styleRules = {
 };
 
 const codeRules = {
-	test: /\.jsx?$/,
+	test: /\.(js|ts)x?$/,
 	exclude: /(node_modules)/,
-	loader: "babel-loader",
+	loader: 'babel-loader',
 	options: {
 		presets: [
-			"@babel/preset-env",
-			"@babel/preset-react",
-			"@babel/preset-typescript",
+			'@babel/preset-env',
+			'@babel/preset-react',
+			'@babel/preset-typescript',
 		],
 		plugins: [
 			'@babel/plugin-proposal-export-default-from',
 			'@babel/plugin-syntax-dynamic-import',
+			'@babel/plugin-proposal-class-properties',
+			'@babel/plugin-proposal-object-rest-spread',
 		]
 	}
+};
+
+// Эти псевдонимы реально работают, но не парсятся web-storm
+// В то же время псевдонимы в tsconfig.json парсятся, но не работают
+// Эти 2 вида псевдонимов созданы друг для друга
+const aliases = {
+	'@components': path.resolve(__dirname, '../', 'src/components'),
+	'@pages': path.resolve(__dirname, '../', 'src/pages'),
 };
 
 module.exports = {
@@ -36,7 +46,8 @@ module.exports = {
 		path: paths.outputPath,
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.ts', ".tsx"]
+		extensions: ['.js', '.jsx', '.ts', ".tsx"],
+		alias: aliases,
 	},
 	devServer: {
 		historyApiFallback: true,
