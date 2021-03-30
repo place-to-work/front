@@ -1,0 +1,153 @@
+@import './variables';
+
+// Основной цвет
+@mixin colorAccent {
+  color: $global-color-accent;
+}
+
+@mixin colorGreyAccent {
+  color: $global-color-grey-accent;
+}
+
+@mixin colorGreyDark {
+  color: $global-color-grey-dark;
+}
+
+@mixin colorGrey {
+  color: $global-color-grey;
+}
+
+@mixin colorWhite {
+  color: $global-color-white;
+}
+
+@mixin colorBlack {
+  color: $global-color-black;
+}
+
+@mixin colorBlue {
+  color: $global-color-blue;
+}
+
+
+//Фон
+@mixin backgroundAccent {
+  background-color: $global-color-accent;
+}
+
+@mixin backgroundGreyAccent {
+  background-color: $global-color-grey-accent;
+}
+
+@mixin backgroundGreyDark {
+  background-color: $global-color-grey-dark;
+}
+
+@mixin backgroundGrey {
+  background-color: $global-color-grey;
+}
+
+@mixin backgroundWhite {
+  background-color: $global-color-white;
+}
+
+@mixin backgroundBlack {
+  background-color: $global-color-black;
+}
+
+@mixin backgroundBlue {
+  background-color: $global-color-blue;
+}
+
+
+//Для начертания Regular
+@mixin textWeight400 {
+  font-weight: 400;
+}
+
+//Для начертания SemiBold
+@mixin textWeight600 {
+  font-weight: 600;
+}
+
+//Для начертания Bold
+@mixin textWeight700 {
+  font-weight: 700;
+}
+
+
+// Шрифты
+@mixin OpenSans {
+  font-family: "Open Sans", sans-serif;
+}
+
+$line-height-coefficient: 1.4;
+
+@mixin fontSize($font-size) {
+  @include OpenSans;
+
+  font-size: $font-size;
+  line-height: $line-height-coefficient;
+  min-height: $line-height-coefficient * $font-size;
+
+}
+
+@mixin textH1 {
+  @include textWeight700;
+  @include fontSize($global-h1-font-size);
+}
+@mixin textH2 {
+  @include textWeight700;
+  @include fontSize($global-h2-font-size);
+}
+@mixin textH3 {
+  @include textWeight700;
+  @include fontSize($global-h3-font-size);
+}
+@mixin textH4 {
+  @include textWeight400;
+  @include fontSize($global-h4-font-size);
+}
+@mixin textH5 {
+  @include textWeight400;
+  @include fontSize($global-h5-font-size);
+}
+@mixin textH6 {
+  @include textWeight400;
+  @include fontSize($global-h6-font-size);
+}
+
+@mixin text-link-base {
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+
+  &:visited {
+  }
+}
+
+
+
+@mixin animate($property...) {
+  $transition-normal: 0.2s ease-out;
+  $animated-property: #{""};
+
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1 {
+      $animated-property: $animated-property
+      nth($property, $i)
+      $transition-normal
+      #{", "};
+    }
+  }
+
+  transition: $animated-property nth($property, length($property))
+  $transition-normal;
+}

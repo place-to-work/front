@@ -50,6 +50,10 @@ module.exports = {
 			'error',
 			'always',
 		],
+		"@typescript-eslint/ban-ts-ignore": 0,
+		"@typescript-eslint/ban-ts-comment": 0,
+		"ban-ts-ignore": 0,
+		"ban-ts-comment": 0,
 		"react/prop-types": 0,
 	}
 };
