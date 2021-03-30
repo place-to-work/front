@@ -1,0 +1,102 @@
+@import "../scss/index";
+
+.typo {
+  display: inline-block;
+
+  &-align {
+    &_baseline {
+      vertical-align: baseline;
+    }
+
+    &_middle {
+      vertical-align: middle;
+    }
+  }
+
+  &_color {
+    &-accent {
+      color: $global-color-accent-text;
+    }
+
+    &-accent-grey {
+      @include colorGreyAccent;
+    }
+
+    &-grey {
+      @include colorGrey;
+    }
+
+    &-dark-grey {
+      @include colorGreyDark;
+    }
+
+    &-black {
+      @include colorBlack;
+    }
+
+    &-white {
+      @include colorWhite;
+    }
+    &-blue {
+      @include colorBlue;
+    }
+
+    &-inherit {
+      color: inherit;
+    }
+  }
+
+  &_h1 {
+    @include textH1;
+  }
+
+  &_h2 {
+    @include textH2;
+  }
+
+  &_h3 {
+    @include textH3;
+  }
+
+  &_h4 {
+    @include textH4;
+  }
+
+  &_h5 {
+    @include textH5;
+  }
+
+  &_h6 {
+    @include textH6;
+  }
+
+  &_weight {
+
+    &-bold {
+      @include textWeight700;
+    }
+
+    &-semi-bold {
+      @include textWeight600;
+    }
+
+    &-regular {
+      @include textWeight400;
+    }
+  }
+
+  &_font {
+    &-open-sans {
+      @include OpenSans;
+    }
+  }
+
+  &_block {
+    display: block;
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,9 @@
+@import './variables';
+@import './mixins';
+
+button,
+input {
+  outline: none;
+  border: none;
+  background: none;
+}

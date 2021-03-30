@@ -1,0 +1,146 @@
+@import "../scss/index";
+
+$local-icon-size: 12px;
+
+.button {
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-weight: 400;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+
+  @include animate(background-color, opacity, border-color);
+
+  &_disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &_link {
+    display: inline-flex;
+  }
+
+  &_full {
+    display: flex;
+    width: 100%;
+  }
+
+
+  &_bordered {
+    border-radius: $global-border-radius;
+    border: 1px solid white;
+  }
+
+  &_size {
+    &_xl {
+      @include textH3;
+      padding: 19px;
+      min-height: 60px;
+      min-width: 60px;
+    }
+    &_classic {
+      @include textH3;
+      padding: 19px;
+      min-height: 60px;
+      min-width: 342px;
+    }
+
+  }
+
+  &_type {
+    &_accent {
+      background: $global-color-accent;
+      @include colorWhite;
+
+      &:active {
+
+      }
+
+      &:hover:not(.button_disabled) {
+        cursor: pointer;
+      }
+    }
+
+    &_accent-grey {
+      @include backgroundGreyAccent;
+      @include colorWhite;
+
+      &:active,
+      &:hover {
+        cursor:pointer;
+      }
+    }
+
+    &_black {
+      @include backgroundBlack;
+      @include colorWhite;
+
+      &:active {
+      }
+
+      &:hover:not(.button_disabled) {
+        cursor: pointer;
+      }
+    }
+
+    &_white {
+      @include backgroundWhite;
+      @include colorBlack;
+      border: 2px solid $global-color-grey;
+
+      &:active {
+
+      }
+
+      &:hover:not(.button_disabled) {
+
+        cursor: pointer;
+      }
+    }
+
+    &_blue {
+      @include backgroundBlue;
+      @include colorWhite;
+
+      &:active {
+      }
+
+      &:hover:not(.button_disabled) {
+        cursor: pointer;
+      }
+    }
+
+    &_dark-grey {
+      @include backgroundGreyDark;
+      @include colorWhite;
+
+      &:active {
+      }
+
+      &:hover:not(.button_disabled) {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__item {
+    margin-right: 8px;
+    opacity: 1;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+  }
+  transition: tranform 0.5s ease-in-out;
+  &:active{
+    transform: scale(1.005);
+    transition: tranform 0.5s ease-in-out;
+  }
+}
