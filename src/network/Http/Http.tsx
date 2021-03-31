@@ -26,10 +26,14 @@ class Http {
 			mode: 'cors',
 			credentials: 'include',
 			body,
-			headers: {
-				[Http.PUT_CSRF_NAME]: localStorage.getItem(Http.STORE_CSRF_NAME),
-			}
 		};
+
+		const cookieCsrf = Http.getCookie(Http.GET_CSRF_NAME);
+		if (cookieCsrf) {
+			req.headers = {
+				[Http.PUT_CSRF_NAME]: cookieCsrf,
+			}
+		}
 
 		if (body !== null) {
 			req.headers = {
