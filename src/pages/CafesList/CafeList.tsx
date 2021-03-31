@@ -31,7 +31,7 @@ import {Cafe} from '@pages/CafePage/CafePage';
 // ];
 const CafeListPage: React.FC = () => {
 	const cafes: Cafe[] = [];
-	const [cafesState, setCafesState] = React.useState<Cafe[]>();
+	const [cafesState, setCafesState] = React.useState<Cafe[]>([]);
 
 	const setCafes = (data:any[]) =>{
 		data.forEach((el)=>{
