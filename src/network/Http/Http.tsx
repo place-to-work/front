@@ -80,6 +80,7 @@ class Http {
 	}
 
 	static retCSRFToken(response: Response): Response {
+		console.log('test', document.cookie)
 		const token = this.getCookie(this.GET_CSRF_NAME);
 		if (token) {
 			localStorage.setItem(this.STORE_CSRF_NAME, token);
