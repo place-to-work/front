@@ -47,7 +47,8 @@ const CafeListPage: React.FC = () => {
 				quiet: el.silence,
 				light: el.light,
 				time: `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']} }`,
-				workLoad: el['work_places']
+				workLoad: el['work_places'],
+				mapSrc: data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
 			});
 		});
 		setCafesState(cafes);
