@@ -79,6 +79,7 @@ class Http {
 	}
 
 	static checkForError(response: Response): ErrorableResponse {
+		console.log(`response = ${JSON.stringify(response, null, 4)}`);
 		return {...response, error: response.status !== 200};
 	}
 }
