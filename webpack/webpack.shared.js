@@ -17,9 +17,7 @@ const eslintLoader = {
 	options: {
 		fix: true,
 		emitError: true,
-		emitWarning: true,
-		failOnError: true,
-		failOnWarning: true,
+		emitWarning: true
 	},
 };
 
