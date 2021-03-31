@@ -8,7 +8,7 @@ import {Cafe} from '@pages/CafePage/CafePage';
 
 const CafeListPage: React.FC = () => {
 	const cafes: Cafe[] = [];
-	const [cafesState, setCafesState] = React.useState<Cafe[]>([]);
+	const [cafesState, setCafesState] = React.useState<CafeCardProps[]>([]);
 
 
 	React.useEffect(()=>{
@@ -32,7 +32,7 @@ const CafeListPage: React.FC = () => {
 							time: data['opening_hours'] && data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
 							workLoad: el['work_places'],
 							mapSrc: data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
-						}]);
+						} as CafeCardProps]);
 					});
 				}));
 			})
