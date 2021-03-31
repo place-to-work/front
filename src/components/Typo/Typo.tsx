@@ -8,6 +8,7 @@ import {
 	TypoWeight
 } from './config';
 import './Typo.scss';
+import {CSSProperties} from 'react';
 
 export type TypoAProps = {
     element: 'a';
@@ -41,6 +42,7 @@ export type TypoProps = {
     children?: React.ReactNode;
     className?: string;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+    style?: CSSProperties;
 } & TypoBase;
 
 const Typo: React.FC<TypoProps> = ({
