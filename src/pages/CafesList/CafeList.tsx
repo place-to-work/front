@@ -12,7 +12,7 @@ const CafeListPage: React.FC = () => {
 
 	const setCafes = (data:any[]) =>{
 		data.forEach((el)=>{
-			cafes.push({
+			setCafesState((old)=>[...old,{
 				id: el.id,
 				imageSrc: data['main_image'] || ( data['images'] && data['images'][0]),
 				name: data['full_name'] || data['short_name'],
@@ -26,7 +26,7 @@ const CafeListPage: React.FC = () => {
 				time: data['opening_hours'] && data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
 				workLoad: el['work_places'],
 				mapSrc: data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
-			});
+			}]);
 		});
 		setCafesState(cafes);
 	};
@@ -37,7 +37,7 @@ const CafeListPage: React.FC = () => {
 		})
 			.then((r)=> {
 				r.json().then(((data)=>{
-					setCafes(data || data);
+					setCafes(data);
 				}));
 			})
 			.catch(console.log);

@@ -36,7 +36,7 @@ const CafeCard: React.FC<CafeCardProps> = (
 	{
 		id,
 		imageSrc = 'https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg',
-		name = 'Заведение "Кафетерий',
+		name = 'Заведение "Кафетерий"',
 		address='ул. Пятницкая',
 		time = '10:00 - 21:00',
 		wifi = true,
