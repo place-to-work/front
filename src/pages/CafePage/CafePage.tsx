@@ -39,10 +39,11 @@ const CafePage: React.FC = () => {
 		})
 			.then((r)=> {
 				r.json().then(((data)=>{
+					console.log('data', data)
 					setCafe(
 						{
-							imageSrc:data['main-image'],
-							name: data['full-name'],
+							imageSrc:data['main_image'],
+							name: data['full_name'],
 							statuses: data.categories,
 							averagePrice: data['average_bill'],
 							workLoadText: data.occupancy,
