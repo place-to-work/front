@@ -4,6 +4,7 @@ import { Link, NavLinkProps } from 'react-router-dom';
 import { withProps } from 'recompose';
 import { ButtonColor, ButtonSize } from './config';
 import './Button.scss';
+import {CSSProperties} from 'react';
 
 export type ButtonAProps = {
   element: 'a';
@@ -35,6 +36,7 @@ export type BaseButtonProps = {
   color?: ButtonColor;
   withBorder?: boolean;
   isLoading?: boolean;
+  style?: CSSProperties;
 };
 
 export type ButtonProps = BaseButtonProps & ButtonBase;
