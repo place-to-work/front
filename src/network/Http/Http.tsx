@@ -12,7 +12,7 @@ interface ErrorableResponse extends Response  {
 class Http {
 	constructor(private serverUrl = 'https://place-to-work.online/api/v1') {}
 
-	static CSRF_NAME = 'X-CSRFToken';
+	static CSRF_NAME = 'csrftoken';
 
 	fetchRequest({
 		path = '/',
@@ -69,9 +69,15 @@ class Http {
 		});
 	}
 
+	static getCookie(name) {
+		const matches = document.cookie.match(new RegExp(
+			'(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
+		));
+		return matches ? decodeURIComponent(matches[1]) : undefined;
+	}
+
 	static retCSRFToken(response: Response): Response {
-		console.log(`csrf response: ${JSON.stringify(response, null, 4)}`);
-		const token = response.headers.get(this.CSRF_NAME);
+		const token = this.getCookie(this.CSRF_NAME);
 		if (token) {
 			localStorage.setItem(this.CSRF_NAME, token);
 		}
