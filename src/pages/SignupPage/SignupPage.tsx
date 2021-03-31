@@ -99,20 +99,20 @@ const SignupPage: React.FC = () => {
 								placeholder="Введите пароль"
 							/>
 
-							<Typo
-								block
-								type={TypographyType.h6}
-								color={TypoColor.darkGrey}
-								textAlign={TypoTextAlign.center} // Почему то не работает
-								verticalAlign={TypoVerticalAlign.baseline}
-								style={{
-									pointerEvents: 'none',
-									cursor: 'not-allowed',
-									textAlign: 'center',
-								}}
-							>
-								Забыли пароль?
-							</Typo>
+							{/*<Typo*/}
+							{/*	block*/}
+							{/*	type={TypographyType.h6}*/}
+							{/*	color={TypoColor.darkGrey}*/}
+							{/*	textAlign={TypoTextAlign.center} // Почему то не работает*/}
+							{/*	verticalAlign={TypoVerticalAlign.baseline}*/}
+							{/*	style={{*/}
+							{/*		pointerEvents: 'none',*/}
+							{/*		cursor: 'not-allowed',*/}
+							{/*		textAlign: 'center',*/}
+							{/*	}}*/}
+							{/*>*/}
+							{/*	Забыли пароль?*/}
+							{/*</Typo>*/}
 							<Button
 								full
 								buttonSize={ButtonSize.classic}
@@ -129,6 +129,7 @@ const SignupPage: React.FC = () => {
 									cursor: 'not-allowed',
 									textAlign: 'center',
 								}}
+								onClick={() => history.push('/login')}
 							>
 								Нет аккаунта?
 							</Typo>
