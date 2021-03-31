@@ -1,0 +1,12 @@
+@import "../scss/index";
+@import "../scss/variables";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  border-style: solid;
+  border-bottom-width: 2px;
+  border-color: $global-color-grey;
+}
