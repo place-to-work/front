@@ -26,12 +26,14 @@ class Http {
 			mode: 'cors',
 			credentials: 'include',
 			body,
+			headers: {
+				[Http.PUT_CSRF_NAME]: localStorage.getItem(Http.STORE_CSRF_NAME),
+			}
 		};
 
 		if (body !== null) {
 			req.headers = {
 				'Content-Type': 'application/json',
-				[Http.PUT_CSRF_NAME]: localStorage.getItem(Http.STORE_CSRF_NAME),
 			};
 		}
 
