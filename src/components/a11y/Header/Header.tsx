@@ -6,8 +6,8 @@ interface HeaderProps {
 	addStyle?: CSSProperties;
 }
 
-const Header: React.FC<HeaderProps> = ({children, addStyle}) => (
-	<header className="header" style={addStyle}>{children}</header>
+const Header: React.FC<HeaderProps> = ({children, ...rest}) => (
+	<header className="header" {...rest}>{children}</header>
 );
 
 export default Header;

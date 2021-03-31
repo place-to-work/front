@@ -6,8 +6,8 @@ interface FooterProps {
 	style?: CSSProperties;
 }
 
-const Footer: React.FC<FooterProps> = ({children, style}) => (
-	<footer className="footer" style={style}>{children}</footer>
+const Footer: React.FC<FooterProps> = ({children, ...rest}) => (
+	<footer className="footer" style={...rest}>{children}</footer>
 );
 
 export default Footer;
