@@ -6,29 +6,29 @@ import './CafeList.scss';
 import Http from '@network/Http/Http';
 import {Cafe} from '@pages/CafePage/CafePage';
 
-const data: CafeCardProps[] = [
-	{
-		id: '1',
-		name: 'Заведение "Ветерок"'
-	},
-	{
-		id: '2',
-		name: 'Заведение "Пушок"'
-	},
-	{
-		id: '3',
-		name: 'Заведение "Котелок"'
-	},
-	{
-		id: '4',
-		name: 'Заведение "Коворкинг"'
-	},
-	{
-		id: '5',
-		name: 'Заведение "Музей"'
-	},
-
-];
+// const data: CafeCardProps[] = [
+// 	{
+// 		id: '1',
+// 		name: 'Заведение "Ветерок"'
+// 	},
+// 	{
+// 		id: '2',
+// 		name: 'Заведение "Пушок"'
+// 	},
+// 	{
+// 		id: '3',
+// 		name: 'Заведение "Котелок"'
+// 	},
+// 	{
+// 		id: '4',
+// 		name: 'Заведение "Коворкинг"'
+// 	},
+// 	{
+// 		id: '5',
+// 		name: 'Заведение "Музей"'
+// 	},
+//
+// ];
 const CafeListPage: React.FC = () => {
 	const cafes: Cafe[] = [];
 

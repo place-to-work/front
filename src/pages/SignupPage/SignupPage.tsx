@@ -53,6 +53,7 @@ const SignupPage: React.FC = () => {
 				if (!resp.error) {
 					history.push('/cafes');
 				} else {
+					console.log(JSON.stringify(resp, null, 4));
 					resp.json().then(console.log);
 				}
 			})
