@@ -10,7 +10,7 @@ interface ErrorableResponse extends Response  {
 }
 
 class Http {
-	constructor(private serverUrl = 'https://place-to-work.online') {}
+	constructor(private serverUrl = 'https://place-to-work.online/api/v1') {}
 
 	static CSRF_NAME = 'X-CSRFToken';
 
@@ -30,7 +30,7 @@ class Http {
 			req.headers = {
 				'Content-Type': 'application/json',
 				[Http.CSRF_NAME]: localStorage.getItem(Http.CSRF_NAME),
-			}
+			};
 		}
 
 		return fetch(`${this.serverUrl}${path}`, req)
