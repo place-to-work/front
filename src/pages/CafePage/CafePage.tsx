@@ -33,9 +33,6 @@ const CafePage: React.FC = () => {
 
 	const [cafe, setCafe] = React.useState<CafeCardProps>();
 
-
-
-
 	React.useEffect(()=>{
 		Http.fetchGet({
 			path: `/places/${id}/`,

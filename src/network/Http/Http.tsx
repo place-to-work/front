@@ -5,10 +5,6 @@ type FetchRequestProps = {
 	body?: any,
 }
 
-interface ErrorableResponse extends Response  {
-	error: boolean;
-}
-
 class Http {
 	constructor(private serverUrl = 'https://place-to-work.online/api/v1') {}
 
@@ -20,7 +16,7 @@ class Http {
 		path = '/',
 		method = 'GET',
 		body = null,
-	}: FetchRequestProps): Promise<ErrorableResponse> {
+	}: FetchRequestProps): Promise<Response> {
 		const req: RequestInit = {
 			method,
 			mode: 'cors',
@@ -42,18 +38,17 @@ class Http {
 		}
 
 		return fetch(`${this.serverUrl}${path}`, req)
-			.then((response) => Http.retCSRFToken(response))
-			.then((response) => Http.checkForError(response));
+			.then((response) => Http.retCSRFToken(response));
 	}
 
-	fetchGet({path}): Promise<ErrorableResponse> {
+	fetchGet({path}): Promise<Response> {
 		return this.fetchRequest({
 			method: 'GET',
 			path,
 		});
 	}
 
-	fetchPost({path, body}): Promise<ErrorableResponse> {
+	fetchPost({path, body}): Promise<Response> {
 		return this.fetchRequest({
 			method: 'POST',
 			path,
@@ -61,7 +56,7 @@ class Http {
 		});
 	}
 
-	fetchPut({path, body}): Promise<ErrorableResponse> {
+	fetchPut({path, body}): Promise<Response> {
 		return this.fetchRequest({
 			method: 'PUT',
 			path,
@@ -69,7 +64,7 @@ class Http {
 		});
 	}
 
-	fetchDelete({path, body}): Promise<ErrorableResponse> {
+	fetchDelete({path, body}): Promise<Response> {
 		return this.fetchRequest({
 			method: 'DELETE',
 			path,
@@ -91,11 +86,6 @@ class Http {
 		}
 
 		return response;
-	}
-
-	static checkForError(response: Response): ErrorableResponse {
-		console.log(`response = ${JSON.stringify(response, null, 4)}`);
-		return {...response, error: response.status !== 200};
 	}
 }
 
