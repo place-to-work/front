@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Yup from 'yup';
-import Header from '@components/Header';
-import Main from '@components/Main';
-import Footer from '@components/Footer';
+import Header from '@components/A11Y/Header';
+import Main from '@components/A11Y/Main';
+import Footer from '@components/A11Y/Footer';
 import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/Typo';
 import {Field, Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/Button';

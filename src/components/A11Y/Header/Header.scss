@@ -1,13 +1,13 @@
-@import "../scss/index";
-@import "../scss/variables";
+@import "../../scss/index";
+@import "../../scss/variables";
 
-.footer {
+.header {
   display: flex;
   flex-direction: row;
   width: 100%;
 
   border-style: solid;
-  border-top-width: 2px;
+  border-bottom-width: 2px;
   border-color: $global-color-grey;
 
   box-sizing: border-box;

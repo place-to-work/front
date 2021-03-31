@@ -1,10 +1,10 @@
 import React from 'react';
 import Typo, {TypographyType} from '@components/Typo';
-import Header from '@components/Header';
+import Header from '@components/A11Y/Header';
 import ImageCard from '@components/ImageCard';
-import Main from '@components/Main';
+import Main from '@components/A11Y/Main';
 import Button, {ButtonColor, ButtonSize} from '@components/Button';
-import Footer from '@components/Footer';
+import Footer from '@components/A11Y/Footer';
 import './AuthPage.scss';
 
 
