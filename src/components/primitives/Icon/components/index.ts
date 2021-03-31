@@ -3,10 +3,12 @@ import * as React from 'react';
 import BaseIcon, { BaseIconProps } from './BaseIcon';
 import LocationIcon from './LocationIcon';
 import ClockIcon from './ClockIcon';
-import WifiIcon from '@components/primitives/Icon/components/WiFIIcon';
-import LightIcon from '@components/primitives/Icon/components/LightIcon';
-import ElectricityIcon from '@components/primitives/Icon/components/ElectricityIcon';
-import EarIcon from '@components/primitives/Icon/components/EarIcon';
+import WifiIcon from '@components/Icon/components/WiFIIcon';
+import LightIcon from '@components/Icon/components/LightIcon';
+import ElectricityIcon from '@components/Icon/components/ElectricityIcon';
+import EarIcon from '@components/Icon/components/EarIcon';
+import IconLeft from '@components/Icon/components/IconLeft';
+import IconCenter from '@components/Icon/components/IconCenter';
 
 
 export * from './BaseIcon';
@@ -20,7 +22,9 @@ export enum IconType {
   wifi = 'wifi',
   ear = 'ear',
   electricity = 'electricity',
-  light = 'light'
+  light = 'light',
+  iconLeft = 'iconLeft',
+  iconCenter = 'iconCenter'
 }
 
 export const iconEntities: Record<
@@ -33,7 +37,8 @@ export const iconEntities: Record<
 	[IconType.light]: LightIcon,
 	[IconType.electricity]: ElectricityIcon,
 	[IconType.ear]: EarIcon,
-
+	[IconType.iconLeft]:IconLeft,
+	[IconType.iconCenter]:IconCenter
 
 
 };
@@ -45,6 +50,8 @@ export {
 	WifiIcon,
 	LightIcon,
 	ElectricityIcon,
-	EarIcon
+	EarIcon,
+	IconLeft,
+	IconCenter
 
 };
