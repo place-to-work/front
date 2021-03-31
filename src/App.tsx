@@ -24,7 +24,6 @@ import {createBrowserHistory} from 'history';
 const history = createBrowserHistory();
 
 const App: React.FC = () =>{
-	document.body.requestFullscreen();
 	return <Router history={history}>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
