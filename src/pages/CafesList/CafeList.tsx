@@ -6,22 +6,24 @@ import './CafeList.scss';
 import Http from '@network/Http/Http';
 import {Cafe} from '@pages/CafePage/CafePage';
 import Header from "@components/a11y/Header";
+import PageContainer from '@components/a11y/PageContainer';
+import Main from '@components/a11y/Main';
 
 const CafeListPage: React.FC = () => {
 	const cafes: Cafe[] = [];
 	const [cafesState, setCafesState] = React.useState<CafeCardProps[]>([]);
 
 
-	React.useEffect(()=>{
+	React.useEffect(() => {
 		Http.fetchGet({
 			path: '/places/',
 		})
-			.then((r)=> {
-				r.json().then(((data)=>{
-					data.forEach((el)=>{
-						setCafesState((old)=>[...old,{
+			.then((r) => {
+				r.json().then(((data) => {
+					data.forEach((el) => {
+						setCafesState((old) => [...old, {
 							id: el.id,
-							imageSrc: el['main_image'] || ( el['images'] && el['images'][0]),
+							imageSrc: el['main_image'] || (el['images'] && el['images'][0]),
 							name: el['full_name'] || el['short_name'],
 							statuses: el.categories,
 							averagePrice: el['average_bill'],
@@ -39,18 +41,16 @@ const CafeListPage: React.FC = () => {
 				}));
 			})
 			.catch(console.log);
-	},[]);
+	}, []);
 
 	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
 
-	return (<>
+	return (<PageContainer>
 		<Header/>
-		<div className="cafes-list">
-
-		<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
-		{console.log({cafesState})}
+		<Main style={{padding: '10px', width: 360}}>
+		<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 		{cafesMemo}
-	</div></>);
+	</Main></PageContainer>);
 };
 
 export default observer(CafeListPage);
