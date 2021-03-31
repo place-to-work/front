@@ -33,7 +33,7 @@ const CafeListPage: React.FC = () => {
 							light: el.light,
 							time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] &&`${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
 							workLoad: el['work_places'],
-							mapSrc: el.address || el['full_name'] || el['short_name'] && `https://yandex.ru/maps/213/moscow/search/${el['full_name'] || el['short_name']}`
+							mapSrc: (el.address || el['full_name'] || el['short_name'] )&& `https://yandex.ru/maps/213/moscow/search/${el.address || el['full_name'] || el['short_name']}`
 						} as CafeCardProps]);
 					});
 				}));

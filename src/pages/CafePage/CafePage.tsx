@@ -57,7 +57,7 @@ const CafePage: React.FC = () => {
 							light: data.light,
 							time: data['opening_hours'] && data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
 							workLoad: data['work_places'],
-							mapSrc: data.address || data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
+							mapSrc: (data.address || data['full_name'] || data['short_name'] )&& `https://yandex.ru/maps/213/moscow/search/${data.address || data['full_name'] || data['short_name']}`
 						});
 				}));
 			})
