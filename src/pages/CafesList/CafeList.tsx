@@ -20,8 +20,8 @@ const CafeListPage: React.FC = () => {
 					data.forEach((el)=>{
 						setCafesState((old)=>[...old,{
 							id: el.id,
-							imageSrc: data['main_image'] || ( data['images'] && data['images'][0]),
-							name: data['full_name'] || data['short_name'],
+							imageSrc: el['main_image'] || ( el['images'] && el['images'][0]),
+							name: el['full_name'] || el['short_name'],
 							statuses: el.categories,
 							averagePrice: el['average_bill'],
 							workLoadText: el.occupancy,
@@ -29,9 +29,9 @@ const CafeListPage: React.FC = () => {
 							electricity: el['power_socket'],
 							quiet: el.silence,
 							light: el.light,
-							time: data['opening_hours'] && data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
+							time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] &&`${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
 							workLoad: el['work_places'],
-							mapSrc: data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
+							mapSrc: el['full_name'] || el['short_name'] && `https://yandex.ru/maps/213/moscow/search/${el['full_name'] || el['short_name']}`
 						} as CafeCardProps]);
 					});
 				}));
