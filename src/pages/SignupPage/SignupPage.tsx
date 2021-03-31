@@ -145,7 +145,7 @@ const SignupPage: React.FC = () => {
 					href="/contact"
 					block
 					type={TypographyType.h5}
-					style={{marginRight: 'calc(50% - 170px)'}}
+					style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
 				>
 					Свяжитесь с нами
 				</Typo>
