@@ -151,3 +151,42 @@ $line-height-coefficient: 1.4;
   transition: $animated-property nth($property, length($property))
   $transition-normal;
 }
+
+
+
+// Позиционирование
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin square($side) {
+  width: $side;
+  height: $side;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin visualCenter($top: -2px) {
+  position: relative;
+  top: $top;
+}
+
+@mixin loaderPage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+}
+
+@mixin backgroundImage($url, $size: contain) {
+  background: url($url) no-repeat center;
+  background-size: $size;
+}

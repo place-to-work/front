@@ -44,7 +44,7 @@ export type TypoProps = {
 } & TypoBase;
 
 const Typo: React.FC<TypoProps> = ({
-	type,
+	type = TypographyType.h5,
 	children,
 	color,
 	weight,

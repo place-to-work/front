@@ -1,0 +1,13 @@
+@import "src/components/scss/index";
+
+%IconColor {
+  &_color {
+    &-accent {
+      color: $global-color-main;
+    }
+
+    &-accent-green {
+      color: $global-color-accent-1;
+    }
+  }
+}
