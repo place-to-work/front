@@ -38,7 +38,7 @@ const CafePage: React.FC = () => {
 
 	React.useEffect(()=>{
 		Http.fetchGet({
-			path: `/places/${id}`,
+			path: `/places/${id}/`,
 		})
 			.then((r)=> {
 				r.json().then(((data)=>{
