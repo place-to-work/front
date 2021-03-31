@@ -14,8 +14,8 @@ const CafeListPage: React.FC = () => {
 		data.forEach((el)=>{
 			cafes.push({
 				id: el.id,
-				imageSrc:el['main_image'],
-				name: el['full_name'],
+				imageSrc: data['main_image'] || data['images'][0],
+				name: data['full_name'] || data['short_name'],
 				statuses: el.categories,
 				averagePrice: el['average_bill'],
 				workLoadText: el.occupancy,
@@ -23,7 +23,7 @@ const CafeListPage: React.FC = () => {
 				electricity: el['power_socket'],
 				quiet: el.silence,
 				light: el.light,
-				time: `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']} }`,
+				time: data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
 				workLoad: el['work_places'],
 				mapSrc: data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
 			});
