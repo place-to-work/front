@@ -16,6 +16,7 @@ import './SignupPage.scss';
 import PageContainer from '@components/a11y/PageContainer';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Http from '@network/Http/Http';
+import {useHistory} from 'react-router-dom';
 
 interface SignupValues {
 	name: '';
@@ -37,17 +38,24 @@ const validationSchema = Yup.object().shape({
 		.email('Неверная почта')
 		.required('Обязательное поле'),
 	password: Yup.string()
-		.min(8, 'Минимум 6 смволов')
+		.min(8, 'Минимум 8 смволов')
 		.required('Обязательное поле'),
 });
 
 const SignupPage: React.FC = () => {
+	const history = useHistory();
 	const onSubmit = (values: SignupValues) => {
 		Http.fetchPost({
 			path: '/users/',
 			body: JSON.stringify(values),
 		})
-			.then(console.log)
+			.then((resp) => {
+				if (!resp.error) {
+					history.push('/cafes');
+				} else {
+					resp.json().then(console.log);
+				}
+			})
 			.catch(console.log);
 		console.log(`sum: ${JSON.stringify(values)}`);
 	};

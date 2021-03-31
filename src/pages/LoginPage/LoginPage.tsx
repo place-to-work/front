@@ -10,6 +10,7 @@ import Button, {ButtonSize} from '@components/primitives/Button';
 import PageContainer from '@components/a11y/PageContainer';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Http from '@network/Http';
+import {useHistory} from 'react-router-dom';
 
 
 interface LoginValues {
@@ -32,12 +33,19 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginPage: React.FC = () => {
+	const history = useHistory();
 	const onSubmit = (values: LoginValues) => {
 		Http.fetchPost({
 			path: '/users/login/',
 			body: JSON.stringify(values),
 		})
-			.then(console.log)
+			.then((response) => {
+				if (!response.error) {
+					history.push('/cafes');
+				} else {
+					response.json().then(console.log);
+				}
+			})
 			.catch(console.log);
 
 		console.log(`login: ${JSON.stringify(values)}`);
