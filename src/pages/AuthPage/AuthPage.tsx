@@ -8,7 +8,6 @@ import Footer from '@components/a11y/Footer';
 import './AuthPage.scss';
 import PageContainer from '@components/a11y/PageContainer';
 
-
 const AuthPage: React.FC = () => (<>
 	<PageContainer>
 		<Header style={{justifyContent: 'center', padding: 11}}>

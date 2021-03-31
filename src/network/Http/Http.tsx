@@ -38,31 +38,31 @@ class Http {
 			.then((response) => Http.checkForError(response));
 	}
 
-	async fetchGet({path}) {
+	fetchGet({path}): Promise<ErrorableResponse> {
 		return this.fetchRequest({
 			method: 'GET',
 			path,
 		});
 	}
 
-	async fetchPost({path, body}) {
-		return await this.fetchRequest({
+	fetchPost({path, body}): Promise<ErrorableResponse> {
+		return this.fetchRequest({
 			method: 'POST',
 			path,
 			body,
 		});
 	}
 
-	async fetchPut({path, body}) {
-		return await this.fetchRequest({
+	fetchPut({path, body}): Promise<ErrorableResponse> {
+		return this.fetchRequest({
 			method: 'PUT',
 			path,
 			body,
 		});
 	}
 
-	async fetchDelete({path, body}) {
-		return await this.fetchRequest({
+	fetchDelete({path, body}): Promise<ErrorableResponse> {
+		return this.fetchRequest({
 			method: 'DELETE',
 			path,
 			body,

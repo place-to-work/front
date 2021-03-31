@@ -9,6 +9,7 @@ import {Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import PageContainer from '@components/a11y/PageContainer';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
+import Http from '@network/Http';
 
 
 interface LoginValues {
@@ -31,10 +32,15 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginPage: React.FC = () => {
-	initialValues.email = '';
 	const onSubmit = (values: LoginValues) => {
-		console.log(`sum: ${JSON.stringify(values)}`);
-		values.email.trim();
+		Http.fetchPost({
+			path: '/users/login/',
+			body: JSON.stringify(values),
+		})
+			.then(console.log)
+			.catch(console.log);
+
+		console.log(`login: ${JSON.stringify(values)}`);
 	};
 
 	return <>

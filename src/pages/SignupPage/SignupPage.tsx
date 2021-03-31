@@ -3,12 +3,19 @@ import * as Yup from 'yup';
 import Header from '@components/a11y/Header';
 import Main from '@components/a11y/Main';
 import Footer from '@components/a11y/Footer';
-import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/primitives/Typo';
+import Typo, {
+	TypoColor,
+	TypographyType,
+	TypoTextAlign,
+	TypoVerticalAlign,
+	TypoWeight,
+} from '@components/primitives/Typo';
 import {Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import './SignupPage.scss';
 import PageContainer from '@components/a11y/PageContainer';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
+import Http from '@network/Http/Http';
 
 interface SignupValues {
 	name: '';
@@ -36,6 +43,12 @@ const validationSchema = Yup.object().shape({
 
 const SignupPage: React.FC = () => {
 	const onSubmit = (values: SignupValues) => {
+		Http.fetchPost({
+			path: '/users/',
+			body: JSON.stringify(values),
+		})
+			.then(console.log)
+			.catch(console.log);
 		console.log(`sum: ${JSON.stringify(values)}`);
 	};
 
