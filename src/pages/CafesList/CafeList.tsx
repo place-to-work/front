@@ -14,7 +14,7 @@ const CafeListPage: React.FC = () => {
 		data.forEach((el)=>{
 			cafes.push({
 				id: el.id,
-				imageSrc: data['main_image'] || data['images'][0],
+				imageSrc: data['main_image'] || ( data['images'] && data['images'][0]),
 				name: data['full_name'] || data['short_name'],
 				statuses: el.categories,
 				averagePrice: el['average_bill'],

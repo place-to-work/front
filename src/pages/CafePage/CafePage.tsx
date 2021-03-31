@@ -45,7 +45,7 @@ const CafePage: React.FC = () => {
 					setCafe(
 						{
 							id: data.id,
-							imageSrc: data['main_image'] || data['images'][0],
+							imageSrc: data['main_image'] || ( data['images'] && data['images'][0]),
 							name: data['full_name'] || data['short_name'],
 							statuses: data.categories,
 							averagePrice: data['average_bill'],
