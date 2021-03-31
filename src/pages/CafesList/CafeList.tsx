@@ -58,7 +58,7 @@ const CafeListPage: React.FC = () => {
 		})
 			.then((r)=> {
 				r.json().then(((data)=>{
-					setCafes(data);
+					setCafes(data || data);
 				}));
 			})
 			.catch(console.log);

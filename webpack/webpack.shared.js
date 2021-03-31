@@ -74,7 +74,6 @@ module.exports = {
 	devtool: 'eval',
 	module: {
 		rules: [
-			eslintLoader,
 			styleRules,
 			codeRules,
 		]
