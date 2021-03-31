@@ -13,6 +13,7 @@ export type CafeCardProps = {
     name?: string;
     address?: string;
     time?: string;
+    images: string[];
 
     // Иконки
     wifi?:boolean;
