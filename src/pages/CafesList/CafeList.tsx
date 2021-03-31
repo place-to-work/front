@@ -5,6 +5,7 @@ import Typo, {TypographyType} from '@components/primitives/Typo';
 import './CafeList.scss';
 import Http from '@network/Http/Http';
 import {Cafe} from '@pages/CafePage/CafePage';
+import Header from "@components/a11y/Header";
 
 const CafeListPage: React.FC = () => {
 	const cafes: Cafe[] = [];
@@ -26,12 +27,13 @@ const CafeListPage: React.FC = () => {
 							averagePrice: el['average_bill'],
 							workLoadText: el.occupancy,
 							wifi: el.wifi,
+							address: el.address,
 							electricity: el['power_socket'],
 							quiet: el.silence,
 							light: el.light,
 							time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] &&`${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
 							workLoad: el['work_places'],
-							mapSrc: el['full_name'] || el['short_name'] && `https://yandex.ru/maps/213/moscow/search/${el['full_name'] || el['short_name']}`
+							mapSrc: el.address || el['full_name'] || el['short_name'] && `https://yandex.ru/maps/213/moscow/search/${el['full_name'] || el['short_name']}`
 						} as CafeCardProps]);
 					});
 				}));
@@ -41,11 +43,14 @@ const CafeListPage: React.FC = () => {
 
 	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
 
-	return (<div className="cafes-list">
+	return (<>
+		<Header/>
+		<div className="cafes-list">
+
 		<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
 		{console.log({cafesState})}
 		{cafesMemo}
-	</div>);
+	</div></>);
 };
 
 export default observer(CafeListPage);
