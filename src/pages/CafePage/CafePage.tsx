@@ -37,9 +37,8 @@ const CafePage: React.FC = () => {
 
 
 	React.useEffect(()=>{
-		Http.fetchPost({
+		Http.fetchGet({
 			path: `/places/${id}`,
-			body: null,
 		})
 			.then((r)=> {
 				r.json().then(((data)=>{
