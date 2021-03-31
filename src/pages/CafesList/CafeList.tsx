@@ -3,6 +3,8 @@ import React from 'react';
 import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo, {TypographyType} from '@components/primitives/Typo';
 import './CafeList.scss';
+import Http from '@network/Http/Http';
+import {Cafe} from '@pages/CafePage/CafePage';
 
 const data: CafeCardProps[] = [
 	{
@@ -27,10 +29,47 @@ const data: CafeCardProps[] = [
 	},
 
 ];
-const CafeListPage: React.FC = () => (<div className="cafes-list">
-	<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
-	{' '}
-	{data.map((cafe:CafeCardProps, index:number)=><CafeCard {...cafe} key={index}/>)}
-</div>);
+const CafeListPage: React.FC = () => {
+	const cafes: Cafe[] = [];
+
+
+	const setCafes = (data:any[]) =>{
+		data.forEach((el)=>{
+			cafes.push({
+				imageSrc:el['main-image'],
+				name: el['full-name'],
+				statuses: el.categories,
+				averagePrice: el['average_bill'],
+				workLoadText: el.occupancy,
+				wifi: el.wifi,
+				electricity: el['power_socket'],
+				quiet: el.silence,
+				light: el.light,
+				time: `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']} }`,
+				workLoad: el['work_places']
+			});
+		});
+	};
+
+	React.useEffect(()=>{
+		Http.fetchPost({
+			path: '/places/',
+			body: null,
+		})
+			.then((r)=> {
+				r.json().then(((data)=>{
+					setCafes(data);
+				}));
+			})
+			.catch(console.log);
+	},[]);
+
+
+	return (<div className="cafes-list">
+		<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
+		{' '}
+		{cafes.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>)}
+	</div>);
+};
 
 export default observer(CafeListPage);
