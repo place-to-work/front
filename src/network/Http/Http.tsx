@@ -10,7 +10,7 @@ interface ErrorableResponse extends Response  {
 }
 
 class Http {
-	constructor(private serverUrl = 'http://place-to-work.ru') {}
+	constructor(private serverUrl = 'https://place-to-work.online') {}
 
 	static CSRF_NAME = 'X-CSRFToken';
 
