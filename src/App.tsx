@@ -23,7 +23,9 @@ import {createBrowserHistory} from 'history';
 
 const history = createBrowserHistory();
 
-const App: React.FC = () => <Router history={history}>
+const App: React.FC = () =>{
+	document.body.requestFullscreen();
+	return <Router history={history}>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 
@@ -38,6 +40,7 @@ const App: React.FC = () => <Router history={history}>
 		<Route path="/"><AuthPage/></Route>
 		<Route path="/"><Delme/></Route>
 	</Switch>
-</Router>;
+</Router>
+}
 
 export default hot(App);
