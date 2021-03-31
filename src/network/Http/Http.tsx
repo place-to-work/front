@@ -12,7 +12,9 @@ interface ErrorableResponse extends Response  {
 class Http {
 	constructor(private serverUrl = 'https://place-to-work.online/api/v1') {}
 
-	static CSRF_NAME = 'csrftoken';
+	static GET_CSRF_NAME = 'csrftoken';
+	static STORE_CSRF_NAME = 'csrftoken';
+	static PUT_CSRF_NAME = 'X-CSRFToken';
 
 	fetchRequest({
 		path = '/',
@@ -29,7 +31,7 @@ class Http {
 		if (body !== null) {
 			req.headers = {
 				'Content-Type': 'application/json',
-				[Http.CSRF_NAME]: localStorage.getItem(Http.CSRF_NAME),
+				[Http.PUT_CSRF_NAME]: localStorage.getItem(Http.STORE_CSRF_NAME),
 			};
 		}
 
@@ -77,9 +79,9 @@ class Http {
 	}
 
 	static retCSRFToken(response: Response): Response {
-		const token = this.getCookie(this.CSRF_NAME);
+		const token = this.getCookie(this.GET_CSRF_NAME);
 		if (token) {
-			localStorage.setItem(this.CSRF_NAME, token);
+			localStorage.setItem(this.STORE_CSRF_NAME, token);
 		}
 
 		return response;
