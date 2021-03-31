@@ -78,13 +78,19 @@
 
 // Шрифты
 @mixin OpenSans {
-  font-family: "Open Sans", sans-serif;
+  //font-family: "Open Sans", sans-serif;
+  font-family: "GT Walsheim Pro", "Open Sans", sans-serif;
 }
+// Шрифты
+@mixin Walsheim {
+  font-family: "GT Walsheim Pro", "Open Sans", sans-serif;
+}
+
 
 $line-height-coefficient: 1.4;
 
 @mixin fontSize($font-size) {
-  @include OpenSans;
+  @include Walsheim;
 
   font-size: $font-size;
   line-height: $line-height-coefficient;

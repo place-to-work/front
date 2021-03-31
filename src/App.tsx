@@ -26,7 +26,7 @@ const App: React.FC = () => <Router>
 		<Route path="/login"><LoginPage/></Route>
 		<Route path="/signup"><SignupPage/></Route>
 		<Route path="/cafes"><CafeListPage/></Route>
-		<Route path="/cafe"><CafePage/></Route>
+		<Route path="/cafe/:id" component={CafePage}/>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
 		<Route path="/"><AuthPage/></Route>
