@@ -94,7 +94,8 @@ const SignupPage: React.FC = () => {
 							<Button
 								full
 								buttonSize={ButtonSize.classic}
-								style={{margin: '13px 0'}}>Зарегистрироваться</Button>
+								style={{margin: '13px 0'}}>Зарегистрироваться
+							</Button>
 							<Typo
 								block
 								type={TypographyType.h5}
