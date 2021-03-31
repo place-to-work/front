@@ -1,0 +1,49 @@
+@import "src/components/scss/index";
+
+.icon {
+  @include animate(color);
+
+  background: no-repeat 50% 50%;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+
+  &_size {
+    &-tiny {
+      @include square(12px);
+    }
+
+    &-xs {
+      @include square(16px);
+    }
+
+    &-nano {
+      @include square(8px); }
+
+    &-s {
+      @include square(20px);
+    }
+
+    &-m {
+      @include square(24px);
+    }
+
+    &-xl {
+      @include square(48px);
+    }
+  }
+
+  &_color {
+    &-accent {
+      color: $global-color-accent;
+    }
+
+    &-accent-green {
+      //color: $global-color-accent-1;
+    }
+
+    &-grey {
+      color: $global-color-grey;
+    }
+  }
+}

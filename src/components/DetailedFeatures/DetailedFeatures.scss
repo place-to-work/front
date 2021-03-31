@@ -1,0 +1,13 @@
+$local-width: calc(100% / 3);
+.detailed-features{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__item{
+    width: $local-width;
+  }
+}
+.ghost{
+  width: $local-width;
+  height: 0;
+}

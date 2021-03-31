@@ -8,7 +8,7 @@
 		"experimentalDecorators": true,
 		"sourceMap": true,
 		"skipDefaultLibCheck": true,
-		"strict": true,
+		"strict": false,
 		"noImplicitAny": false,
 		"lib": [ "es6", "dom", "ES2015" ],
 		"types": [ "webpack-env" ],

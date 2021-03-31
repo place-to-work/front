@@ -1,0 +1,29 @@
+@import "src/components/scss/mixins";
+
+.cafe-card{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+
+  &__name{
+    margin-bottom: 6px;
+  }
+  &__data{
+  }
+  &__description{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  &__info{
+
+  }
+  &__info-text{
+
+  }
+  &__features{
+    display: flex;
+  }
+}

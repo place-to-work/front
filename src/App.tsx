@@ -13,9 +13,14 @@ import MobxPage from '@pages/useless/MobxPage';
 
 import {CurrentTime} from '@models/useless/CurrentTime';
 import {FormikPage} from '@pages/useless/FormikPage';
+import CafeListPage from '@pages/CafesList';
+import CafePage from '@pages/CafePage';
 
 const App: React.FC = () => <Router>
 	<Switch>
+		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
+		<Route path="/cafes"><CafeListPage/></Route>
+		<Route path="/cafe"><CafePage/></Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
 		<Route path="/"><Delme/></Route>
