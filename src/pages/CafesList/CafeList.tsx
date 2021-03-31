@@ -36,6 +36,7 @@ const CafeListPage: React.FC = () => {
 	const setCafes = (data:any[]) =>{
 		data.forEach((el)=>{
 			cafes.push({
+				id: el.id,
 				imageSrc:el['main_image'],
 				name: el['full_name'],
 				statuses: el.categories,

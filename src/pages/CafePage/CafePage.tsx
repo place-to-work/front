@@ -7,6 +7,7 @@ import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 
 export type Cafe = {
+	id: string;
 	imageSrc?: string;
 	name?: string;
 	address?: string;
@@ -42,6 +43,7 @@ const CafePage: React.FC = () => {
 					console.log('data', data)
 					setCafe(
 						{
+							id: data.id,
 							imageSrc:data['main_image'],
 							name: data['full_name'] || data['short_name'],
 							statuses: data.categories,
