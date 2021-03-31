@@ -69,6 +69,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		{ averagePrice && <Typo block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold}>{averagePrice}</Typo></Typo>}
 		<Separator invisible/>
 		{mapSrc && <Button full color={ButtonColor.accentGrey}>
+			{/* todo Добавить ссылку */}
 			<Typo type={TypographyType.h3} color={TypoColor.black}>Открыть в картах
 			</Typo>
 		</Button>
