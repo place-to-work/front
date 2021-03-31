@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './DetailedInfo.scss';
-import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/Typo';
-import Separator from '@components/Separator';
-import Tag from '@components/Tag';
+import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
+import Separator from '@components/primitives/Separator';
+import Tag from '@components/primitives/Tag';
 import CafeInfo from '@components/CafeInfo';
-import ImageCard from '@components/ImageCard';
+import ImageCard from '@components/primitives/ImageCard';
 import DetailedFeatures from '@components/DetailedFeatures';
-import Button, {ButtonColor} from '@components/Button';
+import Button, {ButtonColor} from '@components/primitives/Button';
 
 export type CafeCardProps = {
     imageSrc?: string;

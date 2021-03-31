@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react-lite';
 import React from 'react';
 import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
-import Typo, {TypographyType} from '@components/Typo';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 
 const data: CafeCardProps[] = [
 	{

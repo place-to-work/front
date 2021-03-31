@@ -1,10 +1,10 @@
 import * as React from 'react';
 import './CafeCard.scss';
-import Typo, {TypographyType} from '@components/Typo';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 import { EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/Icon';
-import Separator from '@components/Separator';
+import Separator from '@components/primitives/Separator';
 import CafeInfo from '@components/CafeInfo';
-import ImageCard from '@components/ImageCard';
+import ImageCard from '@components/primitives/ImageCard';
 
 export type CafeCardProps = {
     imageSrc?: string;

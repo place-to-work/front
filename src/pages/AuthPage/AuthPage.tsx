@@ -1,15 +1,16 @@
 import React from 'react';
-import Typo, {TypographyType} from '@components/Typo';
-import Header from '@components/A11Y/Header';
-import ImageCard from '@components/ImageCard';
-import Main from '@components/A11Y/Main';
-import Button, {ButtonColor, ButtonSize} from '@components/Button';
-import Footer from '@components/A11Y/Footer';
+import Typo, {TypographyType} from '@components/primitives/Typo';
+import Header from '@components/a11y/Header';
+import ImageCard from '@components/primitives/ImageCard';
+import Main from '@components/a11y/Main';
+import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
+import Footer from '@components/a11y/Footer';
 import './AuthPage.scss';
+import PageContainer from '@components/a11y/PageContainer';
 
 
 const AuthPage: React.FC = () => (<>
-	<div className="auth-page-container">
+	<PageContainer>
 		<Header addStyle={{justifyContent: 'center', padding: 11}}>
 			<Typo
 				// element='a'
@@ -56,8 +57,7 @@ const AuthPage: React.FC = () => (<>
 				Свяжитесь с нами
 			</Typo>
 		</Footer>
-
-	</div>
+	</PageContainer>
 </>);
 
 export default AuthPage;

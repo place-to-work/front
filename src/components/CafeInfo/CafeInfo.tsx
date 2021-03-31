@@ -1,4 +1,4 @@
-import Typo, {TypographyType} from '@components/Typo';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 import {ClockIcon, LocationIcon} from '@components/Icon';
 import * as React from 'react';
 import './CafeInfo.scss';

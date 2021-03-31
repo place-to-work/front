@@ -1,12 +1,13 @@
 import React from 'react';
 import * as Yup from 'yup';
-import Header from '@components/A11Y/Header';
-import Main from '@components/A11Y/Main';
-import Footer from '@components/A11Y/Footer';
-import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/Typo';
+import Header from '@components/a11y/Header';
+import Main from '@components/a11y/Main';
+import Footer from '@components/a11y/Footer';
+import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/primitives/Typo';
 import {Field, Form, Formik, FormikProps} from 'formik';
-import Button, {ButtonSize} from '@components/Button';
+import Button, {ButtonSize} from '@components/primitives/Button';
 import './SignupPage.scss';
+import PageContainer from '@components/a11y/PageContainer';
 
 interface SignupValues {
 	name: '';
@@ -38,7 +39,7 @@ const SignupPage: React.FC = () => {
 	};
 
 	return <>
-		<div className="signup-page-container">
+		<PageContainer>
 			<Header addStyle={{justifyContent: 'center', padding: 11}}>
 				<Typo
 					// element='a'
@@ -139,7 +140,7 @@ const SignupPage: React.FC = () => {
 				</Typo>
 			</Footer>
 
-		</div>
+		</PageContainer>
 	</>;
 };
 

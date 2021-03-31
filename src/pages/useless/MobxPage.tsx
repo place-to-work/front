@@ -1,8 +1,8 @@
 import {observer} from 'mobx-react-lite';
 import React from 'react';
 import {CurrentTime} from '@models/useless/CurrentTime';
-import Typo, {TypoColor, TypographyType} from '@components/Typo';
-import Button, {ButtonColor, ButtonSize} from '@components/Button';
+import Typo, {TypoColor, TypographyType} from '@components/primitives/Typo';
+import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 
 interface OwnProps {
 	currentTime: CurrentTime;

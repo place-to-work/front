@@ -1,12 +1,5 @@
 @import '../../components/scss/variables';
 
-.signup-page-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-
-  height: 100%;
-}
-
 .input-container {
   display: flex;
   flex-direction: column;
