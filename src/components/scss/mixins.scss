@@ -92,6 +92,11 @@ $line-height-coefficient: 1.4;
 
 }
 
+@mixin buttonText {
+  @include textWeight600;
+  @include fontSize($button-font-size);
+}
+
 @mixin textH1 {
   @include textWeight700;
   @include fontSize($global-h1-font-size);
