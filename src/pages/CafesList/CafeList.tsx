@@ -43,12 +43,14 @@ const CafeListPage: React.FC = () => {
 
 	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
 
-	return (<div className="cafes-list">
+	return (<>
 		<Header/>
+		<div className="cafes-list">
+
 		<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
 		{console.log({cafesState})}
 		{cafesMemo}
-	</div>);
+	</div></>);
 };
 
 export default observer(CafeListPage);

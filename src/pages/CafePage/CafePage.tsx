@@ -66,11 +66,13 @@ const CafePage: React.FC = () => {
 
 
 
-	return (
-		<div className="cafe-page">
-			<Header/>
-			{cafe && <DetailedInfo {...cafe} />}
-		</div>);
+	return (<>
+		<Header/>
+			<div className="cafe-page">
+				{cafe && <DetailedInfo {...cafe} />}
+			</div>
+	</>
+		);
 };
 
 export default observer(CafePage);
