@@ -2,7 +2,7 @@ import './test.scss';
 import './shared.scss';
 import React  from 'react';
 import {
-	BrowserRouter as Router,
+	Router,
 	Switch,
 	Route,
 } from 'react-router-dom';
@@ -18,8 +18,12 @@ import CafePage from '@pages/CafePage';
 import AuthPage from '@pages/AuthPage';
 import LoginPage from '@pages/LoginPage';
 import SignupPage from '@pages/SignupPage';
+import {createBrowserHistory} from 'history';
 
-const App: React.FC = () => <Router basename={'/'}>
+
+const history = createBrowserHistory();
+
+const App: React.FC = () => <Router history={history}>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 
