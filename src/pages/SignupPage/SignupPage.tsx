@@ -63,16 +63,19 @@ const SignupPage: React.FC = () => {
 						<Form>
 							<FormikInput
 								id="name"
+								title="Имя"
 								formikProps={formikProps}
 								placeholder="Введите свое имя"
 							/>
 							<FormikInput
 								id="email"
+								title="Почта"
 								formikProps={formikProps}
 								placeholder="Введите свою почту"
 							/>
 							<FormikInput
 								id="password"
+								title="Пароль"
 								formikProps={formikProps}
 								placeholder="Введите пароль"
 							/>
@@ -113,7 +116,6 @@ const SignupPage: React.FC = () => {
 						</Form>
 					</>}
 				/>
-
 
 			</Main>
 			<Footer style={{flexDirection: 'row-reverse', padding: 8}}>

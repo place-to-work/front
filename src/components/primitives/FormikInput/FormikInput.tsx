@@ -6,19 +6,21 @@ import {Field, FormikProps} from 'formik';
 interface FormikInputProps {
 	id: string;
 	name?: string;
+	title?: string;
 	placeholder?: string;
 	formikProps: FormikProps<any>;
 }
 
 export const FormikInput: React.FC<FormikInputProps> = ({
 	id,
+	title,
 	name = id,
 	placeholder,
 	formikProps
 }) => {
 	const {errors, touched} = formikProps;
 	return <div className="input-container">
-		<Typo type={TypographyType.h3} weight={TypoWeight.bold}>Почта</Typo>
+		{title && <Typo type={TypographyType.h3} weight={TypoWeight.bold}>{title}</Typo>}
 		<Field
 			className="input-field"
 			id={id}
