@@ -1,25 +1,29 @@
 import React from 'react';
 import * as Yup from 'yup';
-import './LoginPage.scss';
 import Header from '@components/Header';
 import Main from '@components/Main';
 import Footer from '@components/Footer';
 import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/Typo';
 import {Field, Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/Button';
+import './SignupPage.scss';
 
-
-interface LoginValues {
+interface SignupValues {
+	name: '';
 	email: string;
 	password: string;
 }
 
-const initialValues: LoginValues = {
+const initialValues: SignupValues = {
+	name: '',
 	email: '',
 	password: '',
 };
 
 const validationSchema = Yup.object().shape({
+	name: Yup.string()
+		.required('Обязательное поле')
+		.min(6, 'Минимум 6 символов'),
 	email: Yup.string()
 		.email('Неверная почта')
 		.required('Обязательное поле'),
@@ -28,15 +32,13 @@ const validationSchema = Yup.object().shape({
 		.required('Обязательное поле'),
 });
 
-const LoginPage: React.FC = () => {
-	initialValues.email = '';
-	const onSubmit = (values: LoginValues) => {
+const SignupPage: React.FC = () => {
+	const onSubmit = (values: SignupValues) => {
 		console.log(`sum: ${JSON.stringify(values)}`);
-		values.email.trim();
 	};
 
 	return <>
-		<div className="auth-page-container">
+		<div className="signup-page-container">
 			<Header addStyle={{justifyContent: 'center', padding: 11}}>
 				<Typo
 					// element='a'
@@ -49,14 +51,24 @@ const LoginPage: React.FC = () => {
 				</Typo>
 			</Header>
 			<Main style={{padding: 10, width: 360}}>
-				<Formik<LoginValues>
+				<Formik<SignupValues>
 					validationSchema={validationSchema}
 					initialValues={initialValues}
 					onSubmit={onSubmit}
-					render={({errors, touched}: FormikProps<LoginValues>) => <>
+					render={({errors, touched}: FormikProps<SignupValues>) => <>
 
-						<Typo block type={TypographyType.h2}>Вход</Typo>
+						<Typo block type={TypographyType.h2}>Регистрация</Typo>
 						<Form>
+							<div className="input-container">
+								<Typo type={TypographyType.h3} weight={TypoWeight.bold}>Имя</Typo>
+								<Field
+									className="input-field"
+									id="name"
+									name="name"
+									placeholder="Введите свое имя"
+								/>
+								{errors.name && touched.name ? <div style={{color: 'red'}}>{errors.name}</div> : null}
+							</div>
 							<div className="input-container">
 								<Typo type={TypographyType.h3} weight={TypoWeight.bold}>Почта</Typo>
 								<Field
@@ -131,4 +143,4 @@ const LoginPage: React.FC = () => {
 	</>;
 };
 
-export default LoginPage;
+export default SignupPage;

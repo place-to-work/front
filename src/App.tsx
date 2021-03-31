@@ -17,12 +17,14 @@ import CafeListPage from '@pages/CafesList';
 import CafePage from '@pages/CafePage';
 import AuthPage from '@pages/AuthPage';
 import LoginPage from '@pages/LoginPage';
+import SignupPage from '@pages/SignupPage';
 
 const App: React.FC = () => <Router>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/auth"><AuthPage/></Route>
-		<Route path="/"><LoginPage/></Route>
+		<Route path="/login"><LoginPage/></Route>
+		<Route path="/signup"><SignupPage/></Route>
 		<Route path="/cafes"><CafeListPage/></Route>
 		<Route path="/cafe"><CafePage/></Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
