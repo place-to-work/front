@@ -19,14 +19,16 @@ import AuthPage from '@pages/AuthPage';
 import LoginPage from '@pages/LoginPage';
 import SignupPage from '@pages/SignupPage';
 
-const App: React.FC = () => <Router>
+const App: React.FC = () => <Router basename={'/'}>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 
 		<Route path="/login"><LoginPage/></Route>
 		<Route path="/signup"><SignupPage/></Route>
 		<Route path="/cafes"><CafeListPage/></Route>
-		<Route path="/cafe/:id" component={CafePage}/>
+		<Route exact path="/cafe/:id">
+			<CafePage/>
+		</Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
 		<Route path="/"><AuthPage/></Route>
