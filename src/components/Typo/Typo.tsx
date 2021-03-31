@@ -5,7 +5,7 @@ import {
 	TypographyType,
 	TypoColor,
 	TypoVerticalAlign,
-	TypoWeight
+	TypoWeight, TypoTextAlign,
 } from './config';
 import './Typo.scss';
 import {CSSProperties} from 'react';
@@ -34,6 +34,7 @@ export type TypoProps = {
     weight?: TypoWeight;
     upperFirst?: boolean;
     verticalAlign?: TypoVerticalAlign;
+    textAlign?: TypoTextAlign;
     icon?: React.ReactNode;
     /**
      * Добавляет display: block;
@@ -51,6 +52,7 @@ const Typo: React.FC<TypoProps> = ({
 	color,
 	weight,
 	verticalAlign,
+	textAlign,
 	icon = null,
 	className,
 	block = false,
@@ -65,7 +67,8 @@ const Typo: React.FC<TypoProps> = ({
 			color && `typo_color-${color}`,
 			weight && `typo_weight-${weight}`,
 			type && `typo_${type}`,
-			verticalAlign && `typo_align-${verticalAlign}`,
+			verticalAlign && `typo_vertical-align-${verticalAlign}`,
+			textAlign && `typo_text-align-${textAlign}`,
 			block && 'typo_block',
 			className
 		)}
