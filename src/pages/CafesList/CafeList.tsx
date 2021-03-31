@@ -39,10 +39,11 @@ const CafeListPage: React.FC = () => {
 			.catch(console.log);
 	},[]);
 
+	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
 
 	return (<div className="cafes-list">
 		<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
-		{cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>)}
+		{cafesMemo}
 	</div>);
 };
 
