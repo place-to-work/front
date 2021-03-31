@@ -50,10 +50,11 @@ const SignupPage: React.FC = () => {
 			body: JSON.stringify(values),
 		})
 			.then((resp) => {
+				console.log('before = ', JSON.stringify(resp, null, 4));
 				if (!resp.error) {
 					history.push('/cafes');
 				} else {
-					console.log(JSON.stringify(resp, null, 4));
+					console.log('after = ', JSON.stringify(resp, null, 4));
 					resp.json().then(console.log);
 				}
 			})
