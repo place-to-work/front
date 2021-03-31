@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './PageContainer.scss.scss';
+import './PageContainer.scss';
 import {CSSProperties} from 'react';
 
 interface PageContainerProps {

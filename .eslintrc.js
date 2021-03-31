@@ -55,5 +55,6 @@ module.exports = {
 		"ban-ts-ignore": 0,
 		"ban-ts-comment": 0,
 		"react/prop-types": 0,
+		"@typescript-eslint/no-explicit-any": 0,
 	}
 };

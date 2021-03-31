@@ -11,7 +11,7 @@ import PageContainer from '@components/a11y/PageContainer';
 
 const AuthPage: React.FC = () => (<>
 	<PageContainer>
-		<Header addStyle={{justifyContent: 'center', padding: 11}}>
+		<Header style={{justifyContent: 'center', padding: 11}}>
 			<Typo
 				// element='a'
 				block

@@ -22,13 +22,14 @@ import SignupPage from '@pages/SignupPage';
 const App: React.FC = () => <Router>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
-		<Route path="/auth"><AuthPage/></Route>
+
 		<Route path="/login"><LoginPage/></Route>
 		<Route path="/signup"><SignupPage/></Route>
 		<Route path="/cafes"><CafeListPage/></Route>
 		<Route path="/cafe"><CafePage/></Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
+		<Route path="/"><AuthPage/></Route>
 		<Route path="/"><Delme/></Route>
 	</Switch>
 </Router>;

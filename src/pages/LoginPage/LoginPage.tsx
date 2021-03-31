@@ -5,9 +5,10 @@ import Header from '@components/a11y/Header';
 import Main from '@components/a11y/Main';
 import Footer from '@components/a11y/Footer';
 import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/primitives/Typo';
-import {Field, Form, Formik, FormikProps} from 'formik';
+import {Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import PageContainer from '@components/a11y/PageContainer';
+import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 
 
 interface LoginValues {
@@ -38,7 +39,7 @@ const LoginPage: React.FC = () => {
 
 	return <>
 		<PageContainer>
-			<Header addStyle={{justifyContent: 'center', padding: 11}}>
+			<Header style={{justifyContent: 'center', padding: 11}}>
 				<Typo
 					// element='a'
 					block
@@ -54,30 +55,20 @@ const LoginPage: React.FC = () => {
 					validationSchema={validationSchema}
 					initialValues={initialValues}
 					onSubmit={onSubmit}
-					render={({errors, touched}: FormikProps<LoginValues>) => <>
+					render={(formikProps: FormikProps<LoginValues>) => <>
 
 						<Typo block type={TypographyType.h2}>Вход</Typo>
 						<Form>
-							<div className="input-container">
-								<Typo type={TypographyType.h3} weight={TypoWeight.bold}>Почта</Typo>
-								<Field
-									className="input-field"
-									id="email"
-									name="email"
-									placeholder="Введите свою почту"
-								/>
-								{errors.email && touched.email ? <div style={{color: 'red'}}>{errors.email}</div> : null}
-							</div>
-							<div className="input-container">
-								<Typo type={TypographyType.h3} weight={TypoWeight.bold}>Пароль</Typo>
-								<Field
-									className="input-field"
-									id="password"
-									name="password"
-									placeholder="Введите пароль"
-								/>
-								{errors.password && touched.password ? <div style={{color: 'red'}}>{errors.password}</div> : null}
-							</div>
+							<FormikInput
+								id="email"
+								placeholder="Введите вашу почту"
+								formikProps={formikProps}
+							/>
+							<FormikInput
+								id="password"
+								placeholder="Введите пароль"
+								formikProps={formikProps}
+							/>
 							<Typo
 								block
 								type={TypographyType.h6}

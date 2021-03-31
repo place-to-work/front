@@ -3,7 +3,7 @@ import './Header.scss';
 import {CSSProperties} from 'react';
 
 interface HeaderProps {
-	addStyle?: CSSProperties;
+	style?: CSSProperties;
 }
 
 const Header: React.FC<HeaderProps> = ({children, ...rest}) => (

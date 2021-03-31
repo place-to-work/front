@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './CafeCard.scss';
 import Typo, {TypographyType} from '@components/primitives/Typo';
-import { EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/Icon';
+import { EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/primitives/Icon';
 import Separator from '@components/primitives/Separator';
 import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';

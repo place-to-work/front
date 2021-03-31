@@ -2,7 +2,7 @@ import * as React from 'react';
 import './DetailedFeatures.scss';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo from '@components/primitives/Typo';
-import {EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/Icon';
+import {EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/primitives/Icon';
 
 const DetailedFeatures: React.FC<Partial<CafeCardProps>> = (
 	{
