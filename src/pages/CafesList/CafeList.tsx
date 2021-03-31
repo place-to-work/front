@@ -43,6 +43,7 @@ const CafeListPage: React.FC = () => {
 
 	return (<div className="cafes-list">
 		<Typo className="title" type={TypographyType.h2}>Все заведения</Typo>
+		{console.log({cafesState})}
 		{cafesMemo}
 	</div>);
 };
