@@ -23,7 +23,7 @@ const CafeListPage: React.FC = () => {
 				electricity: el['power_socket'],
 				quiet: el.silence,
 				light: el.light,
-				time: data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
+				time: data['opening_hours'] && data['opening_hours']['open_time'] && data['opening_hours']['close_time'] &&`${data['opening_hours']['open_time']} - ${data['opening_hours']['close_time']}`,
 				workLoad: el['work_places'],
 				mapSrc: data['full_name'] || data['short_name'] && `https://yandex.ru/maps/213/moscow/search/${data['full_name'] || data['short_name']}`
 			});
