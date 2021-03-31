@@ -11,7 +11,14 @@ import './AuthPage.scss';
 const AuthPage: React.FC = () => (<>
 	<div className="auth-page-container">
 		<Header addStyle={{justifyContent: 'center', padding: 11}}>
-			<Typo block type={TypographyType.h3}>Рабочее место</Typo>
+			<Typo
+				// element='a'
+				block
+				type={TypographyType.h3}
+				href="/"
+			>
+				Рабочее место
+			</Typo>
 		</Header>
 		<Main style={{padding: 10, width: 360}}>
 			<ImageCard
@@ -25,15 +32,29 @@ const AuthPage: React.FC = () => (<>
 				href="/signup"
 				full
 				buttonSize={ButtonSize.classic}
-				style={{marginBottom: '9px'}}>Регистрация</Button>
+				style={{marginBottom: '9px'}}
+			>
+				Регистрация
+			</Button>
 			<Button
 				element="a"
 				href="/login"
 				full
-				color={ButtonColor.accentGrey}>Вход</Button>
+				color={ButtonColor.accentGrey}
+			>
+				Вход
+			</Button>
 		</Main>
 		<Footer style={{flexDirection: 'row-reverse', padding: 8}}>
-			<Typo block type={TypographyType.h5} style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}>Свяжитесь с нами</Typo>
+			<Typo
+				// element="a"
+				href="/contact"
+				block
+				type={TypographyType.h5}
+				style={{marginRight: 'calc(50% - 170px)'}}
+			>
+				Свяжитесь с нами
+			</Typo>
 		</Footer>
 
 	</div>
