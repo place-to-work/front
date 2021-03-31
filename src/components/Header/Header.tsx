@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {CSSProperties} from 'react';
 import './Header.scss';
-import {EarIcon, IconCenter, IconLeft} from '@components/Icon';
-import Tag from '@components/Tag';
-import {ButtonColor} from '@components/Button';
+
+import Tag, {ButtonColor} from '@components//primitives/Button';
+import {EarIcon, IconCenter, IconLeft} from "@components/primitives/Icon";
+
 
 
 export enum HeaderType {

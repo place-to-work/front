@@ -1,6 +1,7 @@
 
 import * as React from 'react';
-import BaseIcon, { BaseIconProps } from './BaseIcon';
+import {BaseIcon, BaseIconProps} from '@components/primitives/Icon';
+
 
 const IconLeft: React.FC<BaseIconProps> = (props: BaseIconProps) => (
 	<BaseIcon {...props} width="82" height="30" viewBox="0 0 82 30">

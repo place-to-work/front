@@ -3,14 +3,12 @@ import * as React from 'react';
 import BaseIcon, { BaseIconProps } from './BaseIcon';
 import LocationIcon from './LocationIcon';
 import ClockIcon from './ClockIcon';
-import WifiIcon from '@components/Icon/components/WiFIIcon';
-import LightIcon from '@components/Icon/components/LightIcon';
-import ElectricityIcon from '@components/Icon/components/ElectricityIcon';
-import EarIcon from '@components/Icon/components/EarIcon';
-import IconLeft from '@components/Icon/components/IconLeft';
-import IconCenter from '@components/Icon/components/IconCenter';
-
-
+import IconLeft from '@components/primitives/Icon/components/IconLeft';
+import IconCenter from '@components/primitives/Icon/components/IconCenter';
+import WifiIcon from '@components/primitives/Icon/components/WiFIIcon';
+import LightIcon from '@components/primitives/Icon/components/LightIcon';
+import ElectricityIcon from '@components/primitives/Icon/components/ElectricityIcon';
+import EarIcon from '@components/primitives/Icon/components/EarIcon';
 export * from './BaseIcon';
 
 
