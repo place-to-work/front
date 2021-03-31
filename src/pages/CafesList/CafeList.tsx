@@ -26,6 +26,7 @@ const CafeListPage: React.FC = () => {
 							averagePrice: el['average_bill'],
 							workLoadText: el.occupancy,
 							wifi: el.wifi,
+							address: el.address,
 							electricity: el['power_socket'],
 							quiet: el.silence,
 							light: el.light,
