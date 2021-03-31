@@ -1,8 +1,8 @@
 .image{
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   margin-bottom: 12px;
   border-radius: 8px;
   width: 100%;
-  height: 160px;
+  max-height: 160px;
 }
