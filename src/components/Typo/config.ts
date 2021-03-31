@@ -8,6 +8,12 @@ export enum TypoVerticalAlign {
     middle = 'middle'
 }
 
+export enum TypoTextAlign {
+    start = 'start',
+    end = 'end',
+    center = 'center'
+}
+
 export enum TypographyType {
     h1 = 'h1',
     h2 = 'h2',
