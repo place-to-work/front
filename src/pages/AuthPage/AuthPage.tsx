@@ -20,11 +20,20 @@ const AuthPage: React.FC = () => (<>
 			/>
 			<Typo block type={TypographyType.h1} style={{marginBottom: '18px', lineHeight: '1.1'}}>Сделайте город своим офисом!</Typo>
 			<Typo block type={TypographyType.h5} style={{marginBottom: '18px'}}>Превращаем кафе и музеи вашего города в настоящие рабочие пространства!</Typo>
-			<Button full buttonSize={ButtonSize.classic} style={{marginBottom: '9px'}}>Регистрация</Button>
-			<Button full color={ButtonColor.accentGrey}>Вход</Button>
+			<Button
+				element="a"
+				href="/signup"
+				full
+				buttonSize={ButtonSize.classic}
+				style={{marginBottom: '9px'}}>Регистрация</Button>
+			<Button
+				element="a"
+				href="/login"
+				full
+				color={ButtonColor.accentGrey}>Вход</Button>
 		</Main>
 		<Footer style={{flexDirection: 'row-reverse', padding: 8}}>
-			<Typo block type={TypographyType.h5} style={{marginRight: 'calc(50% - 170px)'}}>Свяжитесь с нами</Typo>
+			<Typo block type={TypographyType.h5} style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}>Свяжитесь с нами</Typo>
 		</Footer>
 
 	</div>
