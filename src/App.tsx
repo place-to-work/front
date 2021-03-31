@@ -15,10 +15,12 @@ import {CurrentTime} from '@models/useless/CurrentTime';
 import {FormikPage} from '@pages/useless/FormikPage';
 import CafeListPage from '@pages/CafesList';
 import CafePage from '@pages/CafePage';
+import AuthPage from '@pages/AuthPage';
 
 const App: React.FC = () => <Router>
 	<Switch>
-		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
+		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
+		<Route path="/test"><AuthPage/></Route>
 		<Route path="/cafes"><CafeListPage/></Route>
 		<Route path="/cafe"><CafePage/></Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
