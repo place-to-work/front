@@ -5,8 +5,10 @@ import { EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/primit
 import Separator from '@components/primitives/Separator';
 import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';
+import {useHistory} from 'react-router-dom';
 
 export type CafeCardProps = {
+	id?: string;
     imageSrc?: string;
     name?: string;
     address?: string;
@@ -28,8 +30,10 @@ export type CafeCardProps = {
 
 };
 
+
 const CafeCard: React.FC<CafeCardProps> = (
 	{
+		id,
 		imageSrc = 'https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg',
 		name = 'Заведение "Кафетерий"',
 		address='ул. Пятницкая',
@@ -38,23 +42,31 @@ const CafeCard: React.FC<CafeCardProps> = (
 		light = true,
 		electricity = true,
 		quiet = true
-	}: CafeCardProps) => (
-	<div className="cafe-card">
-		<ImageCard imageSrc={imageSrc} />
-		<div className="cafe-card__data">
-			<Typo className="cafe-card__name" block type={TypographyType.h3}>{name}</Typo>
-			<div className="cafe-card__description">
-				<CafeInfo time={time} address={address}/>
-				<div className="cafe-card__features">
-					{wifi && <WifiIcon/>}
-					{light && <LightIcon/>}
-					{electricity && <ElectricityIcon/>}
-					{quiet && <EarIcon/>}
+	}: CafeCardProps) => {
+	const history = useHistory();
+	return(
+
+		<div className="cafe-card" onClick={()=>{
+			if(id){
+				history.push(`/cafe/${id}`);
+			}
+			console.log(id);
+		}}>
+			<ImageCard imageSrc={imageSrc} />
+			<div className="cafe-card__data">
+				<Typo className="cafe-card__name" block type={TypographyType.h3}>{name}</Typo>
+				<div className="cafe-card__description">
+					<CafeInfo time={time} address={address}/>
+					<div className="cafe-card__features">
+						{wifi && <WifiIcon/>}
+						{light && <LightIcon/>}
+						{electricity && <ElectricityIcon/>}
+						{quiet && <EarIcon/>}
+					</div>
 				</div>
 			</div>
+			<Separator/>
 		</div>
-		<Separator/>
-	</div>
-);
+	);};
 
 export default CafeCard;
