@@ -9,6 +9,8 @@ import WifiIcon from '@components/primitives/Icon/components/WiFIIcon';
 import LightIcon from '@components/primitives/Icon/components/LightIcon';
 import ElectricityIcon from '@components/primitives/Icon/components/ElectricityIcon';
 import EarIcon from '@components/primitives/Icon/components/EarIcon';
+import PeopleIcon from "@components/primitives/Icon/components/PeopleIcon";
+import BackIcon from "@components/primitives/Icon/components/BackIcon";
 export * from './BaseIcon';
 
 
@@ -22,7 +24,10 @@ export enum IconType {
   electricity = 'electricity',
   light = 'light',
   iconLeft = 'iconLeft',
-  iconCenter = 'iconCenter'
+  iconCenter = 'iconCenter',
+  peopleIcon = 'peopleIcon',
+	backIcon = 'backIcon'
+
 }
 
 export const iconEntities: Record<
@@ -36,7 +41,9 @@ export const iconEntities: Record<
 	[IconType.electricity]: ElectricityIcon,
 	[IconType.ear]: EarIcon,
 	[IconType.iconLeft]:IconLeft,
-	[IconType.iconCenter]:IconCenter
+	[IconType.iconCenter]:IconCenter,
+	[IconType.peopleIcon]:PeopleIcon,
+	[IconType.backIcon]: BackIcon,
 
 
 };
@@ -50,6 +57,8 @@ export {
 	ElectricityIcon,
 	EarIcon,
 	IconLeft,
-	IconCenter
+	IconCenter,
+	PeopleIcon,
+	BackIcon,
 
 };

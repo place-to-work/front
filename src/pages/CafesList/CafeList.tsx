@@ -8,6 +8,7 @@ import {Cafe} from '@pages/CafePage/CafePage';
 import Header from "@components/a11y/Header";
 import PageContainer from '@components/a11y/PageContainer';
 import Main from '@components/a11y/Main';
+import {HeaderType} from "@components/a11y/Header/Header";
 
 const CafeListPage: React.FC = () => {
 	const cafes: Cafe[] = [];
@@ -46,7 +47,7 @@ const CafeListPage: React.FC = () => {
 	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
 
 	return (<PageContainer>
-		<Header/>
+		<Header type={HeaderType.left}/>
 		<Main style={{padding: '10px', width: 360}}>
 		<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 		{cafesMemo}

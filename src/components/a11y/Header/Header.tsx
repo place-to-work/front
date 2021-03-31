@@ -1,7 +1,10 @@
 import * as React from 'react';
-import './Header.scss';
 import {CSSProperties} from 'react';
-import {IconCenter, IconLeft} from "@components/primitives/Icon";
+import './Header.scss';
+import {BackIcon, IconCenter, IconLeft} from "@components/primitives/Icon";
+import Tag from "@components/primitives/Tag";
+import {ButtonColor} from "@components/primitives/Button";
+import {useHistory} from "react-router-dom";
 
 export enum HeaderType {
 	center = 'center',
@@ -13,13 +16,17 @@ interface HeaderProps {
 	withBack?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({withBack = false, type = HeaderType.center, ...rest}) => (
-	<header className="header" {...rest}>
-		{type === HeaderType.center ? <IconCenter className="icon-center"/> :
-		<>
-			{withBack ? <IconLeft/> : <IconLeft/>}
-		</>}
-	</header>
-);
+const Header: React.FC<HeaderProps> = ({withBack = false, type = HeaderType.center, ...rest}) =>{
+	const history = useHistory();
+	return (
+		<header className="header" {...rest}>
+			{type === HeaderType.center ? <IconCenter className="icon-center"/> :
+				<>
+					{withBack ? <BackIcon onClick={()=>history.push('/cafes')}/> : <IconLeft/>}
+					<Tag color={ButtonColor.grey}>Я в кофейне</Tag>
+				</>}
+		</header>
+	);
+}
 
 export default Header;
