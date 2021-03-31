@@ -70,6 +70,7 @@ class Http {
 	}
 
 	static retCSRFToken(response: Response): Response {
+		console.log(`csrf response: ${JSON.stringify(response, null, 4)}`);
 		const token = response.headers.get(this.CSRF_NAME);
 		if (token) {
 			localStorage.setItem(this.CSRF_NAME, token);
