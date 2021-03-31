@@ -75,11 +75,13 @@ const LoginPage: React.FC = () => {
 						<Form>
 							<FormikInput
 								id="email"
+								type="email"
 								placeholder="Введите вашу почту"
 								formikProps={formikProps}
 							/>
 							<FormikInput
 								id="password"
+								type="password"
 								placeholder="Введите пароль"
 								formikProps={formikProps}
 							/>

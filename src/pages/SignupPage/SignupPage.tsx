@@ -50,13 +50,7 @@ const SignupPage: React.FC = () => {
 			body: JSON.stringify(values),
 		})
 			.then((resp) => {
-				console.log('before = ', JSON.stringify(resp, null, 4));
-				if (!resp.error) {
-					history.push('/cafes');
-				} else {
-					console.log('after = ', JSON.stringify(resp, null, 4));
-					resp.json().then(console.log);
-				}
+				history.push('/cafes');
 			})
 			.catch(console.log);
 		console.log(`sum: ${JSON.stringify(values)}`);
@@ -92,12 +86,14 @@ const SignupPage: React.FC = () => {
 							/>
 							<FormikInput
 								id="email"
+								type="email"
 								title="Почта"
 								formikProps={formikProps}
 								placeholder="Введите свою почту"
 							/>
 							<FormikInput
 								id="password"
+								type="password"
 								title="Пароль"
 								formikProps={formikProps}
 								placeholder="Введите пароль"

@@ -5,6 +5,7 @@ import {Field, FormikProps} from 'formik';
 
 interface FormikInputProps {
 	id: string;
+	type?: string;
 	name?: string;
 	title?: string;
 	placeholder?: string;
@@ -15,8 +16,8 @@ export const FormikInput: React.FC<FormikInputProps> = ({
 	id,
 	title,
 	name = id,
-	placeholder,
-	formikProps
+	formikProps,
+	...rest
 }) => {
 	const {errors, touched} = formikProps;
 	return <div className="input-container">
@@ -25,7 +26,7 @@ export const FormikInput: React.FC<FormikInputProps> = ({
 			className="input-field"
 			id={id}
 			name={name}
-			placeholder={placeholder}
+			{...rest}
 		/>
 		{errors[name] && touched[name] ? <div style={{color: 'red'}}>{errors[name]}</div> : null}
 	</div>;
