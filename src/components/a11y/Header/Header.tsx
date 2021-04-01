@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({withBack = false, type = HeaderType.cent
 			{type === HeaderType.center ? <IconCenter className="icon-center"/> :
 				<>
 					{withBack ? <BackIcon onClick={()=>history.push('/cafes')}/> : <IconLeft/>}
-					<Tag color={ButtonColor.accentGrey}>Я в кофейне</Tag>
+					<Tag color={ButtonColor.grey}>Я в кофейне</Tag>
 				</>}
 		</header>
 	);

@@ -17,6 +17,15 @@
       cursor: pointer;
     }
   }
+  &_grey {
+    @include backgroundGrey;
+    @include colorBlack;
+
+    &:active,
+    &:hover {
+      cursor:pointer;
+    }
+  }
 
   &_accent-grey {
     @include backgroundGreyAccent;
