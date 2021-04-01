@@ -7,30 +7,6 @@ import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 import {HeaderType} from "@components/a11y/Header/Header";
 
-// export type Cafe = {
-// 	id: string;
-// 	imageSrc?: string;
-// 	name?: string;
-// 	address?: string;
-// 	time?: string;
-//
-// 	// Иконки
-// 	wifi?:boolean;
-// 	light?:boolean;
-// 	electricity?:boolean;
-// 	quiet?:boolean;
-// 	images?: string[];
-//
-// 	// Подробная информация на странице кафе
-// 	statuses?: string[];
-// 	gallery?: string[];
-// 	workLoad?: number;
-// 	workLoadText?: string;
-// 	averagePrice?: string;
-// 	mapSrc?: string;
-//
-// };
-
 const CafePage: React.FC = () => {
 	const { id } = useParams();
 
