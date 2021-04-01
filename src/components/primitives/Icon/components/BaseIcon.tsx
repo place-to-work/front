@@ -14,7 +14,7 @@ type Props = BaseIconProps & React.SVGAttributes<SVGElement>;
 
 const BaseIcon: React.FC<Props> = ({
 	className,
-	size = IconSize.normal,
+	size = IconSize.m,
 	children,
 	onClick,
 	color,

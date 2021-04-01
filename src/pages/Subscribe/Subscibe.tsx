@@ -15,7 +15,7 @@ import Typo, {TypographyType, TypoTextAlign} from "@components/primitives/Typo";
 const SubscribePage: React.FC = () => {
 
     return (<>
-            <Header type={HeaderType.left} withBack/>
+            <Header withBack/>
             <div className="subscribe-page">
                 <Typo type={TypographyType.h2} textAlign={TypoTextAlign.center} className="subscribe-page__title">Оплата подписки</Typo>
                 <div className="subscribe-page__buttons">

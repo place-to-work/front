@@ -38,6 +38,15 @@
     &-xl {
       @include square(64px);
     }
+    &-xxm {
+      @include square(72px);
+    }
+    &-xxl {
+      @include square(81px);
+    }
+    &-xxl {
+      @include square(120px);
+    }
   }
 
   &_color {

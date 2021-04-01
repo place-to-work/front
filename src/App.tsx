@@ -36,7 +36,7 @@ const App: React.FC = () =>{
 
 	return <Router history={history}>
 	<Switch>
-		<Route path="/in-place"><InWorkPlace/></Route>
+		<Route path="/in-place"> <InWorkPlace qrValue={''}/></Route>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 
 		<Route path="/login"><LoginPage/></Route>
