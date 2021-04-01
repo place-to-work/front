@@ -51,7 +51,8 @@ const CafeListPage: React.FC = () => {
 		<Main style={{padding: '10px', width: 360}}>
 		<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 		{cafesMemo}
-	</Main></PageContainer>);
+	</Main>
+	</PageContainer>);
 };
 
 export default observer(CafeListPage);
