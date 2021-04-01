@@ -2,7 +2,7 @@ import * as React from 'react';
 import './DetailedFeatures.scss';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo from '@components/primitives/Typo';
-import {EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/primitives/Icon';
+import {EarIcon, ElectricityIcon, LightIcon, PeopleIcon, WifiIcon} from '@components/primitives/Icon';
 
 const DetailedFeatures: React.FC<Partial<CafeCardProps>> = (
 	{
@@ -17,7 +17,7 @@ const DetailedFeatures: React.FC<Partial<CafeCardProps>> = (
 		{electricity && <Typo className="detailed-features__item" icon={<ElectricityIcon/>}>Розетки</Typo>}
 		{quiet && <Typo className="detailed-features__item" icon={<EarIcon/>}>Тихо</Typo>}
 		{light && <Typo className="detailed-features__item" icon={<LightIcon/>}>Светло</Typo>}
-		{workLoad && <Typo className="detailed-features__item"  icon={<LightIcon/>}>{workLoad} мест</Typo>}
+		{workLoad && <Typo className="detailed-features__item"  icon={<PeopleIcon/>}>{workLoad} мест</Typo>}
 		<div className="ghost"/>
 	</div>);
 export default DetailedFeatures;

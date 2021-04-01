@@ -51,7 +51,6 @@ const CafeCard: React.FC<CafeCardProps> = (
 			if(id){
 				history.push(`/cafe/${id}`);
 			}
-			console.log(id);
 		}}>
 			<ImageCard imageSrc={imageSrc} />
 			<div className="cafe-card__data">
