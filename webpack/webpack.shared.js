@@ -2,6 +2,7 @@ const path = require('path');
 const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const styleRules = {
 	test: /\.((c|sa|sc)ss)$/i,
@@ -84,5 +85,19 @@ module.exports = {
 			inject: 'body',
 		}),
 		new MiniCssExtractPlugin(),
+
+		new WebpackPwaManifest({
+			name: 'Рабочее место',
+			short_name: 'Place to work',
+			description: 'Find your place',
+			background_color: '#ffffff',
+			crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+			icons: [
+				{
+					src: path.resolve('src/assets/PlaceToWork.png'),
+					sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+				}
+			]
+		})
 	]
 };
