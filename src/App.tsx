@@ -24,6 +24,14 @@ import {createBrowserHistory} from 'history';
 const history = createBrowserHistory();
 
 const App: React.FC = () =>{
+	try{
+	document.addEventListener('touchmove', function (event) {
+		if (event.scale !== 1) { event.preventDefault(); }
+	}, { passive: false });
+	}catch (e){
+		console.log(e)
+	}
+
 	return <Router history={history}>
 	<Switch>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
