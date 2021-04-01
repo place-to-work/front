@@ -28,6 +28,6 @@ export const FormikInput: React.FC<FormikInputProps> = ({
 			name={name}
 			{...rest}
 		/>
-		{errors[name] && touched[name] ? <div style={{color: 'red'}}>{errors[name]}</div> : null}
+		{errors[name] && touched[name] ? <Typo style={{color: 'red'}}>{errors[name]}</Typo> : null}
 	</div>;
 };
