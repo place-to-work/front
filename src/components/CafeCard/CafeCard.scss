@@ -26,4 +26,7 @@
   &__features{
     display: flex;
   }
+  &:nth-last-child{
+    margin-bottom: 100px;
+  }
 }
