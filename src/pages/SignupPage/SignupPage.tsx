@@ -118,21 +118,6 @@ const SignupPage: React.FC = () => {
 								buttonSize={ButtonSize.classic}
 								style={{margin: '13px 0'}}>Зарегистрироваться
 							</Button>
-							<Typo
-								block
-								type={TypographyType.h5}
-								// textAlign={TypoTextAlign.center} не работает ...
-								weight={TypoWeight.bold}
-								color={TypoColor.black}
-								style={{
-									pointerEvents: 'none',
-									cursor: 'not-allowed',
-									textAlign: 'center',
-								}}
-								onClick={() => history.push('/login')}
-							>
-								Нет аккаунта?
-							</Typo>
 						</Form>
 					</>}
 				/>

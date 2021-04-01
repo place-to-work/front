@@ -76,29 +76,17 @@ const LoginPage: React.FC = () => {
 							<FormikInput
 								id="email"
 								type="email"
+								title="Почта"
 								placeholder="Введите вашу почту"
 								formikProps={formikProps}
 							/>
 							<FormikInput
 								id="password"
+								title="Пароль"
 								type="password"
 								placeholder="Введите пароль"
 								formikProps={formikProps}
 							/>
-							<Typo
-								block
-								type={TypographyType.h6}
-								color={TypoColor.darkGrey}
-								textAlign={TypoTextAlign.center} // Почему то не работает
-								verticalAlign={TypoVerticalAlign.baseline}
-								style={{
-									pointerEvents: 'none',
-									cursor: 'not-allowed',
-									textAlign: 'center',
-								}}
-							>
-								Забыли пароль?
-							</Typo>
 							<Button
 								full
 								buttonSize={ButtonSize.classic}
@@ -109,9 +97,9 @@ const LoginPage: React.FC = () => {
 								// textAlign={TypoTextAlign.center} не работает ...
 								weight={TypoWeight.bold}
 								color={TypoColor.black}
+								onClick={() => history.push('/signup')}
 								style={{
-									pointerEvents: 'none',
-									cursor: 'not-allowed',
+									cursor: 'pointer',
 									textAlign: 'center',
 								}}
 							>
