@@ -27,6 +27,7 @@ const CafePage: React.FC = () => {
 							statuses: data.categories,
 							averagePrice: data['average_bill'],
 							workLoadText: data.occupancy,
+							address: data.address,
 							wifi: data.wifi,
 							images: data['images'],
 							electricity: data['power_socket'],
