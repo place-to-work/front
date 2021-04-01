@@ -21,6 +21,7 @@ import SignupPage from '@pages/SignupPage';
 import {createBrowserHistory} from 'history';
 import SubscribePage from "@pages/Subscribe";
 import InWorkPlace from '@pages/InWorkPlace';
+import SubscriptionMainPage from "@pages/SubscriptionMain/SubscriptionMain";
 
 
 const history = createBrowserHistory();
@@ -47,6 +48,9 @@ const App: React.FC = () =>{
 		</Route>
 		<Route exact path="/subscribe">
 			<SubscribePage/>
+		</Route>
+		<Route exact path="/subscribe-main">
+			<SubscriptionMainPage/>
 		</Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
