@@ -6,25 +6,28 @@ import Tag from "@components/primitives/Tag";
 import {ButtonColor} from "@components/primitives/Button";
 import {useHistory} from "react-router-dom";
 
-export enum HeaderType {
-	center = 'center',
-	left = 'left'
-}
 interface HeaderProps {
 	style?: CSSProperties;
-	type?: HeaderType;
 	withBack?: boolean;
+	withLeftLogo?: boolean;
+	withCenterLogo?: boolean;
+	withInWorkPlaceHref?:boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({withBack = false, type = HeaderType.center, ...rest}) =>{
+const Header: React.FC<HeaderProps> = ({
+	withBack,
+	withCenterLogo,
+	withInWorkPlaceHref,
+	withLeftLogo,
+	...rest
+}) => {
 	const history = useHistory();
 	return (
 		<header className="header" {...rest}>
-			{type === HeaderType.center ? <IconCenter className="icon-center"/> :
-				<>
-					{withBack ? <BackIcon onClick={()=>history.push('/cafes')}/> : <IconLeft/>}
-					<Tag color={ButtonColor.grey}>Я в кофейне</Tag>
-				</>}
+			{withBack && <BackIcon onClick={()=>history.goBack()}/>}
+			{withCenterLogo && <IconCenter className="icon-center"/>}
+			{withLeftLogo && !withBack && <IconLeft/>}
+			{withInWorkPlaceHref && <Tag color={ButtonColor.grey}>Я в кофейне</Tag>}
 		</header>
 	);
 }

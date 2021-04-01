@@ -13,16 +13,7 @@ const AuthPage: React.FC = () => {
 	const history = useHistory();
 	return <>
 		<PageContainer>
-			<Header style={{justifyContent: 'center', padding: 11}}>
-				<Typo
-					// element='a'
-					block
-					type={TypographyType.h3}
-					href="/"
-				>
-					Рабочее место
-				</Typo>
-			</Header>
+			<Header withCenterLogo/>
 			<Main style={{padding: 10, width: 360}}>
 				<ImageCard
 					imageSrc={'https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg'}

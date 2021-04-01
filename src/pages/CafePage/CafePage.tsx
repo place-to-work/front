@@ -5,10 +5,9 @@ import Header from '@components/a11y/Header';
 import {useParams} from 'react-router-dom';
 import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
-import {HeaderType} from "@components/a11y/Header/Header";
 
 const CafePage: React.FC = () => {
-	const { id } = useParams();
+	const {id} = useParams();
 
 	const [cafe, setCafe] = React.useState<CafeCardProps>();
 
@@ -45,7 +44,7 @@ const CafePage: React.FC = () => {
 
 
 	return (<>
-		<Header type={HeaderType.left} withBack/>
+		<Header withLeftLogo withBack/>
 			<div className="cafe-page">
 				{cafe && <DetailedInfo {...cafe} />}
 			</div>

@@ -19,6 +19,7 @@ import AuthPage from '@pages/AuthPage';
 import LoginPage from '@pages/LoginPage';
 import SignupPage from '@pages/SignupPage';
 import {createBrowserHistory} from 'history';
+import InWorkPlace from '@pages/InWorkPlace';
 
 
 const history = createBrowserHistory();
@@ -34,6 +35,7 @@ const App: React.FC = () =>{
 
 	return <Router history={history}>
 	<Switch>
+		<Route path="/in-place"><InWorkPlace/></Route>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 
 		<Route path="/login"><LoginPage/></Route>
