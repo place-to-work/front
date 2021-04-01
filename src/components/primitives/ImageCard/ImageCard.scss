@@ -6,4 +6,10 @@
   border-radius: 8px;
   width: 100%;
   max-height: 200px;
+  transition: all 150ms ease-in-out;
+
+  &-scalable:hover {
+    transition: all 150ms ease-in-out;
+    transform: scale(1.05);
+  }
 }

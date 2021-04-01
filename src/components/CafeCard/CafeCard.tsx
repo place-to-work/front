@@ -47,12 +47,12 @@ const CafeCard: React.FC<CafeCardProps> = (
 	const history = useHistory();
 	return(
 
-		<div className="cafe-card" onClick={()=>{
+		<div className="cafe-card" style={{cursor: 'pointer'}} onClick={()=>{
 			if(id){
 				history.push(`/cafe/${id}`);
 			}
 		}}>
-			<ImageCard imageSrc={imageSrc} />
+			<ImageCard imageSrc={imageSrc} scalable/>
 			<div className="cafe-card__data">
 				<Typo className="cafe-card__name" block type={TypographyType.h3}>{name}</Typo>
 				<div className="cafe-card__description">
