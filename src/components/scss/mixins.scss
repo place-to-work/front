@@ -1,4 +1,5 @@
 @import './variables';
+@import "./includeMedia";
 
 // Основной цвет
 @mixin colorAccent {
@@ -75,6 +76,67 @@
   font-weight: 700;
 }
 
+@mixin media($conditions...) {
+  // scss-lint:disable SpaceAroundOperator
+  @if ($im-media-support and length($conditions) == 0) or
+    (not $im-media-support and im-intercepts-static-breakpoint($conditions...)) {
+    @content;
+  }
+
+  @else if ($im-media-support and length($conditions) > 0) {
+    @media #{unquote(parse-expression(nth($conditions, 1)))} {
+      // Recursive call
+      @include media(slice($conditions, 2)...) {
+      @content;
+    }
+    }
+  }
+}
+
+//Media Queries
+
+@mixin phone {
+  @include media("<md") {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include media(">=md", "<=lg") {
+    @content;
+  }
+}
+
+@mixin desktop-small {
+  @include media(">=xxlg", "<xxxlg") {
+    @content;
+  }
+}
+
+@mixin desktop-tiny {
+  @include media(">=lg", "<xxlg") {
+    @content;
+  }
+}
+
+@mixin lg-device {
+  @include media(">=lg", "<=1345px") {
+    @content;
+  }
+}
+
+@mixin lessThanTablet {
+  @include media("<=lg") {
+    @content;
+  }
+}
+
+@mixin largerThanPhone {
+  @include media(">=md") {
+    @content;
+  }
+}
+
 
 // Шрифты
 @mixin OpenSans {
@@ -89,43 +151,48 @@
 
 $line-height-coefficient: 1.4;
 
-@mixin fontSize($font-size) {
+@mixin fontSize($font-size, $font-size-min) {
   @include Walsheim;
 
   font-size: $font-size;
   line-height: $line-height-coefficient;
   min-height: $line-height-coefficient * $font-size;
 
+  @include phone {
+    font-size: $font-size-min;
+    min-height: $line-height-coefficient * $font-size-min;
+  }
+
 }
 
 @mixin buttonText {
   @include textWeight600;
-  @include fontSize($button-font-size);
+  @include fontSize($button-font-size, $button-font-min-size);
 }
 
 @mixin textH1 {
   @include textWeight700;
-  @include fontSize($global-h1-font-size);
+  @include fontSize($global-h1-font-size, $global-h2-font-size);
 }
 @mixin textH2 {
   @include textWeight700;
-  @include fontSize($global-h2-font-size);
+  @include fontSize($global-h2-font-size, $global-h3-font-size);
 }
 @mixin textH3 {
   @include textWeight700;
-  @include fontSize($global-h3-font-size);
+  @include fontSize($global-h3-font-size, $global-h4-font-size);
 }
 @mixin textH4 {
   @include textWeight400;
-  @include fontSize($global-h4-font-size);
+  @include fontSize($global-h4-font-size, $global-h5-font-size);
 }
 @mixin textH5 {
   @include textWeight400;
-  @include fontSize($global-h5-font-size);
+  @include fontSize($global-h5-font-size, $global-h6-font-size);
 }
 @mixin textH6 {
   @include textWeight400;
-  @include fontSize($global-h6-font-size);
+  @include fontSize($global-h6-font-size, $global-h6-min-font-size);
 }
 
 @mixin text-link-base {

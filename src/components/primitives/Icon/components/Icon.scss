@@ -27,15 +27,22 @@
     &-m {
       @include square(24px);
     }
+    &-l {
+      @include square(36px);
+    }
+
+    &-normal {
+      @include square(48px);
+    }
 
     &-xl {
-      @include square(48px);
+      @include square(64px);
     }
   }
 
   &_color {
     &-accent {
-      color: $global-color-accent;
+      color: $global-color-accent-text;
     }
 
     &-accent-green {

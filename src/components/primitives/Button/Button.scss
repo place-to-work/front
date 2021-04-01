@@ -38,6 +38,12 @@ $local-icon-size: 12px;
   }
 
   &_size {
+    &_xxl {
+      @include buttonText;
+      padding: 19px;
+      height: 70px;
+      min-width: 60px;
+    }
     &_xl {
       @include buttonText;
       padding: 19px;
@@ -84,7 +90,17 @@ $local-icon-size: 12px;
         background-color: white;
       }
     }
+    &_grey {
+      @include backgroundGrey;
+      @include colorBlack;
 
+      &:active {
+      }
+
+      &:hover:not(.button_disabled) {
+        cursor: pointer;
+      }
+    }
     &_black {
       @include backgroundBlack;
       @include colorWhite;
@@ -138,6 +154,7 @@ $local-icon-size: 12px;
   }
 
   &__item {
+    display: flex;
     margin-right: 8px;
     opacity: 1;
 

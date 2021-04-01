@@ -19,6 +19,7 @@ import AuthPage from '@pages/AuthPage';
 import LoginPage from '@pages/LoginPage';
 import SignupPage from '@pages/SignupPage';
 import {createBrowserHistory} from 'history';
+import SubscribePage from "@pages/Subscribe";
 import InWorkPlace from '@pages/InWorkPlace';
 
 
@@ -43,6 +44,9 @@ const App: React.FC = () =>{
 		<Route path="/cafes"><CafeListPage/></Route>
 		<Route exact path="/cafe/:id">
 			<CafePage/>
+		</Route>
+		<Route exact path="/subscribe">
+			<SubscribePage/>
 		</Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>

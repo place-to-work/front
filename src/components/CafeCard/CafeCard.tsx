@@ -19,7 +19,7 @@ export type CafeCardProps = {
     wifi?:boolean;
     light?:boolean;
     electricity?:boolean;
-    quiet?:boolean;
+    quiet?:string;
 
     // Подробная информация на странице кафе
 	statuses?: string[];
@@ -31,7 +31,7 @@ export type CafeCardProps = {
 
 };
 
-
+const QUIET_PLACE = ['тихо','спокойно','тихонечко','клуб немых']
 const CafeCard: React.FC<CafeCardProps> = (
 	{
 		id,
@@ -42,7 +42,7 @@ const CafeCard: React.FC<CafeCardProps> = (
 		wifi = true,
 		light = true,
 		electricity = true,
-		quiet = true
+		quiet
 	}: CafeCardProps) => {
 	const history = useHistory();
 	return(
@@ -61,7 +61,7 @@ const CafeCard: React.FC<CafeCardProps> = (
 						{wifi && <WifiIcon/>}
 						{light && <LightIcon/>}
 						{electricity && <ElectricityIcon/>}
-						{quiet && <EarIcon/>}
+						{QUIET_PLACE.indexOf(quiet.toLocaleLowerCase()) !== -1 && <EarIcon/>}
 					</div>
 				</div>
 			</div>

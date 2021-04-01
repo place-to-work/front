@@ -1,0 +1,21 @@
+@import "src/components/scss/index";
+
+.arrow-dir-icon {
+  @include animate(transform);
+
+  &_up {
+    transform: rotate(90deg);
+  }
+
+  &_down {
+    transform: rotate(-90deg);
+  }
+
+  &_left {
+    transform: rotate(0deg);
+  }
+
+  &_right {
+    transform: rotate(180deg);
+  }
+}

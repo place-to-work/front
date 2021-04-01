@@ -1,0 +1,16 @@
+.subscribe-page{
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 70%;
+  &__title{
+    width: 100%;
+  }
+  &_buttons{
+
+  }
+  &__button{
+    margin: 8px 0;
+  }
+}

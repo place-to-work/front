@@ -1,5 +1,8 @@
 export enum IconSize {
+  xxl = 'xxl',
   xl = 'xl',
+  l = 'l',
+  normal = 'normal',
   m = 'm',
   s = 's',
   xs = 'xs',
@@ -9,7 +12,7 @@ export enum IconSize {
 
 export enum IconColor {
   accent = 'accent',
-  accentGreen = 'accent-green',
+  black = 'black',
   currentColor = 'current-color',
   grey = 'grey'
 }
