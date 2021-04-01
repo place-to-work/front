@@ -1,0 +1,28 @@
+.button-pay{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+
+  &_primary{
+    justify-content: center;
+  }
+
+  &__left-icon{
+    margin-right: 8px;
+    display: flex;
+  }
+  &__right-icon{
+    margin-left: auto;
+    justify-self: flex-end;
+    display: flex;
+  }
+  &__content{
+    text-align: left;
+  }
+}
+.button-wrapper{
+  width:100%;
+  display: flex;
+  align-items: center;
+}

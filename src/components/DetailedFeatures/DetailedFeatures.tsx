@@ -15,7 +15,7 @@ const DetailedFeatures: React.FC<Partial<CafeCardProps>> = (
 	<div className="detailed-features">
 		{wifi && <Typo className="detailed-features__item" icon={<WifiIcon/>}>Wi-Fi</Typo>}
 		{electricity && <Typo className="detailed-features__item" icon={<ElectricityIcon/>}>Розетки</Typo>}
-		{quiet && <Typo className="detailed-features__item" icon={<EarIcon/>}>Тихо</Typo>}
+		{quiet && <Typo className="detailed-features__item" icon={<EarIcon/>}>{quiet}</Typo>}
 		{light && <Typo className="detailed-features__item" icon={<LightIcon/>}>Светло</Typo>}
 		{workLoad && <Typo className="detailed-features__item"  icon={<PeopleIcon/>}>{workLoad} мест</Typo>}
 		<div className="ghost"/>

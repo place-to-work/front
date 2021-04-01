@@ -18,7 +18,7 @@ export type CafeCardProps = {
     wifi?:boolean;
     light?:boolean;
     electricity?:boolean;
-    quiet?:boolean;
+    quiet?:string;
 
     // Подробная информация на странице кафе
     statuses?: string[];
@@ -39,7 +39,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		wifi = true,
 		light = true,
 		electricity = true,
-		quiet = true,
+		quiet,
 		statuses = ['Булочная, пекарня','Кофейня'],
 		//gallery = ['https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg','https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg'],
 		workLoad = 20,
@@ -69,7 +69,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		{ averagePrice && <Typo block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold}>{averagePrice}</Typo></Typo>}
 		<Separator invisible/>
 		{mapSrc && <Button full color={ButtonColor.accentGrey} onClick={()=>window.open(mapSrc, "_blank")}>
-			{/* todo Добавить ссылку */}
 			<Typo type={TypographyType.h3} weight={TypoWeight.semiBold}  color={TypoColor.black}>Открыть в картах
 			</Typo>
 		</Button>

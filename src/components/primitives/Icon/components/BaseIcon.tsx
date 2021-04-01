@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import * as React from 'react';
 import { IconColor, IconSize } from './config';
-import './Icon.module.scss';
+import './Icon.scss';
 
 export type BaseIconProps = {
   size?: IconSize;
@@ -14,7 +14,7 @@ type Props = BaseIconProps & React.SVGAttributes<SVGElement>;
 
 const BaseIcon: React.FC<Props> = ({
 	className,
-	size = IconSize.s,
+	size = IconSize.m,
 	children,
 	onClick,
 	color,

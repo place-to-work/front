@@ -9,6 +9,7 @@ export enum ButtonColor {
 }
 
 export enum ButtonSize {
+  xxl = 'xxl',
   xl = 'xl',
   classic = 'classic'
 }

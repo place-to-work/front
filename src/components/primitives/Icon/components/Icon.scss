@@ -27,15 +27,31 @@
     &-m {
       @include square(24px);
     }
+    &-l {
+      @include square(36px);
+    }
+
+    &-normal {
+      @include square(48px);
+    }
 
     &-xl {
-      @include square(48px);
+      @include square(64px);
+    }
+    &-xxm {
+      @include square(72px);
+    }
+    &-xxl {
+      @include square(81px);
+    }
+    &-xxl {
+      @include square(120px);
     }
   }
 
   &_color {
     &-accent {
-      color: $global-color-accent;
+      color: $global-color-accent-text;
     }
 
     &-accent-green {

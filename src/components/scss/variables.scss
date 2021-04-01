@@ -1,4 +1,14 @@
 
+$breakpoints: (
+        xxxlg: 1680px,
+        xxlg: 1440px,
+        xlg: 1200px,
+        lg: 1024px,
+        xmd: 876px,
+        md: 768px,
+        sm: 320px
+);
+
 $global-color-accent: linear-gradient(0deg, #FDA344, #FDA344), #E2B37A;
 $global-color-accent-text: #FDA344;
 
@@ -19,6 +29,7 @@ $background-accent: #FBF6EF;
 
 //шрифты
 
+$global-h6-min-font-size: 10px;
 $global-h6-font-size: 12px;
 $global-h5-font-size: 16px;
 $global-h4-font-size: 18px;
@@ -26,6 +37,7 @@ $global-h3-font-size: 22px;
 $global-h2-font-size: 32px;
 $global-h1-font-size: 36px;
 
+$button-font-min-size: 18px;
 $button-font-size: 20px;
 $input-font-size: 20px;
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {CSSProperties} from 'react';
 import './Header.scss';
-import {BackIcon, IconCenter, IconLeft} from "@components/primitives/Icon";
+import {BackIcon, IconCenter, IconLeft, IconSize} from "@components/primitives/Icon";
 import Tag from "@components/primitives/Tag";
 import {ButtonColor} from "@components/primitives/Button";
 import {useHistory} from "react-router-dom";
@@ -25,8 +25,8 @@ const Header: React.FC<HeaderProps> = ({
 	return (
 		<header className="header" {...rest}>
 			{withBack && <BackIcon onClick={()=>history.goBack()}/>}
-			{withCenterLogo && <IconCenter className="icon-center"/>}
-			{withLeftLogo && !withBack && <IconLeft/>}
+			{withCenterLogo && <IconCenter size={IconSize.xxl} className="icon-center"/>}
+			{withLeftLogo && !withBack && <IconLeft size={IconSize.xl}/>}
 			{withInWorkPlaceHref && <Tag color={ButtonColor.grey}>Я в кофейне</Tag>}
 		</header>
 	);

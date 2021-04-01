@@ -3,11 +3,11 @@
 %IconColor {
   &_color {
     &-accent {
-      color: $global-color-main;
+      color: $global-color-accent;
+    }
+    &-black {
+      color: $global-color-black;
     }
 
-    &-accent-green {
-      color: $global-color-accent-1;
-    }
   }
 }

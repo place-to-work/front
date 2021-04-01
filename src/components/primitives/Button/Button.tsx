@@ -37,6 +37,7 @@ export type BaseButtonProps = {
   withBorder?: boolean;
   isLoading?: boolean;
   style?: CSSProperties;
+  withWrapper?: boolean
 };
 
 export type ButtonProps = BaseButtonProps & ButtonBase;
@@ -48,6 +49,7 @@ const Button: React.FC<ButtonProps> = ({
 	buttonSize = ButtonSize.xl,
 	color = ButtonColor.accent,
 	withBorder = true,
+										   withWrapper = false,
 	className,
 	children,
 	...extraProps
@@ -75,7 +77,8 @@ const Button: React.FC<ButtonProps> = ({
 			)}
 			{...extraProps}
 		>
-			{children && <div className="button__item">{children}</div>}
+
+			{children && ( withWrapper ? <div className="button__item">{children}</div> : children)}
 		</Element>
 	);
 };

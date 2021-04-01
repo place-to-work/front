@@ -11,6 +11,12 @@ import ElectricityIcon from '@components/primitives/Icon/components/ElectricityI
 import EarIcon from '@components/primitives/Icon/components/EarIcon';
 import PeopleIcon from "@components/primitives/Icon/components/PeopleIcon";
 import BackIcon from "@components/primitives/Icon/components/BackIcon";
+import ApplePayIcon from "@components/primitives/Icon/components/ApplePay";
+import ArrowDirIcon from "@components/primitives/Icon/components/ArrowDirIcon";
+import BankIcon from "@components/primitives/Icon/components/BankIcon";
+import SberIcon from "@components/primitives/Icon/components/SberIcon";
+import YouMoneyIcon from "@components/primitives/Icon/components/YouMoneyIcon"
+import GooglePayIcon from "@components/primitives/Icon/components/GooglePayIcon";
 export * from './BaseIcon';
 
 
@@ -26,7 +32,12 @@ export enum IconType {
   iconLeft = 'iconLeft',
   iconCenter = 'iconCenter',
   peopleIcon = 'peopleIcon',
-	backIcon = 'backIcon'
+	backIcon = 'backIcon',
+	applePay = 'applePay',
+  	googlePay = 'googlePay',
+	bankIcon = 'backIcon',
+	sberIcon = 'sberIcon',
+	youMoney = 'youMoney'
 
 }
 
@@ -44,12 +55,17 @@ export const iconEntities: Record<
 	[IconType.iconCenter]:IconCenter,
 	[IconType.peopleIcon]:PeopleIcon,
 	[IconType.backIcon]: BackIcon,
-
+	[IconType.applePay]: ApplePayIcon,
+	[IconType.backIcon]: BankIcon,
+	[IconType.sberIcon]: SberIcon,
+	[IconType.youMoney]: YouMoneyIcon,
+	[IconType.googlePay]: GooglePayIcon
 
 };
 
 export {
 	BaseIcon,
+	ArrowDirIcon,
 	LocationIcon,
 	ClockIcon,
 	WifiIcon,
@@ -60,5 +76,10 @@ export {
 	IconCenter,
 	PeopleIcon,
 	BackIcon,
+	ApplePayIcon,
+	GooglePayIcon,
+	BankIcon,
+	SberIcon,
+	YouMoneyIcon
 
 };

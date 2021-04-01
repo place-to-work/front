@@ -44,7 +44,7 @@ const CafePage: React.FC = () => {
 
 
 	return (<>
-		<Header withLeftLogo withBack/>
+		<Header withBack/>
 			<div className="cafe-page">
 				{cafe && <DetailedInfo {...cafe} />}
 			</div>
