@@ -63,9 +63,9 @@ $local-icon-size: 12px;
     &_accent {
       @include colorWhite;
       background-color: $global-color-accent-text;
-      &:hover {
-        background-color: $global-color-white;
-        color: black;
+      &:hover, &:active {
+        transition: all 150ms ease-in-out;
+        transform: scale(1.01);
       }
       //box-shadow: 0 0 40px 40px $global-color-accent-text inset, 0 0 0 0 $global-color-accent-text;
       //border-color: $global-color-accent-text;
@@ -91,7 +91,8 @@ $local-icon-size: 12px;
       &:active,
       &:hover {
         cursor:pointer;
-        @include backgroundWhite;
+        transition: all 150ms ease-in-out;
+        transform: scale(1.01);
         //box-shadow: 0 0 5px 5px $global-color-grey-accent inset, 0 0 6px 0 $global-color-grey-accent;
         //background-color: white;
       }
