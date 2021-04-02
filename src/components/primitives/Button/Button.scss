@@ -62,14 +62,19 @@ $local-icon-size: 12px;
   &_type {
     &_accent {
       @include colorWhite;
-      box-shadow: 0 0 40px 40px $global-color-accent-text inset, 0 0 0 0 $global-color-accent-text;
-      border-color: $global-color-accent-text;
+      background-color: $global-color-accent-text;
+      &:hover {
+        background-color: $global-color-white;
+        color: black;
+      }
+      //box-shadow: 0 0 40px 40px $global-color-accent-text inset, 0 0 0 0 $global-color-accent-text;
+      //border-color: $global-color-accent-text;
       -webkit-transition: all 150ms ease-in-out;
       transition: all 150ms ease-in-out;
-      &:active, &:hover {
-        color: black;
-        box-shadow: 0 0 10px 0 $global-color-accent-text inset, 0 0 6px 0px $global-color-accent-text;
-      }
+      //&:active, &:hover {
+      //  color: black;
+      //  box-shadow: 0 0 10px 0 $global-color-accent-text inset, 0 0 6px 0px $global-color-accent-text;
+      //}
 
       &:hover:not(.button_disabled) {
         cursor: pointer;
@@ -77,17 +82,18 @@ $local-icon-size: 12px;
     }
 
     &_accent-grey {
-      //@include backgroundGreyAccent;
+      @include backgroundGreyAccent;
       @include colorBlack;
-      transition: all 150ms ease-in-out;
-      box-shadow: 0 0 40px 40px $global-color-grey-accent inset, 0 0 0 0 $global-color-grey-accent;
-      border-color: $global-color-grey-accent;
+      //transition: all 150ms ease-in-out;
+      //box-shadow: 0 0 40px 40px $global-color-grey-accent inset, 0 0 0 0 $global-color-grey-accent;
+      //border-color: $global-color-grey-accent;
 
       &:active,
       &:hover {
         cursor:pointer;
-        box-shadow: 0 0 5px 5px $global-color-grey-accent inset, 0 0 6px 0 $global-color-grey-accent;
-        background-color: white;
+        @include backgroundWhite;
+        //box-shadow: 0 0 5px 5px $global-color-grey-accent inset, 0 0 6px 0 $global-color-grey-accent;
+        //background-color: white;
       }
     }
     &_grey {
