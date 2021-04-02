@@ -7,7 +7,7 @@ import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 
 const CafePage: React.FC = () => {
-	const {id} = useParams();
+	const {id} = useParams<{id}>();
 
 	const [cafe, setCafe] = React.useState<CafeCardProps>();
 
@@ -44,7 +44,7 @@ const CafePage: React.FC = () => {
 
 
 	return (<>
-		<Header withBack/>
+		<Header withBack withInWorkPlaceHref/>
 			<div className="cafe-page">
 				{cafe && <DetailedInfo {...cafe} />}
 			</div>

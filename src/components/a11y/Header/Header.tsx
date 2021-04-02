@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({
 			{withBack && <BackIcon onClick={()=>history.goBack()}/>}
 			{withCenterLogo && <IconCenter size={IconSize.xxl} className="icon-center"/>}
 			{withLeftLogo && !withBack && <IconLeft size={IconSize.xl}/>}
-			{withInWorkPlaceHref && <Tag color={ButtonColor.grey}>Я в кофейне</Tag>}
+			{withInWorkPlaceHref && <Tag onClick={() => history.push('/in-place')} color={ButtonColor.grey}>Я в кофейне</Tag>}
 		</header>
 	);
 }
