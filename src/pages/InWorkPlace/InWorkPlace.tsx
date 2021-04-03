@@ -27,7 +27,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						})
 				}
 			})
-	});
+	}, []);
 
 	return uuid.length === 0 ? null :
 		<BasePage
