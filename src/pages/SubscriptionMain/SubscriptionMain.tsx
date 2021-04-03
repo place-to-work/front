@@ -20,7 +20,6 @@ const initialValues: PromoValues = {
 const SubscriptionMainPage: React.FC = () => {
 
     const history = useHistory();
-    const windowReference = window.open()
 
 
     const [paymentLoad, setPaymentLoad] = React.useState(localStorage.getItem('payment') || false)
@@ -32,8 +31,10 @@ const SubscriptionMainPage: React.FC = () => {
             .then((r) => {
                 r.json().then((data)=>{
                     try{
-                    window.open(data.url, '_blank')
-                    windowReference.location = data.url;
+                        if(data?.url){
+                            window.open(data.url, '_blank')
+                        }
+
                     }
                     catch (e){
 

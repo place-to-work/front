@@ -40,25 +40,24 @@ const BasePage: React.FC<BasePageProps> = ({
 					history.location.pathname === '/signup')
 				) {
 					console.log('go to places')
+					// setIsLoading(false);
 					history.push('/places');
 				}
 
 				if (!response.ok) {
-					history.push('/404');
+
 				}
 
-				console.log('end of promise')
+
 				return response.json();
 			})
 			.then((body) => {
-				console.log(`body = ${JSON.stringify(body, null, 4)}`);
 				const user  = body as User;
 				if (user.userType !== UserType.barista &&
 					history.location.pathname === '/staff') {
+					// setIsLoading(false);
 					history.push('/places');
 				}
-
-				setIsLoading(false);
 			})
 	}, []);
 
