@@ -31,7 +31,7 @@ const SubscriptionMainPage: React.FC = () => {
         })
             .then((r) => {
                 r.json().then((data)=>{
-                    localStorage.setItem('payment', true)
+                   window.open(data.url, '_blank')
                     windowReference.location = data.url;
                 })
             })
@@ -62,7 +62,6 @@ const SubscriptionMainPage: React.FC = () => {
                                 {/*/>*/}
 
                                 <Button
-                                    disabled={paymentLoad}
                                     buttonSize={ButtonSize.xl}
                                     full
                                     style={{margin: '13px 0'}}>Оплатить
