@@ -7,7 +7,7 @@ type FetchRequestProps = {
 }
 
 class Http {
-	constructor(private serverUrl = 'https://place-to-work.online/api/v1') {}
+	constructor(public serverUrl = 'https://place-to-work.online/api/v1') {}
 
 	static GET_CSRF_NAME = 'csrftoken';
 	static STORE_CSRF_NAME = 'csrftoken';
