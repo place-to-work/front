@@ -55,6 +55,9 @@ const aliases = {
 };
 
 module.exports = {
+	optimization: {
+		minimize: true,
+	},
 	mode: process.env.NODE_ENV,
 	entry: paths.entryPath,
 	output: {
