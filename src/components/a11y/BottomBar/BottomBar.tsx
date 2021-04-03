@@ -18,7 +18,7 @@ const BottomBar:FC<Props> = ({opened, setOpened})=>{
 
     const [onPay, setOnPay] = React.useState(false);
     const { payment } = useParams();
-    console.log({payment})
+    console.log('payment',payment)
     const [paymentLoad, setPaymentLoad] = React.useState(false);
     const hasLocal = localStorage.getItem('payment');
 
