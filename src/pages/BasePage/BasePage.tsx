@@ -32,6 +32,7 @@ const BasePage: React.FC<BasePageProps> = ({
 					history.location.pathname !== '/signup'
 				) {
 					history.push('/auth');
+					return
 				}
 
 				if (response.ok &&
@@ -41,6 +42,7 @@ const BasePage: React.FC<BasePageProps> = ({
 				) {
 					console.log('go to places')
 					history.push('/places');
+					return;
 				}
 
 				if (!response.ok) {
