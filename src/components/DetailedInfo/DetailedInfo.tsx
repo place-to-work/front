@@ -50,9 +50,11 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	}: CafeCardProps) => (
 	<div className="cafe-detailed-info">
 		<ImageCard imageSrc={imageSrc}/>
-		<Typo className="cafe-detailed-info__name" block type={TypographyType.h3}>{name}</Typo>
+		<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
 		<div className="cafe-detailed-info__statuses">
-			{statuses?.map((status:string, index:number)=><Tag key={index}>{status}</Tag>)}
+			{statuses?.map((status:string, index:number)=><Tag key={index}>
+				<Typo type={TypographyType.h5} color={TypoColor.black}>{status}</Typo>
+			</Tag>)}
 		</div>
 		<Separator/>
 		<CafeInfo address={address} time={time}/>
@@ -65,10 +67,12 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 			workLoad={workLoad}
 		/>
 		<Separator/>
-		{ workLoadText && <Typo block>Загруженность:{' '}<Typo weight={TypoWeight.semiBold}>{workLoadText}</Typo></Typo>}
-		{ averagePrice && <Typo block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold}>{averagePrice}</Typo></Typo>}
+		{ workLoadText && <Typo type={TypographyType.h4} block>Загруженность:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{workLoadText}</Typo></Typo>}
+		{ averagePrice && <Typo type={TypographyType.h4} block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{averagePrice} </Typo></Typo>}
 		<Separator invisible/>
-		{mapSrc && <Button full color={ButtonColor.accentGrey} onClick={()=>window.open(mapSrc, "_blank")}>
+		{mapSrc && <Button
+			className="cafe-detailed-info__button"
+			full color={ButtonColor.accentGrey} onClick={()=>window.open(mapSrc, "_blank")}>
 			<Typo type={TypographyType.h3} weight={TypoWeight.semiBold}  color={TypoColor.black}>Открыть в картах
 			</Typo>
 		</Button>

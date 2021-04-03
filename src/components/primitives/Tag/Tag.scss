@@ -2,9 +2,9 @@
 
 .tag{
   border-radius: 6px;
-  max-height: 28px;
+  //max-height: px;
   margin: 2px 4px;
-  padding: 6px 8px;
+  padding: 4px 8px;
   &_accent {
     background: $global-color-accent;
     @include colorWhite;
