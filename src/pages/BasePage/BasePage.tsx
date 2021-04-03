@@ -32,11 +32,19 @@ const BasePage: React.FC<BasePageProps> = ({
 				) {
 					history.replace('/auth');
 				}
+
+				if (response.ok &&
+					history.location.pathname === '/auth' ||
+					history.location.pathname === '/login' ||
+					history.location.pathname === '/signup'
+				) {
+					history.replace('/places');
+				}
 			});
 	}, []);
 
 	return isLoading ?
-		<div>qwer</div>
+		null
 		:
 		<PageContainer>
 			<Header {...headerProps}/>
