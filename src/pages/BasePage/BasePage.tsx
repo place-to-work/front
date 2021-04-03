@@ -44,7 +44,7 @@ const BasePage: React.FC<BasePageProps> = ({
 				}
 
 				if (!response.ok) {
-
+					history.push('/404');
 				}
 
 				console.log('end of promise')
