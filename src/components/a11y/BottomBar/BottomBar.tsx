@@ -26,9 +26,7 @@ const BottomBar:FC<Props> = ({opened, setOpened})=>{
     const [paymentLoad, setPaymentLoad] = React.useState(false);
     const hasLocal = localStorage.getItem('payment');
 
-    if(payment){
-        // localStorage.setItem('payment',true)
-    }
+
     if(hasLocal){
         setPaymentLoad(true)
     }

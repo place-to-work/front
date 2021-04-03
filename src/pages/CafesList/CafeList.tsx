@@ -22,6 +22,9 @@ const CafeListPage: React.FC = () => {
 		})
 			.then((r) => {
 				r.json().then(((data) => {
+					if(!data){
+						return
+					}
 					data.forEach((el) => {
 						setCafesState((old) => [...old, {
 							id: el.id,
