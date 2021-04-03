@@ -25,12 +25,13 @@ const BasePage: React.FC<BasePageProps> = ({
 		Http.getCurrentUser()
 			.then((response) => {
 				console.log(`resp is ok = ${response.ok}`);
+				console.log(history.location.pathname)
 				if (!response.ok &&
 					history.location.pathname !== '/auth' &&
 					history.location.pathname !== '/login' &&
 					history.location.pathname !== '/signup'
 				) {
-					history.replace('/auth');
+					history.push('/auth');
 				}
 
 				if (response.ok &&
@@ -38,7 +39,8 @@ const BasePage: React.FC<BasePageProps> = ({
 					history.location.pathname === '/login' ||
 					history.location.pathname === '/signup')
 				) {
-					history.replace('/places');
+					console.log('go to places')
+					history.push('/places');
 				}
 
 				if (!response.ok) {
@@ -53,7 +55,7 @@ const BasePage: React.FC<BasePageProps> = ({
 				const user  = body as User;
 				if (user.userType !== UserType.barista &&
 					history.location.pathname === '/staff') {
-					history.replace('/places');
+					history.push('/places');
 				}
 
 				setIsLoading(false);

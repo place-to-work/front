@@ -7,7 +7,7 @@ import {Form, Formik, FormikProps} from "formik";
 import Button, {ButtonSize} from "@components/primitives/Button";
 import SubscriptionCard from "@components/SubscribtionCard/SubscriptionCard";
 import Http from "@network/Http/Http";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 interface PromoValues {
     promo: '';
@@ -19,8 +19,10 @@ const initialValues: PromoValues = {
 
 const SubscriptionMainPage: React.FC = () => {
 
-    const [onPay, setOnPay] = React.useState(false);
     const history = useHistory();
+    const windowReference = window.open()
+
+
     const onSubmit = (values: PromoValues) => {
         Http.fetchPost({
             path: '/payments/',
@@ -28,7 +30,7 @@ const SubscriptionMainPage: React.FC = () => {
         })
             .then((r) => {
                 r.json().then((data)=>{
-                    window.open(data.url)
+                    windowReference.location = data.url;
                 })
             })
             .catch(console.log);
@@ -44,7 +46,7 @@ const SubscriptionMainPage: React.FC = () => {
                 <Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center} className="subscription-page_title">подписки</Typo>
                 </Typo>
 
-                <SubscriptionCard/>
+                <SubscriptionCard />
 
                 <div className="subscription-page__buttons">
                     <Formik<PromoValues>
