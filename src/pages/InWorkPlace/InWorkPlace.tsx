@@ -7,6 +7,7 @@ import BasePage from "@pages/BasePage";
 import Typo, {TypographyType, TypoTextAlign, TypoWeight} from "@components/primitives/Typo";
 import Button, {ButtonColor} from "@components/primitives/Button";
 import {IconCenter, IconSize, IconType} from "@components/primitives/Icon";
+import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -16,14 +17,8 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = ({qrValue}) => {
 	const history = useHistory();
 	const baseSize = 360;
 
-	const CenterLogo = <div style={{height: 60}}>
-		<IconCenter
-			size={IconSize.xxxl}
-		/>
-	</div>;
-
 	return <BasePage
-		headerProps={{middle: () => CenterLogo}}
+		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{
 			body: () => <>
 				<div style={{width: baseSize - 20, height: baseSize - 20}} className="qr-code-card__background">

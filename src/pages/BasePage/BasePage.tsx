@@ -24,7 +24,6 @@ const BasePage: React.FC<BasePageProps> = ({
 	React.useEffect(() => {
 		Http.getCurrentUser()
 			.then((response) => {
-				setIsLoading(false);
 				console.log(`resp is ok = ${response.ok}`);
 				if (!response.ok &&
 					history.location.pathname !== '/auth' &&
@@ -42,14 +41,22 @@ const BasePage: React.FC<BasePageProps> = ({
 					history.replace('/places');
 				}
 
+				if (!response.ok) {
+
+				}
+
+				console.log('end of promise')
 				return response.json();
 			})
 			.then((body) => {
+				console.log(`body = ${JSON.stringify(body, null, 4)}`);
 				const user  = body as User;
 				if (user.userType !== UserType.barista &&
 					history.location.pathname === '/staff') {
 					history.replace('/places');
 				}
+
+				setIsLoading(false);
 			})
 	}, []);
 

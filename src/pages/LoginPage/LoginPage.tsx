@@ -11,6 +11,7 @@ import {Formik, Form, FormikProps} from 'formik';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import Error from '@components/Error';
+import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 
 
 interface LoginValues {
@@ -51,14 +52,6 @@ const LoginPage: React.FC = () => {
 		console.log(`login: ${JSON.stringify(values)}`);
 	};
 
-	const CenterLogo = <div style={{height: 60}}>
-		<IconCenter
-			size={IconSize.xxxl}
-			className="icon-center"
-			type={IconType.iconCenter}
-		/>
-	</div>;
-
 	const ContactUs = <Typo
 		block
 		type={TypographyType.h5}
@@ -68,7 +61,7 @@ const LoginPage: React.FC = () => {
 	</Typo>;
 
 	return <BasePage
-		headerProps={{middle: () => CenterLogo}}
+		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{
 			body: () => <Formik<LoginValues>
 				validationSchema={validationSchema}

@@ -7,17 +7,10 @@ import IconCenter from '@components/primitives/Icon/';
 import Typo, {TypographyType} from '@components/primitives/Typo';
 import ImageCard from '@components/primitives/ImageCard';
 import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
+import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-
-	const CenterLogo = <div style={{height: 60}}>
-			<IconCenter
-			size={IconSize.xxxl}
-			className="icon-center"
-			type={IconType.iconCenter}
-		/>
-	</div>;
 
 	const ContactUs = <Typo
 		block
@@ -29,7 +22,7 @@ const AuthPage: React.FC = () => {
 
 	return <BasePage
 		headerProps={{
-			middle: () => CenterLogo
+			middle: () => <CenterLogo/>
 		}}
 		mainProps={{
 			body: () => <>

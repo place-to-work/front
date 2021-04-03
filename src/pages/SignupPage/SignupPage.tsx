@@ -16,6 +16,7 @@ import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
 import IconCenter from '@components/primitives/Icon/Icon';
 import {IconSize, IconType} from '@components/primitives/Icon';
+import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 
 interface SignupValues {
 	name: '';
@@ -59,14 +60,6 @@ const SignupPage: React.FC = () => {
 		console.log(`sum: ${JSON.stringify(values)}`);
 	};
 
-	const CenterLogo = <div style={{height: 60}}>
-		<IconCenter
-			size={IconSize.xxxl}
-			className="icon-center"
-			type={IconType.iconCenter}
-		/>
-	</div>;
-
 	const ContactUs = <Typo
 		block
 		type={TypographyType.h5}
@@ -76,7 +69,7 @@ const SignupPage: React.FC = () => {
 	</Typo>;
 
 	return <BasePage
-		headerProps={{middle: () => CenterLogo}}
+		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{body: () => <Formik
 				validationSchema={validationSchema}
 				initialValues={initialValues}
