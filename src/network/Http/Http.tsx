@@ -1,3 +1,4 @@
+import User from '@models/User';
 
 type FetchRequestProps = {
 	path?: string,

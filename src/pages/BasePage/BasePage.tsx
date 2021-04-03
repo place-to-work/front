@@ -5,6 +5,7 @@ import Header, {HeaderProps} from '@pages/BasePage/Header';
 import Footer, {FooterProps} from '@pages/BasePage/Footer/Footer';
 import Http from '@network/Http';
 import {useHistory} from 'react-router-dom';
+import User, {UserType} from '@models/User';
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -40,7 +41,16 @@ const BasePage: React.FC<BasePageProps> = ({
 				) {
 					history.replace('/places');
 				}
-			});
+
+				return response.json();
+			})
+			.then((body) => {
+				const user  = body as User;
+				if (user.userType !== UserType.barista &&
+					history.location.pathname === '/staff') {
+					history.replace('/places');
+				}
+			})
 	}, []);
 
 	return isLoading ?
