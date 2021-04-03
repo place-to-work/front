@@ -53,10 +53,7 @@ const BasePage: React.FC<BasePageProps> = ({
 			})
 	}, []);
 
-	return isLoading ?
-		null
-		:
-		<PageContainer>
+	return <PageContainer>
 			<Header {...headerProps}/>
 			<Main {...mainProps}/>
 			<Footer {...footerProps}/>
