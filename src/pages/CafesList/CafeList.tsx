@@ -59,7 +59,7 @@ const CafeListPage: React.FC = () => {
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 			{cafesMemo}
-			<BottomBar opened={opened} setOpened={setOpened}/>
+			{/*<BottomBar opened={opened} setOpened={setOpened}/>*/}
 		</>
 	}}/>);
 };
