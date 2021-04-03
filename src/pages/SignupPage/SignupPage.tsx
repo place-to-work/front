@@ -46,7 +46,11 @@ const SignupPage: React.FC = () => {
 			body: JSON.stringify(values),
 		})
 			.then((resp) => {
-				history.push('/cafes');
+				if (resp.ok) {
+					history.push('/cafes');
+				} else {
+					console.log(`signup error: ${JSON.stringify(resp, null, 4)}`);
+				}
 			})
 			.catch(console.log);
 		console.log(`sum: ${JSON.stringify(values)}`);

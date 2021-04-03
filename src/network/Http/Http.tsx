@@ -24,7 +24,7 @@ class Http {
 			body,
 		};
 
-		const cookieCsrf = Http.getCookie(Http.GET_CSRF_NAME);
+		const cookieCsrf = getCookie(Http.GET_CSRF_NAME);
 		if (cookieCsrf) {
 			req.headers = {
 				[Http.PUT_CSRF_NAME]: cookieCsrf,
@@ -38,7 +38,7 @@ class Http {
 		}
 
 		return fetch(`${this.serverUrl}${path}`, req)
-			.then((response) => Http.retCSRFToken(response));
+			.then(retCSRFToken);
 	}
 
 	fetchGet({path}): Promise<Response> {
@@ -72,26 +72,24 @@ class Http {
 		});
 	}
 
-	static getCookie(name) {
-		const matches = document.cookie.match(new RegExp(
-			'(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
-		));
-		return matches ? decodeURIComponent(matches[1]) : undefined;
-	}
-
-	static retCSRFToken(response: Response): Response {
-		console.log('test', document.cookie)
-		const token = this.getCookie(this.GET_CSRF_NAME);
-		if (token) {
-			localStorage.setItem(this.STORE_CSRF_NAME, token);
-		}
-
-		return response;
-	}
-
 	getCurrentUser(): Promise<Response> {
-		return this.fetchGet({path: '/api/v1/users/'});
+		return this.fetchGet({path: '/users/'});
 	}
+}
+
+function getCookie(name) {
+	const matches = document.cookie.match(new RegExp(
+		'(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
+	));
+	return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+function retCSRFToken(response: Response): Response {
+	const token = getCookie(Http.GET_CSRF_NAME);
+	if (token) {
+		localStorage.setItem(Http.STORE_CSRF_NAME, token);
+	}
+	return response;
 }
 
 export default new Http();

@@ -4,6 +4,7 @@ import Main, {MainProps} from '@pages/BasePage/Main'
 import Header, {HeaderProps} from '@pages/BasePage/Header';
 import Footer, {FooterProps} from '@pages/BasePage/Footer/Footer';
 import Http from '@network/Http';
+import {useHistory} from 'react-router-dom';
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -16,13 +17,23 @@ const BasePage: React.FC<BasePageProps> = ({
 	mainProps,
 	footerProps,
 }) => {
+	const history = useHistory();
 	const [isLoading, setIsLoading] = React.useState(true);
 
-	Http.getCurrentUser()
-		.then((response) => {
-			console.log(`response = ${JSON.stringify(response, null, 4)}`);
-			setIsLoading(false);
-		});
+	React.useEffect(() => {
+		Http.getCurrentUser()
+			.then((response) => {
+				setIsLoading(false);
+				console.log(`resp is ok = ${response.ok}`);
+				if (!response.ok &&
+					history.location.pathname !== '/auth' &&
+					history.location.pathname !== '/login' &&
+					history.location.pathname !== '/signup'
+				) {
+					history.replace('/auth');
+				}
+			});
+	}, []);
 
 	return isLoading ?
 		<div>qwer</div>

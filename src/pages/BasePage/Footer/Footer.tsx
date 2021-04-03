@@ -16,9 +16,9 @@ const Footer: React.FC<FooterProps> = ({
 	...rest
 }) => (
 	<footer className="footer" {...rest}>
-		{() => left()}
-		{() => middle()}
-		{() => right()}
+		{left()}
+		{middle()}
+		{right()}
 	</footer>
 );
 
