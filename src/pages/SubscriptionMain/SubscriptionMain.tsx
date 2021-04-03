@@ -19,18 +19,9 @@ const initialValues: PromoValues = {
 
 const SubscriptionMainPage: React.FC = () => {
 
-    const [onPay, setOnPay] = React.useState(false);
     const history = useHistory();
     const windowReference = window.open()
 
-    const { payment } = useParams();
-    console.log({payment})
-    const [paymentLoad, setPaymentLoad] = React.useState(false);
-    const hasLocal = localStorage.getItem('payment');
-
-    if(hasLocal){
-        setPaymentLoad()
-    }
 
     const onSubmit = (values: PromoValues) => {
         Http.fetchPost({
@@ -55,7 +46,7 @@ const SubscriptionMainPage: React.FC = () => {
                 <Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center} className="subscription-page_title">подписки</Typo>
                 </Typo>
 
-                <SubscriptionCard/>
+                <SubscriptionCard />
 
                 <div className="subscription-page__buttons">
                     <Formik<PromoValues>
