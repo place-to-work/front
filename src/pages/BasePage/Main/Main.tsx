@@ -7,8 +7,8 @@ export interface MainProps {
 	body?: () => React.ReactElement;
 }
 
-const Main: React.FC<MainProps> = ({body, ...rest}) => (
-	<main className="main" {...rest}>{body && body()}</main>
-);
+const Main: React.FC<MainProps> = ({body, ...rest}) => {
+	return <main className="main" {...rest}>{body && body()}</main>;
+};
 
 export default Main;

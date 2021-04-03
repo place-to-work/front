@@ -3,6 +3,13 @@ import * as Yup from 'yup';
 import './LoginPage.scss';
 import Http from '@network/Http';
 import {useHistory} from 'react-router-dom';
+import IconCenter from '@components/primitives/Icon/Icon';
+import {IconSize, IconType} from '@components/primitives/Icon';
+import BasePage from '@pages/BasePage';
+import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
+import {Formik, Form, FormikProps} from 'formik';
+import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
+import Button, {ButtonSize} from '@components/primitives/Button';
 
 
 interface LoginValues {
@@ -32,7 +39,7 @@ const LoginPage: React.FC = () => {
 			body: JSON.stringify(values),
 		})
 			.then((response) => {
-				if (!response.error) {
+				if (response.ok) {
 					history.push('/cafes');
 				} else {
 					response.json().then(console.log);
@@ -43,7 +50,74 @@ const LoginPage: React.FC = () => {
 		console.log(`login: ${JSON.stringify(values)}`);
 	};
 
-	return <>
+	const CenterLogo = <div style={{height: 60}}>
+		<IconCenter
+			size={IconSize.xxxl}
+			className="icon-center"
+			type={IconType.iconCenter}
+		/>
+	</div>;
+
+	const ContactUs = <Typo
+		block
+		type={TypographyType.h5}
+		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
+	>
+		Свяжитесь с нами
+	</Typo>;
+
+	return <BasePage
+		headerProps={{middle: () => CenterLogo}}
+		mainProps={{
+			body: () => <Formik<LoginValues>
+				validationSchema={validationSchema}
+				initialValues={initialValues}
+				onSubmit={onSubmit}
+				render={(formikProps: FormikProps<LoginValues>) => <>
+
+					<Typo block type={TypographyType.h2}>Вход</Typo>
+					<Form>
+						<FormikInput
+							id="email"
+							type="email"
+							title="Почта"
+							placeholder="Введите вашу почту"
+							formikProps={formikProps}
+						/>
+						<FormikInput
+							id="password"
+							title="Пароль"
+							type="password"
+							placeholder="Введите пароль"
+							formikProps={formikProps}
+						/>
+						<Button
+							full
+							buttonSize={ButtonSize.classic}
+							style={{margin: '13px 0'}}
+						>
+							Войти
+						</Button>
+						<Typo
+							block
+							type={TypographyType.h5}
+							// textAlign={TypoTextAlign.center} не работает ...
+							weight={TypoWeight.bold}
+							color={TypoColor.black}
+							onClick={() => history.push('/signup')}
+							style={{
+								cursor: 'pointer',
+								textAlign: 'center',
+							}}
+						>
+							Нет аккаунта?
+						</Typo>
+					</Form>
+				</>}
+			/>,
+		}}
+		footerProps={{right: () => ContactUs}}
+	>
 		{/*<PageContainer>*/}
 		{/*	<Header style={{justifyContent: 'center', padding: 11}}>*/}
 		{/*		<Typo*/}
@@ -116,7 +190,7 @@ const LoginPage: React.FC = () => {
 		{/*	</Footer>*/}
 
 		{/*</PageContainer>*/}
-	</>;
+	</BasePage>;
 };
 
 export default LoginPage;

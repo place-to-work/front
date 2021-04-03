@@ -13,6 +13,9 @@ import './SignupPage.scss';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Http from '@network/Http/Http';
 import {useHistory} from 'react-router-dom';
+import BasePage from '@pages/BasePage';
+import IconCenter from '@components/primitives/Icon/Icon';
+import {IconSize, IconType} from '@components/primitives/Icon';
 
 interface SignupValues {
 	name: '';
@@ -56,7 +59,78 @@ const SignupPage: React.FC = () => {
 		console.log(`sum: ${JSON.stringify(values)}`);
 	};
 
-	return <>
+	const CenterLogo = <div style={{height: 60}}>
+		<IconCenter
+			size={IconSize.xxxl}
+			className="icon-center"
+			type={IconType.iconCenter}
+		/>
+	</div>;
+
+	const ContactUs = <Typo
+		block
+		type={TypographyType.h5}
+		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
+	>
+		Свяжитесь с нами
+	</Typo>;
+
+	return <BasePage
+		headerProps={{middle: () => CenterLogo}}
+		mainProps={{body: () => <Formik
+				validationSchema={validationSchema}
+				initialValues={initialValues}
+				onSubmit={onSubmit}
+				render={(formikProps: FormikProps<SignupValues>) => <>
+
+					<Typo block type={TypographyType.h2}>Регистрация</Typo>
+					<Form>
+						<FormikInput
+							id="name"
+							title="Имя"
+							formikProps={formikProps}
+							placeholder="Введите свое имя"
+						/>
+						<FormikInput
+							id="email"
+							type="email"
+							title="Почта"
+							formikProps={formikProps}
+							placeholder="Введите свою почту"
+						/>
+						<FormikInput
+							id="password"
+							type="password"
+							title="Пароль"
+							formikProps={formikProps}
+							placeholder="Введите пароль"
+						/>
+
+						<Typo
+							block
+							type={TypographyType.h6}
+							color={TypoColor.darkGrey}
+							textAlign={TypoTextAlign.center} // Почему то не работает
+							verticalAlign={TypoVerticalAlign.baseline}
+							style={{
+								pointerEvents: 'none',
+								cursor: 'not-allowed',
+								textAlign: 'center',
+							}}
+						>
+							Забыли пароль?
+						</Typo>
+						<Button
+							full
+							buttonSize={ButtonSize.classic}
+							style={{margin: '13px 0'}}>Зарегистрироваться
+						</Button>
+					</Form>
+				</>}
+			/>}}
+		footerProps={{right: () => ContactUs}}
+	>
+
 		{/*{/*</PageContainer><PageContainer>*/}
 		{/*	<Header style={{justifyContent: 'center', padding: 11}}>*/}
 		{/*		<Typo*/}
@@ -136,7 +210,7 @@ const SignupPage: React.FC = () => {
 		{/*	</Footer>*/}
 
 
-	</>;
+	</BasePage>;
 };
 
 export default SignupPage;
