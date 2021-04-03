@@ -1,7 +1,6 @@
 import React from 'react';
 import {observer} from 'mobx-react-lite';
 import DetailedInfo from '@components/DetailedInfo';
-import Header from '@components/a11y/Header';
 import {useParams} from 'react-router-dom';
 import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
@@ -44,10 +43,10 @@ const CafePage: React.FC = () => {
 
 
 	return (<>
-		<Header withBack withInWorkPlaceHref/>
-			<div className="cafe-page">
-				{cafe && <DetailedInfo {...cafe} />}
-			</div>
+		{/*<Header withBack withInWorkPlaceHref/>*/}
+		{/*	<div className="cafe-page">*/}
+		{/*		{cafe && <DetailedInfo {...cafe} />}*/}
+		{/*	</div>*/}
 	</>
 		);
 };

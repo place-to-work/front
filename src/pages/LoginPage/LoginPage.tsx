@@ -1,14 +1,6 @@
 import React from 'react';
 import * as Yup from 'yup';
 import './LoginPage.scss';
-import Header from '@components/a11y/Header';
-import Main from '@components/a11y/Main';
-import Footer from '@components/a11y/Footer';
-import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoVerticalAlign, TypoWeight} from '@components/primitives/Typo';
-import {Form, Formik, FormikProps} from 'formik';
-import Button, {ButtonSize} from '@components/primitives/Button';
-import PageContainer from '@components/a11y/PageContainer';
-import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Http from '@network/Http';
 import {useHistory} from 'react-router-dom';
 
@@ -52,78 +44,78 @@ const LoginPage: React.FC = () => {
 	};
 
 	return <>
-		<PageContainer>
-			<Header style={{justifyContent: 'center', padding: 11}}>
-				<Typo
-					// element='a'
-					block
-					type={TypographyType.h3}
-					href="/"
-					style={{textDecoration: 'none'}}
-				>
-					Рабочее место
-				</Typo>
-			</Header>
-			<Main style={{padding: 10, width: 360}}>
-				<Formik<LoginValues>
-					validationSchema={validationSchema}
-					initialValues={initialValues}
-					onSubmit={onSubmit}
-					render={(formikProps: FormikProps<LoginValues>) => <>
+		{/*<PageContainer>*/}
+		{/*	<Header style={{justifyContent: 'center', padding: 11}}>*/}
+		{/*		<Typo*/}
+		{/*			// element='a'*/}
+		{/*			block*/}
+		{/*			type={TypographyType.h3}*/}
+		{/*			href="/"*/}
+		{/*			style={{textDecoration: 'none'}}*/}
+		{/*		>*/}
+		{/*			Рабочее место*/}
+		{/*		</Typo>*/}
+		{/*	</Header>*/}
+		{/*	<Main style={{padding: 10, width: 360}}>*/}
+		{/*		<Formik<LoginValues>*/}
+		{/*			validationSchema={validationSchema}*/}
+		{/*			initialValues={initialValues}*/}
+		{/*			onSubmit={onSubmit}*/}
+		{/*			render={(formikProps: FormikProps<LoginValues>) => <>*/}
 
-						<Typo block type={TypographyType.h2}>Вход</Typo>
-						<Form>
-							<FormikInput
-								id="email"
-								type="email"
-								title="Почта"
-								placeholder="Введите вашу почту"
-								formikProps={formikProps}
-							/>
-							<FormikInput
-								id="password"
-								title="Пароль"
-								type="password"
-								placeholder="Введите пароль"
-								formikProps={formikProps}
-							/>
-							<Button
-								full
-								buttonSize={ButtonSize.classic}
-								style={{margin: '13px 0'}}>Войти</Button>
-							<Typo
-								block
-								type={TypographyType.h5}
-								// textAlign={TypoTextAlign.center} не работает ...
-								weight={TypoWeight.bold}
-								color={TypoColor.black}
-								onClick={() => history.push('/signup')}
-								style={{
-									cursor: 'pointer',
-									textAlign: 'center',
-								}}
-							>
-								Нет аккаунта?
-							</Typo>
-						</Form>
-					</>}
-				/>
+		{/*				<Typo block type={TypographyType.h2}>Вход</Typo>*/}
+		{/*				<Form>*/}
+		{/*					<FormikInput*/}
+		{/*						id="email"*/}
+		{/*						type="email"*/}
+		{/*						title="Почта"*/}
+		{/*						placeholder="Введите вашу почту"*/}
+		{/*						formikProps={formikProps}*/}
+		{/*					/>*/}
+		{/*					<FormikInput*/}
+		{/*						id="password"*/}
+		{/*						title="Пароль"*/}
+		{/*						type="password"*/}
+		{/*						placeholder="Введите пароль"*/}
+		{/*						formikProps={formikProps}*/}
+		{/*					/>*/}
+		{/*					<Button*/}
+		{/*						full*/}
+		{/*						buttonSize={ButtonSize.classic}*/}
+		{/*						style={{margin: '13px 0'}}>Войти</Button>*/}
+		{/*					<Typo*/}
+		{/*						block*/}
+		{/*						type={TypographyType.h5}*/}
+		{/*						// textAlign={TypoTextAlign.center} не работает ...*/}
+		{/*						weight={TypoWeight.bold}*/}
+		{/*						color={TypoColor.black}*/}
+		{/*						onClick={() => history.push('/signup')}*/}
+		{/*						style={{*/}
+		{/*							cursor: 'pointer',*/}
+		{/*							textAlign: 'center',*/}
+		{/*						}}*/}
+		{/*					>*/}
+		{/*						Нет аккаунта?*/}
+		{/*					</Typo>*/}
+		{/*				</Form>*/}
+		{/*			</>}*/}
+		{/*		/>*/}
 
 
-			</Main>
-			<Footer style={{flexDirection: 'row-reverse', padding: 8}}>
-				<Typo
-					// element="a"
-					href="/contact"
-					block
-					type={TypographyType.h5}
-					style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
-				>
-					Свяжитесь с нами
-				</Typo>
-			</Footer>
+		{/*	</Main>*/}
+		{/*	<Footer style={{flexDirection: 'row-reverse', padding: 8}}>*/}
+		{/*		<Typo*/}
+		{/*			// element="a"*/}
+		{/*			href="/contact"*/}
+		{/*			block*/}
+		{/*			type={TypographyType.h5}*/}
+		{/*			style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}*/}
+		{/*		>*/}
+		{/*			Свяжитесь с нами*/}
+		{/*		</Typo>*/}
+		{/*	</Footer>*/}
 
-		</PageContainer>
+		{/*</PageContainer>*/}
 	</>;
 };
 

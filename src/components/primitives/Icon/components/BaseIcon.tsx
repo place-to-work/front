@@ -2,12 +2,14 @@ import cn from 'classnames';
 import * as React from 'react';
 import { IconColor, IconSize } from './config';
 import './Icon.scss';
+import {CSSProperties} from 'react';
 
 export type BaseIconProps = {
   size?: IconSize;
   className?: string;
   color?: IconColor;
   onClick?: React.SVGAttributes<SVGElement>['onClick'];
+  style?: CSSProperties;
 };
 
 type Props = BaseIconProps & React.SVGAttributes<SVGElement>;

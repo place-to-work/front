@@ -88,6 +88,10 @@ class Http {
 
 		return response;
 	}
+
+	getCurrentUser(): Promise<Response> {
+		return this.fetchGet({path: '/api/v1/users/'});
+	}
 }
 
 export default new Http();

@@ -1,20 +1,38 @@
 import React from 'react';
-import Typo, {TypographyType} from '@components/primitives/Typo';
-import Header from '@components/a11y/Header';
-import ImageCard from '@components/primitives/ImageCard';
-import Main from '@components/a11y/Main';
-import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
-import Footer from '@components/a11y/Footer';
 import './AuthPage.scss';
-import PageContainer from '@components/a11y/PageContainer';
 import {useHistory} from 'react-router-dom';
+import BasePage from '@pages/BasePage';
+import {IconSize, IconType} from '@components/primitives/Icon';
+import IconCenter from '@components/primitives/Icon/';
+import Typo, {TypographyType} from '@components/primitives/Typo';
+import ImageCard from '@components/primitives/ImageCard';
+import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-	return <>
-		<PageContainer>
-			<Header withCenterLogo/>
-			<Main style={{padding: 10, width: 360}}>
+
+	const CenterLogo = <div style={{height: 60}}>
+			<IconCenter
+			size={IconSize.xxxl}
+			className="icon-center"
+			type={IconType.iconCenter}
+		/>
+	</div>;
+
+	const ContactUs = <Typo
+		block
+		type={TypographyType.h5}
+		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
+	>
+		Свяжитесь с нами
+	</Typo>;
+
+	return <BasePage
+		headerProps={{
+			middle: () => CenterLogo
+		}}
+		mainProps={{
+			body: () => <>
 				<ImageCard
 					imageSrc={'https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg'}
 					style={{width: '100%'}}
@@ -25,7 +43,7 @@ const AuthPage: React.FC = () => {
 					музеи вашего города в настоящие рабочие пространства!</Typo>
 				<Button
 					element="a"
-					onClick={() => history.push('signup')}
+					onClick={() => history.push('/signup')}
 					full
 					buttonSize={ButtonSize.classic}
 					style={{marginBottom: '9px'}}
@@ -40,20 +58,12 @@ const AuthPage: React.FC = () => {
 				>
 					Вход
 				</Button>
-			</Main>
-			<Footer style={{flexDirection: 'row-reverse', padding: 8}}>
-				<Typo
-					// element="a"
-					href="/contact"
-					block
-					type={TypographyType.h5}
-					style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
-				>
-					Свяжитесь с нами
-				</Typo>
-			</Footer>
-		</PageContainer>
-	</>;
+			</>
+		}}
+		footerProps={{
+			right: () => ContactUs
+		}}
+	/>;
 };
 
 export default AuthPage;

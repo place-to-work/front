@@ -1,0 +1,14 @@
+@import "../../../components/scss/index";
+@import "../../../components/scss/variables";
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+
+  border-style: solid;
+  border-top-width: 2px;
+  border-color: $global-color-grey;
+
+  box-sizing: border-box;
+}
