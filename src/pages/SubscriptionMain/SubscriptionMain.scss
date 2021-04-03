@@ -1,0 +1,9 @@
+.subscription-page{
+  //padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+
+  &__title{
+    max-width: 340px;
+  }
+}

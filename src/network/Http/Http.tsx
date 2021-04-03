@@ -25,7 +25,9 @@ class Http {
 		};
 
 		const cookieCsrf = getCookie(Http.GET_CSRF_NAME);
+		console.log('test1', cookieCsrf)
 		if (cookieCsrf) {
+			console.log('test2')
 			req.headers = {
 				[Http.PUT_CSRF_NAME]: cookieCsrf,
 			}
@@ -78,9 +80,11 @@ class Http {
 }
 
 function getCookie(name) {
+
 	const matches = document.cookie.match(new RegExp(
 		'(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
 	));
+	console.log('matches', document.cookie.toLocaleLowerCase())
 	return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 

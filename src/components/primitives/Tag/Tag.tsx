@@ -14,6 +14,6 @@ const Tag: React.FC<TagProps> = ({
 	onClick,
 }) =>(
 	<div onClick={onClick} className={cn('tag',color && `tag_${color}` )}>
-		<Typo type={TypographyType.h6} color={TypoColor.black}>{children}</Typo>
+		{children}
 	</div>);
 export default Tag;
