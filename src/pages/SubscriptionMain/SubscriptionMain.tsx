@@ -31,8 +31,13 @@ const SubscriptionMainPage: React.FC = () => {
         })
             .then((r) => {
                 r.json().then((data)=>{
-                   window.open(data.url, '_blank')
+                    try{
+                    window.open(data.url, '_blank')
                     windowReference.location = data.url;
+                    }
+                    catch (){
+
+                    }
                 })
             })
             .catch(console.log);

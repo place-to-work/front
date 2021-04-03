@@ -17,14 +17,10 @@ const BottomBar:FC<Props> = ({opened, setOpened})=>{
     const handleGoToSub = () => history.push('/subscribe-main');
 
     const [onPay, setOnPay] = React.useState(false);
-    const { payment } = useParams();
-    console.log('payment',payment)
     const [paymentLoad, setPaymentLoad] = React.useState(false);
     const hasLocal = localStorage.getItem('payment');
 
-    if(payment){
-        localStorage.setItem('payment', true)
-    }
+
     if(hasLocal){
         setPaymentLoad(true)
     }
