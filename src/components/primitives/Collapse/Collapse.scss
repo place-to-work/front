@@ -1,0 +1,18 @@
+@import "src/components/scss/index";
+
+.collapse {
+  overflow: hidden;
+  will-change: height;
+
+  @include animate(height);
+
+  &_opened {
+    @include animate(height);
+    display: block;
+  }
+  &_full {
+    @include animate(height);
+    height: 100%;
+    display: block;
+  }
+}

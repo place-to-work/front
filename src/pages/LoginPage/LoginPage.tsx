@@ -41,7 +41,7 @@ const LoginPage: React.FC = () => {
 		})
 			.then((response) => {
 				if (response.ok) {
-					history.push('/cafes');
+					history.push('/places');
 				} else {
 					response.json().then(console.log);
 				}

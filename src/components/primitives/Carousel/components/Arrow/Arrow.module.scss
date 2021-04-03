@@ -1,0 +1,79 @@
+@import "scss/mixins";
+$radius: 48px;
+$arrow-padding: -#{$radius/2};
+
+.container {
+  height: 60%;
+  width: 100px;
+  opacity: 1;
+  position: absolute;
+  top: 20%;
+  z-index: 5;
+
+  &_with-paginator {
+    top: calc(20% - #{$global-spacing-xxl});
+  }
+
+  @include animate(opacity);
+
+  &_left {
+    left: $arrow-padding;
+  }
+
+  &_right {
+    right: $arrow-padding;
+  }
+
+  &_fade {
+    top: 0;
+    height: 100%;
+
+    &.container_left {
+      left: 0;
+      background: linear-gradient(90deg, $global-black-00  0%, rgba($global-black-00, 0) 90%);
+    }
+
+    &.container_right {
+      right: 0;
+      background: linear-gradient(90deg, rgba($global-black-00, 0) 1%, $global-black-00 90%);
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    z-index: 6;
+    opacity: 1;
+
+    @include animate(opacity);
+
+    &_visible {
+      opacity: 1;
+    }
+
+    &_none {
+      visibility: hidden;
+    }
+
+    &_transparent {
+      opacity: 0;
+    }
+
+    &_hovered {
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .container_left & {
+      left: 0;
+    }
+
+    .container_right & {
+      right: 0;
+    }
+  }
+}

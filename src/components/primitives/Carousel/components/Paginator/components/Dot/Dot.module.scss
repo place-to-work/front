@@ -1,0 +1,31 @@
+@import "scss/mixins";
+
+.paginator__dot {
+  margin: 0 $global-spacing-m;
+  position: relative;
+  cursor: pointer;
+
+  @include square(24px);
+
+
+  &::before {
+    content: "";
+    border-radius: 50%;
+    background: $global-black-20;
+
+    @include square(8px);
+    @include absoluteCenter;
+    @include animate(width, height, background);
+  }
+
+  &_current::before {
+    @include square(12px);
+
+    background: $global-red-90;
+  }
+
+
+  &:hover::before {
+    @include square(12px);
+  }
+}

@@ -1,9 +1,12 @@
 import React from 'react';
-import {observer} from 'mobx-react-lite';
-import DetailedInfo from '@components/DetailedInfo';
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
+import './CafePage.scss';
+import BasePage from "@pages/BasePage";
+import {BackIcon, IconSize} from "@components/primitives/Icon";
+import DetailedInfo from "@components/DetailedInfo";
+import {observer} from "mobx-react-lite";
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{id}>();
@@ -40,15 +43,17 @@ const CafePage: React.FC = () => {
 			.catch(console.log);
 	},[]);
 
+	const history = useHistory();
 
-
-	return (<>
-		{/*<Header withBack withInWorkPlaceHref/>*/}
-		{/*	<div className="cafe-page">*/}
-		{/*		{cafe && <DetailedInfo {...cafe} />}*/}
-		{/*	</div>*/}
-	</>
-		);
+	return (<BasePage
+		headerProps={{left:()=> <BackIcon size={IconSize.m} onClick={()=>history.push('/places')}/>}}
+		mainProps={{
+		body:()=><>
+			<div className="cafe-page">
+				{cafe && <DetailedInfo {...cafe} />}
+			</div>
+		</>
+		}}/>)
 };
 
 export default observer(CafePage);

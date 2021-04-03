@@ -50,7 +50,7 @@ const SignupPage: React.FC = () => {
 		})
 			.then((resp) => {
 				if (resp.ok) {
-					history.push('/cafes');
+					history.push('/places');
 				} else {
 					console.log(`signup error: ${JSON.stringify(resp, null, 4)}`);
 				}

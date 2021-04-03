@@ -5,6 +5,9 @@
   width: 100%;
   background-color: $global-color-grey;
   margin:  8px 4px 12px;
+  @include midget{
+    margin:  2px 4px 4px;
+  }
   &_invisible{
     opacity: 0;
   }

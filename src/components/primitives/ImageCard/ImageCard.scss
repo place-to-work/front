@@ -1,12 +1,16 @@
+@import "src/components/scss/index";
 .image{
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-  margin-bottom: 12px;
   border-radius: 8px;
   width: 100%;
   max-height: 200px;
   transition: all 100ms ease-in-out;
+  margin-bottom: 12px;
+  @include midget{
+    margin-bottom: 0;
+  }
 
   &-scalable:hover {
     transition: all 100ms ease-in-out;
