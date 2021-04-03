@@ -3,7 +3,7 @@ import Collapse from "@components/primitives/Collapse";
 import './BottomBar.scss';
 import Typo, {TypographyType, TypoTextAlign, TypoWeight} from "@components/primitives/Typo";
 import Button, {ButtonColor, ButtonSize} from "@components/primitives/Button";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import SubscriptionMain from "@pages/SubscriptionMain/SubscriptionMain";
 import cn from "classnames";
 
@@ -15,6 +15,22 @@ const BottomBar:FC<Props> = ({opened, setOpened})=>{
     const history = useHistory();
     const [full, setFull] = useState(false);
     const handleGoToSub = () => history.push('/subscribe-main');
+
+    const [onPay, setOnPay] = React.useState(false);
+    const { payment } = useParams();
+    console.log('payment',payment)
+    const [paymentLoad, setPaymentLoad] = React.useState(false);
+    const hasLocal = localStorage.getItem('payment');
+
+    if(payment){
+        localStorage.setItem('payment', true)
+    }
+    if(hasLocal){
+        setPaymentLoad(true)
+    }
+
+
+
 
     console.log(opened, full)
     const handleReBuild = () => {
@@ -38,7 +54,7 @@ const BottomBar:FC<Props> = ({opened, setOpened})=>{
                         <Typo className="bottom-bar__subtitle" textAlign={TypoTextAlign.center} type={TypographyType.h3}
                               weight={TypoWeight.regular}>Получайте бесплатный чай, скидки в&nbsp;кафе, неограниченный
                             доступ в&nbsp;рабочие пространства и&nbsp;многое другое</Typo>
-                        <Button buttonSize={ButtonSize.xl} className="bottom-bar__button" full color={ButtonColor.accent}
+                        <Button disabled={paymentLoad} buttonSize={ButtonSize.xl} className="bottom-bar__button" full color={ButtonColor.accent}
                                 onClick={handleReBuild}>Оформить подписку</Button>
                     </> :
                     <SubscriptionMain/>

@@ -2,7 +2,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import './LoginPage.scss';
 import Http from '@network/Http';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import IconCenter from '@components/primitives/Icon/Icon';
 import {IconSize, IconType} from '@components/primitives/Icon';
 import BasePage from '@pages/BasePage';
@@ -59,6 +59,9 @@ const LoginPage: React.FC = () => {
 	>
 		Свяжитесь с нами
 	</Typo>;
+	const params = useParams();
+
+	console.log('payment!!!!!',params)
 
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
