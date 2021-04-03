@@ -12,6 +12,13 @@ interface InWorkPlaceProps {
 	qrValue: string;
 }
 
+let dots = 0;
+setInterval(() => {
+	dots += 1;
+	dots %= 3;
+}, 500);
+
+
 const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	const history = useHistory();
 	const [uuid, setUuid] = React.useState('');
@@ -29,7 +36,9 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			})
 	}, []);
 
-	return uuid.length === 0 ? null :
+	return uuid.length === 0 ?
+		<Typo type={TypographyType.h1}>{`Please wait${'.'.repeat(dots)}`}</Typo>
+		:
 		<BasePage
 			headerProps={{middle: () => <CenterLogo/>}}
 			mainProps={{
