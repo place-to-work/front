@@ -18,6 +18,8 @@ const initialValues: PromoValues = {
 };
 
 const SubscriptionMainPage: React.FC = () => {
+
+    const [onPay, setOnPay] = React.useState(false);
     const history = useHistory();
     const onSubmit = (values: PromoValues) => {
         Http.fetchPost({
@@ -26,12 +28,14 @@ const SubscriptionMainPage: React.FC = () => {
         })
             .then((r) => {
                 r.json().then((data)=>{
-                    window.open(data.url, "_blank")
+                    window.open(data.url)
                 })
             })
             .catch(console.log);
         console.log(`sum: ${JSON.stringify(values)}`);
     };
+
+
 
     return (<>
             <div className="subscription-page">

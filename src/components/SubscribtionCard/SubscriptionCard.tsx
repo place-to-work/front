@@ -18,8 +18,8 @@ const SubscriptionCard: React.FC<CardProps> = ({}: CardProps) => (
                  <Typo icon={<CheckIcon className="card__icon" size={IconSize.xs}/>} type={TypographyType.h4}>И много другого</Typo>
 
          </div>
-        <Typo className="card__price" type={TypographyType.h1}> 2100Р / месяц</Typo>
-        <Typo className="card__price-old"type={TypographyType.h2}>3900Р / месяц</Typo>
+        <Typo block className="card__price" type={TypographyType.h1}> 2100Р / месяц</Typo>
+        <Typo block className="card__price-old"type={TypographyType.h2}>3900Р / месяц</Typo>
     </div>
 );
 
