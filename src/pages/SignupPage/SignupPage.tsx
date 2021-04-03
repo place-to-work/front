@@ -83,7 +83,7 @@ const SignupPage: React.FC = () => {
 				onSubmit={onSubmit}
 				render={(formikProps: FormikProps<SignupValues>) => <>
 
-					<Typo block type={TypographyType.h2}>Регистрация</Typo>
+					<Typo block type={TypographyType.h1}>Регистрация</Typo>
 					<Form>
 						<FormikInput
 							id="name"
@@ -105,21 +105,19 @@ const SignupPage: React.FC = () => {
 							formikProps={formikProps}
 							placeholder="Введите пароль"
 						/>
-
-						<Typo
-							block
-							type={TypographyType.h6}
-							color={TypoColor.darkGrey}
-							textAlign={TypoTextAlign.center} // Почему то не работает
-							verticalAlign={TypoVerticalAlign.baseline}
-							style={{
-								pointerEvents: 'none',
-								cursor: 'not-allowed',
-								textAlign: 'center',
-							}}
-						>
-							Забыли пароль?
-						</Typo>
+						{/*<Typo*/}
+						{/*	block*/}
+						{/*	type={TypographyType.h6}*/}
+						{/*	color={TypoColor.darkGrey}*/}
+						{/*	textAlign={TypoTextAlign.center}*/}
+						{/*	verticalAlign={TypoVerticalAlign.baseline}*/}
+						{/*	style={{*/}
+						{/*		pointerEvents: 'none',*/}
+						{/*		cursor: 'not-allowed',*/}
+						{/*	}}*/}
+						{/*>*/}
+						{/*	Забыли пароль?*/}
+						{/*</Typo>*/}
 						<Button
 							full
 							buttonSize={ButtonSize.classic}
@@ -129,88 +127,7 @@ const SignupPage: React.FC = () => {
 				</>}
 			/>}}
 		footerProps={{right: () => ContactUs}}
-	>
-
-		{/*{/*</PageContainer><PageContainer>*/}
-		{/*	<Header style={{justifyContent: 'center', padding: 11}}>*/}
-		{/*		<Typo*/}
-		{/*			// element='a'*/}
-		{/*			block*/}
-		{/*			type={TypographyType.h3}*/}
-		{/*			href="/"*/}
-		{/*			style={{textDecoration: 'none'}}*/}
-		{/*		>*/}
-		{/*			Рабочее место*/}
-		{/*		</Typo>*/}
-		{/*	</Header>*/}
-		{/*	<Main style={{padding: 10, width: 360}}>*/}
-		{/*		<Formik<SignupValues>*/}
-		{/*			validationSchema={validationSchema}*/}
-		{/*			initialValues={initialValues}*/}
-		{/*			onSubmit={onSubmit}*/}
-		{/*			render={(formikProps: FormikProps<SignupValues>) => <>*/}
-
-		{/*				<Typo block type={TypographyType.h2}>Регистрация</Typo>*/}
-		{/*				<Form>*/}
-		{/*					<FormikInput*/}
-		{/*						id="name"*/}
-		{/*						title="Имя"*/}
-		{/*						formikProps={formikProps}*/}
-		{/*						placeholder="Введите свое имя"*/}
-		{/*					/>*/}
-		{/*					<FormikInput*/}
-		{/*						id="email"*/}
-		{/*						type="email"*/}
-		{/*						title="Почта"*/}
-		{/*						formikProps={formikProps}*/}
-		{/*						placeholder="Введите свою почту"*/}
-		{/*					/>*/}
-		{/*					<FormikInput*/}
-		{/*						id="password"*/}
-		{/*						type="password"*/}
-		{/*						title="Пароль"*/}
-		{/*						formikProps={formikProps}*/}
-		{/*						placeholder="Введите пароль"*/}
-		{/*					/>*/}
-
-		{/*					/!*<Typo*!/*/}
-		{/*					/!*	block*!/*/}
-		{/*					/!*	type={TypographyType.h6}*!/*/}
-		{/*					/!*	color={TypoColor.darkGrey}*!/*/}
-		{/*					/!*	textAlign={TypoTextAlign.center} // Почему то не работает*!/*/}
-		{/*					/!*	verticalAlign={TypoVerticalAlign.baseline}*!/*/}
-		{/*					/!*	style={{*!/*/}
-		{/*					/!*		pointerEvents: 'none',*!/*/}
-		{/*					/!*		cursor: 'not-allowed',*!/*/}
-		{/*					/!*		textAlign: 'center',*!/*/}
-		{/*					/!*	}}*!/*/}
-		{/*					/!*>*!/*/}
-		{/*					/!*	Забыли пароль?*!/*/}
-		{/*					/!*</Typo>*!/*/}
-		{/*					<Button*/}
-		{/*						full*/}
-		{/*						buttonSize={ButtonSize.classic}*/}
-		{/*						style={{margin: '13px 0'}}>Зарегистрироваться*/}
-		{/*					</Button>*/}
-		{/*				</Form>*/}
-		{/*			</>}*/}
-		{/*		/>*/}
-
-		{/*	</Main>*/}
-		{/*	<Footer style={{flexDirection: 'row-reverse', padding: 8}}>*/}
-		{/*		<Typo*/}
-		{/*			// element="a"*/}
-		{/*			href="/contact"*/}
-		{/*			block*/}
-		{/*			type={TypographyType.h5}*/}
-		{/*			style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}*/}
-		{/*		>*/}
-		{/*			Свяжитесь с нами*/}
-		{/*		</Typo>*/}
-		{/*	</Footer>*/}
-
-
-	</BasePage>;
+	/>;
 };
 
 export default SignupPage;

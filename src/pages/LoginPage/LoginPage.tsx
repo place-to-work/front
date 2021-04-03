@@ -6,10 +6,11 @@ import {useHistory} from 'react-router-dom';
 import IconCenter from '@components/primitives/Icon/Icon';
 import {IconSize, IconType} from '@components/primitives/Icon';
 import BasePage from '@pages/BasePage';
-import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
+import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
 import {Formik, Form, FormikProps} from 'formik';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Button, {ButtonSize} from '@components/primitives/Button';
+import Error from '@components/Error';
 
 
 interface LoginValues {
@@ -75,7 +76,7 @@ const LoginPage: React.FC = () => {
 				onSubmit={onSubmit}
 				render={(formikProps: FormikProps<LoginValues>) => <>
 
-					<Typo block type={TypographyType.h2}>Вход</Typo>
+					<Typo block type={TypographyType.h1}>Вход</Typo>
 					<Form>
 						<FormikInput
 							id="email"
@@ -101,13 +102,12 @@ const LoginPage: React.FC = () => {
 						<Typo
 							block
 							type={TypographyType.h5}
-							// textAlign={TypoTextAlign.center} не работает ...
+							textAlign={TypoTextAlign.center}
 							weight={TypoWeight.bold}
 							color={TypoColor.black}
 							onClick={() => history.push('/signup')}
 							style={{
 								cursor: 'pointer',
-								textAlign: 'center',
 							}}
 						>
 							Нет аккаунта?

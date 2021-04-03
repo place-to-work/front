@@ -1,6 +1,7 @@
 import React from 'react';
 import Typo, {TypographyType, TypoWeight} from '@components/primitives/Typo';
 import {Field, FormikProps} from 'formik';
+import Error from '@components/Error';
 
 
 interface FormikInputProps {
@@ -28,6 +29,6 @@ export const FormikInput: React.FC<FormikInputProps> = ({
 			name={name}
 			{...rest}
 		/>
-		{errors[name] && touched[name] ? <Typo style={{color: 'red'}}>{errors[name]}</Typo> : null}
+		<Error isShown={Boolean(errors[name] && touched[name])} message={String(errors[name])}/>
 	</div>;
 };
