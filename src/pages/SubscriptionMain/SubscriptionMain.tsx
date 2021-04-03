@@ -62,7 +62,6 @@ const SubscriptionMainPage: React.FC = () => {
 
                             </Form>
                         </>
-
                         } onSubmit={onSubmit}/>
             </div>
         </div>
