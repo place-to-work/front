@@ -3,5 +3,28 @@
 .card{
   background-color: $global-color-grey-accent;
   border-radius: 12px;
-  padding: 10px 30px 30px
+  padding: 10px 30px 32px;
+  @include phone{
+    padding: 5px 15px 16px;
+  }
+
+  &__features{
+    margin-top:12px;
+    margin-bottom: 20px;
+    @include midget{
+      margin-top:6px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__icon{
+    margin-right: 8px;
+  }
+  &__price{
+
+  }
+  &__price-old{
+
+  }
+
 }

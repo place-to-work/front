@@ -17,6 +17,13 @@ import BankIcon from "@components/primitives/Icon/components/BankIcon";
 import SberIcon from "@components/primitives/Icon/components/SberIcon";
 import YouMoneyIcon from "@components/primitives/Icon/components/YouMoneyIcon"
 import GooglePayIcon from "@components/primitives/Icon/components/GooglePayIcon";
+
+import WorkIcon from '@components/primitives/Icon/components/WorkIcon'
+import CupIcon from '@components/primitives/Icon/components/CupIcon'
+import CheckIcon from '@components/primitives/Icon/components/CheckIcon'
+import LaptopIcon from '@components/primitives/Icon/components/LaptopIcon'
+
+
 export * from './BaseIcon';
 
 
@@ -80,6 +87,11 @@ export {
 	GooglePayIcon,
 	BankIcon,
 	SberIcon,
-	YouMoneyIcon
+	YouMoneyIcon,
+	LaptopIcon,
+	CheckIcon,
+	CupIcon,
+	WorkIcon
+
 
 };

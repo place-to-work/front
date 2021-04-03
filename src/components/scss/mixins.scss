@@ -95,6 +95,12 @@
 
 //Media Queries
 
+@mixin midget {
+  @include media("<=sm") {
+    @content;
+  }
+}
+
 @mixin phone {
   @include media("<md") {
     @content;
