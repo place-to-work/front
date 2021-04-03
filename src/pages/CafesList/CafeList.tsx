@@ -51,9 +51,9 @@ const CafeListPage: React.FC = () => {
 		false
 	);
 
-	// setTimeout(()=>{
-	// 	setOpened(true)
-	// },1000)
+	setTimeout(()=>{
+		setOpened(true)
+	},1000)
 
  	return (<BasePage headerProps={{left:()=><IconLeft size={IconSize.xl}/>}} footerProps={{}} mainProps={{
 		body: () =><>
