@@ -34,9 +34,9 @@ const BasePage: React.FC<BasePageProps> = ({
 				}
 
 				if (response.ok &&
-					history.location.pathname === '/auth' ||
+					(history.location.pathname === '/auth' ||
 					history.location.pathname === '/login' ||
-					history.location.pathname === '/signup'
+					history.location.pathname === '/signup')
 				) {
 					history.replace('/places');
 				}
