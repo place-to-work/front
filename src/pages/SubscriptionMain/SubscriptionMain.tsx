@@ -35,7 +35,7 @@ const SubscriptionMainPage: React.FC = () => {
                     window.open(data.url, '_blank')
                     windowReference.location = data.url;
                     }
-                    catch (){
+                    catch (e){
 
                     }
                 })
