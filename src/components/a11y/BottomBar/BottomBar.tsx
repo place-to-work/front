@@ -13,26 +13,27 @@ type Props = {
 }
 const BottomBar:FC<Props> = ({opened, setOpened})=>{
     const history = useHistory();
+
+    const {success} = useParams<{success}>();
+
+    console.log({success})
     const [full, setFull] = useState(false);
+
     const handleGoToSub = () => history.push('/subscribe-main');
 
     const [onPay, setOnPay] = React.useState(false);
-    const { payment } = useParams();
-    console.log('payment',payment)
+
     const [paymentLoad, setPaymentLoad] = React.useState(false);
     const hasLocal = localStorage.getItem('payment');
 
     if(payment){
-        localStorage.setItem('payment', true)
+        // localStorage.setItem('payment',true)
     }
     if(hasLocal){
         setPaymentLoad(true)
     }
 
 
-
-
-    console.log(opened, full)
     const handleReBuild = () => {
         setOpened(false);
         setTimeout(()=>{

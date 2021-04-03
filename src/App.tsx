@@ -22,6 +22,7 @@ import {createBrowserHistory} from 'history';
 import SubscribePage from "@pages/Subscribe";
 import InWorkPlace from '@pages/InWorkPlace';
 import SubscriptionMainPage from "@pages/SubscriptionMain/SubscriptionMain";
+import StaffPage from "@pages/StaffPage/StaffPage";
 
 
 const history = createBrowserHistory();
@@ -42,7 +43,9 @@ const App: React.FC = () =>{
 
 		<Route path="/login"><LoginPage/></Route>
 		<Route path="/signup"><SignupPage/></Route>
+		<Route path="/places/:success"><CafeListPage/></Route>
 		<Route path="/places"><CafeListPage/></Route>
+		<Route path="/staff/:id"><StaffPage/></Route>
 		<Route exact path="/place/:id">
 			<CafePage/>
 		</Route>
@@ -54,6 +57,7 @@ const App: React.FC = () =>{
 		</Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
+		<Route path="/auth/"><AuthPage/></Route>
 		<Route path="/"><AuthPage/></Route>
 		<Route path="/"><Delme/></Route>
 	</Switch>

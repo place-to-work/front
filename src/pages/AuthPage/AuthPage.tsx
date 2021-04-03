@@ -1,6 +1,6 @@
 import React from 'react';
 import './AuthPage.scss';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
 import {IconSize, IconType} from '@components/primitives/Icon';
 import IconCenter from '@components/primitives/Icon/';
@@ -19,6 +19,7 @@ const AuthPage: React.FC = () => {
 	>
 		Свяжитесь с нами
 	</Typo>;
+
 
 	return <BasePage
 		headerProps={{

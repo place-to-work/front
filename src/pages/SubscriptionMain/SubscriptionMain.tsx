@@ -23,7 +23,10 @@ const SubscriptionMainPage: React.FC = () => {
     const windowReference = window.open()
 
 
-    const [paymentLoad, setPaymentLoad] = React.useState(localStorage.getItem('payment') || false)
+    const p = localStorage.getItem('payment');
+
+    const [paymentLoad, setPaymentLoad] = React.useState(p || false)
+
     const onSubmit = (values: PromoValues) => {
         Http.fetchPost({
             path: '/payments/',
@@ -31,7 +34,7 @@ const SubscriptionMainPage: React.FC = () => {
         })
             .then((r) => {
                 r.json().then((data)=>{
-                    localStorage.setItem('payment', true)
+                   const  a = localStorage.setItem('payload', true)
                     windowReference.location = data.url;
                 })
             })
@@ -61,8 +64,7 @@ const SubscriptionMainPage: React.FC = () => {
                                 {/*    placeholder="Промокод"*/}
                                 {/*/>*/}
 
-                                <Button
-                                    disabled={paymentLoad}
+                                <Button disabled={paymentLoad}
                                     buttonSize={ButtonSize.xl}
                                     full
                                     style={{margin: '13px 0'}}>Оплатить

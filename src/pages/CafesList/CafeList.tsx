@@ -7,7 +7,7 @@ import Http from '@network/Http/Http';
 // import Header from "@components/a11y/Header";
 // import PageContainer from '@components/a11y/PageContainer';
 // import Main from '@components/a11y/Main';
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import BottomBar from "@components/a11y/BottomBar";
 import BasePage from "@pages/BasePage";
 import {IconLeft, IconSize} from "@components/primitives/Icon";
@@ -59,7 +59,7 @@ const CafeListPage: React.FC = () => {
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 			{cafesMemo}
-			<BottomBar opened={opened} setOpened={setOpened}/>
+			<BottomBar opened={opened} setOpened={setOpened} />
 		</>
 	}}/>);
 };
