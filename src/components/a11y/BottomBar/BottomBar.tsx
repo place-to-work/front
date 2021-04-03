@@ -11,7 +11,7 @@ type Props = {
     opened: boolean;
     setOpened:  Dispatch<SetStateAction<boolean>>
 }
-const BottomBar:FC<Props> = ({opened, setOpened})=>{
+const BottomBar:FC<Props> = ({opened = false, setOpened})=>{
     const history = useHistory();
     const [full, setFull] = useState(false);
     const handleGoToSub = () => history.push('/subscribe-main');
