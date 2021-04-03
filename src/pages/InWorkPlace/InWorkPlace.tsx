@@ -47,7 +47,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = ({qrValue}) => {
 	// 		</div>
 	//
 	// 		<Button element="a"
-	// 		        onClick={() => history.push('/cafes')}
+	// 		        onClick={() => history.push('/places')}
 	// 		        full
 	// 		        color={ButtonColor.accentGrey}
 	// 		        >

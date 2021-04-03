@@ -46,7 +46,7 @@ const CafePage: React.FC = () => {
 	const history = useHistory();
 
 	return (<BasePage
-		headerProps={{left:()=> <BackIcon size={IconSize.m} onClick={()=>history.push('/cafes')}/>}}
+		headerProps={{left:()=> <BackIcon size={IconSize.m} onClick={()=>history.push('/places')}/>}}
 		mainProps={{
 		body:()=><>
 			<div className="cafe-page">

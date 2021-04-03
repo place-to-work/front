@@ -42,8 +42,8 @@ const App: React.FC = () =>{
 
 		<Route path="/login"><LoginPage/></Route>
 		<Route path="/signup"><SignupPage/></Route>
-		<Route path="/cafes"><CafeListPage/></Route>
-		<Route exact path="/cafe/:id">
+		<Route path="/places"><CafeListPage/></Route>
+		<Route exact path="/place/:id">
 			<CafePage/>
 		</Route>
 		<Route exact path="/subscribe">

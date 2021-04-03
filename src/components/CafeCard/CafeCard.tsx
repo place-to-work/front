@@ -49,7 +49,7 @@ const CafeCard: React.FC<CafeCardProps> = (
 
 		<div className="cafe-card" style={{cursor: 'pointer'}} onClick={()=>{
 			if(id){
-				history.push(`/cafe/${id}`);
+				history.push(`/place/${id}`);
 			}
 		}}>
 			<ImageCard imageSrc={imageSrc} scalable/>
