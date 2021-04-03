@@ -89,17 +89,17 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin(),
 
-		new WebpackPwaManifest({
-			name: 'Рабочее место',
-			short_name: 'Place to work',
-			description: 'Find your place',
-			background_color: '#ffffff',
-			icons: [
-				{
-					src: path.resolve('src/assets/PlaceToWork.png'),
-					sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-				}
-			]
-		})
+		// new WebpackPwaManifest({
+		// 	name: 'Рабочее место',
+		// 	short_name: 'Place to work',
+		// 	description: 'Find your place',
+		// 	background_color: '#ffffff',
+		// 	icons: [
+		// 		{
+		// 			src: path.resolve('src/assets/PlaceToWork.png'),
+		// 			sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+		// 		}
+		// 	]
+		// })
 	]
 };
