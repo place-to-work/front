@@ -26,7 +26,7 @@ const SubscriptionMainPage: React.FC = () => {
         })
             .then((r) => {
                 r.json().then((data)=>{
-                    history.push(data.url)
+                    window.open(data.url, "_blank")
                 })
             })
             .catch(console.log);
