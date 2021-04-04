@@ -35,14 +35,14 @@ const BasePage: React.FC<BasePageProps> = ({
 	React.useEffect(()=>{
 		console.log('effect base', store.user.id)
 		if(store.user.id !== -1){
-			if(['/auth','login','/signup'].indexOf(history.location.pathname)) {
+			if(['/auth','login','/signup'].indexOf(history.location.pathname) !== -1) {
 				if (store.user.type === UserCategory.client) {
 					history.push('/places')
 				} else if (store.user.type === UserCategory.staff) {
 					history.push('/staff')
 				}
 			}
-		} else{
+		} else if(['/auth','login','/signup'].indexOf(history.location.pathname) === -1 ){
 			history.push('/auth')
 		}
 	},[store.user])
