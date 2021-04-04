@@ -46,8 +46,9 @@ const BasePage: React.FC<BasePageProps> = ({
 		}
 
 	},[history])
+
 	React.useEffect(()=>{
-		store.fetchUser(onSuccess, onError);
+		store.fetchUser();
 	},[])
 
 	// React.useEffect(()=>{
