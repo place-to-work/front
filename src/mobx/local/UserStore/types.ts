@@ -8,7 +8,7 @@ export type UserType = {
     name: string;
     avatar: string | null;
     place: number | null
-    type: UserCategory;
+    type: UserCategory | null;
     joinDate: Date;
     subscribeDate: Date;
     hasSubscribe: boolean | null;

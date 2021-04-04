@@ -14,7 +14,7 @@ const getInitialData = (): UserType => ({
     id: -1,
     email: '',
     name:'',
-    type:UserCategory.client,
+    type:null,
     joinDate: new Date(),
     hasSubscribe: null,
     subscribeDate: new Date(),

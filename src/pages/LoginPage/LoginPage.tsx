@@ -37,6 +37,9 @@ const LoginPage: React.FC = () => {
 	const history = useHistory();
 	const store = useLocalStore(() => new UserStore());
 
+	React.useEffect(()=>{
+		store.fetchUser();
+	},[])
 
 	const ContactUs = <Typo
 		block
@@ -54,7 +57,8 @@ const LoginPage: React.FC = () => {
 			if(store.user.type == UserCategory.client){
 				history.push('/places')
 			} else if(store.user.type === UserCategory.staff){
-				history.push('/staff')
+				// history.push('/places')
+				// window.close();
 			}
 
 		}

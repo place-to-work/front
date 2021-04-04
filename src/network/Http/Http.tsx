@@ -27,22 +27,28 @@ class Http {
 
 		const cookieCsrf = getCookie(Http.GET_CSRF_NAME);
 		console.log('test1', cookieCsrf)
+		const custHeaders = {};
 		if (cookieCsrf) {
 			console.log('test2')
-			req.headers = {
-				[Http.PUT_CSRF_NAME]: cookieCsrf,
-			}
+			custHeaders[Http.PUT_CSRF_NAME] = cookieCsrf
+			// req.headers = {
+			// 	[Http.PUT_CSRF_NAME]: cookieCsrf,
+			// 	// ['Content-Type']: 'application/json'
+			//
+			// }
 		}
+
+
 
 		if (body !== null) {
-			req.headers = Object.assign(req.headers, {
-				'Content-Type': 'application/json',
-			});
-			console.log('HEADERS', req.headers);
+			custHeaders['Content-Type'] = 'application/json'
+			// req.headers = {
+			// 	['Content-Type']: 'application/json'
+			// }
 		}
+			req.headers = custHeaders;
 
-		return fetch(`${this.serverUrl}${path}`, req)
-			.then(retCSRFToken);
+		return fetch(`${this.serverUrl}${path}`, req).then((response)=>response.ok? retCSRFToken(response) : response);
 	}
 
 	fetchGet({path}): Promise<Response> {
@@ -77,11 +83,14 @@ class Http {
 	}
 
 	getCurrentUser(): any {
-		return this.fetchGet({path: '/users/'}).then((response)=>response.json());
+		if(!getCookie(Http.GET_CSRF_NAME)){
+			return null
+		}
+		return this.fetchGet({path: '/users/'}).then((response)=>response.ok ? response.json() : null);
 	}
 }
 
-function getCookie(name) {
+export function getCookie(name) {
 
 	const matches = document.cookie.match(new RegExp(
 		'(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'

@@ -79,7 +79,7 @@ const StaffPage: React.FC = () => {
             body: () => <>
                 <Typo style={{marginBottom:'72px'}} type={TypographyType.h1} block>Что взял клиент?</Typo>
 
-                <Button disabled={store.user.type === UserCategory.client} onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
+                <Button disabled={store.user.type === UserCategory.client } onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
                 <Button disabled={store.user.type === UserCategory.client}onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>
                 </>
         }
