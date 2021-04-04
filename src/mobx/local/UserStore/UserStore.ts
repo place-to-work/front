@@ -19,7 +19,7 @@ const getInitialData = (): UserType => ({
     hasSubscribe: false,
     subscribeDate: new Date(),
     place: null,
-    avatar: null
+    avatar: null,
 });
 
 export default class UserStore implements ILocalStore {
@@ -74,28 +74,34 @@ export default class UserStore implements ILocalStore {
     }
 
 
-    async fetchUser(onSuccess?:()=>void, onError?: ()=>void): Promise<UserType> {
+    async fetchUser(onSuccess?:()=>void, onError?: ()=>void): Promise<UserType|null> {
         console.log('fetch user 1')
         console.log(this.user.id)
-        if(true){
+
             console.log('fetch user 2')
-            const data = await Http.getCurrentUser()
-            console.log({data})
+        const data = await Http.getCurrentUser()
+
+        runInAction(()=>{
             if(data){
+                console.log('fetch user ', data)
                 this.user = normalizeUserData(data);
+                console.log('fetched',this.user.hasSubscribe)
                 // onSuccess();
-                return this.user
+
             } else{
-               // onError();
-                return null
+                // onError();
+
             }
-        }
+        })
+        return this.user.id === -1 ? null : this.user;
+
+
     }
 
 
 
 
     destroy(): void {
-        this.user = getInitialData();
+        // this.user = getInitialData();
     }
 }

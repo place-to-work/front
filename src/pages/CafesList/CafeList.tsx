@@ -54,7 +54,8 @@ const CafeListPage: React.FC = () => {
 			.catch(console.log);
 	}, []);
 
-	// const { user } = useContext(UserContext);
+
+
 
 
 
@@ -62,13 +63,13 @@ const CafeListPage: React.FC = () => {
 	const history = useHistory();
 	const store = useLocalStore(() => new UserStore());
 	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
-	const rightEl = React.useMemo(()=>{
-		console.log('right memo', store.user.id)
-		if(store.user.hasSubscribe){
-			return ()=><Tag onClick={()=>history.push('/in-place')}>Я в кофейне</Tag>
-		}
-		return null
-	},[store.user.hasSubscribe])
+
+	React.useEffect(()=>{
+		store.fetchUser();
+	},[])
+	React.useEffect(()=>{
+		console.log('list user111111', store.user)
+	},[store.user])
 
  	return (<BasePage
 		headerProps={{left:()=><IconLeft size={IconSize.xl}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>} }
@@ -76,7 +77,8 @@ const CafeListPage: React.FC = () => {
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 			{cafesMemo}
-			<BottomBar/>
+
+			<BottomBar />
 		</>
 	}}/>);
 };

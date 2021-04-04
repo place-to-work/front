@@ -8,6 +8,7 @@ import SubscriptionMain from "@pages/SubscriptionMain/SubscriptionMain";
 import cn from "classnames";
 import {useLocalStore} from "../../../mobx/hooks/useLocalStore";
 import UserStore from "../../../mobx/local/UserStore/UserStore";
+import {observer} from "mobx-react-lite";
 
 type Props = {
     // opened: boolean;
@@ -27,14 +28,19 @@ const BottomBar:FC<Props> = ()=>{
 
     const store = useLocalStore(() => new UserStore());
 
-    const [showBlock, setShowBlock] = React.useState(false);
+    React.useEffect(()=>{
+        store.fetchUser();
+    },[])
+
+    const [showBlock, setShowBlock] = React.useState(true);
 
     React.useEffect(()=>{
-        if(!store.user.hasSubscribe){
-            setShowBlock(true);
+        console.log('sub', store.user.hasSubscribe, store.user.name)
+        if(store.user.hasSubscribe){
+            setShowBlock(false);
         }
 
-    },[store.user])
+    },[store.user.hasSubscribe, store.user.name])
 
     const [full, setFull] = useState(false);
 
@@ -59,6 +65,8 @@ const BottomBar:FC<Props> = ()=>{
     return <div className={`container ${showBlock && 'container_opened' }`}>
         <Collapse className="bottom-bar" opened={showBlock}>
             <div className={cn("bottom-bar__content")}>
+                <span>{store.user.hasSubscribe}</span>
+                <span>{store.user.hasSubscribe}</span>
                 {!full ? <>
                         <Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>Чтобы
                             увидеть все заведения&nbsp;&mdash; оформите подписку</Typo>
@@ -75,4 +83,4 @@ const BottomBar:FC<Props> = ()=>{
     </Collapse>
     </div>
 }
-export default BottomBar;
+export default observer(BottomBar);

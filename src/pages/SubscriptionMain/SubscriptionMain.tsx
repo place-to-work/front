@@ -34,7 +34,7 @@ const SubscriptionMainPage: React.FC = () => {
 
     const history = useHistory();
     const [url, setUrl] = React.useState<string|null>(null)
-    const [paymentLoad, setPaymentLoad] = React.useState(localStorage.getItem('payment') || false)
+
     React.useEffect(()=> {
         Http.fetchPost({
             path: '/payments/',

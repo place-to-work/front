@@ -10,6 +10,6 @@ export type UserType = {
     place: number | null
     type: UserCategory;
     joinDate: Date;
-    hasSubscribe: boolean;
     subscribeDate: Date;
+    hasSubscribe: boolean | null;
 };

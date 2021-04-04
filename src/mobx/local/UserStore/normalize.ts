@@ -20,6 +20,7 @@ function getHasSubscribe(date: Date) {
 }
 
 export const normalizeUserData = (data: UserApiType): UserType =>{
+    console.log('NORMALIZEEEE', data.is_subscribed)
     return {
         id: data.id,
         email: data.email,

@@ -75,12 +75,12 @@ const BasePage: React.FC<BasePageProps> = ({
 		}
 	},[store.user])
 
-
+	console.log('in base ', store.user.id, store.user.name)
 
 
 	return <PageContainer>
 			<Header {...headerProps}/>
-			<Main {...mainProps}/>
+			<Main {...mainProps} />
 			<Footer {...footerProps}/>
 		</PageContainer>;
 }

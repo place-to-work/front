@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Main.scss';
 import {CSSProperties} from 'react';
+import {observer} from "mobx-react-lite";
 
 export interface MainProps {
 	style?: CSSProperties;
@@ -11,4 +12,4 @@ const Main: React.FC<MainProps> = ({body, ...rest}) => {
 	return <main className="main" {...rest}>{body && body()}</main>;
 };
 
-export default Main;
+export default observer(Main);
