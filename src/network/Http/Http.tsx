@@ -35,9 +35,9 @@ class Http {
 		}
 
 		if (body !== null) {
-			req.headers = {
+			req.headers = Object.assign({}, {
 				'Content-Type': 'application/json',
-			};
+			});
 		}
 
 		return fetch(`${this.serverUrl}${path}`, req)
