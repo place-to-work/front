@@ -94,6 +94,9 @@ module.exports = {
 			name: 'Рабочее место',
 			short_name: 'Place to work',
 			description: 'Find your place',
+			orientation: "portrait-primary",
+			start_url: "/",
+			display: "standalone",
 			crossorigin: 'anonymous',
 			background_color: '#ffffff',
 			icons: [
