@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import BasePage from "@pages/BasePage";
@@ -6,7 +5,10 @@ import Typo, {TypographyType} from "@components/primitives/Typo";
 import Button, {ButtonColor} from "@components/primitives/Button";
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import Http from "@network/Http/Http";
-import {UserContext} from "@models/UserProvider";
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
+import {observer} from "mobx-react-lite";
+import {UserCategory} from "../../mobx/local/UserStore/types";
 
 
 const StaffPage: React.FC = () => {
@@ -15,12 +17,19 @@ const StaffPage: React.FC = () => {
 
     const { id } = useParams<{id}>();
 
-    const context = React.useContext(UserContext);
+    const store = useLocalStore(() => new UserStore());
 
     React.useEffect(()=>{
-        console.log('effect', {context})
-    },[context])
-    console.log({context})
+        store.fetchUser();
+    },[])
+
+    React.useEffect(()=>{
+        if(store.user.id !== -1){
+            if(store.user.type === UserCategory.client){
+                history.push('/places');
+            }
+        }
+    },[store])
 
     if(!id){
         return null
@@ -32,7 +41,7 @@ const StaffPage: React.FC = () => {
             path: '/products/choice/',
             body: JSON.stringify({
                 user: id,
-                place: 1,
+                place: store.user.place,
                 product: 1
 
             }),
@@ -50,7 +59,7 @@ const StaffPage: React.FC = () => {
             path: '/products/choice/',
             body: JSON.stringify({
                 user: id,
-                place: 1,
+                place: store.user.place,
                 product: 2
 
             }),
@@ -70,8 +79,8 @@ const StaffPage: React.FC = () => {
             body: () => <>
                 <Typo style={{marginBottom:'72px'}} type={TypographyType.h1} block>Что взял клиент?</Typo>
 
-                <Button onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
-                <Button onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>
+                <Button disabled={store.user.type === UserCategory.client} onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
+                <Button disabled={store.user.type === UserCategory.client}onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>
                 </>
         }
         }
@@ -79,4 +88,4 @@ const StaffPage: React.FC = () => {
 
 };
 
-export default StaffPage;
+export default observer(StaffPage);
