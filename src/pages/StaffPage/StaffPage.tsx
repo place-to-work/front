@@ -38,7 +38,7 @@ const StaffPage: React.FC = () => {
 
     const onTea = async () => {
         const resp = await Http.fetchPost({
-            path: '/products/choice/',
+            path: '/products/choice',
             body: JSON.stringify({
                 user: id,
                 place: store.user.place,
@@ -56,7 +56,7 @@ const StaffPage: React.FC = () => {
 
     const onCoffee = async () => {
         const resp = await Http.fetchPost({
-            path: '/products/choice/',
+            path: '/products/choice',
             body: JSON.stringify({
                 user: id,
                 place: store.user.place,
