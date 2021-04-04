@@ -77,7 +77,7 @@ const BasePage: React.FC<BasePageProps> = ({
 				}
 			}
 		}
-	},[store.user])
+	},[store.user.id, store.user.type])
 
 	console.log('in base ', store.user.id, store.user.name)
 

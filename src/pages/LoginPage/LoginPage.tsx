@@ -62,7 +62,7 @@ const LoginPage: React.FC = () => {
 			}
 
 		}
-	},[store.user])
+	},[store.user.id, store.user.type])
 
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
