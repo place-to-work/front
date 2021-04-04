@@ -33,9 +33,9 @@ function openTab(url) {
 const SubscriptionMainPage: React.FC = () => {
 
     const history = useHistory();
-
+    const [url, setUrl] = React.useState<string|null>(null)
     const [paymentLoad, setPaymentLoad] = React.useState(localStorage.getItem('payment') || false)
-    const onSubmit = (values: PromoValues) => {
+    React.useEffect(()=> {
         Http.fetchPost({
             path: '/payments/',
             body: null,
@@ -44,7 +44,7 @@ const SubscriptionMainPage: React.FC = () => {
                 r.json().then((data)=>{
                     try{
                         if(data?.url){
-                            openTab(data.url)
+                            setUrl(data?.url);
                             // window.open(data.url, '_blank')
                         } else{
                             // window.open('http://google.com', '_blank')
@@ -57,8 +57,7 @@ const SubscriptionMainPage: React.FC = () => {
                 })
             })
             .catch(console.log);
-        console.log(`sum: ${JSON.stringify(values)}`);
-    };
+    },[])
 
 
 
@@ -84,15 +83,19 @@ const SubscriptionMainPage: React.FC = () => {
                                 {/*/>*/}
 
                                 <Button
+                                    element={"a"}
+                                    to={url}
+                                    target={"_blank"}
                                     buttonSize={ButtonSize.xl}
                                     full
+                                    onClick={()=>console.log('click')}
                                     style={{margin: '13px 0'}}>Оплатить
                                 </Button>
                                 {/*<Typo textAlign={TypoTextAlign.center} style={{width:'100%'}} type={TypographyType.h4} color={TypoColor.darkGrey}>Продолжить без подписки</Typo>*/}
 
                             </Form>
                         </>
-                        } onSubmit={onSubmit}/>
+                        } onSubmit={()=>{}}/>
             </div>
         </div>
         </>
