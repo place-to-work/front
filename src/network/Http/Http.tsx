@@ -83,9 +83,9 @@ class Http {
 	}
 
 	getCurrentUser(): any {
-		if(!getCookie(Http.GET_CSRF_NAME)){
-			return null
-		}
+		// if(!getCookie(Http.GET_CSRF_NAME)){
+		// 	return null
+		// }
 		return this.fetchGet({path: '/users/'}).then((response)=>response.ok ? response.json() : null);
 	}
 }
