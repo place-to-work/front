@@ -18,8 +18,9 @@ function isDateBeforeToday(date: Date) {
     const today = new Date()
     console.log(date, today )
 
-    return date <= today;
+    return date >= today;
 }
+
 
 const BottomBar:FC<Props> = ()=>{
     const history = useHistory();
@@ -29,8 +30,7 @@ const BottomBar:FC<Props> = ()=>{
     const [showBlock, setShowBlock] = React.useState(false);
 
     React.useEffect(()=>{
-        console.log('user effect date',isDateBeforeToday(store.user.subscribeDate) )
-        if(isDateBeforeToday(store.user.subscribeDate)){
+        if(store.user.hasSubscribe){
             setShowBlock(true);
         }
 

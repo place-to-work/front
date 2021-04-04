@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react-lite';
-import React, {useCallback, useContext} from 'react';
+import React from 'react';
 import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
-import Typo, {TypographyType} from '@components/primitives/Typo';
+import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import './CafeList.scss';
 import Http from '@network/Http/Http';
 // import Header from "@components/a11y/Header";
@@ -11,12 +11,10 @@ import {useHistory} from "react-router-dom";
 import BottomBar from "@components/a11y/BottomBar";
 import BasePage from "@pages/BasePage";
 import {IconLeft, IconSize} from "@components/primitives/Icon";
-import {UserContext} from "@models/UserProvider";
 import {useLocalStore} from "../../mobx/hooks/useLocalStore";
 import UserStore from "../../mobx/local/UserStore/UserStore";
-
-
-
+import Tag from "@components/primitives/Tag";
+import {ButtonColor} from "@components/primitives/Button";
 
 
 const CafeListPage: React.FC = () => {
@@ -61,10 +59,20 @@ const CafeListPage: React.FC = () => {
 
 
 
-
+	const history = useHistory();
+	const store = useLocalStore(() => new UserStore());
 	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
+	const rightEl = React.useMemo(()=>{
+		console.log('right memo', store.user.id)
+		if(store.user.hasSubscribe){
+			return ()=><Tag onClick={()=>history.push('/in-place')}>Я в кофейне</Tag>
+		}
+		return null
+	},[store.user.hasSubscribe])
 
- 	return (<BasePage headerProps={{left:()=><IconLeft size={IconSize.xl}/>}} footerProps={{}} mainProps={{
+ 	return (<BasePage
+		headerProps={{left:()=><IconLeft size={IconSize.xl}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>} }
+		footerProps={{}} mainProps={{
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 			{cafesMemo}

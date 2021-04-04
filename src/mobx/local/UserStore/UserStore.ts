@@ -8,8 +8,7 @@ import {ILocalStore} from "../../interfaces";
 import {LoginValues} from "@pages/LoginPage/LoginPage";
 import {getInitialMetaState, Meta} from "../../meta";
 import {SignupValues} from "@pages/SignupPage/SignupPage";
-import React from "react";
-import {useHistory} from "react-router-dom";
+
 
 const getInitialData = (): UserType => ({
     id: -1,
@@ -17,6 +16,7 @@ const getInitialData = (): UserType => ({
     name:'',
     type:UserCategory.client,
     joinDate: new Date(),
+    hasSubscribe: false,
     subscribeDate: new Date(),
     place: null,
     avatar: null
@@ -34,7 +34,7 @@ export default class UserStore implements ILocalStore {
             meta: observable,
             fetchUser: action.bound,
             loginUser: action.bound,
-            regUser: action.bound
+            regUser: action.bound,
         });
 
     }
@@ -74,8 +74,7 @@ export default class UserStore implements ILocalStore {
     }
 
 
-    async fetchUser(): Promise<void> {
-         const history = useHistory();
+    async fetchUser(onSuccess?:()=>void, onError?: ()=>void): Promise<UserType> {
         console.log('fetch user 1')
         console.log(this.user.id)
         if(true){
@@ -84,22 +83,13 @@ export default class UserStore implements ILocalStore {
             console.log({data})
             if(data){
                 this.user = normalizeUserData(data);
-                if(['/auth','/login','/signup'].indexOf(history.location.pathname) !== -1) {
-                    if (this.user.type === UserCategory.client) {
-                        history.push('/staff')
-                    }      history.push('/places')
-                } else if (this.user.type === UserCategory.staff) {
-
-                }
+                // onSuccess();
+                return this.user
             } else{
-                if(['/auth','/login','/signup'].indexOf(history.location.pathname) === -1 ){
-                    history.push('/auth')
-                }
+               // onError();
+                return null
             }
         }
-        runInAction(() => {
-
-        });
     }
 
 

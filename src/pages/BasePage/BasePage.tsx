@@ -11,6 +11,7 @@ import {observer} from "mobx-react-lite";
 import {useLocalStore} from "../../mobx/hooks/useLocalStore";
 import UserStore from "../../mobx/local/UserStore/UserStore";
 import {UserCategory} from "../../mobx/local/UserStore/types";
+import {get} from "mobx";
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -30,6 +31,7 @@ const BasePage: React.FC<BasePageProps> = ({
 	console.log(store.user)
 
 	const onSuccess = React.useCallback(()=>{
+		console.log('on success')
 		if(['/auth','/login','/signup'].indexOf(history.location.pathname) !== -1) {
 			if (store.user.type === UserCategory.client) {
 				history.push('/places')
@@ -40,29 +42,38 @@ const BasePage: React.FC<BasePageProps> = ({
 	},[history])
 
 	const onError = React.useCallback(()=>{
-
+		console.log('on error')
 		if(['/auth','/login','/signup'].indexOf(history.location.pathname) === -1 ){
 			history.push('/auth')
 		}
 
 	},[history])
 
-	React.useEffect(()=>{
-		store.fetchUser();
+	React.useEffect(( )=>{
+		console.log('base use effect')
+		 const getUser = async () =>{
+			 const user = await store.fetchUser();
+			 if(user){
+				 onSuccess();
+			 } else{
+				 onError();
+			 }
+		 }
+		getUser();
 	},[])
 
-	// React.useEffect(()=>{
-	// 	console.log('effect base', store.user.id)
-	// 	if(store.user.id !== -1){
-	// 		if(['/auth','/login','/signup'].indexOf(history.location.pathname) !== -1) {
-	// 			if (store.user.type === UserCategory.client) {
-	// 				history.push('/places')
-	// 			} else if (store.user.type === UserCategory.staff) {
-	// 				history.push('/staff')
-	// 			}
-	// 		}
-	// 	}
-	// },[store.user])
+	React.useEffect(()=>{
+		console.log('effect base', store.user.id)
+		if(store.user.id !== -1){
+			if(['/auth','/login','/signup'].indexOf(history.location.pathname) !== -1) {
+				if (store.user.type === UserCategory.client) {
+					history.push('/places')
+				} else if (store.user.type === UserCategory.staff) {
+					history.push('/staff')
+				}
+			}
+		}
+	},[store.user])
 
 
 

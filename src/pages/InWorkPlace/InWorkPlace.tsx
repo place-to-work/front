@@ -56,7 +56,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						}} className="qr-code-card__background-inner">
 							<QRCode
 								renderAs="svg"
-								value={`${Http.serverUrl}/users/uuid/get/?subscribe_uuid=${uuid}`}
+								value={`https://place-to-work.online/staff/${uuid}`}
 								style={{
 									top: '4vw',
 									left: '4vw',
