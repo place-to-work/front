@@ -6,41 +6,58 @@ import Button, {ButtonColor, ButtonSize} from "@components/primitives/Button";
 import {useHistory, useParams} from "react-router-dom";
 import SubscriptionMain from "@pages/SubscriptionMain/SubscriptionMain";
 import cn from "classnames";
+import {useLocalStore} from "../../../mobx/hooks/useLocalStore";
+import UserStore from "../../../mobx/local/UserStore/UserStore";
 
 type Props = {
-    opened: boolean;
-    setOpened:  Dispatch<SetStateAction<boolean>>
+    // opened: boolean;
+    // setOpened:  Dispatch<SetStateAction<boolean>>
 }
-const BottomBar:FC<Props> = ({opened = false, setOpened})=>{
+
+function isDateBeforeToday(date: Date) {
+    const today = new Date()
+    console.log(date, today )
+
+    return date <= today;
+}
+
+const BottomBar:FC<Props> = ()=>{
     const history = useHistory();
+
+    const store = useLocalStore(() => new UserStore());
+
+    const [showBlock, setShowBlock] = React.useState(false);
+
+    React.useEffect(()=>{
+        console.log('user effect date',isDateBeforeToday(store.user.subscribeDate) )
+        if(isDateBeforeToday(store.user.subscribeDate)){
+            setShowBlock(true);
+        }
+
+    },[store.user])
+
     const [full, setFull] = useState(false);
-
-    const [paymentLoad, setPaymentLoad] = React.useState(false);
-    const hasLocal = localStorage.getItem('payment');
-
-
-    if(hasLocal){
-        setPaymentLoad(true)
-    }
-
 
 
 
     const handleReBuild = React.useCallback(() => {
-        setOpened(false);
+        setShowBlock(false);
+        console.log('set show block false')
         // setFull(true)
         // setOpened(true)
         setTimeout(()=>{
             setFull(true)
+            console.log('set full true')
             setTimeout(()=>{
-                setOpened(true)
+                setShowBlock(true)
+                console.log('set show block true')
             },1000)
         },1000)
     },[])
 
 
-    return <div className={`container ${opened && 'container_opened' }`}>
-        <Collapse className="bottom-bar" opened={opened}>
+    return <div className={`container ${showBlock && 'container_opened' }`}>
+        <Collapse className="bottom-bar" opened={showBlock}>
             <div className={cn("bottom-bar__content")}>
                 {!full ? <>
                         <Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>Чтобы
@@ -48,7 +65,7 @@ const BottomBar:FC<Props> = ({opened = false, setOpened})=>{
                         <Typo className="bottom-bar__subtitle" textAlign={TypoTextAlign.center} type={TypographyType.h3}
                               weight={TypoWeight.regular}>Получайте бесплатный чай, скидки в&nbsp;кафе, неограниченный
                             доступ в&nbsp;рабочие пространства и&nbsp;многое другое</Typo>
-                        <Button disabled={paymentLoad} buttonSize={ButtonSize.xl} className="bottom-bar__button" full color={ButtonColor.accent}
+                        <Button buttonSize={ButtonSize.xl} className="bottom-bar__button" full color={ButtonColor.accent}
                                 onClick={handleReBuild}>Оформить подписку</Button>
                     </> :
                     <SubscriptionMain/>

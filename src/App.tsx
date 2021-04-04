@@ -38,7 +38,6 @@ const App: React.FC = () =>{
 	}
 
 	return <Router history={history}>
-		<UserProvider>
 	<Switch>
 
 		<Route path="/in-place"> <InWorkPlace qrValue={''}/></Route>
@@ -67,7 +66,6 @@ const App: React.FC = () =>{
 		<Route path="/"><AuthPage/></Route>
 		<Route path="/"><Delme/></Route>
 	</Switch>
-		</UserProvider>
 </Router>
 }
 

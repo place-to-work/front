@@ -16,12 +16,7 @@ import {useLocalStore} from "../../mobx/hooks/useLocalStore";
 import UserStore from "../../mobx/local/UserStore/UserStore";
 
 
-function isDateBeforeToday(date: Date) {
-	const today = new Date()
-	console.log(date, today )
 
-	return date <= today;
-}
 
 
 const CafeListPage: React.FC = () => {
@@ -63,17 +58,6 @@ const CafeListPage: React.FC = () => {
 
 	// const { user } = useContext(UserContext);
 
-	const store = useLocalStore(() => new UserStore());
-
-	const [showBlock, setShowBlock] = React.useState(false);
-
-	React.useEffect(()=>{
-		console.log('user effect date',isDateBeforeToday(store.user.subscribeDate) )
-		if(isDateBeforeToday(store.user.subscribeDate)){
-			setShowBlock(true);
-		}
-
-	},[store.user])
 
 
 
