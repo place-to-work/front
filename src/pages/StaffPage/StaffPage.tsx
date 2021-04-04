@@ -49,7 +49,7 @@ const StaffPage: React.FC = () => {
         if(resp.ok){
             window.close();
         } else {
-            history.push('/auth')
+            // history.push('/auth')
         }
 
     };
@@ -67,7 +67,7 @@ const StaffPage: React.FC = () => {
         if(resp.ok){
             window.close();
         } else {
-            history.push('/auth')
+            // history.push('/auth')
         }
 
     };
