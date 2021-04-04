@@ -17,10 +17,21 @@ const initialValues: PromoValues = {
     promo: ''
 };
 
+function openTab(url) {
+    // Create link in memory
+    let a = window.document.createElement("a");
+    a.target = '_blank';
+    a.href = url;
+
+    // Dispatch fake click
+    let e = window.document.createEvent("MouseEvents");
+    e.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+};
+
 const SubscriptionMainPage: React.FC = () => {
 
     const history = useHistory();
-
 
     const [paymentLoad, setPaymentLoad] = React.useState(localStorage.getItem('payment') || false)
     const onSubmit = (values: PromoValues) => {
@@ -32,9 +43,10 @@ const SubscriptionMainPage: React.FC = () => {
                 r.json().then((data)=>{
                     try{
                         if(data?.url){
-                            window.open(data.url, '_blank')
+                            openTab(data.url)
+                            // window.open(data.url, '_blank')
                         } else{
-                            window.open('http://google.com', '_blank')
+                            // window.open('http://google.com', '_blank')
                         }
 
                     }
@@ -46,6 +58,7 @@ const SubscriptionMainPage: React.FC = () => {
             .catch(console.log);
         console.log(`sum: ${JSON.stringify(values)}`);
     };
+
 
 
 
