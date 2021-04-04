@@ -8,6 +8,7 @@ import Button, {ButtonColor} from "@components/primitives/Button";
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import Http from '@network/Http';
 import BottomBar from "@components/a11y/BottomBar";
+import {BackIcon, IconLeft, IconSize} from "@components/primitives/Icon";
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -38,30 +39,30 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	}, []);
 
 	return <BasePage
-			headerProps={{middle: () => <CenterLogo/>}}
+			headerProps={{middle: () => <CenterLogo/>, left: ()=><BackIcon size={IconSize.m} onClick={()=>history.push('/places')}/>}}
 			mainProps={{
 				body: () => <>
 					<div style={{
-						width: '40vw',
-						height: '40vw',
+						width: '60vw',
+						height: '60vw',
 					}} className="qr-code-card__background">
 						<div style={{
 							position: 'relative',
-							top: '4vw',
-							left: '4vw',
-							width: '32vw',
-							height: '32vw',
+							top: '6vw',
+							left: '6vw',
+							width: '48vw',
+							height: '48vw',
 						}} className="qr-code-card__background-inner">
 							<QRCode
 								renderAs="svg"
 								value={uuid?.length ? `https://place-to-work.online/staff/${uuid}`: 'https://place-to-work.online/places'}
 								style={{
-									top: '4vw',
-									left: '4vw',
+									top: '6vw',
+									left: '6vw',
 									position: 'relative',
 									borderRadius: 5,
-									width: '24vw',
-									height: '24vw',
+									width: '36vw',
+									height: '36vw',
 								}}
 							/>
 						</div>
@@ -75,7 +76,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					>
 						{ uuid?.length ? 'Подписка активирована': 'Подписка не активирована' }
 					</Typo>
-					{uuid?.length && <Typo
+					{Boolean(uuid?.length) && <Typo
 						block
 						type={TypographyType.h4}
 						textAlign={TypoTextAlign.center}
@@ -87,7 +88,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					</Typo>
 					}
 
-					{ uuid && <div style={{display: 'flex', justifyContent: 'center', marginBottom: 16}}>
+					{ Boolean(uuid?.length) && <div style={{display: 'flex', justifyContent: 'center', marginBottom: 16}}>
 						<Typo type={TypographyType.h4}>Дата истекания: <Typo
 							type={TypographyType.h4}
 							weight={TypoWeight.bold}>26 апреля</Typo></Typo>
