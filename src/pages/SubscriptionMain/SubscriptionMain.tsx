@@ -83,6 +83,7 @@ const SubscriptionMainPage: React.FC = () => {
                                 {/*/>*/}
 
                                 <Button
+                                    disabled={!url}
                                     element={"a"}
                                     href={url}
                                     buttonSize={ButtonSize.xl}
