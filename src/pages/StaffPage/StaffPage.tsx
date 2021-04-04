@@ -20,8 +20,9 @@ const StaffPage: React.FC = () => {
     const store = useLocalStore(() => new UserStore());
 
     React.useEffect(()=>{
+        console.log('fetch staff')
         store.fetchUser();
-    },[])
+    },[id])
 
     React.useEffect(()=>{
         if(store.user.id !== -1){
