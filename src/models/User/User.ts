@@ -1,16 +1,24 @@
+
+
 export enum UserType {
 	user = 1,
 	barista
 }
 
 class User {
-	id: number;
+
+	id: number = -1;
 
 	email: string;
 
 	name: string;
 
 	date_joined: string;
+
+	get isLogined() {
+		return this.id >= 0;
+	}
+
 	get dateJoined(): Date {
 		return new Date(this.date_joined);
 	}
@@ -26,6 +34,7 @@ class User {
 	get userType(): UserType {
 		return this.user_type;
 	}
+
 }
 
 export default User;

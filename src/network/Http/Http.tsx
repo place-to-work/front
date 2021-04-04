@@ -75,8 +75,8 @@ class Http {
 		});
 	}
 
-	getCurrentUser(): Promise<Response> {
-		return this.fetchGet({path: '/users/'});
+	getCurrentUser(): any {
+		return this.fetchGet({path: '/users/'}).then((response)=>response.json());
 	}
 }
 
@@ -90,6 +90,7 @@ function getCookie(name) {
 }
 
 function retCSRFToken(response: Response): Response {
+	console.log('token setting')
 	const token = getCookie(Http.GET_CSRF_NAME);
 	if (token) {
 		localStorage.setItem(Http.STORE_CSRF_NAME, token);

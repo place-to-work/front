@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react-lite';
-import React from 'react';
+import React, {useCallback, useContext} from 'react';
 import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo, {TypographyType} from '@components/primitives/Typo';
 import './CafeList.scss';
@@ -11,8 +11,21 @@ import {useHistory} from "react-router-dom";
 import BottomBar from "@components/a11y/BottomBar";
 import BasePage from "@pages/BasePage";
 import {IconLeft, IconSize} from "@components/primitives/Icon";
+import {UserContext} from "@models/UserProvider";
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
+
+
+function isDateBeforeToday(date: Date) {
+	const today = new Date()
+	console.log(date, today )
+
+	return date <= today;
+}
+
 
 const CafeListPage: React.FC = () => {
+
 	const [cafesState, setCafesState] = React.useState<CafeCardProps[]>([]);
 
 
@@ -22,7 +35,10 @@ const CafeListPage: React.FC = () => {
 		})
 			.then((r) => {
 				r.json().then(((data) => {
-					data.forEach((el) => {
+					if(!data){
+						return null;
+					}
+					data?.forEach((el) => {
 						setCafesState((old) => [...old, {
 							id: el.id,
 							imageSrc: el['main_image'] || (el['images'] && el['images'][0]),
@@ -45,21 +61,30 @@ const CafeListPage: React.FC = () => {
 			.catch(console.log);
 	}, []);
 
-	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
-	const history = useHistory();
-	const [opened, setOpened] = React.useState(
-		false
-	);
+	// const { user } = useContext(UserContext);
 
-	setTimeout(()=>{
-		setOpened(true)
-	},1000)
+	const store = useLocalStore(() => new UserStore());
+
+	const [showBlock, setShowBlock] = React.useState(false);
+
+	React.useEffect(()=>{
+		console.log('user effect date',isDateBeforeToday(store.user.subscribeDate) )
+		if(isDateBeforeToday(store.user.subscribeDate)){
+			setShowBlock(true);
+		}
+
+	},[store.user])
+
+
+
+
+	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
 
  	return (<BasePage headerProps={{left:()=><IconLeft size={IconSize.xl}/>}} footerProps={{}} mainProps={{
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
 			{cafesMemo}
-			{/*<BottomBar opened={opened} setOpened={setOpened}/>*/}
+			<BottomBar opened={showBlock} setOpened={setShowBlock}/>
 		</>
 	}}/>);
 };

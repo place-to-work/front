@@ -1,25 +1,25 @@
 import React from 'react';
 import * as Yup from 'yup';
 import './LoginPage.scss';
-import Http from '@network/Http';
 import {useHistory, useParams} from 'react-router-dom';
-import IconCenter from '@components/primitives/Icon/Icon';
-import {IconSize, IconType} from '@components/primitives/Icon';
 import BasePage from '@pages/BasePage';
 import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
-import {Formik, Form, FormikProps} from 'formik';
+import {Form, Formik, FormikProps} from 'formik';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Button, {ButtonSize} from '@components/primitives/Button';
-import Error from '@components/Error';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
+import {UserCategory} from "../../mobx/local/UserStore/types";
+import {observer} from "mobx-react-lite";
 
 
-interface LoginValues {
+export interface LoginValues {
 	email: string;
 	password: string;
 }
 
-const initialValues: LoginValues = {
+export const initialValues: LoginValues = {
 	email: '',
 	password: '',
 };
@@ -35,22 +35,8 @@ const validationSchema = Yup.object().shape({
 
 const LoginPage: React.FC = () => {
 	const history = useHistory();
-	const onSubmit = (values: LoginValues) => {
-		Http.fetchPost({
-			path: '/users/login/',
-			body: JSON.stringify(values),
-		})
-			.then((response) => {
-				if (response.ok) {
-					history.push('/places');
-				} else {
-					response.json().then(console.log);
-				}
-			})
-			.catch(console.log);
+	const store = useLocalStore(() => new UserStore());
 
-		console.log(`login: ${JSON.stringify(values)}`);
-	};
 
 	const ContactUs = <Typo
 		block
@@ -59,9 +45,20 @@ const LoginPage: React.FC = () => {
 	>
 		Свяжитесь с нами
 	</Typo>;
-	const params = useParams();
 
-	console.log('payment!!!!!',params)
+
+	React.useEffect(()=>{
+		console.log('user effect login',{user: store.user})
+		if(store.user.id !== -1){
+
+			if(store.user.type == UserCategory.client){
+				history.push('/places')
+			} else if(store.user.type === UserCategory.staff){
+				history.push('/staff')
+			}
+
+		}
+	},[store.user])
 
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
@@ -69,7 +66,7 @@ const LoginPage: React.FC = () => {
 			body: () => <Formik<LoginValues>
 				validationSchema={validationSchema}
 				initialValues={initialValues}
-				onSubmit={onSubmit}
+				onSubmit={store.loginUser}
 				render={(formikProps: FormikProps<LoginValues>) => <>
 
 					<Typo block type={TypographyType.h1}>Вход</Typo>
@@ -189,4 +186,4 @@ const LoginPage: React.FC = () => {
 	</BasePage>;
 };
 
-export default LoginPage;
+export default observer(LoginPage);

@@ -6,6 +6,11 @@ import Footer, {FooterProps} from '@pages/BasePage/Footer/Footer';
 import Http from '@network/Http';
 import {useHistory} from 'react-router-dom';
 import User, {UserType} from '@models/User';
+import {UserContext} from "@models/UserProvider";
+import {observer} from "mobx-react-lite";
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
+import {UserCategory} from "../../mobx/local/UserStore/types";
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -21,46 +26,27 @@ const BasePage: React.FC<BasePageProps> = ({
 	const history = useHistory();
 	const [isLoading, setIsLoading] = React.useState(true);
 
-	React.useEffect(() => {
-		Http.getCurrentUser()
-			.then((response) => {
-				console.log(`resp is ok = ${response.ok}`);
-				console.log(history.location.pathname)
-				if (!response.ok &&
-					history.location.pathname !== '/auth' &&
-					history.location.pathname !== '/login' &&
-					history.location.pathname !== '/signup'
-				) {
-					history.push('/auth');
-				}
+	const store = useLocalStore(() => new UserStore());
+	console.log(store.user)
+	React.useEffect(()=>{
+		store.fetchUser();
+	},[])
 
-				if (response.ok &&
-					(history.location.pathname === '/auth' ||
-					history.location.pathname === '/login' ||
-					history.location.pathname === '/signup')
-				) {
-					console.log('go to places')
-					history.push('/places');
-				}
+	React.useEffect(()=>{
 
-				if (!response.ok) {
-					history.push('/404');
+		if(store.user.id !== -1){
+			if(['/auth','login','/signup'].indexOf(history.location.pathname)) {
+				if (store.user.type == UserCategory.client) {
+					history.push('/places')
+				} else if (store.user.type === UserCategory.staff) {
+					history.push('/staff')
 				}
+			}
+		}
+	},[store.user])
 
-				console.log('end of promise')
-				return response.json();
-			})
-			.then((body) => {
-				console.log(`body = ${JSON.stringify(body, null, 4)}`);
-				const user  = body as User;
-				if (user.userType !== UserType.barista &&
-					history.location.pathname === '/staff') {
-					history.push('/places');
-				}
 
-				setIsLoading(false);
-			})
-	}, []);
+
 
 	return <PageContainer>
 			<Header {...headerProps}/>
@@ -69,4 +55,4 @@ const BasePage: React.FC<BasePageProps> = ({
 		</PageContainer>;
 }
 
-export default BasePage;
+export default observer(BasePage);

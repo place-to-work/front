@@ -8,10 +8,14 @@ import Typo, {TypographyType} from '@components/primitives/Typo';
 import ImageCard from '@components/primitives/ImageCard';
 import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
+import {UserCategory} from "../../mobx/local/UserStore/types";
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
+import {observer} from "mobx-react-lite";
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-
+	const store = useLocalStore(() => new UserStore());
 	const ContactUs = <Typo
 		block
 		type={TypographyType.h5}
@@ -19,6 +23,19 @@ const AuthPage: React.FC = () => {
 	>
 		Свяжитесь с нами
 	</Typo>;
+
+	React.useEffect(()=>{
+		console.log('user effect auth',{user: store.user})
+		if(store.user.id !== -1){
+			if(store.user.type == UserCategory.client){
+				history.push('/places')
+			} else if(store.user.type === UserCategory.staff){
+				history.push('/staff')
+			}
+
+		}
+	},[store.user.id])
+
 
 	return <BasePage
 		headerProps={{
@@ -59,4 +76,4 @@ const AuthPage: React.FC = () => {
 	/>;
 };
 
-export default AuthPage;
+export default observer(AuthPage);
