@@ -1,9 +1,22 @@
+@import "src/components/scss/mixins";
+
 .subscription-page{
   //padding: 0 16px;
   display: flex;
   flex-direction: column;
 
   &__title{
-    max-width: 340px;
+    margin-bottom: 24px;
+    @include midget{
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__card{
+    margin-bottom: 12px;
+    @include midget{
+      margin-bottom: 0;
+    }
   }
 }

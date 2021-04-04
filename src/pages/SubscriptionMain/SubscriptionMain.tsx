@@ -51,7 +51,7 @@ const SubscriptionMainPage: React.FC = () => {
 
     return (<>
             <div className="subscription-page">
-                <Typo>
+                <Typo className="subscription-page__title">
                 <Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center} className="subscription-page_title">Оформление</Typo>
                 <Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center} className="subscription-page_title">подписки</Typo>
                 </Typo>

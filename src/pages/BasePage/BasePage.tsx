@@ -41,6 +41,8 @@ const BasePage: React.FC<BasePageProps> = ({
 				} else if (store.user.type === UserCategory.staff) {
 					history.push('/staff')
 				}
+			} else{
+				history.push('/auth')
 			}
 		}
 	},[store.user])
