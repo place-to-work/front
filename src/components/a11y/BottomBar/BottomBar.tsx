@@ -30,7 +30,6 @@ const BottomBar:FC<Props> = ({opened = false, setOpened})=>{
         setOpened(false);
         setTimeout(()=>{
             setFull(true)
-
             setTimeout(()=>{
                 setOpened(true)
             },1000)
@@ -39,8 +38,8 @@ const BottomBar:FC<Props> = ({opened = false, setOpened})=>{
 
 
     return <div className={`container ${opened && 'container_opened' }`}>
-        <Collapse className="bottom-bar" opened={opened} full={full}>
-            <div className={cn("bottom-bar__content",full && 'bottom-bar__content_full')}>
+        <Collapse className="bottom-bar" opened={opened}>
+            <div className={cn("bottom-bar__content")}>
                 {!full ? <>
                         <Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>Чтобы
                             увидеть все заведения&nbsp;&mdash; оформите подписку</Typo>
