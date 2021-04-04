@@ -23,6 +23,7 @@ import SubscribePage from "@pages/Subscribe";
 import InWorkPlace from '@pages/InWorkPlace';
 import SubscriptionMainPage from "@pages/SubscriptionMain/SubscriptionMain";
 import StaffPage from "@pages/StaffPage";
+import {UserProvider} from "@models/UserProvider";
 
 
 const history = createBrowserHistory();
@@ -37,14 +38,19 @@ const App: React.FC = () =>{
 	}
 
 	return <Router history={history}>
+		<UserProvider>
 	<Switch>
+
 		<Route path="/in-place"> <InWorkPlace qrValue={''}/></Route>
 		<Route path="/example"><MobxPage currentTime={new CurrentTime()}/></Route>
 
 
 		<Route path="/login"><LoginPage/></Route>
 		<Route path="/signup"><SignupPage/></Route>
-		<Route path="/places"><CafeListPage/></Route>
+		<Route path="/places">
+				<CafeListPage/>
+
+		</Route>
 		<Route exact path="/place/:id">
 			<CafePage/>
 		</Route>
@@ -61,6 +67,7 @@ const App: React.FC = () =>{
 		<Route path="/"><AuthPage/></Route>
 		<Route path="/"><Delme/></Route>
 	</Switch>
+		</UserProvider>
 </Router>
 }
 

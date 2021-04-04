@@ -6,6 +6,7 @@ import Typo, {TypographyType} from "@components/primitives/Typo";
 import Button, {ButtonColor} from "@components/primitives/Button";
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import Http from "@network/Http/Http";
+import {UserContext} from "@models/UserProvider";
 
 
 const StaffPage: React.FC = () => {
@@ -13,6 +14,14 @@ const StaffPage: React.FC = () => {
     const baseSize = 360;
 
     const { id } = useParams<{id}>();
+
+    const context = React.useContext(UserContext);
+
+    React.useEffect(()=>{
+        console.log('effect', {context})
+    },[context])
+    console.log({context})
+
     if(!id){
         return null
     }

@@ -33,6 +33,8 @@ const SubscriptionMainPage: React.FC = () => {
                     try{
                         if(data?.url){
                             window.open(data.url, '_blank')
+                        } else{
+                            window.open('http://google.com', '_blank')
                         }
 
                     }

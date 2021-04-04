@@ -17,8 +17,12 @@ import BasePage from '@pages/BasePage';
 import IconCenter from '@components/primitives/Icon/Icon';
 import {IconSize, IconType} from '@components/primitives/Icon';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
+import {observer} from "mobx-react-lite";
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
+import {UserCategory} from "../../mobx/local/UserStore/types";
 
-interface SignupValues {
+export interface SignupValues {
 	name: '';
 	email: string;
 	password: string;
@@ -44,21 +48,22 @@ const validationSchema = Yup.object().shape({
 
 const SignupPage: React.FC = () => {
 	const history = useHistory();
-	const onSubmit = (values: SignupValues) => {
-		Http.fetchPost({
-			path: '/users/',
-			body: JSON.stringify(values),
-		})
-			.then((resp) => {
-				if (resp.ok) {
-					history.push('/places');
-				} else {
-					console.log(`signup error: ${JSON.stringify(resp, null, 4)}`);
-				}
-			})
-			.catch(console.log);
-		console.log(`sum: ${JSON.stringify(values)}`);
-	};
+
+	const store = useLocalStore(() => new UserStore());
+
+
+	React.useEffect(()=>{
+		console.log('user effect',{user: store.user})
+		if(store.user.id !== -1){
+
+			if(store.user.type == UserCategory.client){
+				history.push('/places')
+			} else if(store.user.type === UserCategory.staff){
+				history.push('/staff')
+			}
+
+		}
+	},[store.user])
 
 	const ContactUs = <Typo
 		block
@@ -73,7 +78,7 @@ const SignupPage: React.FC = () => {
 		mainProps={{body: () => <Formik
 				validationSchema={validationSchema}
 				initialValues={initialValues}
-				onSubmit={onSubmit}
+				onSubmit={store.regUser}
 				render={(formikProps: FormikProps<SignupValues>) => <>
 
 					<Typo block type={TypographyType.h1}>Регистрация</Typo>
@@ -123,4 +128,4 @@ const SignupPage: React.FC = () => {
 	/>;
 };
 
-export default SignupPage;
+export default observer(SignupPage);

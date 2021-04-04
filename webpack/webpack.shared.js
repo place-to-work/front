@@ -40,6 +40,7 @@ const codeRules = {
 			'@babel/plugin-syntax-dynamic-import',
 			'@babel/plugin-proposal-class-properties',
 			'@babel/plugin-proposal-object-rest-spread',
+			"@babel/plugin-transform-runtime",
 		]
 	}
 };
@@ -89,17 +90,18 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin(),
 
-		// new WebpackPwaManifest({
-		// 	name: 'Рабочее место',
-		// 	short_name: 'Place to work',
-		// 	description: 'Find your place',
-		// 	background_color: '#ffffff',
-		// 	icons: [
-		// 		{
-		// 			src: path.resolve('src/assets/PlaceToWork.png'),
-		// 			sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-		// 		}
-		// 	]
-		// })
+		new WebpackPwaManifest({
+			name: 'Рабочее место',
+			short_name: 'Place to work',
+			description: 'Find your place',
+			crossorigin: 'anonymous',
+			background_color: '#ffffff',
+			icons: [
+				{
+					src: path.resolve('src/assets/PlaceToWork.png'),
+					sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+				}
+			]
+		})
 	]
 };
