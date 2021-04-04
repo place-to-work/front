@@ -7,4 +7,5 @@ export type UserApiType = {
     user_type: number;
     date_joined: string;
     subscribed_until: string;
+    is_subscribed: boolean;
 };

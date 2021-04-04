@@ -73,9 +73,9 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						textAlign={TypoTextAlign.center}
 						style={{lineHeight: 1, margin: '14px 35px 0'}}
 					>
-						Подписка активирована
+						{ uuid?.length ? 'Подписка активирована': 'Подписка не активирована' }
 					</Typo>
-					<Typo
+					{uuid?.length && <Typo
 						block
 						type={TypographyType.h4}
 						textAlign={TypoTextAlign.center}
@@ -85,12 +85,14 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						бесплатный чай, скидки в кафе и
 						неограниченный доступ рабочие пространства
 					</Typo>
+					}
 
-					<div style={{display: 'flex', justifyContent: 'center', marginBottom: 16}}>
+					{ uuid && <div style={{display: 'flex', justifyContent: 'center', marginBottom: 16}}>
 						<Typo type={TypographyType.h4}>Дата истекания: <Typo
 							type={TypographyType.h4}
 							weight={TypoWeight.bold}>26 апреля</Typo></Typo>
 					</div>
+					}
 
 					<div style={{display: 'flex', justifyContent: 'center'}}>
 						<Button onClick={() => history.push('/places')}

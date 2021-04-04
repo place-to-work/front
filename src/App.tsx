@@ -4,7 +4,7 @@ import React  from 'react';
 import {
 	Router,
 	Switch,
-	Route,
+	Route,Redirect
 } from 'react-router-dom';
 import {hot} from 'react-hot-loader/root';
 
@@ -63,8 +63,8 @@ const App: React.FC = () =>{
 		</Route>
 		<Route path="/mobx"><MobxPage currentTime={new CurrentTime()}/></Route>
 		<Route path="/formik"><FormikPage/></Route>
-		<Route path="/"><AuthPage/></Route>
-		<Route path="/"><Delme/></Route>
+		<Route path="/auth"><AuthPage/></Route>
+		<Redirect to='/auth'/>
 	</Switch>
 </Router>
 }

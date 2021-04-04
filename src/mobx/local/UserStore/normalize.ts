@@ -16,7 +16,7 @@ function getHasSubscribe(date: Date) {
     const today = new Date()
     console.log(date, today )
 
-    return date < today;
+    return date > today;
 }
 
 export const normalizeUserData = (data: UserApiType): UserType =>{
@@ -29,6 +29,6 @@ export const normalizeUserData = (data: UserApiType): UserType =>{
         type: normalizeUserCategory(data.user_type),
         joinDate: new Date(data.date_joined),
         subscribeDate: new Date(data.subscribed_until),
-        hasSubscribe: getHasSubscribe(new Date(data.subscribed_until)),
+        hasSubscribe: data.is_subscribed,
     }
 }
