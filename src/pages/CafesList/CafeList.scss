@@ -1,9 +1,23 @@
+@import 'src/components/scss/index';
+
 .cafes-list{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   padding: 4px;
   overflow: scroll;
+  width: 100%;
+
+  &__card{
+    margin: 0 32px;
+  }
+
+  @include lessThanTablet{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+
+  }
 }
 .title{
   align-self: flex-start;

@@ -6,10 +6,18 @@
   width: 100%;
   max-width: 360px;
 
+
+  min-height: 330px;
+
+  @include lessThanTablet{
+    min-height: auto;
+  }
+
   &__name{
     margin-bottom: 6px;
   }
   &__data{
+    margin-bottom: auto;
   }
   &__description{
     display: flex;

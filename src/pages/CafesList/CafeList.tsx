@@ -62,7 +62,7 @@ const CafeListPage: React.FC = () => {
 
 	const history = useHistory();
 	const store = useLocalStore(() => new UserStore());
-	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} key={index}/>),[cafesState])
+	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe} className="cafes-list__card" key={index}/>),[cafesState])
 
 	React.useEffect(()=>{
 		store.fetchUser();
@@ -76,7 +76,10 @@ const CafeListPage: React.FC = () => {
 		footerProps={{}} mainProps={{
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
-			{cafesMemo}
+			<div className="cafes-list">
+				{cafesMemo}
+			</div>
+
 
 			<BottomBar />
 		</>
