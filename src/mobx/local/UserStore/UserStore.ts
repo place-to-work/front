@@ -71,7 +71,7 @@ export default class UserStore implements ILocalStore {
 
     }
 
-    async fetchUser(onError:()=>void): Promise<void> {
+    async fetchUser(onSuccess:()=>void,onError:()=>void): Promise<void> {
 
         console.log('fetch user 1')
         console.log(this.user.id)
@@ -81,6 +81,7 @@ export default class UserStore implements ILocalStore {
             console.log({data})
             if(data){
                 this.user = normalizeUserData(data);
+                onSuccess();
             } else{
                 onError();
             }
