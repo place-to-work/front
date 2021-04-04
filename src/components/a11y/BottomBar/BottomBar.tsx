@@ -32,12 +32,14 @@ const BottomBar:FC<Props> = ()=>{
         store.fetchUser();
     },[])
 
-    const [showBlock, setShowBlock] = React.useState(true);
+    const [showBlock, setShowBlock] = React.useState<boolean | null>(null);
 
     React.useEffect(()=>{
         console.log('sub', store.user.hasSubscribe, store.user.name)
-        if(store.user.hasSubscribe){
-            setShowBlock(false);
+        if(store.user.hasSubscribe === false){
+            setShowBlock(true);
+        } else{
+            setShowBlock(false)
         }
 
     },[store.user.hasSubscribe, store.user.name])
@@ -62,7 +64,7 @@ const BottomBar:FC<Props> = ()=>{
     },[])
 
 
-    return <div className={`container ${showBlock && 'container_opened' }`}>
+    return showBlock === null ? null :<div className={`container ${showBlock && 'container_opened' }`}>
         <Collapse className="bottom-bar" opened={showBlock}>
             <div className={cn("bottom-bar__content")}>
                 <span>{store.user.hasSubscribe}</span>
