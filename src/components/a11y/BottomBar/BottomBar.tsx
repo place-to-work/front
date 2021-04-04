@@ -30,7 +30,7 @@ const BottomBar:FC<Props> = ()=>{
     const [showBlock, setShowBlock] = React.useState(false);
 
     React.useEffect(()=>{
-        if(store.user.hasSubscribe){
+        if(!store.user.hasSubscribe){
             setShowBlock(true);
         }
 
