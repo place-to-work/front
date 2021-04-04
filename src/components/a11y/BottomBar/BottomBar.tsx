@@ -26,15 +26,17 @@ const BottomBar:FC<Props> = ({opened = false, setOpened})=>{
 
 
 
-    const handleReBuild = () => {
+    const handleReBuild = React.useCallback(() => {
         setOpened(false);
+        // setFull(true)
+        // setOpened(true)
         setTimeout(()=>{
             setFull(true)
             setTimeout(()=>{
                 setOpened(true)
             },1000)
         },1000)
-    }
+    },[])
 
 
     return <div className={`container ${opened && 'container_opened' }`}>
