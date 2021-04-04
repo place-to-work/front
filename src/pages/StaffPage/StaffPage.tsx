@@ -63,6 +63,8 @@ const StaffPage: React.FC = () => {
 
     };
 
+    cons
+
     return <BasePage
         headerProps={{middle: () => <CenterLogo/>}}
         mainProps={{

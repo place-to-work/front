@@ -7,6 +7,7 @@ import Typo, {TypographyType, TypoTextAlign, TypoWeight} from "@components/primi
 import Button, {ButtonColor} from "@components/primitives/Button";
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import Http from '@network/Http';
+import BottomBar from "@components/a11y/BottomBar";
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -36,10 +37,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			})
 	}, []);
 
-	return uuid.length === 0 ?
-		null
-		:
-		<BasePage
+	return <BasePage
 			headerProps={{middle: () => <CenterLogo/>}}
 			mainProps={{
 				body: () => <>
@@ -56,7 +54,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						}} className="qr-code-card__background-inner">
 							<QRCode
 								renderAs="svg"
-								value={`https://place-to-work.online/staff/${uuid}`}
+								value={uuid?.length ? `https://place-to-work.online/staff/${uuid}`: 'https://place-to-work.online/places'}
 								style={{
 									top: '4vw',
 									left: '4vw',
@@ -100,6 +98,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 							Ко всем заведениям
 						</Button>
 					</div>
+					{!uuid && <BottomBar/>}
 				</>,
 			}}
 		/>
