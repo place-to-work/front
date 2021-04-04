@@ -85,7 +85,6 @@ const SubscriptionMainPage: React.FC = () => {
                                 <Button
                                     element={"a"}
                                     to={url}
-                                    target={"_blank"}
                                     buttonSize={ButtonSize.xl}
                                     full
                                     onClick={()=>console.log('click')}
