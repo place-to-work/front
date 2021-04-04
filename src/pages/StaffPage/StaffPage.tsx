@@ -26,9 +26,10 @@ const StaffPage: React.FC = () => {
         return null
     }
 
-    const onTea = () => {
-        Http.fetchPost({
-            path: '/users/login/',
+
+    const onTea = async () => {
+        const resp = await Http.fetchPost({
+            path: '/products/choice/',
             body: JSON.stringify({
                 user: id,
                 place: 1,
@@ -36,20 +37,17 @@ const StaffPage: React.FC = () => {
 
             }),
         })
-            .then((response) => {
-                if (response.ok) {
-                    history.push('/places');
-                } else {
-                    response.json().then(console.log);
-                }
-            })
-            .catch(console.log);
+        if(resp.ok){
+            window.close();
+        } else {
+            history.push('/auth')
+        }
 
     };
 
-    const onCoffee = () => {
-        Http.fetchPost({
-            path: '/products/choice',
+    const onCoffee = async () => {
+        const resp = await Http.fetchPost({
+            path: '/products/choice/',
             body: JSON.stringify({
                 user: id,
                 place: 1,
@@ -57,14 +55,11 @@ const StaffPage: React.FC = () => {
 
             }),
         })
-            .then((response) => {
-                if (response.ok) {
-                    history.push('/places');
-                } else {
-                    response.json().then(console.log);
-                }
-            })
-            .catch(console.log);
+        if(resp.ok){
+            window.close();
+        } else {
+            history.push('/auth')
+        }
 
     };
 
@@ -73,7 +68,6 @@ const StaffPage: React.FC = () => {
         mainProps={{
             body: () => <>
                 <Typo style={{marginBottom:'72px'}} type={TypographyType.h1} block>Что взял клиент?</Typo>
-
 
                 <Button onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
                 <Button onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>

@@ -37,7 +37,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	}, []);
 
 	return uuid.length === 0 ?
-		<Typo type={TypographyType.h1}>{`Please wait${'.'.repeat(dots)}`}</Typo>
+		null
 		:
 		<BasePage
 			headerProps={{middle: () => <CenterLogo/>}}
