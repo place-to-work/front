@@ -28,8 +28,15 @@ const BasePage: React.FC<BasePageProps> = ({
 
 	const store = useLocalStore(() => new UserStore());
 	console.log(store.user)
+	const onError = React.useCallback(()=>{
+
+		if(['/auth','/login','/signup'].indexOf(history.location.pathname) === -1 ){
+			history.push('/auth')
+		}
+
+	},[history])
 	React.useEffect(()=>{
-		store.fetchUser();
+		store.fetchUser(onError);
 	},[])
 
 	React.useEffect(()=>{
@@ -42,8 +49,6 @@ const BasePage: React.FC<BasePageProps> = ({
 					history.push('/staff')
 				}
 			}
-		} else if(['/auth','/login','/signup'].indexOf(history.location.pathname) === -1 ){
-			history.push('/auth')
 		}
 	},[store.user])
 
