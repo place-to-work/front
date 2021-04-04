@@ -84,7 +84,7 @@ const SubscriptionMainPage: React.FC = () => {
 
                                 <Button
                                     element={"a"}
-                                    to={url}
+                                    href={url}
                                     buttonSize={ButtonSize.xl}
                                     full
                                     onClick={()=>console.log('click')}
