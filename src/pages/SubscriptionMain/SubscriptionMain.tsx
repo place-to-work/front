@@ -19,6 +19,7 @@ const initialValues: PromoValues = {
 
 function openTab(url) {
     // Create link in memory
+    console.log('fale clicl')
     let a = window.document.createElement("a");
     a.target = '_blank';
     a.href = url;
