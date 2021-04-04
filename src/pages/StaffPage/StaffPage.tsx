@@ -36,7 +36,7 @@ const StaffPage: React.FC = () => {
     }
 
 
-    const onTea = async () => {
+    const onTea = React.useCallback(async () => {
         const resp = await Http.fetchPost({
             path: '/products/choice/',
             body: JSON.stringify({
@@ -52,9 +52,9 @@ const StaffPage: React.FC = () => {
             // history.push('/auth')
         }
 
-    };
+    },[store.user.place, id])
 
-    const onCoffee = async () => {
+    const onCoffee = React.useCallback(async () => {
         const resp = await Http.fetchPost({
             path: '/products/choice/',
             body: JSON.stringify({
@@ -70,7 +70,7 @@ const StaffPage: React.FC = () => {
             // history.push('/auth')
         }
 
-    };
+    },[store.user.place, id])
 
 
     return <BasePage
@@ -80,7 +80,7 @@ const StaffPage: React.FC = () => {
                 <Typo style={{marginBottom:'72px'}} type={TypographyType.h1} block>Что взял клиент?</Typo>
 
                 <Button disabled={store.user.type === UserCategory.client } onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
-                <Button disabled={store.user.type === UserCategory.client}onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>
+                <Button disabled={store.user.type === UserCategory.client} onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>
                 </>
         }
         }

@@ -34,7 +34,7 @@ const AuthPage: React.FC = () => {
 			}
 
 		}
-	},[store.user.id])
+	},[ store.user, store.user.id, store.user.type])
 
 
 	return <BasePage
