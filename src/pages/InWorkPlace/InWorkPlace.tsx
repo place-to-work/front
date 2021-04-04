@@ -98,7 +98,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 							Ко всем заведениям
 						</Button>
 					</div>
-					{!uuid && <BottomBar/>}
+					{!uuid?.length && <BottomBar/>}
 				</>,
 			}}
 		/>
