@@ -9,6 +9,8 @@ import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import Http from '@network/Http';
 import BottomBar from "@components/a11y/BottomBar";
 import {BackIcon, IconLeft, IconSize} from "@components/primitives/Icon";
+import {useLocalStore} from "../../mobx/hooks/useLocalStore";
+import UserStore from "../../mobx/local/UserStore/UserStore";
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -37,6 +39,13 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				}
 			})
 	}, []);
+	const store = useLocalStore(() => new UserStore());
+
+	const date = new Date(store.user.subscribeDate);
+
+	const day = date.getUTCDay();
+	const m = date.getUTCMonth();
+	const month = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][m];
 
 	return <BasePage
 			headerProps={{middle: () => <CenterLogo/>, left: ()=><BackIcon size={IconSize.m} onClick={()=>history.push('/places')}/>}}
@@ -84,14 +93,14 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					>
 						Предъявите этот код баристе и получайте
 						бесплатный чай, скидки в кафе и
-						неограниченный доступ рабочие пространства
+						неограниченный доступ в рабочие пространства
 					</Typo>
 					}
 
 					{ Boolean(uuid?.length) && <div style={{display: 'flex', justifyContent: 'center', marginBottom: 16}}>
-						<Typo type={TypographyType.h4}>Дата истекания: <Typo
+						<Typo type={TypographyType.h4}>Дата истечения: <Typo
 							type={TypographyType.h4}
-							weight={TypoWeight.bold}>26 апреля</Typo></Typo>
+							weight={TypoWeight.bold}>{day}{' '}{month}</Typo></Typo>
 					</div>
 					}
 
