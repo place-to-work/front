@@ -29,7 +29,6 @@ const CafeListPage: React.FC = () => {
 			.then((r) => {
 				r.json().then(((data) => {
 					if(!data){
-						setCafesState(null);
 						return null;
 					}
 					data?.forEach((el) => {
@@ -52,7 +51,7 @@ const CafeListPage: React.FC = () => {
 					});
 				}));
 			})
-			.catch(console.log);
+			.catch(()=>setCafesState(null));
 	}, []);
 
 
