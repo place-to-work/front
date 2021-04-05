@@ -45,6 +45,8 @@ const codeRules = {
 	}
 };
 
+const fontRules =  { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
+
 // Эти псевдонимы реально работают, но не парсятся web-storm
 // В то же время псевдонимы в tsconfig.json парсятся, но не работают
 // Эти 2 вида псевдонимов созданы друг для друга
@@ -81,7 +83,9 @@ module.exports = {
 		rules: [
 			styleRules,
 			codeRules,
-		]
+			fontRules
+		],
+
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
