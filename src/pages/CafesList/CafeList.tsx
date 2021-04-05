@@ -31,6 +31,7 @@ const CafeListPage: React.FC = () => {
 					if(!data){
 						return null;
 					}
+					console.log('effect list', {data})
 					data?.forEach((el) => {
 						setCafesState((old) => [...old, {
 							id: el.id,
