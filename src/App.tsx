@@ -89,9 +89,6 @@ const App: React.FC = () =>{
 			<SubscriptionMainPage/>
 		</Route>
 
-		<Route path="/mobx">
-			<MobxPage currentTime={new CurrentTime()}/>
-		</Route>
 
 		<Route path="/formik">
 			<FormikPage/>
