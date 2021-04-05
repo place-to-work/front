@@ -97,7 +97,8 @@ module.exports = {
 			orientation: "portrait-primary",
 			start_url: "/",
 			display: "standalone",
-			crossorigin: 'use-credentials',
+			publicPath: '.',
+			crossorigin: 'anonymous',
 			background_color: '#ffffff',
 			icons: [
 				{
