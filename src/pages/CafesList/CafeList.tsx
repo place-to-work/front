@@ -75,15 +75,15 @@ const CafeListPage: React.FC = () => {
 		headerProps={{left:()=><IconLeft size={IconSize.xl}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>} }
 		footerProps={{}} mainProps={{
 		body: () =><>
-			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
+			{cafesMemo.length && <Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>}
 			<div>
 				{cafesMemo}
 			</div>
 			{!cafesMemo.length && <>
-				<Typo type={TypographyType.h2} textAlign={TypoTextAlign.center}>Технические работы</Typo>
-				<Typo type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои извинения.</Typo>
+				<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>Технические работы</Typo>
+				<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои извинения.</Typo>
 
-				<Button full color={ButtonColor.accent}>Попробовать заново</Button>
+				<Button onClick={()=>history.push('/login')} full color={ButtonColor.accent}>Попробовать заново</Button>
 			</> }
 
 
