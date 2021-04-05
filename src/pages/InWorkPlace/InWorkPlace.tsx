@@ -1,5 +1,5 @@
 import './InWorkPlace.scss';
-import React from 'react';
+import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import QRCode from 'qrcode.react'
 import BasePage from "@pages/BasePage";
@@ -24,6 +24,7 @@ setInterval(() => {
 const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	const history = useHistory();
 	const [uuid, setUuid] = React.useState('');
+	const [cardRotated, setCardRotated] = React.useState(false);
 
 	React.useEffect(() => {
 		Http.fetchPost({path: '/users/uuid/', body: undefined})
@@ -42,10 +43,17 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			headerProps={{middle: () => <CenterLogo/>, left: ()=><BackIcon size={IconSize.m} onClick={()=>history.push('/places')}/>}}
 			mainProps={{
 				body: () => <>
-					<div style={{
+					<div
+						style={{
 						width: '60vw',
 						height: '60vw',
-					}} className="qr-code-card__background">
+					}}
+						className={`qr-code-card__background${cardRotated ? '-rotated' : ''}`}
+						onClick={() => {
+							console.log(`click: isRotated: ${cardRotated}`);
+							setCardRotated(!cardRotated);
+						}}
+					>
 						<div style={{
 							position: 'relative',
 							top: '6vw',

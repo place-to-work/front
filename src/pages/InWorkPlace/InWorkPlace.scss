@@ -1,9 +1,19 @@
 @import "../../components/scss/variables";
 
-.qr-code-card__background {
+%qr-code-card__background-shared {
   background-color: $background-accent;
   border-radius: 12px;
   margin: 0 auto;
+  transition: .7s ease-out;
+}
+
+.qr-code-card__background {
+  @extend %qr-code-card__background-shared;
+
+  &-rotated {
+    @extend %qr-code-card__background-shared;
+    transform: rotateY(0.5turn) scaleX(-1);
+  }
 
   &-inner {
     border-radius: 12px;
