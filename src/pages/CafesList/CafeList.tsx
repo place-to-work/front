@@ -14,7 +14,7 @@ import {IconLeft, IconSize} from "@components/primitives/Icon";
 import {useLocalStore} from "../../mobx/hooks/useLocalStore";
 import UserStore from "../../mobx/local/UserStore/UserStore";
 import Tag from "@components/primitives/Tag";
-import {ButtonColor} from "@components/primitives/Button";
+import Button, {ButtonColor} from "@components/primitives/Button";
 
 
 const CafeListPage: React.FC = () => {
@@ -76,9 +76,15 @@ const CafeListPage: React.FC = () => {
 		footerProps={{}} mainProps={{
 		body: () =><>
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
-			<div >
+			<div>
 				{cafesMemo}
 			</div>
+			{!cafesMemo.length && <>
+				<Typo type={TypographyType.h2} textAlign={TypoTextAlign.center}>Технические работы</Typo>
+				<Typo type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои извинения.</Typo>
+
+				<Button full color={ButtonColor.accent}>Попробовать заново</Button>
+			</> }
 
 
 			<BottomBar />
