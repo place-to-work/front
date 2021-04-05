@@ -27,6 +27,10 @@ const CafeListPage: React.FC = () => {
 			path: '/places/',
 		})
 			.then((r) => {
+				if(!r.ok){
+					history.push('/auth')
+					return null
+				}
 				r.json().then(((data) => {
 					if(!data){
 						return null;
