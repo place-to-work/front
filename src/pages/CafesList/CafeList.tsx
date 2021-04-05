@@ -28,11 +28,12 @@ const CafeListPage: React.FC = () => {
 		})
 			.then((r) => {
 				if(!r.ok){
+					console.log({r})
 					history.push('/auth')
 					return null
 				}
 				r.json().then(((data) => {
-					if(!data){
+					if(!data || !data?.length){
 						return null;
 					}
 					console.log('effect list', {data})
