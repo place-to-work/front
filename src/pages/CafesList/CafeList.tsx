@@ -19,7 +19,7 @@ import Button, {ButtonColor} from "@components/primitives/Button";
 
 const CafeListPage: React.FC = () => {
 
-	const [cafesState, setCafesState] = React.useState<CafeCardProps[]>([]);
+	const [cafesState, setCafesState] = React.useState<CafeCardProps[] | null>([]);
 
 
 	React.useEffect(() => {
@@ -29,6 +29,7 @@ const CafeListPage: React.FC = () => {
 			.then((r) => {
 				r.json().then(((data) => {
 					if(!data){
+						setCafesState(null);
 						return null;
 					}
 					data?.forEach((el) => {
@@ -75,11 +76,11 @@ const CafeListPage: React.FC = () => {
 		headerProps={{left:()=><IconLeft size={IconSize.xl}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>} }
 		footerProps={{}} mainProps={{
 		body: () =><>
-			{cafesMemo.length && <Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>}
+			{cafesState !== null && <Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>}
 			<div>
 				{cafesMemo}
 			</div>
-			{!cafesMemo.length && <>
+			{cafesState === null && <>
 				<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>Технические работы</Typo>
 				<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои извинения.</Typo>
 
