@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: echo "$ID_RSA_PUB"
+      - run: echo "${{ secrets.ID_RSA_PUB }}"
         env:
           ID_RSA_PUB: ${{ secrets.ID_RSA_PUB }}
       - run: npm install
