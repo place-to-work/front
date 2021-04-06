@@ -4,16 +4,14 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-20.04
     steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-node@v1
-#      - run: npm install
-#      - run: npm run dev-build
-      - run: mkdir ~/public
-      - run: echo "qwer-ty" > ~/public/qwer.txt
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - run: npm run dev-build
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
-          src: ~/public/*
+          src: ./public/*
           host: ${{ secrets.SSH_HOST }}
           remote: ${{ secrets.SSH_DIR }}
           key: ${{ secrets.SSH_RSA }}
