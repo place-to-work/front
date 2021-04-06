@@ -72,7 +72,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		<Separator invisible/>
 		{mapSrc && <Button
 			className="cafe-detailed-info__button"
-			full color={ButtonColor.accentGrey} onClick={()=>window.open(mapSrc, "_blank")}>
+			full color={ButtonColor.accentGrey} onClick={()=>window.open(mapSrc, '_blank')}>
 			<Typo type={TypographyType.h3} weight={TypoWeight.semiBold}  color={TypoColor.black}>Открыть в картах
 			</Typo>
 		</Button>

@@ -14,14 +14,12 @@ const Header: React.FC<HeaderProps> = ({
 	right = () => <div style={{visibility: 'hidden'}}/>,
 	middle = () => <div style={{visibility: 'hidden'}}/>,
 	...rest
-}) => {
-	return (
-		<header className="header" {...rest}>
-			{left && left()}
-			{middle && middle()}
-			{right && right()}
-		</header>
-	);
-}
+}) => (
+	<header className="header" {...rest}>
+		{left && left()}
+		{middle && middle()}
+		{right && right()}
+	</header>
+);
 
 export default Header;

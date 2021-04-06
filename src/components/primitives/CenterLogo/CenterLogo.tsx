@@ -3,7 +3,7 @@ import {IconSize, IconType} from '@components/primitives/Icon';
 import React from 'react';
 
 
-const CenterLogo = () => <div style={{height: 40}}>
+const CenterLogo: React.FC = () => <div style={{height: 40}}>
 	<IconCenter
 		size={IconSize.xxxl}
 		className="icon-center"

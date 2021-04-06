@@ -17,10 +17,10 @@ import BasePage from '@pages/BasePage';
 import IconCenter from '@components/primitives/Icon/Icon';
 import {IconSize, IconType} from '@components/primitives/Icon';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
-import {observer} from "mobx-react-lite";
-import {useLocalStore} from "../../mobx/hooks/useLocalStore";
-import UserStore from "../../mobx/local/UserStore/UserStore";
-import {UserCategory} from "../../mobx/local/UserStore/types";
+import {observer} from 'mobx-react-lite';
+import {useLocalStore} from '../../mobx/hooks/useLocalStore';
+import UserStore from '../../mobx/local/UserStore/UserStore';
+import {UserCategory} from '../../mobx/local/UserStore/types';
 
 export interface SignupValues {
 	name: '';
@@ -53,17 +53,17 @@ const SignupPage: React.FC = () => {
 
 
 	React.useEffect(()=>{
-		console.log('user effect',{user: store.user})
+		console.log('user effect',{user: store.user});
 		if(store.user.id !== -1){
 
 			if(store.user.type == UserCategory.client){
-				history.push('/places')
+				history.push('/places');
 			} else if(store.user.type === UserCategory.staff){
-				history.push('/staff')
+				history.push('/staff');
 			}
 
 		}
-	},[store.user])
+	},[store.user]);
 
 	const ContactUs = <Typo
 		block
@@ -76,54 +76,54 @@ const SignupPage: React.FC = () => {
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{body: () => <Formik
-				validationSchema={validationSchema}
-				initialValues={initialValues}
-				onSubmit={store.regUser}
-				render={(formikProps: FormikProps<SignupValues>) => <>
+			validationSchema={validationSchema}
+			initialValues={initialValues}
+			onSubmit={store.regUser}
+			render={(formikProps: FormikProps<SignupValues>) => <>
 
-					<Typo block type={TypographyType.h1}>Регистрация</Typo>
-					<Form>
-						<FormikInput
-							id="name"
-							title="Имя"
-							formikProps={formikProps}
-							placeholder="Введите свое имя"
-						/>
-						<FormikInput
-							id="email"
-							type="email"
-							title="Почта"
-							formikProps={formikProps}
-							placeholder="Введите свою почту"
-						/>
-						<FormikInput
-							id="password"
-							type="password"
-							title="Пароль"
-							formikProps={formikProps}
-							placeholder="Введите пароль"
-						/>
-						{/*<Typo*/}
-						{/*	block*/}
-						{/*	type={TypographyType.h6}*/}
-						{/*	color={TypoColor.darkGrey}*/}
-						{/*	textAlign={TypoTextAlign.center}*/}
-						{/*	verticalAlign={TypoVerticalAlign.baseline}*/}
-						{/*	style={{*/}
-						{/*		pointerEvents: 'none',*/}
-						{/*		cursor: 'not-allowed',*/}
-						{/*	}}*/}
-						{/*>*/}
-						{/*	Забыли пароль?*/}
-						{/*</Typo>*/}
-						<Button
-							full
-							buttonSize={ButtonSize.classic}
-							style={{margin: '13px 0'}}>Зарегистрироваться
-						</Button>
-					</Form>
-				</>}
-			/>}}
+				<Typo block type={TypographyType.h1}>Регистрация</Typo>
+				<Form>
+					<FormikInput
+						id="name"
+						title="Имя"
+						formikProps={formikProps}
+						placeholder="Введите свое имя"
+					/>
+					<FormikInput
+						id="email"
+						type="email"
+						title="Почта"
+						formikProps={formikProps}
+						placeholder="Введите свою почту"
+					/>
+					<FormikInput
+						id="password"
+						type="password"
+						title="Пароль"
+						formikProps={formikProps}
+						placeholder="Введите пароль"
+					/>
+					{/*<Typo*/}
+					{/*	block*/}
+					{/*	type={TypographyType.h6}*/}
+					{/*	color={TypoColor.darkGrey}*/}
+					{/*	textAlign={TypoTextAlign.center}*/}
+					{/*	verticalAlign={TypoVerticalAlign.baseline}*/}
+					{/*	style={{*/}
+					{/*		pointerEvents: 'none',*/}
+					{/*		cursor: 'not-allowed',*/}
+					{/*	}}*/}
+					{/*>*/}
+					{/*	Забыли пароль?*/}
+					{/*</Typo>*/}
+					<Button
+						full
+						buttonSize={ButtonSize.classic}
+						style={{margin: '13px 0'}}>Зарегистрироваться
+					</Button>
+				</Form>
+			</>}
+		/>}}
 		footerProps={{right: () => ContactUs}}
 	/>;
 };

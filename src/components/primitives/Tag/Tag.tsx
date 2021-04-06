@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './Tag.scss';
 import cn from 'classnames';
-import Typo, {TypoColor, TypographyType} from '@components/primitives/Typo';
 import {ButtonColor} from '@components/primitives/Button';
 
 type TagProps = {

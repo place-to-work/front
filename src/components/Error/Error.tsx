@@ -6,8 +6,6 @@ interface OwnProps {
 	message: string;
 }
 
-const Error: React.FC<OwnProps> = ({isShown, message}) => {
-	return isShown ? <Typo style={{color: 'red'}}>{message}</Typo> : <Typo/>;
-}
+const Error: React.FC<OwnProps> = ({isShown, message}) => isShown ? <Typo style={{color: 'red'}}>{message}</Typo> : <Typo/>;
 
 export default Error;

@@ -7,14 +7,14 @@ import Http from '@network/Http/Http';
 // import Header from "@components/a11y/Header";
 // import PageContainer from '@components/a11y/PageContainer';
 // import Main from '@components/a11y/Main';
-import {useHistory} from "react-router-dom";
-import BottomBar from "@components/a11y/BottomBar";
-import BasePage from "@pages/BasePage";
-import {IconLeft, IconSize} from "@components/primitives/Icon";
-import {useLocalStore} from "../../mobx/hooks/useLocalStore";
-import UserStore from "../../mobx/local/UserStore/UserStore";
-import Tag from "@components/primitives/Tag";
-import Button, {ButtonColor} from "@components/primitives/Button";
+import {useHistory} from 'react-router-dom';
+import BottomBar from '@components/a11y/BottomBar';
+import BasePage from '@pages/BasePage';
+import {IconLeft, IconSize} from '@components/primitives/Icon';
+import {useLocalStore} from '../../mobx/hooks/useLocalStore';
+import UserStore from '../../mobx/local/UserStore/UserStore';
+import Tag from '@components/primitives/Tag';
+import Button, {ButtonColor} from '@components/primitives/Button';
 
 
 const CafeListPage: React.FC = () => {
@@ -27,16 +27,16 @@ const CafeListPage: React.FC = () => {
 			path: '/places/',
 		})
 			.then((r) => {
-				if(!r.ok){
-					console.log('response',{r})
-					history.push('/auth')
-					return null
+				if (!r.ok) {
+					console.log('response', {r});
+					history.push('/auth');
+					return null;
 				}
 				r.json().then(((data) => {
-					if(!data || !Array.isArray(data)){
+					if (!data || !Array.isArray(data)) {
 						return null;
 					}
-					console.log('effect list', {data})
+					console.log('effect list', {data});
 					data?.forEach((el) => {
 						setCafesState((old) => [...old, {
 							id: el.id,
@@ -50,52 +50,59 @@ const CafeListPage: React.FC = () => {
 							electricity: el['power_socket'],
 							quiet: el.silence,
 							light: el.light,
-							time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] &&`${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
+							time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] && `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
 							workLoad: el['work_places'],
-							mapSrc: (el.address || el['full_name'] || el['short_name'] )&& `https://yandex.ru/maps/213/moscow/search/${el.address || el['full_name'] || el['short_name']}`
+							mapSrc: (el.address || el['full_name'] || el['short_name']) && `https://yandex.ru/maps/213/moscow/search/${el.address || el['full_name'] || el['short_name']}`,
 						} as CafeCardProps]);
 					});
 				}));
 			})
-			.catch(()=>setCafesState(null));
+			.catch(() => setCafesState(null));
 	}, []);
-
-
-
-
-
 
 
 	const history = useHistory();
 	const store = useLocalStore(() => new UserStore());
-	const cafesMemo = React.useMemo(()=>cafesState.map((cafe: CafeCardProps, index: number) => <CafeCard {...cafe}  key={index}/>),[cafesState])
+	const cafesMemo = React.useMemo(() => cafesState.map((cafe: CafeCardProps, index: number) => (
+		<CafeCard {...cafe} key={index}/>
+	)), [cafesState]);
 
-	React.useEffect(()=>{
+	React.useEffect(() => {
 		store.fetchUser();
-	},[])
-	React.useEffect(()=>{
-		console.log('list user111111', store.user)
-	},[store.user])
+	}, []);
+	React.useEffect(() => {
+		console.log('list user111111', store.user);
+	}, [store.user]);
 
- 	return (<BasePage
-		headerProps={{left:()=><IconLeft size={IconSize.xl}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>} }
+	return (<BasePage
+		headerProps={{
+			left: () => <IconLeft size={IconSize.xl}/>,
+			right: () => <Tag color={ButtonColor.grey} onClick={() => history.push('/in-place')}><Typo
+				type={TypographyType.h5} style={{width: '100%'}} textAlign={TypoTextAlign.center}>Я в
+				кофейне</Typo></Tag>,
+		}}
 		footerProps={{}} mainProps={{
-		body: () =><>
-			{cafesState !== null && <Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>}
-			<div>
-				{cafesMemo}
-			</div>
-			{cafesState === null && <>
-				<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>Технические работы</Typo>
-				<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои извинения.</Typo>
+			body: () => <>
+				{cafesState !== null &&
+			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все
+				заведения</Typo>}
+				<div>
+					{cafesMemo}
+				</div>
+				{cafesState === null && <>
+					<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>Технические
+					работы</Typo>
+					<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои
+					извинения.</Typo>
 
-				<Button onClick={()=>history.push('/login')} full color={ButtonColor.accent}>Попробовать заново</Button>
-			</> }
+					<Button onClick={() => history.push('/login')} full color={ButtonColor.accent}>Попробовать
+					заново</Button>
+				</>}
 
 
-			<BottomBar />
-		</>
-	}}/>);
+				<BottomBar/>
+			</>,
+		}}/>);
 };
 
 export default observer(CafeListPage);

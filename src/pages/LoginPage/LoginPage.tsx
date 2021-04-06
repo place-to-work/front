@@ -8,10 +8,10 @@ import {Form, Formik, FormikProps} from 'formik';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
-import {useLocalStore} from "../../mobx/hooks/useLocalStore";
-import UserStore from "../../mobx/local/UserStore/UserStore";
-import {UserCategory} from "../../mobx/local/UserStore/types";
-import {observer} from "mobx-react-lite";
+import {useLocalStore} from '../../mobx/hooks/useLocalStore';
+import UserStore from '../../mobx/local/UserStore/UserStore';
+import {UserCategory} from '../../mobx/local/UserStore/types';
+import {observer} from 'mobx-react-lite';
 
 
 export interface LoginValues {
@@ -39,7 +39,7 @@ const LoginPage: React.FC = () => {
 
 	React.useEffect(()=>{
 		store.fetchUser();
-	},[])
+	},[]);
 
 	const ContactUs = <Typo
 		block
@@ -51,18 +51,18 @@ const LoginPage: React.FC = () => {
 
 
 	React.useEffect(()=>{
-		console.log('user effect login',{user: store.user})
+		console.log('user effect login',{user: store.user});
 		if(store.user.id !== -1){
 
 			if(store.user.type == UserCategory.client){
-				history.push('/places')
+				history.push('/places');
 			} else if(store.user.type === UserCategory.staff){
 				// history.push('/places')
 				// window.close();
 			}
 
 		}
-	},[store.user.id, store.user.type])
+	},[store.user.id, store.user.type]);
 
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}

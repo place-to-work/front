@@ -6,29 +6,28 @@ export type Meta = {
 };
 
 export const getLoadingStartMeta = (): Meta => ({
-    isLoading: true,
-    isError: false,
-    isLoaded: false
+	isLoading: true,
+	isError: false,
+	isLoaded: false
 });
 
 export const getLoadedErrorMeta = (message?: string): Meta => ({
-    isLoading: false,
-    isError: true,
-    isLoaded: false,
-    message
+	isLoading: false,
+	isError: true,
+	isLoaded: false,
+	message
 });
 
 export const getLoadedSuccessMeta = (): Meta => ({
-    isLoading: false,
-    isError: false,
-    isLoaded: true
+	isLoading: false,
+	isError: false,
+	isLoaded: true
 });
 
 export const getInitialMetaState = (): Meta => ({
-    isLoading: false,
-    isError: false,
-    isLoaded: false
+	isLoading: false,
+	isError: false,
+	isLoaded: false
 });
 
-export const isInitialMetaState = (meta: Meta): boolean =>
-    !meta.isLoading && !meta.isLoaded && !meta.isError;
+export const isInitialMetaState = (meta: Meta): boolean => !meta.isLoading && !meta.isLoaded && !meta.isError;

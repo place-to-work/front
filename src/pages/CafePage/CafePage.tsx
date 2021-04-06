@@ -3,13 +3,13 @@ import {useHistory, useParams} from 'react-router-dom';
 import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 import './CafePage.scss';
-import BasePage from "@pages/BasePage";
-import {BackIcon, IconSize} from "@components/primitives/Icon";
-import DetailedInfo from "@components/DetailedInfo";
-import {observer} from "mobx-react-lite";
-import Tag from "@components/primitives/Tag";
-import {ButtonColor} from "@components/primitives/Button";
-import Typo, {TypographyType, TypoTextAlign} from "@components/primitives/Typo";
+import BasePage from '@pages/BasePage';
+import {BackIcon, IconSize} from '@components/primitives/Icon';
+import DetailedInfo from '@components/DetailedInfo';
+import {observer} from 'mobx-react-lite';
+import Tag from '@components/primitives/Tag';
+import {ButtonColor} from '@components/primitives/Button';
+import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{id}>();
@@ -22,7 +22,7 @@ const CafePage: React.FC = () => {
 		})
 			.then((r)=> {
 				r.json().then(((data)=>{
-					console.log('data', data)
+					console.log('data', data);
 					setCafe(
 						{
 							id: data.id,
@@ -51,12 +51,12 @@ const CafePage: React.FC = () => {
 	return (<BasePage
 		headerProps={{left:()=> <BackIcon size={IconSize.m} onClick={()=>history.push('/places')}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>}}
 		mainProps={{
-		body:()=><>
-			<div className="cafe-page">
-				{cafe && <DetailedInfo {...cafe} />}
-			</div>
-		</>
-		}}/>)
+			body:()=><>
+				<div className="cafe-page">
+					{cafe && <DetailedInfo {...cafe} />}
+				</div>
+			</>
+		}}/>);
 };
 
 export default observer(CafePage);

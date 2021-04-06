@@ -6,7 +6,7 @@ import Separator from '@components/primitives/Separator';
 import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';
 import {useHistory} from 'react-router-dom';
-import cn from "classnames";
+import cn from 'classnames';
 
 export type CafeCardProps = {
 	id?: string;
@@ -32,7 +32,7 @@ export type CafeCardProps = {
 	className?: string;
 };
 
-const QUIET_PLACE = ['тихо','спокойно','тихонечко','клуб немых']
+const QUIET_PLACE = ['тихо','спокойно','тихонечко','клуб немых'];
 const CafeCard: React.FC<CafeCardProps> = (
 	{
 		id,
@@ -49,7 +49,7 @@ const CafeCard: React.FC<CafeCardProps> = (
 	const history = useHistory();
 	return(
 
-		<div className={cn("cafe-card", className)} style={{cursor: 'pointer'}} onClick={()=>{
+		<div className={cn('cafe-card', className)} style={{cursor: 'pointer'}} onClick={()=>{
 			if(id){
 				history.push(`/place/${id}`);
 			}

@@ -49,7 +49,7 @@ const Button: React.FC<ButtonProps> = ({
 	buttonSize = ButtonSize.xl,
 	color = ButtonColor.accent,
 	withBorder = true,
-										   withWrapper = false,
+	withWrapper = false,
 	className,
 	children,
 	...extraProps

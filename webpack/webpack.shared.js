@@ -4,22 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const styleRules = {
 	test: /\.((c|sa|sc)ss)$/i,
-	use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-};
-
-const eslintLoader = {
-	test: /\.(js|ts)x?$/,
-	exclude: /(node_modules)/,
-	loader: 'eslint-loader',
-	include: paths.src,
-	enforce: 'pre',
-	options: {
-		fix: true,
-		emitError: true,
-		emitWarning: true
-	},
+	use: [
+		'css-loader',
+		...(isDev ? [] :  ['postcss-loader']),
+		'sass-loader',
+	],
 };
 
 const codeRules = {
@@ -58,9 +51,6 @@ const aliases = {
 };
 
 module.exports = {
-	optimization: {
-		minimize: true,
-	},
 	mode: process.env.NODE_ENV,
 	entry: paths.entryPath,
 	output: {
@@ -70,13 +60,6 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: aliases,
-	},
-	devServer: {
-		historyApiFallback: true,
-		contentBase: paths.outputPath,
-		compress: true,
-		port: 2021,
-		open: true,
 	},
 	devtool: 'eval',
 	module: {
@@ -92,8 +75,6 @@ module.exports = {
 			template: paths.htmlPath,
 			inject: 'body',
 		}),
-		new MiniCssExtractPlugin(),
-
 		new WebpackPwaManifest({
 			name: 'Рабочее место',
 			short_name: 'Place to work',
