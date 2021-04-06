@@ -2,7 +2,7 @@ name: deploy
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   check-bats-version:
     runs-on: ubuntu-20.04
