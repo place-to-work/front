@@ -42,7 +42,7 @@ const arrowSvgPaths = {
 	)
 };
 
-const ArrowDirIcon: React.FC = ({
+const ArrowDirIcon: React.FC<ArrowDirIconProps> = ({
 	dir = ArrowDir.left,
 	className,
 	view = ArrowView.common,

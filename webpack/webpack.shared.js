@@ -9,6 +9,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const styleRules = {
 	test: /\.((c|sa|sc)ss)$/i,
 	use: [
+		MiniCssExtractPlugin.loader,
 		'css-loader',
 		...(isDev ? [] :  ['postcss-loader']),
 		'sass-loader',
@@ -71,6 +72,7 @@ module.exports = {
 
 	},
 	plugins: [
+		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
 			template: paths.htmlPath,
 			inject: 'body',
