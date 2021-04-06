@@ -8,9 +8,14 @@ jobs:
 #      - uses: actions/setup-node@v1
 #      - run: npm install
 #      - run: npm run dev-build
-      - run: echo "qwer-ty" > public
-      - run: mkdir ~/.ssh
-      - run: touch ~/.ssh/.rsa_pub
-      - run: echo -ne '${{secrets.ID_RSA_PUB}}' > ~/.ssh/rsa_pub
-      - run: scp -i ~/.ssh/rsa_pub ./public root@37.228.117.174:~/public
+      - run: mkdir ~/public
+      - run: echo "qwer-ty" > ~/public/qwer.txt
+      - name: Publish
+        uses: nogsantos/scp-deploy@master
+        with:
+          src: ./dist/*
+          host: ${{ secrets.SSH_HOST }}
+          remote: ${{ secrets.SSH_DIR }}
+          key: ${{ secrets.SSH_RSA }}
+          user: ${{ secrets.SSH_USER }}
 
