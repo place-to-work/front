@@ -4,10 +4,10 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-20.04
     steps:
-      - env:
-          id_rsa_pub: ${{ secrets.ID_RSA_PUB }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - env:
+          id_rsa_pub: ${{ secrets.ID_RSA_PUB }}
       - run: echo "$ID_RSA_PUB"
       - run: npm install
       - run: npm run dev-build
