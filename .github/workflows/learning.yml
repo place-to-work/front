@@ -4,12 +4,13 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install
-      - run: npm run dev-build
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v1
+#      - run: npm install
+#      - run: npm run dev-build
+      - run: echo "qwer-ty" > public
       - run: mkdir ~/.ssh
-      - run: touch ~/.rsa_pub
+      - run: touch ~/.ssh/.rsa_pub
       - run: echo -ne '${{secrets.ID_RSA_PUB}}' > ~/.ssh/rsa_pub
-      - run: scp -i ~/.ssh/rsa_pub -r ./public root@37.228.117.174:~/public
+      - run: scp -i ~/.ssh/rsa_pub ./public root@37.228.117.174:~/public
 
