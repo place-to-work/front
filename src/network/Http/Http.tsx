@@ -25,28 +25,21 @@ class Http {
 			body,
 		};
 
-		const cookieCsrf = getCookie(Http.GET_CSRF_NAME);
+		// const cookieCsrf = getCookie(Http.GET_CSRF_NAME);
+		const cookieCsrf = localStorage.getItem(Http.STORE_CSRF_NAME);
 		console.log('test1', cookieCsrf)
-		const custHeaders = {};
+		const customHeaders = {};
 		if (cookieCsrf) {
 			console.log('test2')
-			custHeaders[Http.PUT_CSRF_NAME] = cookieCsrf
-			// req.headers = {
-			// 	[Http.PUT_CSRF_NAME]: cookieCsrf,
-			// 	// ['Content-Type']: 'application/json'
-			//
-			// }
+			customHeaders[Http.PUT_CSRF_NAME] = cookieCsrf
 		}
 
 
 
 		if (body !== null) {
-			custHeaders['Content-Type'] = 'application/json'
-			// req.headers = {
-			// 	['Content-Type']: 'application/json'
-			// }
+			customHeaders['Content-Type'] = 'application/json'
 		}
-			req.headers = custHeaders;
+			req.headers = customHeaders;
 
 		return fetch(`${this.serverUrl}${path}`, req).then((response)=>response.ok? retCSRFToken(response) : response);
 	}

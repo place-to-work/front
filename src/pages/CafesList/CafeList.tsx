@@ -14,12 +14,12 @@ import {IconLeft, IconSize} from "@components/primitives/Icon";
 import {useLocalStore} from "../../mobx/hooks/useLocalStore";
 import UserStore from "../../mobx/local/UserStore/UserStore";
 import Tag from "@components/primitives/Tag";
-import {ButtonColor} from "@components/primitives/Button";
+import Button, {ButtonColor} from "@components/primitives/Button";
 
 
 const CafeListPage: React.FC = () => {
 
-	const [cafesState, setCafesState] = React.useState<CafeCardProps[]>([]);
+	const [cafesState, setCafesState] = React.useState<CafeCardProps[] | null>([]);
 
 
 	React.useEffect(() => {
@@ -27,10 +27,16 @@ const CafeListPage: React.FC = () => {
 			path: '/places/',
 		})
 			.then((r) => {
+				if(!r.ok){
+					console.log('response',{r})
+					history.push('/auth')
+					return null
+				}
 				r.json().then(((data) => {
-					if(!data){
+					if(!data || !Array.isArray(data)){
 						return null;
 					}
+					console.log('effect list', {data})
 					data?.forEach((el) => {
 						setCafesState((old) => [...old, {
 							id: el.id,
@@ -51,7 +57,7 @@ const CafeListPage: React.FC = () => {
 					});
 				}));
 			})
-			.catch(console.log);
+			.catch(()=>setCafesState(null));
 	}, []);
 
 
@@ -75,10 +81,16 @@ const CafeListPage: React.FC = () => {
 		headerProps={{left:()=><IconLeft size={IconSize.xl}/>, right: ()=><Tag color={ButtonColor.grey} onClick={()=>history.push('/in-place')}><Typo type={TypographyType.h5} style={{width:'100%'}}textAlign={TypoTextAlign.center}>Я в кофейне</Typo></Tag>} }
 		footerProps={{}} mainProps={{
 		body: () =><>
-			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>
-			<div >
+			{cafesState !== null && <Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все заведения</Typo>}
+			<div>
 				{cafesMemo}
 			</div>
+			{cafesState === null && <>
+				<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>Технические работы</Typo>
+				<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои извинения.</Typo>
+
+				<Button onClick={()=>history.push('/login')} full color={ButtonColor.accent}>Попробовать заново</Button>
+			</> }
 
 
 			<BottomBar />
