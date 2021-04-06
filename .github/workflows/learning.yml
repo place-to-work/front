@@ -8,6 +8,6 @@ jobs:
       - uses: actions/setup-node@v1
       - run: echo "$ID_RSA_PUB"
         env:
-          id_rsa_pub: ${{ secrets.ID_RSA_PUB }}
+          ID_RSA_PUB: ${{ secrets.ID_RSA_PUB }}
       - run: npm install
       - run: npm run dev-build
