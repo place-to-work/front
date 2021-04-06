@@ -13,7 +13,7 @@ jobs:
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
-          src: ./public/*
+          src: ~/public/*
           host: ${{ secrets.SSH_HOST }}
           remote: ${{ secrets.SSH_DIR }}
           key: ${{ secrets.SSH_RSA }}
