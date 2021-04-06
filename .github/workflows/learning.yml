@@ -9,3 +9,4 @@ jobs:
       - run: npm install
       - run: npm run dev-build
       - run: scp -r ./public -i ${{secrets.ID_RSA_PUB}} root@37.228.117.174:~/public
+
