@@ -40,13 +40,6 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	}, []);
 	const store = useLocalStore(() => new UserStore());
 
-	React.useEffect(() => {
-		if (store.user.id < 0) {
-
-		}
-	});
-
-
 	console.log(JSON.stringify(store, null, 4));
 	const date = new Date(store.user.subscribeDate);
 	console.log(`date = ${date}`);
