@@ -1,0 +1,35 @@
+@import "../../components/scss/variables";
+
+%qr-code-card__background-shared {
+  background-color: $global-color-grey-accent;
+  border-radius: 12px;
+  margin: 0 auto;
+  transition: .7s ease-out;
+  max-width: 360px;
+  max-height: 360px;
+  padding: 5.5%;
+}
+
+%qr-code-card__inner {
+  width: 100%;
+  height: 100%;
+}
+
+.qr-code-card {
+  @extend %qr-code-card__inner;
+
+  &__background {
+    @extend %qr-code-card__background-shared;
+
+    &-rotated {
+      @extend %qr-code-card__background-shared;
+      transform: rotateY(0.5turn) scaleX(-1);
+    }
+  }
+
+  &__foreground {
+    padding: 5.8%;
+    @extend %qr-code-card__inner;
+    background-color: $global-color-white;
+  }
+}

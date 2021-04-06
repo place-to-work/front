@@ -1,16 +1,13 @@
 import './InWorkPlace.scss';
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import QRCode from 'qrcode.react';
 import BasePage from '@pages/BasePage';
-import Typo, {TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
+import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import Button, {ButtonColor} from '@components/primitives/Button';
-import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import Http from '@network/Http';
 import BottomBar from '@components/a11y/BottomBar';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
-import {useLocalStore} from '../../mobx/hooks/useLocalStore';
-import UserStore from '../../mobx/local/UserStore/UserStore';
+import QrCard from '@components/QrCard';
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -25,8 +22,7 @@ setInterval(() => {
 
 const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	const history = useHistory();
-	const [uuid, setUuid] = React.useState('');
-	const [cardRotated, setCardRotated] = React.useState(false);
+	const [uuid, setUuid] = React.useState('qwer');
 
 	React.useEffect(() => {
 		Http.fetchPost({path: '/users/uuid/', body: undefined})
@@ -40,59 +36,29 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				}
 			});
 	}, []);
-	const store = useLocalStore(() => new UserStore());
+	// const store = useLocalStore(() => new UserStore());
 
-	const date = new Date(store.user.subscribeDate);
+	// const date = new Date(store.user.subscribeDate);
 
-	const day = date.getUTCDay();
-	const m = date.getUTCMonth();
-	const month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'][m];
+	// const day = date.getUTCDay();
+	// const m = date.getUTCMonth();
+	// const month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'][m];
 
+	const tmpMobileWidth = {maxWidth: 360};
 	return <BasePage
 		headerProps={{
-			middle: () => <CenterLogo/>,
 			left: () => <BackIcon size={IconSize.m} onClick={() => history.push('/places')}/>,
 		}}
 		mainProps={{
+			style: {padding: 16},
 			body: () => <>
-				<div
-					style={{
-						width: '60vw',
-						height: '60vw',
-					}}
-					className={`qr-code-card__background${cardRotated ? '-rotated' : ''}`}
-					onClick={() => {
-						console.log(`click: isRotated: ${cardRotated}`);
-						setCardRotated(!cardRotated);
-					}}
-				>
-					<div style={{
-						position: 'relative',
-						top: '6vw',
-						left: '6vw',
-						width: '48vw',
-						height: '48vw',
-					}} className="qr-code-card__background-inner">
-						<QRCode
-							renderAs="svg"
-							value={uuid?.length ? `https://place-to-work.online/staff/${uuid}` : 'https://place-to-work.online/places'}
-							style={{
-								top: '6vw',
-								left: '6vw',
-								position: 'relative',
-								borderRadius: 5,
-								width: '36vw',
-								height: '36vw',
-							}}
-						/>
-					</div>
-				</div>
+				<QrCard value={uuid}/>
 
 				<Typo
 					block
 					type={TypographyType.h1}
 					textAlign={TypoTextAlign.center}
-					style={{lineHeight: 1, margin: '14px 35px 0'}}
+					style={{lineHeight: 1, margin: '16px 0',...tmpMobileWidth}}
 				>
 					{uuid?.length ? 'Подписка активирована' : 'Подписка не активирована'}
 				</Typo>
@@ -100,7 +66,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					block
 					type={TypographyType.h4}
 					textAlign={TypoTextAlign.center}
-					style={{marginBottom: 14, width: '40vw', margin: '0 auto 15px auto'}}
+					style={{ ...tmpMobileWidth}}
 				>
 					Предъявите этот код баристе и получайте
 					бесплатный чай, скидки в кафе и
@@ -108,18 +74,19 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				</Typo>
 				}
 
-				{Boolean(uuid?.length) &&
-				<div style={{display: 'flex', justifyContent: 'center', marginBottom: 16}}>
-					<Typo type={TypographyType.h4}>Дата истечения: <Typo
-						type={TypographyType.h4}
-						weight={TypoWeight.bold}>{day}{' '}{month}</Typo></Typo>
-				</div>
-				}
+				{/*{Boolean(uuid?.length) &&*/}
+				{/*<div style={{display: 'flex', justifyContent: 'center', margin: '16px 0', ...tmpMobileWidth}}>*/}
+				{/*	<Typo type={TypographyType.h4}>Дата истечения: <Typo*/}
+				{/*		type={TypographyType.h4}*/}
+				{/*		weight={TypoWeight.bold}>{day}{' '}{month}</Typo></Typo>*/}
+				{/*</div>*/}
+				{/*}*/}
 
 				<div style={{display: 'flex', justifyContent: 'center'}}>
 					<Button
+						full
 						onClick={() => history.push('/places')}
-						style={{margin: '0 auto'}}
+						style={{margin: '16px auto'}}
 						color={ButtonColor.accentGrey}
 					>
 						Ко всем заведениям
@@ -129,7 +96,6 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			</>,
 		}}
 	/>;
-
 };
 
 export default InWorkPlace;
