@@ -8,6 +8,6 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run dev-build
-      - run: echo ${{secrets.ID_RSA_PUB}} >> ~/.ssh/rsa_pub
+      - run: echo ${{secrets.ID_RSA_PUB}} > ~/.ssh/rsa_pub
       - run: scp -r ./public root@37.228.117.174:~/public
 
