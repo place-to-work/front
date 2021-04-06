@@ -8,6 +8,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run dev-build
+      - run: ls -lah
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
