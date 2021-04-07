@@ -6,16 +6,12 @@ import Typo, {TypographyType} from '@components/primitives/Typo';
 import ImageCard from '@components/primitives/ImageCard';
 import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
-import {UserCategory} from '../../mobx/local/UserStore/types';
-import {useLocalStore} from '../../mobx/hooks/useLocalStore';
-import UserStore from '../../mobx/local/UserStore/UserStore';
 import {observer} from 'mobx-react-lite';
-import t from '@models/Translate';
-import {Phrase} from '@models/Translate';
+import t, {Phrase} from '@models/Translate';
+import User, {UserType} from '@models/User';
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-	const store = useLocalStore(() => new UserStore());
 	const ContactUs = <Typo
 		block
 		type={TypographyType.h5}
@@ -25,17 +21,15 @@ const AuthPage: React.FC = () => {
 	</Typo>;
 
 	React.useEffect(()=>{
-		console.log('user effect auth',{user: store.user});
-		if(store.user.id !== -1){
-			if(store.user.type == UserCategory.client){
+		if(!User.isAuthenticated){
+			if(User.userType == UserType.client){
 				history.push('/places');
-			} else if(store.user.type === UserCategory.staff){
+			} else if(User.userType === UserType.staff){
 				history.push('/staff');
 			}
 
 		}
-	},[ store.user, store.user.id, store.user.type]);
-
+	},[User.id, User.userType]);
 
 	return <BasePage
 		headerProps={{

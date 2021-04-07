@@ -5,45 +5,24 @@ import Typo, {TypographyType, TypoTextAlign, TypoWeight} from '@components/primi
 import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 import SubscriptionMain from '@pages/SubscriptionMain/SubscriptionMain';
 import cn from 'classnames';
-import {useLocalStore} from '../../../mobx/hooks/useLocalStore';
-import UserStore from '../../../mobx/local/UserStore/UserStore';
 import {observer} from 'mobx-react-lite';
-
-type Props = {
-    // opened: boolean;
-    // setOpened:  Dispatch<SetStateAction<boolean>>
-}
-
-// function isDateBeforeToday(date: Date) {
-// 	const today = new Date();
-// 	console.log(date, today );
-//
-// 	return date >= today;
-// }
+import User from '@models/User';
 
 
-const BottomBar:FC<Props> = ()=>{
-	const store = useLocalStore(() => new UserStore());
 
-	React.useEffect(()=>{
-		store.fetchUser();
-	},[]);
+const BottomBar:FC = ()=>{
 
 	const [showBlock, setShowBlock] = React.useState<boolean | null>(null);
 
 	React.useEffect(()=>{
-		console.log('sub', store.user.hasSubscribe, store.user.name);
-		if(store.user.hasSubscribe === false){
+		if(User.isSubscribed === false){
 			setShowBlock(true);
 		} else{
 			setShowBlock(false);
 		}
-
-	},[store.user.hasSubscribe, store.user.name]);
+	},[User.isSubscribed, User.id]);
 
 	const [full, setFull] = useState(false);
-
-
 
 	const handleReBuild = React.useCallback(() => {
 		setShowBlock(false);
@@ -64,8 +43,8 @@ const BottomBar:FC<Props> = ()=>{
 	return showBlock === null ? null :<div className={`container ${showBlock && 'container_opened' }`}>
 		<Collapse className="bottom-bar" opened={showBlock}>
 			<div className={cn('bottom-bar__content')}>
-				<span>{store.user.hasSubscribe}</span>
-				<span>{store.user.hasSubscribe}</span>
+				<span>{User.isSubscribed}</span>
+				<span>{User.isSubscribed}</span>
 				{!full ? <>
 					<Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>Чтобы
                             увидеть все заведения&nbsp;&mdash; оформите подписку</Typo>

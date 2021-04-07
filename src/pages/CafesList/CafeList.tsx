@@ -3,15 +3,10 @@ import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import './CafeList.scss';
 import Http from '@network/Http/Http';
-// import Header from "@components/a11y/Header";
-// import PageContainer from '@components/a11y/PageContainer';
-// import Main from '@components/a11y/Main';
 import {useHistory} from 'react-router-dom';
 import BottomBar from '@components/a11y/BottomBar';
 import BasePage from '@pages/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
-import {useLocalStore} from '../../mobx/hooks/useLocalStore';
-import UserStore from '../../mobx/local/UserStore/UserStore';
 import Tag from '@components/primitives/Tag';
 import Button, {ButtonColor} from '@components/primitives/Button';
 import t, {Phrase} from '@models/Translate';
@@ -21,7 +16,6 @@ import {observer} from 'mobx-react-lite';
 const CafeListPage: React.FC = () => {
 
 	const [cafesState, setCafesState] = React.useState<CafeCardProps[] | null>([]);
-
 
 	React.useEffect(() => {
 		Http.fetchGet({
@@ -63,17 +57,9 @@ const CafeListPage: React.FC = () => {
 
 
 	const history = useHistory();
-	const store = useLocalStore(() => new UserStore());
 	const cafesMemo = React.useMemo(() => cafesState.map((cafe: CafeCardProps, index: number) => (
 		<CafeCard {...cafe} key={index}/>
 	)), [cafesState]);
-
-	React.useEffect(() => {
-		store.fetchUser();
-	}, []);
-	React.useEffect(() => {
-		console.log('list user111111', store.user);
-	}, [store.user]);
 
 	return (<BasePage
 		headerProps={{

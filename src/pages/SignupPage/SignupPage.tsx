@@ -9,10 +9,8 @@ import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import {observer} from 'mobx-react-lite';
-import {useLocalStore} from '../../mobx/hooks/useLocalStore';
-import UserStore from '../../mobx/local/UserStore/UserStore';
-import {UserCategory} from '../../mobx/local/UserStore/types';
 import t, {Phrase} from '@models/Translate';
+import User from '@models/User';
 
 export interface SignupValues {
 	name: '';
@@ -41,21 +39,11 @@ const validationSchema = Yup.object().shape({
 const SignupPage: React.FC = () => {
 	const history = useHistory();
 
-	const store = useLocalStore(() => new UserStore());
-
-
 	React.useEffect(()=>{
-		console.log('user effect',{user: store.user});
-		if(store.user.id !== -1){
-
-			if(store.user.type == UserCategory.client){
-				history.push('/places');
-			} else if(store.user.type === UserCategory.staff){
-				history.push('/staff');
-			}
-
+		if(User.isAuthenticated){
+			history.push('/places');
 		}
-	},[store.user]);
+	},[User.id]);
 
 	const ContactUs = <Typo
 		block
@@ -70,7 +58,7 @@ const SignupPage: React.FC = () => {
 		mainProps={{body: () => <Formik
 			validationSchema={validationSchema}
 			initialValues={initialValues}
-			onSubmit={store.regUser}
+			onSubmit={User.register}
 			render={(formikProps: FormikProps<SignupValues>) => <>
 
 				<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>
