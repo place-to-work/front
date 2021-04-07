@@ -6,7 +6,7 @@ import {Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import Http from '@network/Http/Http';
-import {useHistory} from 'react-router-dom';
+import t, {Phrase} from '@models/Translate';
 
 interface PromoValues {
 	promo: '';
@@ -30,8 +30,6 @@ function openTab(url) {
 }
 
 const SubscriptionMainPage: React.FC = () => {
-
-	const history = useHistory();
 	const [url, setUrl] = React.useState<string | null>(null);
 
 	React.useEffect(() => {
@@ -66,7 +64,7 @@ const SubscriptionMainPage: React.FC = () => {
 					textAlign={TypoTextAlign.center}
 					className="subscription-page_title"
 				>
-						Оформление
+					{t(Phrase.subscribeVerb)}
 				</Typo>
 				<Typo
 					block
@@ -74,7 +72,7 @@ const SubscriptionMainPage: React.FC = () => {
 					textAlign={TypoTextAlign.center}
 					className="subscription-page_title"
 				>
-						подписки
+					{t(Phrase.subscribeNoun)}
 				</Typo>
 			</Typo>
 
@@ -98,7 +96,9 @@ const SubscriptionMainPage: React.FC = () => {
 								buttonSize={ButtonSize.xl}
 								full
 								onClick={() => console.log('click')}
-								style={{margin: '13px 0'}}>Оплатить
+								style={{margin: '13px 0'}}
+							>
+								{t(Phrase.pay)}
 							</Button>
 							{/*<Typo textAlign={TypoTextAlign.center} style={{width:'100%'}} type={TypographyType.h4} color={TypoColor.darkGrey}>Продолжить без подписки</Typo>*/}
 

@@ -1,4 +1,3 @@
-import {observer} from 'mobx-react-lite';
 import React from 'react';
 import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
@@ -15,6 +14,8 @@ import {useLocalStore} from '../../mobx/hooks/useLocalStore';
 import UserStore from '../../mobx/local/UserStore/UserStore';
 import Tag from '@components/primitives/Tag';
 import Button, {ButtonColor} from '@components/primitives/Button';
+import t, {Phrase} from '@models/Translate';
+import {observer} from 'mobx-react-lite';
 
 
 const CafeListPage: React.FC = () => {
@@ -77,29 +78,32 @@ const CafeListPage: React.FC = () => {
 	return (<BasePage
 		headerProps={{
 			left: () => <IconLeft size={IconSize.xl}/>,
-			right: () => <Tag color={ButtonColor.grey} onClick={() => history.push('/in-place')}><Typo
-				type={TypographyType.h5} style={{width: '100%'}} textAlign={TypoTextAlign.center}>Я в
-				кофейне</Typo></Tag>,
+			right: () => <Tag color={ButtonColor.grey} onClick={() => history.push('/in-place')}>
+				<Typo type={TypographyType.h5} style={{width: '100%'}} textAlign={TypoTextAlign.center}>
+					{t(Phrase.ImInWorkPlace)}
+				</Typo></Tag>,
 		}}
 		footerProps={{}} mainProps={{
 			body: () => <>
 				{cafesState !== null &&
-			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>Все
-				заведения</Typo>}
+			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>
+				{t(Phrase.allPlaces)}
+			</Typo>}
 				<div>
 					{cafesMemo}
 				</div>
 				{cafesState === null && <>
-					<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>Технические
-					работы</Typo>
-					<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>Приносим свои
-					извинения.</Typo>
+					<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>
+						{t(Phrase.technicalWork)}
+					</Typo>
+					<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>
+						{t(Phrase.apologize)}
+					</Typo>
 
-					<Button onClick={() => history.push('/login')} full color={ButtonColor.accent}>Попробовать
-					заново</Button>
+					<Button onClick={() => history.push('/login')} full color={ButtonColor.accent}>
+						{t(Phrase.tryAgain)}
+					</Button>
 				</>}
-
-
 				<BottomBar/>
 			</>,
 		}}/>);

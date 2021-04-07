@@ -10,16 +10,11 @@ import {BackIcon, IconSize} from '@components/primitives/Icon';
 import QrCard from '@components/QrCard';
 import {useLocalStore} from 'mobx-react-lite';
 import UserStore from '../../mobx/local/UserStore/UserStore';
+import t, {Phrase} from '@models/Translate';
 
 interface InWorkPlaceProps {
 	qrValue: string;
 }
-
-let dots = 0;
-setInterval(() => {
-	dots += 1;
-	dots %= 3;
-}, 500);
 
 
 const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
@@ -45,8 +40,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	console.log(`date = ${date}`);
 	const day = date.getDate();
 	console.log(`day = ${day}`);
-	const m = date.getMonth();
-	const month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'][m];
+	const month = date.getMonth();
 
 	const tmpMobileWidth = {maxWidth: 360};
 	return <BasePage
@@ -64,7 +58,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					textAlign={TypoTextAlign.center}
 					style={{lineHeight: 1, margin: '16px 0',...tmpMobileWidth}}
 				>
-					{uuid?.length ? 'Подписка активирована' : 'Подписка не активирована'}
+					{uuid?.length ? t(Phrase.subscriptionActivated) : t(Phrase.subscriptionNotActivated)}
 				</Typo>
 				{Boolean(uuid?.length) && <Typo
 					block
@@ -72,17 +66,15 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					textAlign={TypoTextAlign.center}
 					style={{ ...tmpMobileWidth}}
 				>
-					Предъявите этот код баристе и получайте
-					бесплатный чай, скидки в кафе и
-					неограниченный доступ в рабочие пространства
+					{t(Phrase.showQrSuggestion)}
 				</Typo>
 				}
 
 				{Boolean(uuid?.length) &&
 				<div style={{display: 'flex', justifyContent: 'center', margin: '16px 0', ...tmpMobileWidth}}>
-					<Typo type={TypographyType.h4}>Дата истечения: <Typo
+					<Typo type={TypographyType.h4}>{t(Phrase.expirationDate)}<Typo
 						type={TypographyType.h4}
-						weight={TypoWeight.bold}>{day}{' '}{month}</Typo></Typo>
+						weight={TypoWeight.bold}>{t(Phrase.dayNMonth, {day, month})}</Typo></Typo>
 				</div>
 				}
 
@@ -92,7 +84,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						onClick={() => history.push('/places')}
 						color={ButtonColor.accentGrey}
 					>
-						Ко всем заведениям
+						{t(Phrase.gotoAllWorkPlaces)}
 					</Button>
 				</div>
 				{!uuid?.length && <BottomBar/>}

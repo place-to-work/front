@@ -9,6 +9,7 @@ import {useLocalStore} from '../../mobx/hooks/useLocalStore';
 import UserStore from '../../mobx/local/UserStore/UserStore';
 import {observer} from 'mobx-react-lite';
 import {UserCategory} from '../../mobx/local/UserStore/types';
+import t, {Phrase} from '@models/Translate';
 
 
 const StaffPage: React.FC = () => {
@@ -78,10 +79,14 @@ const StaffPage: React.FC = () => {
 		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{
 			body: () => <>
-				<Typo style={{marginBottom:'72px'}} type={TypographyType.h1} block>Что взял клиент?</Typo>
+				<Typo style={{marginBottom:'72px'}} type={TypographyType.h1} block>{t(Phrase.whatClientPicked)}</Typo>
 
-				<Button disabled={store.user.type === UserCategory.client } onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>Чай</Button>
-				<Button disabled={store.user.type === UserCategory.client} onClick={onCoffee} full color={ButtonColor.accentGrey}>Кофе</Button>
+				<Button disabled={store.user.type === UserCategory.client } onClick={onTea} style={{marginBottom:'36px'}} full color={ButtonColor.accentGrey}>
+					{t(Phrase.tea)}
+				</Button>
+				<Button disabled={store.user.type === UserCategory.client} onClick={onCoffee} full color={ButtonColor.accentGrey}>
+					{t(Phrase.coffee)}
+				</Button>
 			</>
 		}
 		}

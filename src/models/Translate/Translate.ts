@@ -1,4 +1,6 @@
-import T from 'i18n-react';
+enum Lang {
+	ru = 'ru',
+}
 
 export enum Phrase {
 	contactUs,
@@ -15,81 +17,133 @@ export enum Phrase {
 	email,
 	password,
 	name,
+	ImInWorkPlace,
+	allPlaces,
+	technicalWork,
+	apologize,
+	tryAgain,
+	subscriptionActivated,
+	subscriptionNotActivated,
+	expirationDate,
+	showQrSuggestion,
+	gotoAllWorkPlaces,
+	dayNMonth,
+	whatClientPicked,
+	tea,
+	coffee,
+	subscribeVerb,
+	subscribeNoun,
+	pay,
 }
 
-T.setTexts({
+const texts = {
+	[Phrase.pay]: {
+		ru: () => 'Оплатить'
+	},
+	[Phrase.subscribeNoun]: {
+		ru: () => 'подписки'
+	},
+	[Phrase.subscribeVerb]: {
+		ru: () => 'Оформление'
+	},
+	[Phrase.tea]: {
+		ru: () => 'Чай'
+	},
+	[Phrase.coffee]: {
+		ru: () => 'Кофе'
+	},
+	[Phrase.whatClientPicked]: {
+		ru: () => 'Что взял клиент?'
+	},
+	[Phrase.dayNMonth]: {
+		ru: ({day, month}: any) => {
+			const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+			return `${day} ${months[month]}`;
+		},
+	},
+	[Phrase.gotoAllWorkPlaces]: {
+		ru: () => 'Ко всем заведениям',
+	},
+	[Phrase.expirationDate]: {
+		ru: () => 'Дата истечения',
+	},
+	[Phrase.subscriptionNotActivated]: {
+		ru: () => 'Подписка не активирована',
+	},
+	[Phrase.showQrSuggestion]: {
+		ru: () => 'Предъявите этот код баристе и получайте' +
+			'бесплатный чай, скидки в кафе и' +
+			'неограниченный доступ в рабочие пространства',
+	},
+	[Phrase.subscriptionNotActivated]: {
+		ru: () => 'Подписка не активирована',
+	},
+	[Phrase.subscriptionActivated]: {
+		ru: () => 'Подписка активирована',
+	},
+	[Phrase.tryAgain]: {
+		ru: () => 'Попробовать заново',
+	},
+	[Phrase.apologize]: {
+		ru: () => 'Приносим свои извенения.',
+	},
+	[Phrase.technicalWork]: {
+		ru: () => 'Технические работы',
+	},
+	[Phrase.allPlaces]: {
+		ru: () => 'Все заведения',
+	},
+	[Phrase.ImInWorkPlace]: {
+		ru: () => 'Я в кофейне',
+	},
 	[Phrase.name]: {
-		ru: 'Имя',
+		ru: () => 'Имя',
 	},
 	[Phrase.password]: {
-		ru: 'Пароль',
+		ru: () => 'Пароль',
 	},
 	[Phrase.email]: {
-		ru: 'Почта',
+		ru: () => 'Почта',
 	},
 	[Phrase.inputName]: {
-		ru: 'Введите свое имя',
+		ru: () => 'Введите свое имя',
 	},
 	[Phrase.inputEmail]: {
-		ru: 'Введите свою почту',
+		ru: () => 'Введите свою почту',
 	},
 	[Phrase.inputPassword]: {
-		ru: 'Введите пароль'
+		ru: () => 'Введите пароль',
 	},
 	[Phrase.contactUs]: {
-		ru: 'Свяжитесь с нами',
+		ru: () => 'Свяжитесь с нами',
 	},
 	[Phrase.slogan1]: {
-		ru: 'Сделайте город своим офисом!',
+		ru: () => 'Сделайте город своим офисом!',
 	},
 	[Phrase.slogan2]: {
-		ru: 'Превращаем кафе и музеи вашего ' +
-			'города в настоящие рабочие пространства!'
+		ru: () => 'Превращаем кафе и музеи вашего ' +
+			'города в настоящие рабочие пространства!',
 	},
 	[Phrase.register]: {
-		ru: 'Регистрация',
+		ru: () => 'Регистрация',
 	},
 	[Phrase.login]: {
-		ru: 'Вход',
+		ru: () => 'Вход',
 	},
 	[Phrase.loginAction]: {
-		ru: 'Войти',
+		ru: () => 'Войти',
 	},
 	[Phrase.registerAction]: {
-		ru: 'Зарегестрироваться',
+		ru: () => 'Зарегестрироваться',
 	},
 	[Phrase.noAccount]: {
-		ru: 'Нет аккаунта?',
+		ru: () => 'Нет аккаунта?',
 	},
+};
 
-	auth: {
-		ru: '',
-	},
-	base: {},
-	cafe: {},
-	cafeList: {},
-	inPlace: {},
-	signup: {},
-	staff: {},
-	subscribe: {},
-	subscription: {},
-});
 
-enum Lang {
-	ru = 'ru',
-}
-
-class Translate {
-	constructor(protected language: Lang) {}
-	phrase(phrase: Phrase): string {
-		return T.texts[`${phrase}`][`${this.language}`];
-	}
-}
-
-const vocab = new Translate(Lang.ru);
-
-function getPhrase(ph: Phrase): string {
-	return vocab.phrase(ph);
+function getPhrase(phrase: Phrase, context?: object): string {
+	return texts[phrase].ru(context);
 }
 
 export default getPhrase;
