@@ -1,11 +1,11 @@
 import React, {CSSProperties} from 'react';
-import {Message} from '@models/Message';
+import {MessageModel} from '@models/Message';
 import './MessageComponent.scss';
 import Typo, {TypographyType, TypoTextAlign, TypoVerticalAlign} from '@components/primitives/Typo';
 import Icon, {IconType} from '@components/primitives/Icon';
 
 interface OwnProps {
-	message: Message,
+	message: MessageModel,
 	idx: number,
 }
 

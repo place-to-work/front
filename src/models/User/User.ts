@@ -3,6 +3,8 @@ import {makeAutoObservable} from 'mobx';
 import {LoginValues} from '@pages/LoginPage/LoginPage';
 import Http from '@network/Http/Http';
 import {SignupValues} from '@pages/SignupPage/SignupPage';
+import Message from '@models/Message';
+import t, {Phrase} from '@models/Translate';
 
 export enum UserType {
 	client = 1,
@@ -52,7 +54,18 @@ class User implements UserInnerType{
 		const data = await Http.fetchPost({
 			path: '/users/login/',
 			body: JSON.stringify(values),
-		}).then((resp) => resp.json());
+		})
+			.then((resp) => {
+				if (!resp.ok) {
+					Message.error(t(Phrase.badEmailOrPassword));
+				}
+				return resp.json();
+			})
+			.catch(((reason) => {
+				console.log(`user login catch: ${JSON.stringify(reason, null, 4)}`);
+				Message.error(t(Phrase.networkError));
+			}));
+
 
 		if (data) this.init(data);
 	}
@@ -61,16 +74,28 @@ class User implements UserInnerType{
 		const data = await Http.fetchPost({
 			path: '/users/',
 			body: JSON.stringify(values),
-		}).then((resp) => resp.json());
+		})
+			.then((resp) => {
+				if (!resp.ok) {
+					Message.error(t(Phrase.badEmailOrPassword));
+				}
+				return resp.json();
+			})
+			.catch(((reason) => {
+				console.log(`user register catch: ${JSON.stringify(reason, null, 4)}`);
+				Message.error(t(Phrase.networkError));
+			}));
 
 		if (data) this.init(data);
 	}
 
 	async fetch(): Promise<User | null> {
-		const data = await Http.getCurrentUser();
-		console.log(`fetch = \n${JSON.stringify(data, null, 4)}`);
+		const data = await Http.getCurrentUser()
+			.catch(((reason) => {
+				console.log(`user fetch catch: ${JSON.stringify(reason, null, 4)}`);
+				Message.error(t(Phrase.networkError));
+			}));
 		if (data) this.init(data);
-		console.log(`fetch after init = \n${JSON.stringify(this, null, 4)}`);
 		return this.id === -1 ? null : this;
 	}
 

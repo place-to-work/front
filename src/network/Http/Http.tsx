@@ -39,7 +39,8 @@ class Http {
 		}
 		req.headers = customHeaders;
 
-		return fetch(`${this.serverUrl}${path}`, req).then((response) => response.ok ? retCSRFToken(response) : response);
+		return fetch(`${this.serverUrl}${path}`, req)
+			.then((response) => response.ok ? retCSRFToken(response) : response);
 	}
 
 	fetchGet({path}): Promise<Response> {
@@ -83,7 +84,7 @@ class Http {
 
 export function getCookie(name: string): string | undefined {
 	const matches = document.cookie.match(new RegExp(
-		'(?:^|; )' + name.replace(/([.$?*|{}()[]\\\/\+^])/g, '\\$1') + '=([^;]*)',
+		'(?:^|; )' + name.replace(/([.$?*|{}()[]\\\/\+])/g, '\\$1') + '=([^;]*)',
 	));
 	console.log('matches', document.cookie.toLocaleLowerCase());
 	return matches ? decodeURIComponent(matches[1]) : undefined;

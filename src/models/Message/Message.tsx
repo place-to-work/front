@@ -6,7 +6,7 @@ enum MessageType {
 	warning,
 }
 
-class Message {
+class MessageModel {
 	id = new Date().getTime();
 	constructor(public message: string, public type: MessageType) {
 	}
@@ -17,18 +17,18 @@ class MessageBucket {
 		makeAutoObservable(this);
 	}
 
-	messages: Record<number, Message> = {};
+	messages: Record<number, MessageModel> = {};
 
-	add(message: Message) {
+	add(message: MessageModel) {
 		this.messages[message.id] = message;
 	}
 
-	remove(message: Message) {
+	remove(message: MessageModel) {
 		delete this.messages[message.id];
 	}
 
-	getSortedMessages(): Message[] {
-		const result: Message[] = [];
+	getSortedMessages(): MessageModel[] {
+		const result: MessageModel[] = [];
 		for (const message of Object.values(this.messages)) {
 			result.push(message);
 		}
@@ -42,7 +42,7 @@ const bucketInstance = new MessageBucket();
 
 function addMessage(message: string, type: MessageType) {
 	const liveTime = 2600;
-	const messageInstance = new Message(message, type);
+	const messageInstance = new MessageModel(message, type);
 	bucketInstance.add(messageInstance);
 	setTimeout(() => bucketInstance.remove(messageInstance), liveTime);
 }
@@ -59,5 +59,5 @@ function warning(message: string): void {
 	addMessage(message, MessageType.warning);
 }
 
-export {bucketInstance as MessageBucket, Message};
+export {bucketInstance as MessageBucket, MessageModel};
 export default {info, error, warning};

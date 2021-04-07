@@ -30,9 +30,17 @@ export enum Phrase {
 	subscribeVerb,
 	subscribeNoun,
 	pay,
+	badEmailOrPassword,
+	networkError,
 }
 
 const texts = {
+	[Phrase.pay]: {
+		ru: () => 'Ошибка сети, попробуйте позже'
+	},
+	[Phrase.pay]: {
+		ru: () => 'Неверный логин или пароль, попробуйте снова'
+	},
 	[Phrase.pay]: {
 		ru: () => 'Оплатить'
 	},
