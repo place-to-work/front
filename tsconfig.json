@@ -10,7 +10,7 @@
 		"skipDefaultLibCheck": true,
 		"strict": false,
 		"noImplicitAny": false,
-		"lib": [ "es6", "dom", "ES2015" ],
+		"lib": [ "es2017", "dom", "ES2015" ],
 		"types": [ "webpack-env" ],
 		"skipLibCheck": true,
 		"isolatedModules": true,

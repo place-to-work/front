@@ -22,6 +22,7 @@ import WorkIcon from '@components/primitives/Icon/components/WorkIcon';
 import CupIcon from '@components/primitives/Icon/components/CupIcon';
 import CheckIcon from '@components/primitives/Icon/components/CheckIcon';
 import LaptopIcon from '@components/primitives/Icon/components/LaptopIcon';
+import WarningIcon from '@components/primitives/Icon/components/WarningIcon';
 
 
 export * from './BaseIcon';
@@ -44,7 +45,8 @@ export enum IconType {
 	googlePay = 'googlePay',
 	bankIcon = 'backIcon',
 	sberIcon = 'sberIcon',
-	youMoney = 'youMoney'
+	youMoney = 'youMoney',
+	warning = 'warning',
 
 }
 
@@ -65,7 +67,7 @@ export const iconEntities: Record<IconType,
 		[IconType.sberIcon]: SberIcon,
 		[IconType.youMoney]: YouMoneyIcon,
 		[IconType.googlePay]: GooglePayIcon,
-
+		[IconType.warning]: WarningIcon,
 	};
 
 export {

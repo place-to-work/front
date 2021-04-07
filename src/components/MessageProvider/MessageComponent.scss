@@ -1,0 +1,14 @@
+@import "../scss/variables";
+
+
+.message {
+  position: absolute;
+  width: calc(100vw - 16px);
+  height: 42px;
+  //box-shadow: 0 0 2px $global-color-grey-dark;
+  top: -$header-height;
+  margin: 8px 8px 0 8px;
+  border-radius: $global-border-radius-min;
+  background-color: $background-accent;
+  transition: 300ms ease-in-out;
+}

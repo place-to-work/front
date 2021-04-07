@@ -12,7 +12,6 @@ import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 
-
 export interface LoginValues {
 	email: string;
 	password: string;

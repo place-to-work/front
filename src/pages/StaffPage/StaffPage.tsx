@@ -65,15 +65,18 @@ const StaffPage: React.FC = () => {
 		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{
 			body: () => <>
-				<Typo style={{marginBottom: '72px'}} type={TypographyType.h1}
-				      block>{t(Phrase.whatClientPicked)}</Typo>
+				<Typo
+					style={{marginBottom: '72px'}} type={TypographyType.h1}
+					block>{t(Phrase.whatClientPicked)}</Typo>
 
-				<Button disabled={User.userType === UserType.client} onClick={onTea}
-				        style={{marginBottom: '36px'}} full color={ButtonColor.accentGrey}>
+				<Button
+					disabled={User.userType === UserType.client} onClick={onTea}
+					style={{marginBottom: '36px'}} full color={ButtonColor.accentGrey}>
 					{t(Phrase.tea)}
 				</Button>
-				<Button disabled={User.userType === UserType.client} onClick={onCoffee} full
-				        color={ButtonColor.accentGrey}>
+				<Button
+					disabled={User.userType === UserType.client} onClick={onCoffee} full
+					color={ButtonColor.accentGrey}>
 					{t(Phrase.coffee)}
 				</Button>
 			</>,

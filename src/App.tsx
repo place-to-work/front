@@ -1,11 +1,7 @@
 import './test.scss';
 import './shared.scss';
-import React  from 'react';
-import {
-	Router,
-	Switch,
-	Route,Redirect
-} from 'react-router-dom';
+import React from 'react';
+import {Redirect, Route, Router, Switch} from 'react-router-dom';
 import {hot} from 'react-hot-loader/root';
 
 import MobxPage from '@pages/useless/MobxPage';
@@ -22,89 +18,96 @@ import SubscribePage from '@pages/Subscribe';
 import InWorkPlace from '@pages/InWorkPlace';
 import SubscriptionMainPage from '@pages/SubscriptionMain/SubscriptionMain';
 import StaffPage from '@pages/StaffPage';
+import MessageProvider from '@components/MessageProvider/MessageProvider';
 
 
 const history = createBrowserHistory();
 
-const App: React.FC = () =>{
-	try{
+const App: React.FC = () => {
+	try {
 		document.addEventListener('touchmove', function (event) {
 			// @ts-ignore
-			if (event.scale !== 1) { event.preventDefault(); }
-		}, { passive: false });
-	}catch (e){
+			if (event.scale !== 1) {
+				event.preventDefault();
+			}
+		}, {passive: false});
+	} catch (e) {
 		console.log(e);
 	}
 
-	return <Router history={history}>
-		<Switch>
+	return (
+		<MessageProvider>
+			<Router history={history}>
+				<Switch>
 
-			<Route path="/in-place">
-				<InWorkPlace qrValue={''}/>
-			</Route>
-			<Route path="/example">
-				<MobxPage currentTime={new CurrentTime()}/>
-			</Route>
-
-
-			<Route path="/login">
-				<LoginPage/>
-			</Route>
-
-			<Route path="/login:/id">
-				<LoginPage/>
-			</Route>
-
-			<Route path="/signup">
-				<SignupPage/>
-			</Route>
-
-			<Route path="/signup/:id">
-				<SignupPage/>
-			</Route>
+					<Route path="/in-place">
+						<InWorkPlace qrValue={''}/>
+					</Route>
+					<Route path="/example">
+						<MobxPage currentTime={new CurrentTime()}/>
+					</Route>
 
 
-			<Route path="/places">
-				<CafeListPage/>
-			</Route>
+					<Route path="/login">
+						<LoginPage/>
+					</Route>
 
-			<Route path="/places/:id">
-				<CafeListPage/>
+					<Route path="/login:/id">
+						<LoginPage/>
+					</Route>
 
-			</Route>
+					<Route path="/signup">
+						<SignupPage/>
+					</Route>
 
-			<Route exact path="/place/:id">
-				<CafePage/>
-			</Route>
-
-			<Route path="/staff/:id">
-				<StaffPage/>
-			</Route>
-			<Route exact path="/subscribe">
-				<SubscribePage/>
-			</Route>
-
-			<Route exact path="/subscribe-main">
-				<SubscriptionMainPage/>
-			</Route>
+					<Route path="/signup/:id">
+						<SignupPage/>
+					</Route>
 
 
-			<Route path="/formik">
-				<FormikPage/>
-			</Route>
+					<Route path="/places">
+						<CafeListPage/>
+					</Route>
 
-			<Route path="/auth/:id">
-				<AuthPage/>
-			</Route>
+					<Route path="/places/:id">
+						<CafeListPage/>
 
-			<Route path="/auth">
-				<AuthPage/>
-			</Route>
+					</Route>
 
-			<Redirect to='/auth' />
+					<Route exact path="/place/:id">
+						<CafePage/>
+					</Route>
 
-		</Switch>
-	</Router>;
+					<Route path="/staff/:id">
+						<StaffPage/>
+					</Route>
+					<Route exact path="/subscribe">
+						<SubscribePage/>
+					</Route>
+
+					<Route exact path="/subscribe-main">
+						<SubscriptionMainPage/>
+					</Route>
+
+
+					<Route path="/formik">
+						<FormikPage/>
+					</Route>
+
+					<Route path="/auth/:id">
+						<AuthPage/>
+					</Route>
+
+					<Route path="/auth">
+						<AuthPage/>
+					</Route>
+
+					<Redirect to="/auth"/>
+
+				</Switch>
+			</Router>
+		</MessageProvider>
+	);
 };
 
 export default hot(App);
