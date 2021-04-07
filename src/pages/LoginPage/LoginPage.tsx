@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import './LoginPage.scss';
-import {useHistory, useParams} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
 import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
 import {Form, Formik, FormikProps} from 'formik';
@@ -12,6 +12,7 @@ import {useLocalStore} from '../../mobx/hooks/useLocalStore';
 import UserStore from '../../mobx/local/UserStore/UserStore';
 import {UserCategory} from '../../mobx/local/UserStore/types';
 import {observer} from 'mobx-react-lite';
+import t, {Phrase} from '@models/Translate';
 
 
 export interface LoginValues {
@@ -46,7 +47,7 @@ const LoginPage: React.FC = () => {
 		type={TypographyType.h5}
 		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
 	>
-		Свяжитесь с нами
+		{t(Phrase.contactUs)}
 	</Typo>;
 
 
@@ -73,20 +74,20 @@ const LoginPage: React.FC = () => {
 				onSubmit={store.loginUser}
 				render={(formikProps: FormikProps<LoginValues>) => <>
 
-					<Typo block type={TypographyType.h1}>Вход</Typo>
+					<Typo block type={TypographyType.h1}>{t(Phrase.login)}</Typo>
 					<Form>
 						<FormikInput
 							id="email"
 							type="email"
-							title="Почта"
-							placeholder="Введите вашу почту"
+							title={t(Phrase.email)}
+							placeholder={t(Phrase.inputEmail)}
 							formikProps={formikProps}
 						/>
 						<FormikInput
 							id="password"
-							title="Пароль"
+							title={t(Phrase.password)}
 							type="password"
-							placeholder="Введите пароль"
+							placeholder={t(Phrase.inputPassword)}
 							formikProps={formikProps}
 						/>
 						<Button
@@ -94,7 +95,7 @@ const LoginPage: React.FC = () => {
 							buttonSize={ButtonSize.classic}
 							style={{margin: '13px 0'}}
 						>
-							Войти
+							{t(Phrase.loginAction)}
 						</Button>
 						<Typo
 							block
@@ -107,7 +108,7 @@ const LoginPage: React.FC = () => {
 								cursor: 'pointer',
 							}}
 						>
-							Нет аккаунта?
+							{t(Phrase.noAccount)}
 						</Typo>
 					</Form>
 				</>}

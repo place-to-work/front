@@ -1,26 +1,18 @@
 import React from 'react';
 import * as Yup from 'yup';
-import Typo, {
-	TypoColor,
-	TypographyType,
-	TypoTextAlign,
-	TypoVerticalAlign,
-	TypoWeight,
-} from '@components/primitives/Typo';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 import {Form, Formik, FormikProps} from 'formik';
 import Button, {ButtonSize} from '@components/primitives/Button';
 import './SignupPage.scss';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
-import Http from '@network/Http/Http';
 import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
-import IconCenter from '@components/primitives/Icon/Icon';
-import {IconSize, IconType} from '@components/primitives/Icon';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import {observer} from 'mobx-react-lite';
 import {useLocalStore} from '../../mobx/hooks/useLocalStore';
 import UserStore from '../../mobx/local/UserStore/UserStore';
 import {UserCategory} from '../../mobx/local/UserStore/types';
+import t, {Phrase} from '@models/Translate';
 
 export interface SignupValues {
 	name: '';
@@ -70,7 +62,7 @@ const SignupPage: React.FC = () => {
 		type={TypographyType.h5}
 		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
 	>
-		Свяжитесь с нами
+		{t(Phrase.contactUs)}
 	</Typo>;
 
 	return <BasePage
@@ -81,27 +73,27 @@ const SignupPage: React.FC = () => {
 			onSubmit={store.regUser}
 			render={(formikProps: FormikProps<SignupValues>) => <>
 
-				<Typo block type={TypographyType.h1}>Регистрация</Typo>
+				<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>
 				<Form>
 					<FormikInput
 						id="name"
-						title="Имя"
+						title={t(Phrase.name)}
 						formikProps={formikProps}
-						placeholder="Введите свое имя"
+						placeholder={t(Phrase.inputName)}
 					/>
 					<FormikInput
 						id="email"
 						type="email"
-						title="Почта"
+						title={t(Phrase.email)}
 						formikProps={formikProps}
-						placeholder="Введите свою почту"
+						placeholder={t(Phrase.inputEmail)}
 					/>
 					<FormikInput
 						id="password"
 						type="password"
-						title="Пароль"
+						title={t(Phrase.password)}
 						formikProps={formikProps}
-						placeholder="Введите пароль"
+						placeholder={t(Phrase.inputPassword)}
 					/>
 					{/*<Typo*/}
 					{/*	block*/}
@@ -119,7 +111,9 @@ const SignupPage: React.FC = () => {
 					<Button
 						full
 						buttonSize={ButtonSize.classic}
-						style={{margin: '13px 0'}}>Зарегистрироваться
+						style={{margin: '13px 0'}}
+					>
+						{t(Phrase.registerAction)}
 					</Button>
 				</Form>
 			</>}
