@@ -143,7 +143,7 @@ const texts = {
 };
 
 
-function getPhrase(phrase: Phrase, context?: object): string {
+function getPhrase(phrase: Phrase, context?: Record<string, unknown>): string {
 	return texts[phrase].ru(context);
 }
 
