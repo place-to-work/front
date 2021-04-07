@@ -18,7 +18,7 @@ const QrCard: React.FC<OwnProps> = ({value}) => {
 	>
 		<div className="qr-code-card__foreground">
 			<QRCode
-				class="qr-code-card"
+				className="qr-code-card"
 				renderAs="svg"
 				value={value.length > 0 ? `https://place-to-work.online/staff/${value}` : 'https://place-to-work.online/places'}
 			/>
