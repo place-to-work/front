@@ -1,13 +1,20 @@
-
+import {UserApiType, UserInnerType} from '@models/User/types';
+import {makeAutoObservable} from 'mobx';
+import {LoginValues} from '@pages/LoginPage/LoginPage';
+import Http from '@network/Http/Http';
+import {SignupValues} from '@pages/SignupPage/SignupPage';
 
 export enum UserType {
-	user = 1,
-	barista
+	client = 1,
+	staff,
 }
 
-class User {
+class User implements UserInnerType{
+	constructor() {
+		makeAutoObservable(this);
+	}
 
-	id: number = -1;
+	id = -1;
 
 	email: string;
 
@@ -15,7 +22,7 @@ class User {
 
 	date_joined: string;
 
-	get isLogined() {
+	get isAuthenticated() {
 		return this.id >= 0;
 	}
 
@@ -26,7 +33,7 @@ class User {
 	avatar: string;
 
 	subscribed_until: string
-	get subscribedUntill(): Date {
+	get subscribedUntil(): Date {
 		return new Date(this.subscribed_until);
 	}
 
@@ -35,6 +42,41 @@ class User {
 		return this.user_type;
 	}
 
+	place: number | null;
+
+	get isSubscribed(): boolean {
+		return this.subscribedUntil > new Date();
+	}
+
+	async login(values: LoginValues): Promise<void> {
+		const data = await Http.fetchPost({
+			path: '/users/login/',
+			body: JSON.stringify(values),
+		}).then((resp) => resp.json());
+
+		if (data) this.init(data);
+	}
+
+	async register(values: SignupValues): Promise<void> {
+		const data = await Http.fetchPost({
+			path: '/users/',
+			body: JSON.stringify(values),
+		}).then((resp) => resp.json());
+
+		if (data) this.init(data);
+	}
+
+	async fetch(): Promise<User | null> {
+		const data = await Http.getCurrentUser();
+		console.log(`fetch = \n${JSON.stringify(data, null, 4)}`);
+		if (data) this.init(data);
+		console.log(`fetch after init = \n${JSON.stringify(this, null, 4)}`);
+		return this.id === -1 ? null : this;
+	}
+
+	init(netUser: UserApiType) {
+		Object.assign(this, netUser);
+	}
 }
 
-export default User;
+export default new User;

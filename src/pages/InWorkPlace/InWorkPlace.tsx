@@ -8,9 +8,9 @@ import Http from '@network/Http';
 import BottomBar from '@components/a11y/BottomBar';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import QrCard from '@components/QrCard';
-import {useLocalStore} from 'mobx-react-lite';
-import UserStore from '../../mobx/local/UserStore/UserStore';
 import t, {Phrase} from '@models/Translate';
+import User from '@models/User';
+import {observer} from 'mobx-react-lite';
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -33,13 +33,10 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				}
 			});
 	}, []);
-	const store = useLocalStore(() => new UserStore());
 
-	console.log(JSON.stringify(store, null, 4));
-	const date = new Date(store.user.subscribeDate);
-	console.log(`date = ${date}`);
+	const date = new Date(User.subscribedUntil);
+	console.log(`user = \n${JSON.stringify(User, null, 4)}`);
 	const day = date.getDate();
-	console.log(`day = ${day}`);
 	const month = date.getMonth();
 
 	const tmpMobileWidth = {maxWidth: 360};
@@ -93,4 +90,4 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	/>;
 };
 
-export default InWorkPlace;
+export default observer(InWorkPlace);

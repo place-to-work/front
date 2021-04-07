@@ -1,7 +1,3 @@
-enum Lang {
-	ru = 'ru',
-}
-
 export enum Phrase {
 	contactUs,
 	slogan1,
@@ -58,14 +54,14 @@ const texts = {
 	[Phrase.dayNMonth]: {
 		ru: ({day, month}: any) => {
 			const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-			return `${day} ${months[month]}`;
+			return `${day || ''} ${months[month] || ''}`;
 		},
 	},
 	[Phrase.gotoAllWorkPlaces]: {
 		ru: () => 'Ко всем заведениям',
 	},
 	[Phrase.expirationDate]: {
-		ru: () => 'Дата истечения',
+		ru: () => 'Дата истечения: ',
 	},
 	[Phrase.subscriptionNotActivated]: {
 		ru: () => 'Подписка не активирована',
