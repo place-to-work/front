@@ -81,7 +81,8 @@ const CafeListPage: React.FC = () => {
 			right: () => <Tag color={ButtonColor.grey} onClick={() => history.push('/in-place')}>
 				<Typo type={TypographyType.h5} style={{width: '100%'}} textAlign={TypoTextAlign.center}>
 					{t(Phrase.ImInWorkPlace)}
-				</Typo></Tag>,
+				</Typo>
+			</Tag>,
 		}}
 		footerProps={{}} mainProps={{
 			body: () => <>
