@@ -50,43 +50,30 @@ class User implements UserInnerType{
 		return this.subscribedUntil > new Date();
 	}
 
-	async login(values: LoginValues): Promise<void> {
-		const data = await Http.fetchPost({
-			path: '/users/login/',
-			body: JSON.stringify(values),
-		})
+	async login(values: LoginValues): Promise<UserApiType | null> {
+		return Http.login(values)
 			.then((resp) => {
+				if (resp === null) return null;
 				if (!resp.ok) {
 					Message.error(t(Phrase.badEmailOrPassword));
+					return null;
 				}
 				return resp.json();
-			})
-			.catch(((reason) => {
-				console.log(`user login catch: ${JSON.stringify(reason, null, 4)}`);
-				Message.error(t(Phrase.networkError));
-			}));
-
-
-		if (data) this.init(data);
+			});
 	}
 
-	async register(values: SignupValues): Promise<void> {
-		const data = await Http.fetchPost({
+	async register(values: SignupValues): Promise<void | null> {
+		return  Http.fetchPost({
 			path: '/users/',
 			body: JSON.stringify(values),
 		})
 			.then((resp) => {
 				if (!resp.ok) {
 					Message.error(t(Phrase.badEmailOrPassword));
+					return null;
 				}
-				return resp.json();
-			})
-			.catch(((reason) => {
-				console.log(`user register catch: ${JSON.stringify(reason, null, 4)}`);
-				Message.error(t(Phrase.networkError));
-			}));
-
-		if (data) this.init(data);
+				return void 0;
+			});
 	}
 
 	async fetch(): Promise<User | null> {
@@ -95,12 +82,13 @@ class User implements UserInnerType{
 				console.log(`user fetch catch: ${JSON.stringify(reason, null, 4)}`);
 				Message.error(t(Phrase.networkError));
 			}));
-		if (data) this.init(data);
+		if (data) this.selfInit(data);
 		return this.id === -1 ? null : this;
 	}
 
-	init(netUser: UserApiType) {
+	selfInit(netUser: UserApiType): UserApiType {
 		Object.assign(this, netUser);
+		return netUser;
 	}
 }
 

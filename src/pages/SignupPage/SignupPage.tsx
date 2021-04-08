@@ -58,7 +58,13 @@ const SignupPage: React.FC = () => {
 		mainProps={{body: () => <Formik
 			validationSchema={validationSchema}
 			initialValues={initialValues}
-			onSubmit={User.register}
+			onSubmit={((values) => {
+				User.register(values)
+					.then((result) => {
+						if (result === null) return null;
+						history.push('/places');
+					});
+			})}
 			render={(formikProps: FormikProps<SignupValues>) => <>
 
 				<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>

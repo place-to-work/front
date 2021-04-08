@@ -54,7 +54,13 @@ const LoginPage: React.FC = () => {
 			body: () => <Formik<LoginValues>
 				validationSchema={validationSchema}
 				initialValues={initialValues}
-				onSubmit={User.login}
+				onSubmit={(values) => {
+					User.login(values)
+						.then((response) => {
+							if (response === null) return null;
+							history.push('/places');
+						});
+				}}
 				render={(formikProps: FormikProps<LoginValues>) => <>
 
 					<Typo block type={TypographyType.h1}>{t(Phrase.login)}</Typo>

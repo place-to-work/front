@@ -35,8 +35,8 @@ export enum Phrase {
 }
 
 const texts = {
-	[Phrase.pay]: {
-		ru: () => 'Ошибка сети, попробуйте позже'
+	[Phrase.networkError]: {
+		ru: () => 'Упс о_0, ошибка сети'
 	},
 	[Phrase.pay]: {
 		ru: () => 'Неверный логин или пароль, попробуйте снова'

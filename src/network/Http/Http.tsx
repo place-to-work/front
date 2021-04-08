@@ -1,3 +1,9 @@
+import {LoginValues} from '@pages/LoginPage/LoginPage';
+import Message from '@models/Message';
+import t, {Phrase} from '@models/Translate';
+
+type Nullable<T> = T | null;
+
 type FetchRequestProps = {
 	path?: string,
 	method: string,
@@ -16,7 +22,7 @@ class Http {
 		path = '/',
 		method = 'GET',
 		body = null,
-	}: FetchRequestProps): Promise<Response> {
+	}: FetchRequestProps): Promise<Nullable<Response>> {
 		const req: RequestInit = {
 			method,
 			mode: 'cors',
@@ -40,17 +46,30 @@ class Http {
 		req.headers = customHeaders;
 
 		return fetch(`${this.serverUrl}${path}`, req)
-			.then((response) => response.ok ? retCSRFToken(response) : response);
+			.then((response) => {
+				console.log(`ok response = ${JSON.stringify(response, null, 4)}`);
+				return response.ok ? retCSRFToken(response) : response;
+			})
+			.catch((reason: TypeError) => {
+				// Сюда может попать только TypedError
+				// Внутри будет ошибка сети:
+				// - нет связи
+				// - корсы
+				// - мб днс не резолвится
+				console.log(`fetch error: ${reason.message}`);
+				Message.error(t(Phrase.networkError));
+				return null;
+			});
 	}
 
-	fetchGet({path}): Promise<Response> {
+	fetchGet({path}): Promise<Nullable<Response>> {
 		return this.fetchRequest({
 			method: 'GET',
 			path,
 		});
 	}
 
-	fetchPost({path, body}): Promise<Response> {
+	fetchPost({path, body}): Promise<Nullable<Response>> {
 		return this.fetchRequest({
 			method: 'POST',
 			path,
@@ -58,7 +77,7 @@ class Http {
 		});
 	}
 
-	fetchPut({path, body}): Promise<Response> {
+	fetchPut({path, body}): Promise<Nullable<Response>> {
 		return this.fetchRequest({
 			method: 'PUT',
 			path,
@@ -66,7 +85,7 @@ class Http {
 		});
 	}
 
-	fetchDelete({path, body}): Promise<Response> {
+	fetchDelete({path, body}): Promise<Nullable<Response>> {
 		return this.fetchRequest({
 			method: 'DELETE',
 			path,
@@ -79,6 +98,13 @@ class Http {
 		// 	return null
 		// }
 		return this.fetchGet({path: '/users/'}).then((response) => response.ok ? response.json() : null);
+	}
+
+	login(loginValues: LoginValues): Promise<Nullable<Response>> {
+		return this.fetchPost({
+			path: '/users/login/',
+			body: JSON.stringify(loginValues),
+		});
 	}
 }
 
