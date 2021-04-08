@@ -1,5 +1,5 @@
 import {LoginValues} from '@pages/LoginPage/LoginPage';
-import Message from '@models/Message';
+import Message from '@models/Notification';
 import t, {Phrase} from '@models/Translate';
 
 type Nullable<T> = T | null;
