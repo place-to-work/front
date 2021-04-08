@@ -16,22 +16,22 @@ class Notification {
 	}
 }
 
-function addMessage(message: string, type: NotifType) {
+function addNotif(message: string, type: NotifType) {
 	const messageInstance = new Notification(message, type);
 	NotifBucket.add(messageInstance);
 	setTimeout(() => NotifBucket.remove(messageInstance), TOTAL_DELAY);
 }
 
 function info(message: string): void {
-	addMessage(message, NotifType.info);
+	addNotif(message, NotifType.info);
 }
 
 function error(message: string): void {
-	addMessage(message, NotifType.error);
+	addNotif(message, NotifType.error);
 }
 
 function warning(message: string): void {
-	addMessage(message, NotifType.warning);
+	addNotif(message, NotifType.warning);
 }
 
 export {Notification};
