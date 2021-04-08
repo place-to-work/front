@@ -14,12 +14,16 @@ const BottomBar:FC = ()=>{
 
 	const [showBlock, setShowBlock] = React.useState<boolean | null>(null);
 
-	React.useEffect(()=>{
-		if(User.isSubscribed === false){
-			setShowBlock(true);
-		} else{
-			setShowBlock(false);
-		}
+	React.useEffect(() => {
+		// добавил задержку, чтобы модель пользователя
+		// успела обновиться и не было мерцания всплывашки
+		setTimeout(() => {
+			if(User.isSubscribed === false){
+				setShowBlock(true);
+			} else {
+				setShowBlock(false);
+			}
+		}, 1000);
 	},[User.isSubscribed, User.id]);
 
 	const [full, setFull] = useState(false);
@@ -38,7 +42,6 @@ const BottomBar:FC = ()=>{
 			},1000);
 		},1000);
 	},[]);
-
 
 	return showBlock === null ? null :<div className={`container ${showBlock && 'container_opened' }`}>
 		<Collapse className="bottom-bar" opened={showBlock}>
