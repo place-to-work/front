@@ -1,22 +1,22 @@
 import React, {CSSProperties} from 'react';
-import {MessageModel} from '@models/Notification';
-import './MessageComponent.scss';
+import {Notification} from '@models/Notification';
+import './NotificationComponent.scss';
 import Typo, {TypographyType, TypoTextAlign, TypoVerticalAlign} from '@components/primitives/Typo';
 import Icon, {IconType} from '@components/primitives/Icon';
 
 interface OwnProps {
-	message: MessageModel,
+	notification: Notification,
 	idx: number,
 }
 
-export const MessageComponent: React.FC<OwnProps> = ({message, idx}) => {
+export const NotificationComponent: React.FC<OwnProps> = ({notification, idx}) => {
 	const [style, setStyle] = React.useState<CSSProperties>({});
 	React.useEffect(() => {
 		setStyle({top: idx * 52});
 
 		setTimeout(() => setStyle({}), 2300);
 	}, []);
-	return <div className="message" style={style}>
+	return <div className="notification" style={style}>
 		<Typo
 			style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
 			type={TypographyType.h4}
@@ -24,7 +24,7 @@ export const MessageComponent: React.FC<OwnProps> = ({message, idx}) => {
 			verticalAlign={TypoVerticalAlign.middle}
 		>
 			<Icon type={IconType.warning}/>
-			{message.message}
+			{notification.message}
 		</Typo>
 	</div>;
 };
