@@ -54,7 +54,10 @@ class User implements UserInnerType{
 		return Http.login(values)
 			.then((resp) => {
 				if (resp === null) return null;
+				console.log(`login ok = ${resp.ok}`);
+				console.log(`login code = ${resp.status}`);
 				if (!resp.ok) {
+					console.log(`login is not ok = ${!resp.ok}`);
 					Message.error(t(Phrase.badEmailOrPassword));
 					return null;
 				}
@@ -69,7 +72,7 @@ class User implements UserInnerType{
 		})
 			.then((resp) => {
 				if (!resp.ok) {
-					Message.error(t(Phrase.badEmailOrPassword));
+					Message.error(t(Phrase.userExists));
 					return null;
 				}
 				return void 0;

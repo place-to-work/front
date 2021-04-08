@@ -32,9 +32,20 @@ export enum Phrase {
 	pay,
 	badEmailOrPassword,
 	networkError,
+	userExists,
+	haveAccount,
 }
 
 const texts = {
+	[Phrase.haveAccount]: {
+		ru: () => 'Есть аккаунт?',
+	},
+	[Phrase.userExists]: {
+		ru: () => 'Пользователь с такой почтой уже существует, не вы ли это?',
+	},
+	[Phrase.badEmailOrPassword]: {
+		ru: () => 'Неверный логин или пароль, попробуйте снова',
+	},
 	[Phrase.networkError]: {
 		ru: () => 'Упс о_0, ошибка сети'
 	},
