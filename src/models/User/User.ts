@@ -3,7 +3,7 @@ import {makeAutoObservable} from 'mobx';
 import {LoginValues} from '@pages/LoginPage/LoginPage';
 import Http from '@network/Http/Http';
 import {SignupValues} from '@pages/SignupPage/SignupPage';
-import Message from '@models/Message';
+import Message from '@models/Notification';
 import t, {Phrase} from '@models/Translate';
 
 export enum UserType {
