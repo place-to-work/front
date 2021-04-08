@@ -1,5 +1,5 @@
 import React, {CSSProperties} from 'react';
-import {MessageModel} from '@models/Message';
+import {MessageModel} from '@models/Notification';
 import './MessageComponent.scss';
 import Typo, {TypographyType, TypoTextAlign, TypoVerticalAlign} from '@components/primitives/Typo';
 import Icon, {IconType} from '@components/primitives/Icon';

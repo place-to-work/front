@@ -14,7 +14,13 @@ import Contact from '@components/Contact';
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-
+	const ContactUs = <Typo
+		block
+		type={TypographyType.h5}
+		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
+	>
+		{t(Phrase.contactUs)}
+	</Typo>;
 
 	React.useEffect(()=>{
 		if(User.isAuthenticated){
