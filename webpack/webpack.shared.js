@@ -49,6 +49,7 @@ const aliases = {
 	'@pages': path.resolve(__dirname, '../', 'src/pages'),
 	'@models': path.resolve(__dirname, '../', 'src/models'),
 	'@network': path.resolve(__dirname, '../', 'src/network'),
+	'@utils': path.resolve(__dirname, '../', 'src/utils'),
 };
 
 module.exports = {

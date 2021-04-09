@@ -59,6 +59,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 0,
 		'@typescript-eslint/no-unused-vars': 0,
 		'react/display-name': 0,
+		"no-mixed-spaces-and-tabs": 0,
 		'no-debugger': 0
 	},
 	"settings": {

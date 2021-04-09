@@ -7,6 +7,8 @@ import SubscriptionMain from '@pages/SubscriptionMain/SubscriptionMain';
 import cn from 'classnames';
 import {observer} from 'mobx-react-lite';
 import User from '@models/User';
+import {isWaitingForPay} from '@utils/payStorage';
+import t, {Phrase} from '@models/Translate/Translate';
 
 
 
@@ -14,11 +16,12 @@ const BottomBar:FC = ()=>{
 
 	const [showBlock, setShowBlock] = React.useState<boolean | null>(null);
 
+
 	React.useEffect(() => {
 		// добавил задержку, чтобы модель пользователя
 		// успела обновиться и не было мерцания всплывашки
 		setTimeout(() => {
-			if(User.isSubscribed === false){
+			if(!User.isSubscribed){
 				setShowBlock(true);
 			} else {
 				setShowBlock(false);
@@ -30,18 +33,16 @@ const BottomBar:FC = ()=>{
 
 	const handleReBuild = React.useCallback(() => {
 		setShowBlock(false);
-		console.log('set show block false');
-		// setFull(true)
-		// setOpened(true)
 		setTimeout(()=>{
 			setFull(true);
-			console.log('set full true');
 			setTimeout(()=>{
 				setShowBlock(true);
-				console.log('set show block true');
-			},1000);
-		},1000);
+			},500);
+		},500);
 	},[]);
+
+
+	const waitingForPay = isWaitingForPay() && !User.isSubscribed;
 
 	return showBlock === null ? null :<div className={`container ${showBlock && 'container_opened' }`}>
 		<Collapse className="bottom-bar" opened={showBlock}>
@@ -49,13 +50,24 @@ const BottomBar:FC = ()=>{
 				<span>{User.isSubscribed}</span>
 				<span>{User.isSubscribed}</span>
 				{!full ? <>
-					<Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>Чтобы
-                            увидеть все заведения&nbsp;&mdash; оформите подписку</Typo>
-					<Typo className="bottom-bar__subtitle" textAlign={TypoTextAlign.center} type={TypographyType.h3}
-						weight={TypoWeight.regular}>Получайте бесплатный чай, скидки в&nbsp;кафе, неограниченный
-                            доступ в&nbsp;рабочие пространства и&nbsp;многое другое</Typo>
+					<Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>
+						{waitingForPay ? t(Phrase.waitingPayTitile) : <>Чтобы увидеть все заведения&nbsp;&mdash; оформите подписку</>}</Typo>
+					{waitingForPay ? <Typo
+						className="bottom-bar__subtitle"
+						textAlign={TypoTextAlign.center}
+						type={TypographyType.h3}
+						weight={TypoWeight.regular}>{t(Phrase.waitingPay)}</Typo> :
+						<Typo
+							className="bottom-bar__subtitle"
+							textAlign={TypoTextAlign.center}
+							type={TypographyType.h3}
+							weight={TypoWeight.regular}>
+							Получайте бесплатный чай, скидки в&nbsp;кафе, неограниченный доступ в&nbsp;рабочие пространства и&nbsp;многое другое</Typo>
+					}
 					<Button buttonSize={ButtonSize.xl} className="bottom-bar__button" full color={ButtonColor.accent}
-						onClick={handleReBuild}>Оформить подписку</Button>
+						onClick={handleReBuild}>
+						{waitingForPay ? t(Phrase.aboutSubscribe) : t(Phrase.getSubscription) }
+					</Button>
 				</> :
 					<SubscriptionMain/>
 				}

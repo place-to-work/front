@@ -30,6 +30,11 @@ export enum Phrase {
 	subscribeVerb,
 	subscribeNoun,
 	pay,
+	waitingPayTitile,
+	waitingPay,
+	returnToPay,
+	getSubscription,
+	aboutSubscribe,
 	badEmailOrPassword,
 	networkError,
 	userExists,
@@ -54,6 +59,22 @@ const texts = {
 	},
 	[Phrase.pay]: {
 		ru: () => 'Оплатить'
+	},
+	[Phrase.waitingPayTitile]:{
+		ru: () => 'Ожидание оплаты'
+	},
+	[Phrase.waitingPay]: {
+		ru: () => ' Если у Вас возникли проблемы во время оплаты,' +
+			' напишите Нам. Если платеж не был завешен - вы можете перейти к оплате'
+	},
+	[Phrase.getSubscription]: {
+		ru: () => 'Оформить подписку'
+	},
+	[Phrase.aboutSubscribe]: {
+		ru: () => 'Продолжить'
+	},
+	[Phrase.returnToPay]: {
+		ru: () => 'Вернуться к оплате'
 	},
 	[Phrase.subscribeNoun]: {
 		ru: () => 'подписки'
@@ -101,7 +122,7 @@ const texts = {
 		ru: () => 'Попробовать заново',
 	},
 	[Phrase.apologize]: {
-		ru: () => 'Приносим свои извенения.',
+		ru: () => 'Приносим свои извинения.',
 	},
 	[Phrase.technicalWork]: {
 		ru: () => 'Технические работы',
@@ -150,7 +171,7 @@ const texts = {
 		ru: () => 'Войти',
 	},
 	[Phrase.registerAction]: {
-		ru: () => 'Зарегестрироваться',
+		ru: () => 'Зарегистрироваться',
 	},
 	[Phrase.noAccount]: {
 		ru: () => 'Нет аккаунта?',

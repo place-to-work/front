@@ -8,6 +8,9 @@ import ImageCard from '@components/primitives/ImageCard';
 import DetailedFeatures from '@components/DetailedFeatures';
 import Button, {ButtonColor} from '@components/primitives/Button';
 
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+
 export type CafeCardProps = {
     imageSrc?: string;
     name?: string;
@@ -23,6 +26,7 @@ export type CafeCardProps = {
     // Подробная информация на странице кафе
     statuses?: string[];
     gallery?: string[];
+    images?: string[];
     workLoad?: number;
     workLoadText?: string;
     averagePrice?: string;
@@ -41,7 +45,8 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		electricity = true,
 		quiet,
 		statuses = ['Булочная, пекарня','Кофейня'],
-		//gallery = ['https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg','https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg'],
+		images = [],
+		gallery = ['https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg','https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg'],
 		workLoad = 20,
 		workLoadText = 'средняя',
 		averagePrice = '1000Р',
@@ -49,7 +54,21 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 
 	}: CafeCardProps) => (
 	<div className="cafe-detailed-info">
-		<ImageCard imageSrc={imageSrc}/>
+		{/*<ImageCard imageSrc={imageSrc}/>*/}
+		<Splide options={ {
+			type : 'loop',
+			gap : '1rem',
+			arrows : false,
+			padding: '1rem',
+			autoplay: true,
+			height: '30vh'
+		}
+		}>
+			{images.map((image, index)=><SplideSlide key={index}>
+				<ImageCard imageSrc={image}/>
+			</SplideSlide>)}
+		</Splide>
+
 		<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
 		<div className="cafe-detailed-info__statuses">
 			{statuses?.map((status:string, index:number)=><Tag key={index}>
