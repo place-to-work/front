@@ -12,7 +12,6 @@ const QrCard: React.FC<OwnProps> = ({value}) => {
 	return <div
 		className={`qr-code-card__background${cardRotated ? '-rotated' : ''}`}
 		onClick={() => {
-			console.log(`click: isRotated: ${cardRotated}`);
 			setCardRotated(!cardRotated);
 		}}
 	>

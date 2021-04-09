@@ -54,21 +54,25 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 
 	}: CafeCardProps) => (
 	<div className="cafe-detailed-info">
-		{/*<ImageCard imageSrc={imageSrc}/>*/}
-		<Splide options={ {
-			type : 'loop',
-			gap : '1rem',
-			arrows : false,
-			padding: '1rem',
-			autoplay: true,
-			height: '30vh'
-		}
-		}>
-			{images.map((image, index)=><SplideSlide key={index}>
-				<ImageCard imageSrc={image}/>
-			</SplideSlide>)}
-		</Splide>
+		<div style={{width:'100vw', display: 'inline', margin:'auto'}}>
 
+			<Splide options={ {
+				type : 'loop',
+				gap : '0.5rem',
+				arrows : false,
+				padding: '1rem',
+				autoplay: true,
+				// height: '30vh',
+				focus    : 'center',
+				perPage  : 1,
+				trimSpace: true,
+			}
+			}>
+				{images.map((image, index)=><SplideSlide key={index}>
+					<ImageCard imageSrc={image}/>
+				</SplideSlide>)}
+			</Splide>
+		</div>
 		<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
 		<div className="cafe-detailed-info__statuses">
 			{statuses?.map((status:string, index:number)=><Tag key={index}>

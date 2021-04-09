@@ -5,12 +5,12 @@
   object-fit: cover;
   border-radius: 8px;
   width: 100%;
-  height: 280px;
-  max-height: 200px;
+  height: 200px;
   transition: all 100ms ease-in-out;
   margin-bottom: 12px;
   @include midget{
     margin-bottom: 0;
+    height: 150px;
   }
 
   &-scalable:hover {

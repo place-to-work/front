@@ -65,14 +65,14 @@ const AuthPage: React.FC = () => {
 				>
 					{t(Phrase.login)}
 				</Button>
-				<Button
-					element="a"
-					onClick={() => Message.info('Неверный логин или пароль, попробуйте снова')}
-					full
-					color={ButtonColor.white}
-				>
-					Ошибка
-				</Button>
+				{/*<Button*/}
+				{/*	element="a"*/}
+				{/*	onClick={() => Message.info('Неверный логин или пароль, попробуйте снова')}*/}
+				{/*	full*/}
+				{/*	color={ButtonColor.white}*/}
+				{/*>*/}
+				{/*	Ошибка*/}
+				{/*</Button>*/}
 			</>
 		}}
 		footerProps={{

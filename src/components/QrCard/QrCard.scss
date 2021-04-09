@@ -1,12 +1,17 @@
 @import "../../components/scss/variables";
+@import "src/components/scss/index";
 
 %qr-code-card__background-shared {
   background-color: $global-color-grey-accent;
   border-radius: 12px;
   margin: 0 auto;
   transition: .7s ease-out;
-  max-width: 360px;
-  max-height: 360px;
+  max-width: 350px;
+  max-height: 350px;
+  @include midget{
+    max-width: 200px;
+    max-height: 200px;
+  }
   padding: 5.5%;
 }
 
