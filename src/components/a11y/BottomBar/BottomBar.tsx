@@ -11,7 +11,6 @@ import {isWaitingForPay} from '@utils/payStorage';
 import t, {Phrase} from '@models/Translate/Translate';
 
 
-
 const BottomBar:FC = ()=>{
 
 	const [showBlock, setShowBlock] = React.useState<boolean | null>(null);
@@ -52,15 +51,15 @@ const BottomBar:FC = ()=>{
 				{!full ? <>
 
 					<Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>
-						{waitingForPay ? <Typo>Если у Вас возникли проблемы во время оплаты, напишите
-							<Typo element="a" href = "mailto: ask@place-to-work.ru">{' '}Нам{' '}</Typo>.
-							Если платеж не был завешен - вы можете перейти к оплате</Typo> :
+						{waitingForPay ? t(Phrase.waitingPayTitle) :
 							<>Чтобы увидеть все заведения&nbsp;&mdash; оформите подписку</>}</Typo>
 					{waitingForPay ? <Typo
 						className="bottom-bar__subtitle"
 						textAlign={TypoTextAlign.center}
 						type={TypographyType.h3}
-						weight={TypoWeight.regular}>{t(Phrase.waitingPay)}</Typo> :
+						weight={TypoWeight.regular}><Typo>Если у Вас возникли проблемы во время оплаты, напишите
+							<Typo element="a" href = "mailto: ask@place-to-work.ru">{' '}Нам{' '}</Typo>.
+							Если платеж не был завешен - вы можете перейти к оплате</Typo></Typo> :
 						<Typo
 							className="bottom-bar__subtitle"
 							textAlign={TypoTextAlign.center}

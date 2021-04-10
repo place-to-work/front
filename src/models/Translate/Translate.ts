@@ -30,7 +30,7 @@ export enum Phrase {
 	subscribeVerb,
 	subscribeNoun,
 	pay,
-	waitingPayTitile,
+	waitingPayTitle,
 	waitingPay,
 	returnToPay,
 	getSubscription,
@@ -60,7 +60,7 @@ const texts = {
 	[Phrase.pay]: {
 		ru: () => 'Оплатить'
 	},
-	[Phrase.waitingPayTitile]:{
+	[Phrase.waitingPayTitle]:{
 		ru: () => 'Ожидание оплаты'
 	},
 	[Phrase.waitingPay]: {
