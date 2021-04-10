@@ -57,8 +57,8 @@ const BottomBar:FC = ()=>{
 						className="bottom-bar__subtitle"
 						textAlign={TypoTextAlign.center}
 						type={TypographyType.h3}
-						weight={TypoWeight.regular}><Typo>Если у Вас возникли проблемы во время оплаты, напишите
-							<Typo element="a" href = "mailto: ask@place-to-work.ru">{' '}Нам{' '}</Typo>.
+						weight={TypoWeight.regular}><Typo type={TypographyType.h3} weight={TypoWeight.regular}>Если у Вас возникли проблемы во время оплаты, напишите
+							<Typo type={TypographyType.h3} weight={TypoWeight.regular} element="a" href = "mailto: ask@place-to-work.ru">&nbsp;Нам&nbsp;</Typo>.
 							Если платеж не был завешен - вы можете перейти к оплате</Typo></Typo> :
 						<Typo
 							className="bottom-bar__subtitle"
