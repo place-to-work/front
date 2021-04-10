@@ -54,13 +54,13 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 
 	}: CafeCardProps) => (
 	<div className="cafe-detailed-info">
-		<div style={{width:'100vw', display: 'inline', margin:'auto'}}>
+		<div style={{width:'90vw', display: 'inline', margin:'auto'}}>
 
 			<Splide options={ {
 				type : 'loop',
 				gap : '0.5rem',
 				arrows : false,
-				padding: '1rem',
+				padding: '0.5rem',
 				autoplay: true,
 				// height: '30vh',
 				focus    : 'center',

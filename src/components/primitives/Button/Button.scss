@@ -55,6 +55,9 @@ $local-icon-size: 12px;
       padding: 19px;
       height: 60px;
       min-width: 342px;
+      @include midget{
+        min-width: 280px;
+      }
     }
 
   }
