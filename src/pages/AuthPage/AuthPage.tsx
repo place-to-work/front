@@ -10,16 +10,11 @@ import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User, {UserType} from '@models/User';
 import Message from '@models/Message';
+import Contact from '@components/Contact';
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-	const ContactUs = <Typo
-		block
-		type={TypographyType.h5}
-		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
-	>
-		{t(Phrase.contactUs)}
-	</Typo>;
+
 
 	React.useEffect(()=>{
 		if(!User.isAuthenticated){
@@ -76,7 +71,7 @@ const AuthPage: React.FC = () => {
 			</>
 		}}
 		footerProps={{
-			right: () => ContactUs
+			right: () => <Contact/>
 		}}
 	/>;
 };

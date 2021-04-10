@@ -27,12 +27,12 @@ const initialValues: SignupValues = {
 const validationSchema = Yup.object().shape({
 	name: Yup.string()
 		.required('Обязательное поле')
-		.min(6, 'Минимум 6 символов'),
+		.min(1, 'Минимум 1 символ'),
 	email: Yup.string()
 		.email('Неверная почта')
 		.required('Обязательное поле'),
 	password: Yup.string()
-		.min(8, 'Минимум 8 смволов')
+		.min(8, 'Минимум 8 символов')
 		.required('Обязательное поле'),
 });
 

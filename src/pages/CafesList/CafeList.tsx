@@ -12,6 +12,7 @@ import Button, {ButtonColor} from '@components/primitives/Button';
 import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
 import InWorkTag from '@components/InWorkTag';
+import Contact from '@components/Contact/Contact';
 
 
 const CafeListPage: React.FC = () => {
@@ -67,7 +68,7 @@ const CafeListPage: React.FC = () => {
 			left: () => <IconLeft size={IconSize.xl}/>,
 			right: () => <InWorkTag/>,
 		}}
-		footerProps={{}} mainProps={{
+		 mainProps={{
 			body: () => <>
 				{cafesState !== null &&
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0', width:'100%'}}>
@@ -90,7 +91,11 @@ const CafeListPage: React.FC = () => {
 				</>}
 				<BottomBar/>
 			</>,
-		}}/>);
+		}}
+		footerProps={{
+			right: () => <Contact/>
+		}}
+	/>);
 };
 
 export default observer(CafeListPage);

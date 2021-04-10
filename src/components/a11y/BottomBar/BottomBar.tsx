@@ -50,8 +50,12 @@ const BottomBar:FC = ()=>{
 				<span>{User.isSubscribed}</span>
 				<span>{User.isSubscribed}</span>
 				{!full ? <>
+
 					<Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>
-						{waitingForPay ? t(Phrase.waitingPayTitile) : <>Чтобы увидеть все заведения&nbsp;&mdash; оформите подписку</>}</Typo>
+						{waitingForPay ? <Typo>Если у Вас возникли проблемы во время оплаты, напишите
+							<Typo element="a" href = "mailto: ask@place-to-work.ru">{' '}Нам{' '}</Typo>.
+							Если платеж не был завешен - вы можете перейти к оплате</Typo> :
+							<>Чтобы увидеть все заведения&nbsp;&mdash; оформите подписку</>}</Typo>
 					{waitingForPay ? <Typo
 						className="bottom-bar__subtitle"
 						textAlign={TypoTextAlign.center}
