@@ -91,7 +91,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		/>
 		<Separator/>
 		{ workLoadText && <Typo type={TypographyType.h4} block>Загруженность:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{workLoadText}</Typo></Typo>}
-		{ averagePrice && <Typo type={TypographyType.h4} block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{averagePrice} </Typo></Typo>}
+		{ averagePrice && <Typo type={TypographyType.h4} block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{averagePrice} &nbsp;руб. </Typo></Typo>}
 		<Separator invisible/>
 		{mapSrc && <Button
 			className="cafe-detailed-info__button"

@@ -2,8 +2,9 @@
 @import "../../../components/scss/variables";
 
 .footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  //display: grid;
+  //grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   width: 100%;
 
   border-style: solid;

@@ -21,24 +21,6 @@ const BasePage: React.FC<BasePageProps> = ({
 	const history = useHistory();
 	const {id} = useParams<{ id }>();
 
-	// const onSuccess = React.useCallback(() => {
-	// 	console.log('on success');
-	// 	if (['/auth', '/login', '/signup'].indexOf(history.location.pathname) !== -1) {
-	// 		if (store.user.type === UserCategory.client) {
-	// 			history.push('/places');
-	// 		} else if (store.user.type === UserCategory.staff) {
-	// 			history.push('/staff');
-	// 		}
-	// 	}
-	// }, [history]);
-	//
-	// const onError = React.useCallback(() => {
-	// 	console.log('on error');
-	// 	if (['/auth', '/login', '/signup'].indexOf(history.location.pathname) === -1) {
-	// 		history.push('/auth');
-	// 	}
-	//
-	// }, [history]);
 
 	React.useEffect(() => {
 		if (!User.isAuthenticated) {
@@ -63,7 +45,8 @@ const BasePage: React.FC<BasePageProps> = ({
 
 	return <PageContainer>
 		<Header {...headerProps}/>
-		<Main {...mainProps} />
+		<Main {...mainProps}>
+		</Main>
 		<Footer {...footerProps}/>
 	</PageContainer>;
 };

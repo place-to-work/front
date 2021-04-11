@@ -1,15 +1,14 @@
 import React, {FC} from 'react';
-import Typo, {TypographyType} from '@components/primitives/Typo';
+import Typo, {TypoColor, TypographyType} from '@components/primitives/Typo';
 import t, {Phrase} from '@models/Translate/Translate';
 
 const Contacts: FC = () =><Typo
 	block
-	element="a"
-	href = "mailto: ask@place-to-work.ru"
-	type={TypographyType.h5}
-	style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
+	type={TypographyType.h4}
+	style={{ cursor: 'not-allowed', whiteSpace:'pre-wrap', justifySelf:'flex-end'}}
 >
-	{t(Phrase.contactUs)}
+	{t(Phrase.contactEmail)}
+	<Typo element="a" href = "mailto: ask@place-to-work.ru" type={TypographyType.h4} color={TypoColor.accent}> ask@place-to-work.ru</Typo>
 </Typo>;
 
 export default Contacts;

@@ -11,6 +11,7 @@ import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
+import Contact from '@components/Contact';
 
 export interface SignupValues {
 	name: '';
@@ -125,7 +126,7 @@ const SignupPage: React.FC = () => {
 				</Form>
 			</>}
 		/>}}
-		footerProps={{right: () => ContactUs}}
+		footerProps={{right: () => <Contact/>}}
 	/>;
 };
 

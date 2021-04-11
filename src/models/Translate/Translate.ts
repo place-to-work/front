@@ -1,5 +1,6 @@
 export enum Phrase {
 	contactUs,
+	contactEmail,
 	slogan1,
 	slogan2,
 	register,
@@ -154,6 +155,9 @@ const texts = {
 	},
 	[Phrase.contactUs]: {
 		ru: () => 'Свяжитесь с нами',
+	},
+	[Phrase.contactEmail]: {
+		ru: () => 'Для связи: ',
 	},
 	[Phrase.slogan1]: {
 		ru: () => 'Сделайте город своим офисом!',

@@ -17,11 +17,11 @@ const AuthPage: React.FC = () => {
 
 
 	React.useEffect(()=>{
-		if(!User.isAuthenticated){
+		if(User.isAuthenticated){
 			if(User.userType == UserType.client){
 				history.push('/places');
 			} else if(User.userType === UserType.staff){
-				history.push('/staff');
+				history.push('/places');
 			}
 
 		}
