@@ -1,0 +1,8 @@
+@import "../../scss/variables";
+
+.cafe-list-message {
+  border-radius: $global-border-radius;
+  background-color: $background-accent;
+  width: 360px;
+  height: fit-content;
+}
