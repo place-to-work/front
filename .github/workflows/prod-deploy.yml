@@ -16,7 +16,7 @@ jobs:
         uses: nogsantos/scp-deploy@master
         with:
           src: ./public
-          host: ${{ secrets.PROD_HOST }}
+          host: ${{ secrets.SSH_PROD_HOST }}
           remote: ${{ secrets.SSH_DIR }}
-          key: ${{ secrets.PROD_API_KEY }}
+          key: ${{ secrets.SSH_RSA }}
           user: ${{ secrets.SSH_USER }}
