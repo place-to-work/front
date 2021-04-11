@@ -15,7 +15,7 @@ class Http {
 	static STORE_CSRF_NAME = 'csrftoken';
 	static PUT_CSRF_NAME = 'X-CSRFToken';
 
-	constructor(public serverUrl = 'https://place-to-work.online/api/v1') {
+	constructor(public serverUrl) {
 	}
 
 	fetchRequest({
@@ -125,4 +125,4 @@ function retCSRFToken(response: Response): Response {
 	return response;
 }
 
-export default new Http();
+export default new Http(BASE_URL);

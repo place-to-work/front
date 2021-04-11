@@ -2,7 +2,8 @@ const path = require('path');
 const paths = require('./paths');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -77,6 +78,9 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: paths.htmlPath,
 			inject: 'body',
+		}),
+		new webpack.DefinePlugin({
+			BASE_URL: `'https://place-to-work.${isDev ? 'online' : 'ru'}/api/v1'`,
 		}),
 		new WebpackPwaManifest({
 			name: 'Рабочее место',
