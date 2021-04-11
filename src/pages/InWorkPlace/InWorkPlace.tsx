@@ -45,7 +45,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			left: () => <BackIcon size={IconSize.m} onClick={() => history.push('/places')}/>,
 		}}
 		mainProps={{
-			style: {padding: 16},
+			style: {padding: 12},
 			body: () => <>
 				<QrCard value={uuid}/>
 
@@ -53,7 +53,8 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					block
 					type={TypographyType.h1}
 					textAlign={TypoTextAlign.center}
-					style={{lineHeight: 1, margin: '16px 0',...tmpMobileWidth}}
+					className="in-work-place__title"
+					style={{lineHeight: 1,...tmpMobileWidth}}
 				>
 					{uuid?.length ? t(Phrase.subscriptionActivated) : t(Phrase.subscriptionNotActivated)}
 				</Typo>
@@ -68,14 +69,14 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				}
 
 				{Boolean(uuid?.length) &&
-				<div style={{display: 'flex', justifyContent: 'center', margin: '16px 0', ...tmpMobileWidth}}>
+				<div className="in-work-place__estimated-date" style={{ ...tmpMobileWidth}}>
 					<Typo type={TypographyType.h4}>{t(Phrase.expirationDate)}<Typo
 						type={TypographyType.h4}
 						weight={TypoWeight.bold}>{t(Phrase.dayNMonth, {day, month})}</Typo></Typo>
 				</div>
 				}
 
-				<div style={{display: 'flex', justifyContent: 'center'}}>
+				<div className="in-work-place__button">
 					<Button
 						full
 						onClick={() => history.push('/places')}

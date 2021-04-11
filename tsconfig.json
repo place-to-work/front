@@ -19,6 +19,7 @@
 			"@pages/*": ["pages/*"],
 			"@models/*": ["models/*"],
 			"@network/*": ["network/*"],
+			"@utils/*": ["utils/*"]
 		},
 		"baseUrl": "./src"
 	},

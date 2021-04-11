@@ -11,6 +11,7 @@ import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
+import Contact from '@components/Contact';
 
 export interface LoginValues {
 	email: string;
@@ -34,19 +35,13 @@ const validationSchema = Yup.object().shape({
 const LoginPage: React.FC = () => {
 	const history = useHistory();
 
-	const ContactUs = <Typo
-		block
-		type={TypographyType.h5}
-		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
-	>
-		{t(Phrase.contactUs)}
-	</Typo>;
-
 	React.useEffect(()=>{
 		if(User.isAuthenticated){
 			history.push('/places');
 		}
 	},[User.id]);
+
+
 
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
@@ -103,7 +98,7 @@ const LoginPage: React.FC = () => {
 				</>}
 			/>,
 		}}
-		footerProps={{right: () => ContactUs}}
+		footerProps={{right: () => <Contact/>}}
 	/>;
 };
 

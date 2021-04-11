@@ -11,6 +11,7 @@ import Tag from '@components/primitives/Tag';
 import {ButtonColor} from '@components/primitives/Button';
 import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import t, {Phrase} from '@models/Translate';
+import InWorkTag from '@components/InWorkTag';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{ id }>();
@@ -55,18 +56,7 @@ const CafePage: React.FC = () => {
 				size={IconSize.m}
 				onClick={() => history.push('/places')}
 			/>,
-			right: () => <Tag
-				color={ButtonColor.grey}
-				onClick={() => history.push('/in-place')}
-			>
-				<Typo
-					type={TypographyType.h5}
-					style={{width: '100%'}}
-					textAlign={TypoTextAlign.center}
-				>
-					{t(Phrase.ImInWorkPlace)}
-				</Typo>
-			</Tag>,
+			right: () => <InWorkTag/>,
 		}}
 		mainProps={{
 			body: () => <>

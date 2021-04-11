@@ -48,3 +48,35 @@ $global-border-radius-min: 6px;
 
 // остальное
 $header-height: 60px;
+
+
+$global-color-border: $global-color-grey;
+$global-border-divider: 1px solid $global-color-border;
+
+$global-black-100: #000;
+$global-black-80: #787878;
+$global-black-50: #9aa3ab;
+$global-black-30: #c0c0c0;
+$global-black-25: #d8d8d8;
+$global-black-20: #e3e5e6;
+$global-black-10: #f6f7f7;
+$global-black-00: #fff;
+
+// Отступы
+
+$global-spacing-xxxl: 56px;
+$global-spacing-xxxm: 44px;
+$global-spacing-xxl: 32px;
+$global-spacing-xl: 24px;
+$global-spacing-l: 20px;
+$global-spacing-m: 16px;
+$global-spacing-ms: 14px; // меньше, чем "m", но больше, чем "s")
+$global-spacing-s: 12px;
+$global-spacing-xs: 10px;
+$global-spacing-xxs: 8px;
+$global-spacing-xxxs: 6px;
+$global-spacing-tiny: 4px;
+$global-spacing-nano: 2px;
+
+
+

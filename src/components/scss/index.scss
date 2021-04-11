@@ -4,6 +4,19 @@
 
 * {
   box-sizing: border-box;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 button,
@@ -16,10 +29,7 @@ input {
 body {
   margin: 0;
   overflow: hidden;
-  //height: 100vh;
-  //position: fixed;
-  //overflow: hidden;
-  //width: 100%;
+  touch-action: pan-x pan-y;
 }
 
 //@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {

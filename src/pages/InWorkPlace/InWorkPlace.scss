@@ -1,0 +1,29 @@
+@import "src/components/scss/index";
+
+.in-work-place{
+
+  &__title{
+    margin: 16px 0;
+    @include midget{
+      margin: 8px 0;
+    }
+  }
+
+  &__text{
+
+  }
+
+  &__estimated-date{
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+    @include midget{
+      margin: 8px 0;
+    }
+  }
+
+  &__button{
+    display: flex;
+    justify-content: center;
+  }
+}

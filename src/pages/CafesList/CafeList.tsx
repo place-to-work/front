@@ -11,6 +11,9 @@ import Tag from '@components/primitives/Tag';
 import Button, {ButtonColor} from '@components/primitives/Button';
 import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
+import InWorkTag from '@components/InWorkTag';
+import Contact from '@components/Contact/Contact';
+import Footer from '@pages/BasePage/Footer';
 
 
 const CafeListPage: React.FC = () => {
@@ -64,16 +67,12 @@ const CafeListPage: React.FC = () => {
 	return (<BasePage
 		headerProps={{
 			left: () => <IconLeft size={IconSize.xl}/>,
-			right: () => <Tag color={ButtonColor.grey} onClick={() => history.push('/in-place')}>
-				<Typo type={TypographyType.h5} style={{width: '100%'}} textAlign={TypoTextAlign.center}>
-					{t(Phrase.ImInWorkPlace)}
-				</Typo>
-			</Tag>,
+			right: () => <InWorkTag/>,
 		}}
-		footerProps={{}} mainProps={{
+		 mainProps={{
 			body: () => <>
 				{cafesState !== null &&
-			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0'}}>
+			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0', width:'100%'}}>
 				{t(Phrase.allPlaces)}
 			</Typo>}
 				<div>
@@ -91,9 +90,15 @@ const CafeListPage: React.FC = () => {
 						{t(Phrase.tryAgain)}
 					</Button>
 				</>}
+				{cafesMemo && <div style={{display:'flex', justifyContent:'flex-end', marginTop:'28px'}}>
+					<Contact/>
+				</div>
+				}
 				<BottomBar/>
 			</>,
-		}}/>);
+		}}
+		footerProps={{}}
+	/>);
 };
 
 export default observer(CafeListPage);

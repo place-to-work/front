@@ -7,6 +7,8 @@ import Button, {ButtonSize} from '@components/primitives/Button';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import Http from '@network/Http/Http';
 import t, {Phrase} from '@models/Translate';
+import {setPayOffer} from '@utils/payStorage';
+
 
 interface PromoValues {
 	promo: '';
@@ -16,18 +18,6 @@ const initialValues: PromoValues = {
 	promo: '',
 };
 
-function openTab(url) {
-	// Create link in memory
-	console.log('fale clicl');
-	const a = window.document.createElement('a');
-	a.target = '_blank';
-	a.href = url;
-
-	// Dispatch fake click
-	const e = window.document.createEvent('MouseEvents');
-	e.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-	a.dispatchEvent(e);
-}
 
 const SubscriptionMainPage: React.FC = () => {
 	const [url, setUrl] = React.useState<string | null>(null);
@@ -83,24 +73,17 @@ const SubscriptionMainPage: React.FC = () => {
 					initialValues={initialValues}
 					render={(formikProps: FormikProps<PromoValues>) => <>
 						<Form>
-							{/*<FormikInput*/}
-							{/*    id="promo"*/}
-							{/*    formikProps={formikProps}*/}
-							{/*    placeholder="Промокод"*/}
-							{/*/>*/}
-
 							<Button
-								disabled={!url}
+								// disabled={!url}
 								element={'a'}
 								href={url}
 								buttonSize={ButtonSize.xl}
 								full
-								onClick={() => console.log('click')}
+								onClick={setPayOffer}
 								style={{margin: '13px 0'}}
 							>
 								{t(Phrase.pay)}
 							</Button>
-							{/*<Typo textAlign={TypoTextAlign.center} style={{width:'100%'}} type={TypographyType.h4} color={TypoColor.darkGrey}>Продолжить без подписки</Typo>*/}
 
 						</Form>
 					</>
