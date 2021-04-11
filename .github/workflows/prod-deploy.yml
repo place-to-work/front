@@ -1,21 +1,22 @@
-name: dev-deploy
+name: prod-deploy
 on:
   push:
     branches:
-      - online
+      - master
 jobs:
-  dev-deploy:
+  prod-deploy:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run dev-build
+      - run: ls -lah
       - name: scp
         uses: nogsantos/scp-deploy@master
         with:
           src: ./public
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.PROD_HOST }}
           remote: ${{ secrets.SSH_DIR }}
-          key: ${{ secrets.SSH_RSA }}
+          key: ${{ secrets.PROD_API_KEY }}
           user: ${{ secrets.SSH_USER }}
