@@ -26,7 +26,7 @@ const App: React.FC = () => (
 	<NotificationProvider>
 		<Router history={history}>
 			<Switch>
-
+				<div></div>
 				<Route path="/in-place">
 					<InWorkPlace qrValue={''}/>
 				</Route>
