@@ -20,8 +20,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm install
-      - run: npm run dev-build
-      - run: ls -lah
+      - run: npm run prod-build
       - name: scp
         uses: nogsantos/scp-deploy@master
         with:
