@@ -23,19 +23,19 @@ import MessageProvider from '@components/MessageProvider/MessageProvider';
 
 const history = createBrowserHistory();
 
-const App: React.FC = () => {
-	try {
-		document.addEventListener('touchmove', function (event) {
-			// @ts-ignore
-			if (event.scale !== 1) {
-				event.preventDefault();
-			}
-		}, {passive: false});
-	} catch (e) {
-		console.log(e);
-	}
+const App: React.FC = () => 
+// try {
+// 	document.addEventListener('touchmove', function (event) {
+// 		// @ts-ignore
+// 		if (event.scale !== 1) {
+// 			event.preventDefault();
+// 		}
+// 	}, {passive: false});
+// } catch (e) {
+// 	console.log(e);
+// }
 
-	return (
+	 (
 		<MessageProvider>
 			<Router history={history}>
 				<Switch>
@@ -107,7 +107,7 @@ const App: React.FC = () => {
 				</Switch>
 			</Router>
 		</MessageProvider>
-	);
-};
+	)
+;
 
 export default hot(App);
