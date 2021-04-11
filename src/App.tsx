@@ -16,13 +16,14 @@ import SubscribePage from '@pages/Subscribe';
 import InWorkPlace from '@pages/InWorkPlace';
 import SubscriptionMainPage from '@pages/SubscriptionMain/SubscriptionMain';
 import StaffPage from '@pages/StaffPage';
-import MessageProvider from '@components/MessageProvider/MessageProvider';
+import NotificationProvider from '@components/NotificationProvider';
 
 
 const history = createBrowserHistory();
 
+
 const App: React.FC = () => (
-	<MessageProvider>
+	<NotificationProvider>
 		<Router history={history}>
 			<Switch>
 
@@ -84,8 +85,7 @@ const App: React.FC = () => (
 
 			</Switch>
 		</Router>
-	</MessageProvider>
-)
-;
+	</NotificationProvider>
+);
 
 export default hot(App);

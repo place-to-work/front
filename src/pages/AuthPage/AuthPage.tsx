@@ -9,19 +9,24 @@ import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User, {UserType} from '@models/User';
-import Message from '@models/Message';
-import Contact from '@components/Contact';
+import Message from '@models/Notification';
 
 const AuthPage: React.FC = () => {
 	const history = useHistory();
-
+	const ContactUs = <Typo
+		block
+		type={TypographyType.h5}
+		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
+	>
+		{t(Phrase.contactUs)}
+	</Typo>;
 
 	React.useEffect(()=>{
-		if(User.isAuthenticated){
+		if(!User.isAuthenticated){
 			if(User.userType == UserType.client){
 				history.push('/places');
 			} else if(User.userType === UserType.staff){
-				history.push('/places');
+				history.push('/staff');
 			}
 
 		}
@@ -60,18 +65,18 @@ const AuthPage: React.FC = () => {
 				>
 					{t(Phrase.login)}
 				</Button>
-				{/*<Button*/}
-				{/*	element="a"*/}
-				{/*	onClick={() => Message.info('Неверный логин или пароль, попробуйте снова')}*/}
-				{/*	full*/}
-				{/*	color={ButtonColor.white}*/}
-				{/*>*/}
-				{/*	Ошибка*/}
-				{/*</Button>*/}
+				<Button
+					element="a"
+					onClick={() => Message.info('Неверный логин или пароль, попробуйте снова')}
+					full
+					color={ButtonColor.white}
+				>
+					Ошибка
+				</Button>
 			</>
 		}}
 		footerProps={{
-			right: () => <Contact/>
+			right: () => ContactUs
 		}}
 	/>;
 };

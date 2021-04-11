@@ -2,7 +2,7 @@ name: dev-deploy
 on:
   push:
     branches:
-      - master
+      - online
 jobs:
   dev-deploy:
     runs-on: ubuntu-20.04
@@ -11,7 +11,6 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run dev-build
-      - run: ls -lah
       - name: scp
         uses: nogsantos/scp-deploy@master
         with:

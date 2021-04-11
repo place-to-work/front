@@ -1,6 +1,5 @@
 export enum Phrase {
 	contactUs,
-	contactEmail,
 	slogan1,
 	slogan2,
 	register,
@@ -31,11 +30,6 @@ export enum Phrase {
 	subscribeVerb,
 	subscribeNoun,
 	pay,
-	waitingPayTitle,
-	waitingPay,
-	returnToPay,
-	getSubscription,
-	aboutSubscribe,
 	badEmailOrPassword,
 	networkError,
 	userExists,
@@ -60,22 +54,6 @@ const texts = {
 	},
 	[Phrase.pay]: {
 		ru: () => 'Оплатить'
-	},
-	[Phrase.waitingPayTitle]:{
-		ru: () => 'Ожидание оплаты'
-	},
-	[Phrase.waitingPay]: {
-		ru: () => ' Если у Вас возникли проблемы во время оплаты,' +
-			' напишите Нам. Если платеж не был завешен - вы можете перейти к оплате'
-	},
-	[Phrase.getSubscription]: {
-		ru: () => 'Оформить подписку'
-	},
-	[Phrase.aboutSubscribe]: {
-		ru: () => 'Продолжить'
-	},
-	[Phrase.returnToPay]: {
-		ru: () => 'Вернуться к оплате'
 	},
 	[Phrase.subscribeNoun]: {
 		ru: () => 'подписки'
@@ -108,10 +86,10 @@ const texts = {
 		ru: () => 'Подписка не активирована',
 	},
 	[Phrase.showQrSuggestion]: {
-		ru: () => 'Предъявите этот код бариста' + // бариста -- не склоняется
-			' и получайте' +
-			' бесплатный чай, скидки в кафе и' +
-			' неограниченный доступ в рабочие пространства',
+		ru: () => 'Предъявите этот код бариста ' + // бариста -- не склоняется
+			'и получайте ' +
+			'бесплатный чай, скидки в кафе и ' +
+			'неограниченный доступ в рабочие пространства',
 	},
 	[Phrase.subscriptionNotActivated]: {
 		ru: () => 'Подписка не активирована',
@@ -123,7 +101,7 @@ const texts = {
 		ru: () => 'Попробовать заново',
 	},
 	[Phrase.apologize]: {
-		ru: () => 'Приносим свои извинения.',
+		ru: () => 'Приносим свои извенения.',
 	},
 	[Phrase.technicalWork]: {
 		ru: () => 'Технические работы',
@@ -132,8 +110,7 @@ const texts = {
 		ru: () => 'Все заведения',
 	},
 	[Phrase.ImInWorkPlace]: {
-		// ru: () => 'Я в кофейне',
-		ru: () => 'Моя подписка',
+		ru: () => 'Я в кофейне',
 	},
 	[Phrase.name]: {
 		ru: () => 'Имя',
@@ -156,9 +133,6 @@ const texts = {
 	[Phrase.contactUs]: {
 		ru: () => 'Свяжитесь с нами',
 	},
-	[Phrase.contactEmail]: {
-		ru: () => 'Для связи: ',
-	},
 	[Phrase.slogan1]: {
 		ru: () => 'Сделайте город своим офисом!',
 	},
@@ -176,7 +150,7 @@ const texts = {
 		ru: () => 'Войти',
 	},
 	[Phrase.registerAction]: {
-		ru: () => 'Зарегистрироваться',
+		ru: () => 'Зарегестрироваться',
 	},
 	[Phrase.noAccount]: {
 		ru: () => 'Нет аккаунта?',
