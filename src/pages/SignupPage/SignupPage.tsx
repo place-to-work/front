@@ -111,6 +111,17 @@ const SignupPage: React.FC = () => {
 						{t(Phrase.registerAction)}
 					</Button>
 					<Typo
+						style={{marginBottom:'16px'}}
+						type={TypographyType.h6}
+						textAlign={TypoTextAlign.center}
+						weight={TypoWeight.regular}
+						color={TypoColor.darkGrey}>Нажимая {'"'}{t(Phrase.registerAction)}{'"'}, вы соглашаетесь с <Typo
+							type={TypographyType.h6}
+							textAlign={TypoTextAlign.center}
+							weight={TypoWeight.regular}
+							color={TypoColor.accent}
+							element="a" href="https://www.place-to-work.ru/legal/privacy_policy.pdf">пользовательским соглашением</Typo></Typo>
+					<Typo
 						block
 						type={TypographyType.h5}
 						textAlign={TypoTextAlign.center}

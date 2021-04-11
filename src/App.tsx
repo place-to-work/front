@@ -4,10 +4,8 @@ import React from 'react';
 import {Redirect, Route, Router, Switch} from 'react-router-dom';
 import {hot} from 'react-hot-loader/root';
 
-import MobxPage from '@pages/useless/MobxPage';
-
 import {CurrentTime} from '@models/useless/CurrentTime';
-import {FormikPage} from '@pages/useless/FormikPage';
+
 import CafeListPage from '@pages/CafesList';
 import CafePage from '@pages/CafePage';
 import AuthPage from '@pages/AuthPage';
@@ -31,10 +29,6 @@ const App: React.FC = () => (
 				<Route path="/in-place">
 					<InWorkPlace qrValue={''}/>
 				</Route>
-				<Route path="/example">
-					<MobxPage currentTime={new CurrentTime()}/>
-				</Route>
-
 
 				<Route path="/login">
 					<LoginPage/>
@@ -77,10 +71,6 @@ const App: React.FC = () => (
 					<SubscriptionMainPage/>
 				</Route>
 
-
-				<Route path="/formik">
-					<FormikPage/>
-				</Route>
 
 				<Route path="/auth/:id">
 					<AuthPage/>
