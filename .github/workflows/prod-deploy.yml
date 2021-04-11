@@ -1,8 +1,6 @@
 name: prod-deploy
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 jobs:
   prod-deploy:
     runs-on: ubuntu-20.04
@@ -17,6 +15,6 @@ jobs:
         with:
           src: ./public
           host: ${{ secrets.SSH_PROD_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
+          remote: ${{ secrets.SSH_PROD_DIR }}
           key: ${{ secrets.SSH_RSA }}
           user: ${{ secrets.SSH_USER }}
