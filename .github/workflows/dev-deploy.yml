@@ -2,7 +2,7 @@ name: dev-deploy
 on:
   push:
     branches:
-      - master
+      - online
 jobs:
   dev-deploy:
     runs-on: ubuntu-20.04
