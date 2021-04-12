@@ -23,6 +23,7 @@ import NotificationProvider from '@components/NotificationProvider';
 
 const history = createBrowserHistory();
 
+
 const App: React.FC = () => (
 	<NotificationProvider>
 		<Router history={history}>
@@ -95,7 +96,6 @@ const App: React.FC = () => (
 			</Switch>
 		</Router>
 	</NotificationProvider>
-)
-;
+);
 
 export default hot(App);
