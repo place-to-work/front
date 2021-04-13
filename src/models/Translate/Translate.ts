@@ -40,9 +40,17 @@ export enum Phrase {
 	networkError,
 	userExists,
 	haveAccount,
+	confirmPassword,
+	inputConfirmPassword,
 }
 
 const texts = {
+	[Phrase.inputConfirmPassword]: {
+		ru: () => 'Введите пароль ещё раз',
+	},
+	[Phrase.confirmPassword]: {
+		ru: () => 'Тот же пароль',
+	},
 	[Phrase.haveAccount]: {
 		ru: () => 'Есть аккаунт?',
 	},

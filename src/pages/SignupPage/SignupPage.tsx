@@ -14,15 +14,17 @@ import User from '@models/User';
 import Contact from '@components/Contact';
 
 export interface SignupValues {
-	name: '';
+	name: string;
 	email: string;
 	password: string;
+	confirmPassword: string;
 }
 
 const initialValues: SignupValues = {
 	name: '',
 	email: '',
 	password: '',
+	confirmPassword: '',
 };
 
 const validationSchema = Yup.object().shape({
@@ -35,6 +37,9 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string()
 		.min(8, 'Минимум 8 символов')
 		.required('Обязательное поле'),
+	confirmPassword: Yup.string()
+		.required('Обязательное поле')
+		.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
 });
 
 const SignupPage: React.FC = () => {
@@ -45,14 +50,6 @@ const SignupPage: React.FC = () => {
 			history.push('/places');
 		}
 	},[User.id]);
-
-	const ContactUs = <Typo
-		block
-		type={TypographyType.h5}
-		style={{marginRight: 'calc(50% - 170px)', cursor: 'not-allowed'}}
-	>
-		{t(Phrase.contactUs)}
-	</Typo>;
 
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
@@ -89,6 +86,13 @@ const SignupPage: React.FC = () => {
 						title={t(Phrase.password)}
 						formikProps={formikProps}
 						placeholder={t(Phrase.inputPassword)}
+					/>
+					<FormikInput
+						id="confirm-password"
+						type="password"
+						title={t(Phrase.confirmPassword)}
+						formikProps={formikProps}
+						placeholder={t(Phrase.inputConfirmPassword)}
 					/>
 					{/*<Typo*/}
 					{/*	block*/}
