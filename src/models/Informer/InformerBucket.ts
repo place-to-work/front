@@ -1,7 +1,7 @@
 import Informer from '@models/Informer/Informer';
 import Http from '@network/Http';
 
-export default class InformerBucket {
+class InformerBucket {
 	informerBucket: Informer[];
 
 	async fetchInformers(): Promise<Informer[]> {
@@ -32,3 +32,5 @@ export default class InformerBucket {
 		return this.informerBucket.pop();
 	}
 }
+
+export default new InformerBucket();
