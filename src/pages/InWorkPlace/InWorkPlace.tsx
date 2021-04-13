@@ -54,7 +54,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					type={TypographyType.h1}
 					textAlign={TypoTextAlign.center}
 					className="in-work-place__title"
-					style={{lineHeight: 1,...tmpMobileWidth}}
+					style={{lineHeight: 1, margin:'0 auto',...tmpMobileWidth}}
 				>
 					{uuid?.length ? t(Phrase.subscriptionActivated) : t(Phrase.subscriptionNotActivated)}
 				</Typo>
