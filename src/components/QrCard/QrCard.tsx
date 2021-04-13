@@ -9,6 +9,8 @@ interface OwnProps {
 const QrCard: React.FC<OwnProps> = ({value}) => {
 	const [cardRotated, setCardRotated] = React.useState(false);
 
+	console.log('root domain = ', ROOT_DOMAIN);
+
 	return <div
 		className={`qr-code-card__background${cardRotated ? '-rotated' : ''}`}
 		onClick={() => {

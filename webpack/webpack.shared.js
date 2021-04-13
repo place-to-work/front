@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const webpack = require('webpack');
 
+console.log('node env = ', process.env.NODE_ENV);
 const isDev = process.env.NODE_ENV === 'development';
 
 const styleRules = {
@@ -72,6 +73,13 @@ module.exports = {
 			fontRules
 		],
 
+	},
+	devServer: {
+		historyApiFallback: true,
+		contentBase: paths.outputPath,
+		compress: true,
+		port: 2021,
+		open: true,
 	},
 	plugins: [
 		new MiniCssExtractPlugin(),
