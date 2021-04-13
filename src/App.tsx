@@ -23,6 +23,7 @@ import NotificationProvider from '@components/NotificationProvider';
 
 const history = createBrowserHistory();
 console.log('APP');
+console.log('APP2');
 
 const App: React.FC = () => (
 	<NotificationProvider>
