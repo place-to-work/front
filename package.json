@@ -67,7 +67,6 @@
 		"@typescript-eslint/eslint-plugin": "^4.20.0",
 		"@typescript-eslint/parser": "^4.20.0",
 		"eslint": "^7.23.0",
-		"eslint-auto-fix": "^1.0.3",
 		"eslint-plugin-react": "^7.23.1",
 		"prettier": "2.2.1",
 		"url-loader": "^4.1.1",
