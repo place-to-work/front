@@ -57,7 +57,7 @@ const SignupPage: React.FC = () => {
 		mainProps={{body: () => <Formik
 			validationSchema={validationSchema}
 			initialValues={initialValues}
-			onSubmit={((values) => {
+			onSubmit={((values: SignupValues) => {
 				if (values.password !== values.confirmPassword) {
 					Notification.error('Пароли должны совпадать');
 					return;
@@ -94,7 +94,7 @@ const SignupPage: React.FC = () => {
 						placeholder={t(Phrase.inputPassword)}
 					/>
 					<FormikInput
-						id="confirm-password"
+						id="confirmPassword"
 						type="password"
 						title={t(Phrase.confirmPassword)}
 						formikProps={formikProps}
