@@ -39,7 +39,7 @@ const StaffPage: React.FC = () => {
 		if (resp.ok) {
 			window.close();
 		} else {
-			// history.push('/auth')
+			Notification.error('Произошла ошибка, напишите об этом в чат, пожалуйста');
 		}
 
 	}, [User.place, id]);
@@ -54,11 +54,10 @@ const StaffPage: React.FC = () => {
 
 			}),
 		});
-		Notification.info(String(resp.ok));
 		if (resp.ok) {
 			window.close();
 		} else {
-			// history.push('/auth')
+			Notification.error('Произошла ошибка, напишите об этом в чат, пожалуйста');
 		}
 
 	}, [User.place, id]);
