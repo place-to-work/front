@@ -14,6 +14,7 @@ const eslintRules = {
 };
 
 module.exports = {
+	devtool: 'eval',
 	module: {
 		rules: [
 			eslintRules,

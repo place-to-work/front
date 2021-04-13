@@ -65,7 +65,6 @@ module.exports = {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: aliases,
 	},
-	devtool: 'eval',
 	module: {
 		rules: [
 			styleRules,
