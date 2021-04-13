@@ -12,7 +12,6 @@ import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import Contact from '@components/Contact';
-import Notification from '@models/Notification';
 
 export interface SignupValues {
 	name: string;
@@ -59,11 +58,6 @@ const SignupPage: React.FC = () => {
 			validationSchema={validationSchema}
 			initialValues={initialValues}
 			onSubmit={((values: SignupValues) => {
-				if (values.password !== values.confirmPassword) {
-					Notification.error('Пароли должны совпадать');
-					return;
-				}
-
 				User.register(values)
 					.then((result) => {
 						if (result === null) return null;
