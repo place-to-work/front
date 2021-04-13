@@ -97,7 +97,7 @@ module.exports = {
 			orientation: "portrait-primary",
 			start_url: "/",
 			display: "standalone",
-			publicPath: 'https://place-to-work.ru/',
+			publicPath: `https://place-to-work.${isDev ? 'online' : 'ru'}/`,
 			crossorigin: 'anonymous',
 			background_color: '#ffffff',
 			icons: [
