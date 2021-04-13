@@ -56,7 +56,7 @@ const StaffPage: React.FC = () => {
 		});
 		Notification.info(String(resp.ok));
 		if (resp.ok) {
-			// window.close();
+			window.close();
 		} else {
 			// history.push('/auth')
 		}
