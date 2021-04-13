@@ -12,6 +12,7 @@ import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import Contact from '@components/Contact';
+import Notification from '@models/Notification';
 
 export interface SignupValues {
 	name: string;
@@ -39,8 +40,7 @@ const validationSchema = Yup.object().shape({
 		.required('Обязательное поле'),
 	confirmPassword: Yup.string()
 		.min(8, 'Минимум 8 символов')
-		.required('Обязательное поле')
-		.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
+		.required('Обязательное поле'),
 });
 
 const SignupPage: React.FC = () => {
@@ -58,6 +58,11 @@ const SignupPage: React.FC = () => {
 			validationSchema={validationSchema}
 			initialValues={initialValues}
 			onSubmit={((values) => {
+				if (values.password !== values.confirmPassword) {
+					Notification.error('Пароли должны совпадать');
+					return;
+				}
+
 				User.register(values)
 					.then((result) => {
 						if (result === null) return null;
