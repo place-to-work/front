@@ -8,6 +8,7 @@ import Http from '@network/Http/Http';
 import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User, {UserType} from '@models/User';
+import Notification from '@models/Notification/Notification';
 
 
 const StaffPage: React.FC = () => {
@@ -53,8 +54,9 @@ const StaffPage: React.FC = () => {
 
 			}),
 		});
+		Notification.info(String(resp.ok));
 		if (resp.ok) {
-			window.close();
+			// window.close();
 		} else {
 			// history.push('/auth')
 		}
