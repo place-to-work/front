@@ -106,6 +106,12 @@ class Http {
 			body: JSON.stringify(loginValues),
 		});
 	}
+
+	getInformers(): Promise<Nullable<Response>> {
+		return this.fetchGet({
+			path: '/informers/path', // not real !!!
+		});
+	}
 }
 
 export function getCookie(name: string): string | undefined {
