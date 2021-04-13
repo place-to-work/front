@@ -40,7 +40,8 @@ const validationSchema = Yup.object().shape({
 		.required('Обязательное поле'),
 	confirmPassword: Yup.string()
 		.min(8, 'Минимум 8 символов')
-		.required('Обязательное поле'),
+		.required('Обязательное поле')
+		.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать')
 });
 
 const SignupPage: React.FC = () => {
