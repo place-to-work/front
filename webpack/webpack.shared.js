@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const webpack = require('webpack');
 
+console.log('node env = ', process.env.NODE_ENV);
 const isDev = process.env.NODE_ENV === 'development';
 
 const styleRules = {
@@ -64,7 +65,6 @@ module.exports = {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: aliases,
 	},
-	devtool: 'eval',
 	module: {
 		rules: [
 			styleRules,
@@ -72,6 +72,13 @@ module.exports = {
 			fontRules
 		],
 
+	},
+	devServer: {
+		historyApiFallback: true,
+		contentBase: paths.outputPath,
+		compress: true,
+		port: 2021,
+		open: true,
 	},
 	plugins: [
 		new MiniCssExtractPlugin(),
@@ -81,6 +88,7 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin({
 			BASE_URL: `'https://place-to-work.${isDev ? 'online' : 'ru'}/api/v1'`,
+			ROOT_DOMAIN: `'${isDev ? 'online' : 'ru'}'`,
 		}),
 		new WebpackPwaManifest({
 			name: 'Рабочее место',
@@ -89,7 +97,7 @@ module.exports = {
 			orientation: "portrait-primary",
 			start_url: "/",
 			display: "standalone",
-			publicPath: 'https://place-to-work.ru/',
+			publicPath: `https://place-to-work.${isDev ? 'online' : 'ru'}/`,
 			crossorigin: 'anonymous',
 			background_color: '#ffffff',
 			icons: [

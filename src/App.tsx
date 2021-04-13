@@ -23,7 +23,6 @@ import NotificationProvider from '@components/NotificationProvider';
 
 const history = createBrowserHistory();
 
-
 const App: React.FC = () => (
 	<NotificationProvider>
 		<Router history={history}>

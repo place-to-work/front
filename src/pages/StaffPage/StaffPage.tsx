@@ -8,6 +8,7 @@ import Http from '@network/Http/Http';
 import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User, {UserType} from '@models/User';
+import Notification from '@models/Notification/Notification';
 
 
 const StaffPage: React.FC = () => {
@@ -38,7 +39,7 @@ const StaffPage: React.FC = () => {
 		if (resp.ok) {
 			window.close();
 		} else {
-			// history.push('/auth')
+			Notification.error('Произошла ошибка, напишите об этом в чат, пожалуйста');
 		}
 
 	}, [User.place, id]);
@@ -56,7 +57,7 @@ const StaffPage: React.FC = () => {
 		if (resp.ok) {
 			window.close();
 		} else {
-			// history.push('/auth')
+			Notification.error('Произошла ошибка, напишите об этом в чат, пожалуйста');
 		}
 
 	}, [User.place, id]);

@@ -1,6 +1,9 @@
 name: prod-deploy
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
 jobs:
   prod-deploy:
     runs-on: ubuntu-20.04

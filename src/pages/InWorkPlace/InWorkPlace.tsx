@@ -19,7 +19,7 @@ interface InWorkPlaceProps {
 
 const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	const history = useHistory();
-	const [uuid, setUuid] = React.useState('qwer');
+	const [uuid, setUuid] = React.useState('');
 
 	React.useEffect(() => {
 		Http.fetchPost({path: '/users/uuid/', body: undefined})

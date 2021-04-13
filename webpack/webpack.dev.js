@@ -14,13 +14,7 @@ const eslintRules = {
 };
 
 module.exports = {
-	devServer: {
-		historyApiFallback: true,
-		contentBase: paths.outputPath,
-		compress: true,
-		port: 2021,
-		open: true,
-	},
+	devtool: 'eval',
 	module: {
 		rules: [
 			eslintRules,
