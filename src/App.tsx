@@ -1,27 +1,25 @@
 import './test.scss';
 import './shared.scss';
 import React from 'react';
+import loadable from '@loadable/component';
 import {Redirect, Route, Router, Switch} from 'react-router-dom';
 import {hot} from 'react-hot-loader/root';
-
-import MobxPage from '@pages/useless/MobxPage';
-
 import {CurrentTime} from '@models/useless/CurrentTime';
 import {FormikPage} from '@pages/useless/FormikPage';
-import CafeListPage from '@pages/CafesList';
-import CafePage from '@pages/CafePage';
-import AuthPage from '@pages/AuthPage';
-import LoginPage from '@pages/LoginPage';
-import SignupPage from '@pages/SignupPage';
 import {createBrowserHistory} from 'history';
-import SubscribePage from '@pages/Subscribe';
-import InWorkPlace from '@pages/InWorkPlace';
-import SubscriptionMainPage from '@pages/SubscriptionMain/SubscriptionMain';
-import StaffPage from '@pages/StaffPage';
 import NotificationProvider from '@components/NotificationProvider';
-
-
 const history = createBrowserHistory();
+
+const CafeListPage = loadable(() => import('@pages/CafesList'));
+const CafePage = loadable(() => import('@pages/CafePage'));
+const LoginPage = loadable(() => import('@pages/LoginPage'));
+const SignupPage = loadable(() => import('@pages/SignupPage'));
+const MobxPage = loadable(() => import('@pages/useless/MobxPage'));
+const AuthPage = loadable(() => import('@pages/AuthPage'));
+const StaffPage = loadable(() => import('@pages/StaffPage'));
+const SubscriptionMainPage = loadable(() => import('@pages/SubscriptionMain/SubscriptionMain'));
+const InWorkPlace = loadable(() => import('@pages/InWorkPlace'));
+const SubscribePage = loadable(() => import('@pages/Subscribe'));
 
 const App: React.FC = () => (
 	<NotificationProvider>
