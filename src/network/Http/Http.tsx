@@ -109,7 +109,7 @@ class Http {
 
 	getInformers(): Promise<Nullable<Response>> {
 		return this.fetchGet({
-			path: '/informers/path', // not real !!!
+			path: '/informers/',
 		});
 	}
 }
