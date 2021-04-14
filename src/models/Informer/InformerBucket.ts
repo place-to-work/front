@@ -2,10 +2,10 @@ import Informer from '@models/Informer/Informer';
 import Http from '@network/Http';
 
 class InformerBucket {
-	informerBucket: Informer[] = [];
+	informers: Informer[] = [];
 
 	async fetchInformers(): Promise<Informer[]> {
-		this.informerBucket = await Http.getInformers()
+		this.informers = await Http.getInformers()
 			.then((response: Response | null) => {
 				if (response === null) return [];
 				if (!response.ok) {
@@ -18,16 +18,16 @@ class InformerBucket {
 				return response.json();
 			});
 
-		return this.informerBucket;
+		return this.informers;
 	}
 
 	getInformer(): Informer | null {
-		if (this.informerBucket.length === 0) {
+		if (this.informers.length === 0) {
 			this.fetchInformers();
 			return null;
 		}
 
-		return this.informerBucket.pop();
+		return this.informers.pop();
 	}
 }
 
