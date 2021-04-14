@@ -1,0 +1,56 @@
+
+@import "src/components/scss/mixins";
+@import "src/components/scss/variables";
+
+.informer-card{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+
+  &__name{
+    margin-bottom: 6px;
+  }
+  &__data{
+    margin-bottom: auto;
+  }
+  &__description{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include midget{
+      align-items: flex-start;
+      flex-direction: column-reverse;
+    }
+  }
+  &__info{
+    max-width: 90%;
+  }
+  &__info-text{
+
+  }
+  &__features{
+    display: flex;
+  }
+  &:nth-last-child{
+    margin-bottom: 100px;
+  }
+}
+
+ .informer-card-color {
+  &-dark {
+    background-color: $global-color-black;
+  }
+  &-light {
+    background-color: $global-color-accent;
+  }
+
+   &-accent {
+     &-dark {
+       color: $global-color-black;
+     }
+     &-light {
+       color: $global-color-accent-text;
+     }
+   }
+}
