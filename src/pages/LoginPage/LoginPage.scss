@@ -3,8 +3,9 @@
 .input-container {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  margin-bottom: 2px;
+  margin: 10px auto 2px;
+  max-width: 500px;
+
 }
 
 .input-field {
