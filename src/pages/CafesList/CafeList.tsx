@@ -14,11 +14,22 @@ import {observer} from 'mobx-react-lite';
 import InWorkTag from '@components/InWorkTag';
 import Contact from '@components/Contact/Contact';
 import Footer from '@pages/BasePage/Footer';
+import Informer from '@models/Informer/Informer';
+import InformerBucket from '@models/Informer/InformerBucket';
 
 
 const CafeListPage: React.FC = () => {
-
+	const history = useHistory();
 	const [cafesState, setCafesState] = React.useState<CafeCardProps[] | null>([]);
+	const [informersState, setInformersState] = React.useState<Informer[]>([]);
+
+	React.useEffect(() => {
+		InformerBucket.fetchInformers()
+			.then((informers: Informer[]) => {
+				setInformersState(informers);
+			})
+			.catch(() => setInformersState([]));
+	}, []);
 
 	React.useEffect(() => {
 		Http.fetchGet({
@@ -58,8 +69,10 @@ const CafeListPage: React.FC = () => {
 			.catch(() => setCafesState(null));
 	}, []);
 
+	const informersMemo = React.useMemo(() => informersState.map((informer: Informer, index: number) => (
+		<div>qwer</div>
+	)), [informersState]);
 
-	const history = useHistory();
 	const cafesMemo = React.useMemo(() => cafesState.map((cafe: CafeCardProps, index: number) => (
 		<CafeCard {...cafe} key={index} className="cafes-list__card"/>
 	)), [cafesState]);
