@@ -62,7 +62,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					block
 					type={TypographyType.h4}
 					textAlign={TypoTextAlign.center}
-					style={{ ...tmpMobileWidth}}
+					style={{ margin:'0 auto',...tmpMobileWidth}}
 				>
 					{t(Phrase.showQrSuggestion)}
 				</Typo>
