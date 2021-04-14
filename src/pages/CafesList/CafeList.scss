@@ -12,7 +12,7 @@
   }
 
   &__card {
-    margin:32px;
+    margin: 0 32px;
     @include lessThanTablet{
       margin: 0 auto;
     }

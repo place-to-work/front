@@ -9,6 +9,7 @@ import {FormikPage} from '@pages/useless/FormikPage';
 import {createBrowserHistory} from 'history';
 import NotificationProvider from '@components/NotificationProvider';
 import {WidthProvider} from '@utils/devices';
+import {YMInitializer} from 'react-yandex-metrika';
 
 
 const history = createBrowserHistory();
@@ -27,6 +28,7 @@ const SubscribePage = loadable(() => import('@pages/Subscribe'));
 const App: React.FC = () => (
 	<WidthProvider>
 		<NotificationProvider>
+			{ !IS_DEV && <YMInitializer accounts={[75731011]} />}
 			<Router history={history}>
 				<Switch>
 

@@ -3,9 +3,9 @@
 .in-work-place{
 
   &__title{
-    margin: 16px 0;
+    margin: 16px auto;
     @include midget{
-      margin: 8px 0;
+      margin: 8px auto;
     }
   }
 
@@ -16,13 +16,14 @@
   &__estimated-date{
     display: flex;
     justify-content: center;
-    margin: 16px 0;
+    margin: 16px auto;
     @include midget{
-      margin: 8px 0;
+      margin: 8px auto;
     }
   }
 
   &__button{
+    margin-top: auto;
     display: flex;
     justify-content: center;
   }

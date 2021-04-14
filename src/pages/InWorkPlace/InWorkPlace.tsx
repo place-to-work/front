@@ -46,7 +46,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 		}}
 		mainProps={{
 			style: {padding: 12},
-			body: () => <>
+			body: () => <div>
 				<QrCard value={uuid}/>
 
 				<Typo
@@ -54,7 +54,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					type={TypographyType.h1}
 					textAlign={TypoTextAlign.center}
 					className="in-work-place__title"
-					style={{lineHeight: 1, margin:'0 auto',...tmpMobileWidth}}
+					style={{lineHeight: 1,...tmpMobileWidth}}
 				>
 					{uuid?.length ? t(Phrase.subscriptionActivated) : t(Phrase.subscriptionNotActivated)}
 				</Typo>
@@ -86,7 +86,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					</Button>
 				</div>
 				{!uuid?.length && <BottomBar/>}
-			</>,
+			</div>,
 		}}
 	/>;
 };
