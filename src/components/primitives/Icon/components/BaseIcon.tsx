@@ -19,7 +19,7 @@ const BaseIcon: React.FC<Props> = ({
 	size = IconSize.m,
 	children,
 	onClick,
-	color,
+	color = IconColor.currentColor,
 	...svgProps
 }: Props) => (
 	<svg

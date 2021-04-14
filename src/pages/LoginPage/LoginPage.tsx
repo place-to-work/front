@@ -46,57 +46,59 @@ const LoginPage: React.FC = () => {
 	return <BasePage
 		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{
-			body: () => <Formik<LoginValues>
-				validationSchema={validationSchema}
-				initialValues={initialValues}
-				onSubmit={(values) => {
-					User.login(values)
-						.then((response) => {
-							if (response === null) return null;
-							history.push('/places');
-						});
-				}}
-				render={(formikProps: FormikProps<LoginValues>) => <>
+			body: () => <div>
+				<Formik<LoginValues>
+					validationSchema={validationSchema}
+					initialValues={initialValues}
+					onSubmit={(values) => {
+						User.login(values)
+							.then((response) => {
+								if (response === null) return null;
+								history.push('/places');
+							});
+					}}
+					render={(formikProps: FormikProps<LoginValues>) => <>
 
-					<Typo block type={TypographyType.h1}>{t(Phrase.login)}</Typo>
-					<Form>
-						<FormikInput
-							id="email"
-							type="email"
-							title={t(Phrase.email)}
-							placeholder={t(Phrase.inputEmail)}
-							formikProps={formikProps}
-						/>
-						<FormikInput
-							id="password"
-							title={t(Phrase.password)}
-							type="password"
-							placeholder={t(Phrase.inputPassword)}
-							formikProps={formikProps}
-						/>
-						<Button
-							full
-							buttonSize={ButtonSize.classic}
-							style={{margin: '13px 0'}}
-						>
-							{t(Phrase.loginAction)}
-						</Button>
-						<Typo
-							block
-							type={TypographyType.h5}
-							textAlign={TypoTextAlign.center}
-							weight={TypoWeight.bold}
-							color={TypoColor.black}
-							onClick={() => history.push('/signup')}
-							style={{
-								cursor: 'pointer',
-							}}
-						>
-							{t(Phrase.noAccount)}
-						</Typo>
-					</Form>
-				</>}
-			/>,
+						<Typo block type={TypographyType.h1}>{t(Phrase.login)}</Typo>
+						<Form>
+							<FormikInput
+								id="email"
+								type="email"
+								title={t(Phrase.email)}
+								placeholder={t(Phrase.inputEmail)}
+								formikProps={formikProps}
+							/>
+							<FormikInput
+								id="password"
+								title={t(Phrase.password)}
+								type="password"
+								placeholder={t(Phrase.inputPassword)}
+								formikProps={formikProps}
+							/>
+							<Button
+								full
+								buttonSize={ButtonSize.classic}
+								style={{margin: '13px auto'}}
+							>
+								{t(Phrase.loginAction)}
+							</Button>
+							<Typo
+								block
+								type={TypographyType.h5}
+								textAlign={TypoTextAlign.center}
+								weight={TypoWeight.bold}
+								color={TypoColor.black}
+								onClick={() => history.push('/signup')}
+								style={{
+									cursor: 'pointer',
+								}}
+							>
+								{t(Phrase.noAccount)}
+							</Typo>
+						</Form>
+					</>}
+				/>
+			</div>,
 		}}
 		footerProps={{right: () => <Contact/>}}
 	/>;
