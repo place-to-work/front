@@ -46,7 +46,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 		}}
 		mainProps={{
 			style: {padding: 12},
-			body: () => <>
+			body: () => <div>
 				<QrCard value={uuid}/>
 
 				<Typo
@@ -86,7 +86,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					</Button>
 				</div>
 				{!uuid?.length && <BottomBar/>}
-			</>,
+			</div>,
 		}}
 	/>;
 };

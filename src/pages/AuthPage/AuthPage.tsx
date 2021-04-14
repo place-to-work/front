@@ -39,12 +39,12 @@ const AuthPage: React.FC = () => {
 			body: () => <>
 				<ImageCard
 					imageSrc={'https://p0.zoon.ru/b/0/4f85bd4b3c72dd81140000ef_5d1b13463ca0a.jpg'}
-					style={{width: '100%'}}
+					style={{width: '100%', margin:'0 auto', maxWidth:'initial'}}
 				/>
-				<Typo block type={TypographyType.h1} style={{marginBottom: '18px', lineHeight: '1.1'}}>
+				<Typo block type={TypographyType.h1} style={{marginBottom: '18px', lineHeight: '1.1', textAlign:'center'}}>
 					{t(Phrase.slogan1)}
 				</Typo>
-				<Typo block type={TypographyType.h5} style={{marginBottom: '18px'}}>
+				<Typo block type={TypographyType.h5} style={{marginBottom: '18px', margin:'0 auto', textAlign:'center'}}>
 					{t(Phrase.slogan2)}
 				</Typo>
 				<Button
@@ -52,11 +52,12 @@ const AuthPage: React.FC = () => {
 					onClick={() => history.push('/signup')}
 					full
 					buttonSize={ButtonSize.classic}
-					style={{marginBottom: '9px'}}
+					style={{margin: '0 auto',marginBottom: '9px'}}
 				>
 					{t(Phrase.register)}
 				</Button>
 				<Button
+					style={{margin: '0 auto'}}
 					element="a"
 					onClick={() => history.push('/login')}
 					full

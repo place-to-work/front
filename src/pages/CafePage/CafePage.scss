@@ -1,5 +1,11 @@
+@import "src/components/scss/index";
+
 .cafe-page{
   display: flex;
   height: 100%;
-  align-items: center;
+  @include lessThanTablet{
+    //align-items: center;
+  }
+
+
 }

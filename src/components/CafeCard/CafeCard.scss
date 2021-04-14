@@ -4,14 +4,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 360px;
-
-  //
-  //min-height: 330px;
-  //
-  //@include lessThanTablet{
-  //  min-height: auto;
-  //}
+  max-width: 600px;
+  @include lessThanTablet{
+    max-width: 400px;
+  }
 
   &__name{
     margin-bottom: 6px;

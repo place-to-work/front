@@ -89,6 +89,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			BASE_URL: `'https://place-to-work.${isDev ? 'online' : 'ru'}/api/v1'`,
 			ROOT_DOMAIN: `'${isDev ? 'online' : 'ru'}'`,
+			IS_DEV: isDev
 		}),
 		new WebpackPwaManifest({
 			name: 'Рабочее место',

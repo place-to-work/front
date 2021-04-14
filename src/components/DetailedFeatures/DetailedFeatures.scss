@@ -1,8 +1,16 @@
+@import "src/components/scss/index";
+
 $local-width: calc(100% / 3);
 .detailed-features{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  @include lessThanTablet{
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  max-width: 500px;
   &__item{
     width: $local-width;
   }

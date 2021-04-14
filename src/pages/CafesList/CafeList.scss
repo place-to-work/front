@@ -1,24 +1,50 @@
 @import 'src/components/scss/index';
 
-.cafes-list{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 4px;
-  overflow: scroll;
-  width: 100%;
 
-  &__card{
-    margin: 0 32px;
+.cafes-list {
+  //display: flex;
+  //overflow: scroll;
+  //width: 100%;
+
+  padding: 0 32px;
+  @include lessThanTablet{
+    padding: 0;
   }
 
-  @include lessThanTablet{
+  &__card {
+    margin: 0 32px;
+    @include lessThanTablet{
+      margin: 0 auto;
+    }
+
+  }
+
+  @include lessThanTablet {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
 
   }
 }
-.title{
+.title {
   align-self: flex-start;
+  //margin-left: 28px;
+  //padding-left: -28px;
+  @include lessThanTablet{
+    margin-left: 0;
+  }
+}
+
+.cafes-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  //margin-left: -28px;
+  //padding-left: 28px;
+  @include lessThanTablet{
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 0;
+  }
 }

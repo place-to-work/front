@@ -61,7 +61,7 @@ const CafeListPage: React.FC = () => {
 
 	const history = useHistory();
 	const cafesMemo = React.useMemo(() => cafesState.map((cafe: CafeCardProps, index: number) => (
-		<CafeCard {...cafe} key={index}/>
+		<CafeCard {...cafe} key={index} className="cafes-list__card"/>
 	)), [cafesState]);
 
 	return (<BasePage
@@ -70,12 +70,12 @@ const CafeListPage: React.FC = () => {
 			right: () => <InWorkTag/>,
 		}}
 		 mainProps={{
-			body: () => <>
+			body: () => <div className="cafes-list">
 				{cafesState !== null &&
 			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0', width:'100%'}}>
 				{t(Phrase.allPlaces)}
 			</Typo>}
-				<div>
+				<div className="cafes-container">
 					{cafesMemo}
 				</div>
 				{cafesState === null && <>
@@ -95,7 +95,7 @@ const CafeListPage: React.FC = () => {
 				</div>
 				}
 				<BottomBar/>
-			</>,
+			</div>,
 		}}
 		footerProps={{}}
 	/>);
