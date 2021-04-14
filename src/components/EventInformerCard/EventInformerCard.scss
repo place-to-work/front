@@ -7,6 +7,10 @@
   flex-direction: column;
   width: 100%;
   max-width: 360px;
+  color: white;
+  background-color: $global-color-accent-text;
+  border-radius: 8px;
+  padding: 16px;
 
   &__name{
     margin-bottom: 6px;

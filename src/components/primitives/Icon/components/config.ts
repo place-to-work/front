@@ -16,5 +16,6 @@ export enum IconColor {
   accent = 'accent',
   black = 'black',
   currentColor = 'current-color',
-  grey = 'grey'
+  grey = 'grey',
+  white = 'white',
 }

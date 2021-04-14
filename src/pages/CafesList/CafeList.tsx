@@ -7,15 +7,12 @@ import {useHistory} from 'react-router-dom';
 import BottomBar from '@components/a11y/BottomBar';
 import BasePage from '@pages/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
-import Tag from '@components/primitives/Tag';
 import Button, {ButtonColor} from '@components/primitives/Button';
 import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
 import InWorkTag from '@components/InWorkTag';
 import Contact from '@components/Contact/Contact';
-import Footer from '@pages/BasePage/Footer';
-import Informer from '@models/Informer/Informer';
-import InformerBucket from '@models/Informer/InformerBucket';
+import Informer, {InformerBucket} from '@models/Informer';
 
 
 const CafeListPage: React.FC = () => {
@@ -25,10 +22,15 @@ const CafeListPage: React.FC = () => {
 
 	React.useEffect(() => {
 		InformerBucket.fetchInformers()
-			.then((informers: Informer[]) => {
-				setInformersState(informers);
+			.then((informers) => {
+				console.log(`got informers = \n${JSON.stringify(informers, null, 4)}`);
+				return informers;
 			})
-			.catch(() => setInformersState([]));
+			.then(setInformersState)
+			.catch((reason) => {
+				console.log('error reason = ', reason.message);
+				setInformersState([]);
+			});
 	}, []);
 
 	React.useEffect(() => {
@@ -69,13 +71,42 @@ const CafeListPage: React.FC = () => {
 			.catch(() => setCafesState(null));
 	}, []);
 
-	const informersMemo = React.useMemo(() => informersState.map((informer: Informer, index: number) => (
-		<div>qwer</div>
-	)), [informersState]);
+	const informersMemo = React.useMemo(() => informersState.map((informer: Informer) => informer.render()),
+		[informersState]);
 
 	const cafesMemo = React.useMemo(() => cafesState.map((cafe: CafeCardProps, index: number) => (
-		<CafeCard {...cafe} key={index} className="cafes-list__card"/>
+		<CafeCard {...cafe} key={`${index}-cafe`} className="cafes-list__card"/>
 	)), [cafesState]);
+
+	console.log(`cafe list: \n${JSON.stringify(informersState, null, 4)}`);
+
+	const feed = React.useMemo(() => {
+		const out = [];
+		const cafes = [...cafesMemo];
+		const informers = [...informersMemo];
+
+		// формируем ленту, где каждая 5-я карточка
+		// информер
+		for (let i = 1; cafes.length > 0; i++) {
+			out.push(cafes.shift());
+
+			const needInsertInformer = i % 5 === 0;
+			const canInsertInformer = informers.length > 0;
+
+			if (needInsertInformer && canInsertInformer) {
+				out.push(informers.shift());
+			}
+		}
+
+		// в конце всегда будет новость при возможности
+		// в первую очередь нужно для дебага, пока у нас
+		// < 5 кафешек
+		if (informers.length > 0) {
+			out.push(informers.shift());
+		}
+
+		return out;
+	}, [cafesMemo, informersMemo]);
 
 	return (<BasePage
 		headerProps={{
@@ -89,7 +120,7 @@ const CafeListPage: React.FC = () => {
 				{t(Phrase.allPlaces)}
 			</Typo>}
 				<div className="cafes-container">
-					{cafesMemo}
+					{feed}
 				</div>
 				{cafesState === null && <>
 					<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>
@@ -103,7 +134,8 @@ const CafeListPage: React.FC = () => {
 						{t(Phrase.tryAgain)}
 					</Button>
 				</>}
-				{cafesMemo && <div style={{display:'flex', justifyContent:'flex-end', marginTop:'28px'}}>
+				{feed &&
+				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>
 				</div>
 				}

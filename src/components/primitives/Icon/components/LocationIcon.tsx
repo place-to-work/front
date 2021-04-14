@@ -9,4 +9,5 @@ const LocationIcon: React.FC<BaseIconProps> = (props: BaseIconProps) => (
 	</BaseIcon>
 );
 
-export default React.memo<BaseIconProps>(LocationIcon);
+export default LocationIcon;
+// export default React.memo<BaseIconProps>(LocationIcon);
