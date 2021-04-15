@@ -49,7 +49,7 @@ const texts = {
 		ru: () => 'Введите пароль ещё раз',
 	},
 	[Phrase.confirmPassword]: {
-		ru: () => 'Тот же пароль',
+		ru: () => 'Повторите пароль',
 	},
 	[Phrase.haveAccount]: {
 		ru: () => 'Есть аккаунт?',
