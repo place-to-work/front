@@ -11,6 +11,7 @@ import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import Contact from '@components/Contact';
+import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 
 export interface SignupValues {
 	name: string;
@@ -52,8 +53,8 @@ const SignupPage: React.FC = () => {
 	},[User.id]);
 
 	return <BasePage
-		headerProps={{middle: () => <Typo type={TypographyType.h3}>{t(Phrase.register)}</Typo>}}
-		// headerProps={{middle: () => <CenterLogo/>}}
+		// headerProps={{middle: () => <Typo type={TypographyType.h3}>{t(Phrase.register)}</Typo>}}
+		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{body: () => <Formik
 			validationSchema={validationSchema}
 			initialValues={initialValues}
@@ -66,7 +67,7 @@ const SignupPage: React.FC = () => {
 			})}
 			render={(formikProps: FormikProps<SignupValues>) => <>
 
-				{/*<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>*/}
+				<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>
 				<Form>
 					<FormikInput
 						id="name"
