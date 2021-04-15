@@ -7,7 +7,6 @@ import './SignupPage.scss';
 import {FormikInput} from '@components/primitives/FormikInput/FormikInput';
 import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
-import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
