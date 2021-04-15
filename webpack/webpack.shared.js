@@ -103,7 +103,7 @@ module.exports = {
 			background_color: '#ffffff',
 			icons: [
 				{
-					src: path.resolve('../PlaceToWork.png'),
+					src: path.resolve('src/assets/PlaceToWork.png'),
 					sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
 				}
 			]
