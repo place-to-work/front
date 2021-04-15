@@ -16,14 +16,14 @@ export interface SignupValues {
 	name: string;
 	email: string;
 	password: string;
-	confirmPassword: string;
+	// confirmPassword: string;
 }
 
 const initialValues: SignupValues = {
 	name: '',
 	email: '',
 	password: '',
-	confirmPassword: '',
+	// confirmPassword: '',
 };
 
 const validationSchema = Yup.object().shape({
@@ -36,10 +36,10 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string()
 		.min(8, 'Минимум 8 символов')
 		.required('Обязательное поле'),
-	confirmPassword: Yup.string()
-		.min(8, 'Минимум 8 символов')
-		.required('Обязательное поле')
-		.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать')
+	// confirmPassword: Yup.string()
+	// 	.min(8, 'Минимум 8 символов')
+	// 	.required('Обязательное поле')
+	// 	.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать')
 });
 
 const SignupPage: React.FC = () => {
@@ -88,13 +88,13 @@ const SignupPage: React.FC = () => {
 						formikProps={formikProps}
 						placeholder={t(Phrase.inputPassword)}
 					/>
-					<FormikInput
-						id="confirmPassword"
-						type="password"
-						title={t(Phrase.confirmPassword)}
-						formikProps={formikProps}
-						placeholder={t(Phrase.inputConfirmPassword)}
-					/>
+					{/*<FormikInput*/}
+					{/*	id="confirmPassword"*/}
+					{/*	type="password"*/}
+					{/*	title={t(Phrase.confirmPassword)}*/}
+					{/*	formikProps={formikProps}*/}
+					{/*	placeholder={t(Phrase.inputConfirmPassword)}*/}
+					{/*/>*/}
 					{/*<Typo*/}
 					{/*	block*/}
 					{/*	type={TypographyType.h6}*/}
