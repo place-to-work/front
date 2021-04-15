@@ -112,6 +112,7 @@ const SignupPage: React.FC = () => {
 						full
 						buttonSize={ButtonSize.classic}
 						style={{margin: '13px auto'}}
+						type="submit"
 					>
 						{t(Phrase.registerAction)}
 					</Button>
