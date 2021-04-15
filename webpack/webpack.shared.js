@@ -97,13 +97,13 @@ module.exports = {
 			description: 'Find your place',
 			orientation: "portrait-primary",
 			start_url: "/",
-			display: "standalone",
+			display: "fullscreen",
 			publicPath: `https://place-to-work.${isDev ? 'online' : 'ru'}/`,
 			crossorigin: 'anonymous',
 			background_color: '#ffffff',
 			icons: [
 				{
-					src: path.resolve('src/assets/PlaceToWork.png'),
+					src: path.resolve('../PlaceToWork.png'),
 					sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
 				}
 			]
