@@ -2,7 +2,6 @@
 
 .cafe-page{
   display: flex;
-  height: 100%;
   @include lessThanTablet{
     //align-items: center;
   }
