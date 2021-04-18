@@ -25,7 +25,7 @@ const BottomBar:FC = ()=>{
 			<div className={cn('bottom-bar__content')}>
 				<span>{User.isSubscribed}</span>
 				<span>{User.isSubscribed}</span>
-				{<SubscriptionMain/>}
+				<SubscriptionMain/>
 			</div>
 
 		</Collapse>

@@ -12,6 +12,7 @@ import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import Contact from '@components/Contact';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
+import ym from 'react-yandex-metrika';
 
 export interface SignupValues {
 	name: string;
@@ -110,6 +111,10 @@ const SignupPage: React.FC = () => {
 					{/*	Забыли пароль?*/}
 					{/*</Typo>*/}
 					<Button
+						onClick={()=>{
+							ym('reachGoal','Клик зарегистрироваться на сайте',);
+						}
+						}
 						full
 						buttonSize={ButtonSize.classic}
 						style={{margin: '13px auto'}}
