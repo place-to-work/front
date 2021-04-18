@@ -87,7 +87,9 @@ const App: React.FC = () => (
 					</Route>
 
 					<Route path="/load">
-						<Loader/>
+						<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
+							<Loader/>
+						</div>
 					</Route>
 
 					<Redirect to="/login"/>

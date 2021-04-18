@@ -3,7 +3,7 @@ import './Loader.scss';
 
 
 const Loader: React.FC = () => (
-	<div className="loader">
+	<div className="lds-ripple">
 		<div/>
 		<div/>
 	</div>
