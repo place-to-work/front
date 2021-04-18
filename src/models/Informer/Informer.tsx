@@ -3,6 +3,7 @@ import EventInformerCard from '@components/EventInformerCard/EventInformerCard';
 
 export enum InformerType {
 	event,
+	buy,
 }
 
 export interface ApiInformer {
