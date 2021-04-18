@@ -1,2 +1,2 @@
-export {default} from './InformerCard';
-export * from './InformerCard';
+export {default} from './EventInformerCard';
+export * from './EventInformerCard';
