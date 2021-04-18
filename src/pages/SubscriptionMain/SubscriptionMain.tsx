@@ -32,4 +32,5 @@ const SubscriptionMainPage: React.FC = () => (<>
 </>
 );
 
+
 export default observer(SubscriptionMainPage);
