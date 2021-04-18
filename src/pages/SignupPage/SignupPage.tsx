@@ -112,7 +112,7 @@ const SignupPage: React.FC = () => {
 					{/*</Typo>*/}
 					<Button
 						onClick={()=>{
-							ym('reachGoal','Клик зарегистрироваться на сайте',);
+							ym('reachGoal','Клик зарегестрироваться на сайте',);
 						}
 						}
 						full

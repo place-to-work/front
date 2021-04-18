@@ -113,8 +113,8 @@ const SubscriptionCard: React.FC = () => {
 						buttonSize={ButtonSize.xl}
 						full
 						onClick={() => {
-							setPayOffer();
 							ym('reachGoal', 'Переход в yookassa');
+							setPayOffer();
 						}}
 						style={{margin: '13px 0'}}
 					>
