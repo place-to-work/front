@@ -11,6 +11,7 @@ import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import {observer} from 'mobx-react-lite';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
+import Loader from '@components/primitives/Loader';
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -57,7 +58,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					{t(Phrase.subscriptionNotActivated)}
 				</Typo>
 				}
-				{uuid?.length ? <QrCard value={uuid}/> : <SubscriptionCard/>}
+				{!User.isSubscribed ? <SubscriptionCard/> : <>{uuid?.length ? <QrCard value={uuid}/> : <Loader/>}</>}
 
 				{Boolean(uuid?.length) &&
 				<Typo
