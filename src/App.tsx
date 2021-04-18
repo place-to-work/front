@@ -28,7 +28,7 @@ const SubscribePage = loadable(() => import('@pages/Subscribe'));
 const App: React.FC = () => (
 	<WidthProvider>
 		<NotificationProvider>
-			{ !IS_DEV && <YMInitializer accounts={[75731011]} />}
+			{ !IS_DEV && <YMInitializer accounts={[74587357]} />}
 			<Router history={history}>
 				<Switch>
 
