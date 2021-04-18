@@ -47,6 +47,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 		mainProps={{
 			style: {padding: 12},
 			body: () => <div>
+				{uuid?.length ? null : t(Phrase.subscriptionNotActivated)}
 				{uuid?.length ? <QrCard value={uuid}/> : <SubscriptionCard/>}
 
 				<Typo
@@ -56,7 +57,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					className="in-work-place__title"
 					style={{lineHeight: 1,...tmpMobileWidth}}
 				>
-					{uuid?.length ? t(Phrase.subscriptionActivated) : t(Phrase.subscriptionNotActivated)}
+					{uuid?.length ? t(Phrase.subscriptionActivated) : null}
 				</Typo>
 				{Boolean(uuid?.length) && <Typo
 					block
