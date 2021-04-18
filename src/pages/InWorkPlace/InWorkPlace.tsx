@@ -45,7 +45,6 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			left: () => <BackIcon size={IconSize.m} onClick={() => history.push('/places')}/>,
 		}}
 		mainProps={{
-			style: {padding: 12},
 			body: () => <div>
 				{!uuid?.length &&
 				<Typo
