@@ -1,5 +1,11 @@
 @import "src/components/scss/index";
 
+.card-container {
+  margin: 0 -8px;
+  display: flex;
+  justify-content: center;
+}
+
 .card{
   background-color: black;
   border-radius: 12px;
