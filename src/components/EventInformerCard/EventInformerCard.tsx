@@ -4,6 +4,7 @@ import Typo, {TypoColor, TypographyType, TypoTextAlign} from '@components/primit
 import {EventInformer} from '@models/Informer';
 import {IconColor, LocationIcon} from '@components/primitives/Icon';
 import {useHistory} from 'react-router-dom';
+import ym from 'react-yandex-metrika';
 
 
 const EventInformerCard: React.FC<EventInformer> = ({
@@ -34,7 +35,11 @@ const EventInformerCard: React.FC<EventInformer> = ({
 			type={TypographyType.h5}
 			textAlign={TypoTextAlign.end}
 			color={isBrief ? TypoColor.black : TypoColor.accent}
-			onClick={() => setIsBrief(false)}
+			onClick={() =>{
+				setIsBrief(false);
+				console.log('Кнопка подробнее в информере');
+				ym('reachGoal','Кнопка подробнее в информере');
+			}}
 			style={{
 				cursor: isBrief ? 'pointer' : 'auto',
 				marginTop: 15,

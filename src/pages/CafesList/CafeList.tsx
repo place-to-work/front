@@ -14,6 +14,7 @@ import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import User from '@models/User';
+import ym from 'react-yandex-metrika';
 
 
 const CafeListPage: React.FC = () => {
