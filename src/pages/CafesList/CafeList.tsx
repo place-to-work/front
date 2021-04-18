@@ -4,7 +4,6 @@ import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import './CafeList.scss';
 import Http from '@network/Http/Http';
 import {useHistory} from 'react-router-dom';
-import BottomBar from '@components/a11y/BottomBar';
 import BasePage from '@pages/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
 import Button, {ButtonColor} from '@components/primitives/Button';
@@ -13,6 +12,8 @@ import {observer} from 'mobx-react-lite';
 import InWorkTag from '@components/InWorkTag';
 import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
+import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
+import User from '@models/User';
 
 
 const CafeListPage: React.FC = () => {
@@ -113,12 +114,18 @@ const CafeListPage: React.FC = () => {
 			left: () => <IconLeft size={IconSize.xl}/>,
 			right: () => <InWorkTag/>,
 		}}
-		 mainProps={{
+		mainProps={{
 			body: () => <div className="cafes-list">
-				{cafesState !== null &&
-			<Typo className="title" type={TypographyType.h2} style={{padding: '16px 0', width:'100%'}}>
-				{t(Phrase.allPlaces)}
-			</Typo>}
+				{
+					cafesState !== null &&
+					<>
+						{User.isSubscribed ? null : <SubscriptionCard/>}
+						<Typo className="title" type={TypographyType.h2}
+						      style={{padding: '16px', width: '100%'}}>
+							{t(Phrase.allPlaces)}
+						</Typo>
+					</>
+				}
 				<div className="cafes-container">
 					{feed}
 				</div>
@@ -139,7 +146,6 @@ const CafeListPage: React.FC = () => {
 					<Contact/>
 				</div>
 				}
-				<BottomBar/>
 			</div>,
 		}}
 		footerProps={{}}
