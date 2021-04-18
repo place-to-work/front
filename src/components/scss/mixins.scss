@@ -164,7 +164,7 @@ $line-height-coefficient: 1.4;
   line-height: $line-height-coefficient;
   min-height: $line-height-coefficient * $font-size;
 
-  @include phone {
+  @include midget {
     font-size: $font-size-min;
     min-height: $line-height-coefficient * $font-size-min;
   }
