@@ -61,8 +61,8 @@ const CafeCard: React.FC<CafeCardProps> = (
 					<CafeInfo time={time} address={address}/>
 					<div className="cafe-card__features">
 						{wifi && <WifiIcon color={IconColor.black}/>}
-						{light && <LightIcon/>}
-						{electricity && <ElectricityIcon/>}
+						{light && <LightIcon color={IconColor.black}/>}
+						{electricity && <ElectricityIcon color={IconColor.black} />}
 						{QUIET_PLACE.indexOf(quiet.toLocaleLowerCase()) !== -1 && <EarIcon/>}
 					</div>
 				</div>
