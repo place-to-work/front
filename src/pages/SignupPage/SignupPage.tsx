@@ -11,19 +11,20 @@ import {observer} from 'mobx-react-lite';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import Contact from '@components/Contact';
+import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 
 export interface SignupValues {
 	name: string;
 	email: string;
 	password: string;
-	confirmPassword: string;
+	// confirmPassword: string;
 }
 
 const initialValues: SignupValues = {
 	name: '',
 	email: '',
 	password: '',
-	confirmPassword: '',
+	// confirmPassword: '',
 };
 
 const validationSchema = Yup.object().shape({
@@ -36,10 +37,10 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string()
 		.min(8, 'Минимум 8 символов')
 		.required('Обязательное поле'),
-	confirmPassword: Yup.string()
-		.min(8, 'Минимум 8 символов')
-		.required('Обязательное поле')
-		.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать')
+	// confirmPassword: Yup.string()
+	// 	.min(8, 'Минимум 8 символов')
+	// 	.required('Обязательное поле')
+	// 	.oneOf([Yup.ref('password'), null], 'Пароли должны совпадать')
 });
 
 const SignupPage: React.FC = () => {
@@ -52,8 +53,8 @@ const SignupPage: React.FC = () => {
 	},[User.id]);
 
 	return <BasePage
-		headerProps={{middle: () => <Typo type={TypographyType.h3}>{t(Phrase.register)}</Typo>}}
-		// headerProps={{middle: () => <CenterLogo/>}}
+		// headerProps={{middle: () => <Typo type={TypographyType.h3}>{t(Phrase.register)}</Typo>}}
+		headerProps={{middle: () => <CenterLogo/>}}
 		mainProps={{body: () => <Formik
 			validationSchema={validationSchema}
 			initialValues={initialValues}
@@ -66,7 +67,7 @@ const SignupPage: React.FC = () => {
 			})}
 			render={(formikProps: FormikProps<SignupValues>) => <>
 
-				{/*<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>*/}
+				<Typo block type={TypographyType.h1}>{t(Phrase.register)}</Typo>
 				<Form>
 					<FormikInput
 						id="name"
@@ -88,13 +89,13 @@ const SignupPage: React.FC = () => {
 						formikProps={formikProps}
 						placeholder={t(Phrase.inputPassword)}
 					/>
-					<FormikInput
-						id="confirmPassword"
-						type="password"
-						title={t(Phrase.confirmPassword)}
-						formikProps={formikProps}
-						placeholder={t(Phrase.inputConfirmPassword)}
-					/>
+					{/*<FormikInput*/}
+					{/*	id="confirmPassword"*/}
+					{/*	type="password"*/}
+					{/*	title={t(Phrase.confirmPassword)}*/}
+					{/*	formikProps={formikProps}*/}
+					{/*	placeholder={t(Phrase.inputConfirmPassword)}*/}
+					{/*/>*/}
 					{/*<Typo*/}
 					{/*	block*/}
 					{/*	type={TypographyType.h6}*/}
@@ -116,19 +117,19 @@ const SignupPage: React.FC = () => {
 					>
 						{t(Phrase.registerAction)}
 					</Button>
-					{/*<Typo*/}
-					{/*	block*/}
-					{/*	type={TypographyType.h5}*/}
-					{/*	textAlign={TypoTextAlign.center}*/}
-					{/*	weight={TypoWeight.bold}*/}
-					{/*	color={TypoColor.black}*/}
-					{/*	onClick={() => history.push('/login')}*/}
-					{/*	style={{*/}
-					{/*		cursor: 'pointer',*/}
-					{/*	}}*/}
-					{/*>*/}
-					{/*	{t(Phrase.haveAccount)}*/}
-					{/*</Typo>*/}
+					<Typo
+						block
+						type={TypographyType.h5}
+						textAlign={TypoTextAlign.center}
+						weight={TypoWeight.bold}
+						color={TypoColor.black}
+						onClick={() => history.push('/login')}
+						style={{
+							cursor: 'pointer',
+						}}
+					>
+						{t(Phrase.haveAccount)}
+					</Typo>
 				</Form>
 			</>}
 		/>}}

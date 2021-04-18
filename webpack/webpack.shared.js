@@ -97,7 +97,7 @@ module.exports = {
 			description: 'Find your place',
 			orientation: "portrait-primary",
 			start_url: "/",
-			display: "standalone",
+			display: "fullscreen",
 			publicPath: `https://place-to-work.${isDev ? 'online' : 'ru'}/`,
 			crossorigin: 'anonymous',
 			background_color: '#ffffff',

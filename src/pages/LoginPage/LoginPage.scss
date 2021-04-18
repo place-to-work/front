@@ -8,26 +8,15 @@
 
 }
 
-//.input-field {
-//  box-sizing: border-box;
-//  height: 60px;
-//  border-radius: 12px;
-//  border-style: solid;
-//  font-size: $input-font-size;
-//  padding: 16px;
-//  border-width: 2px;
-//  border-color: $global-color-grey;
-//}
-
 .input-field {
   box-sizing: border-box;
-  height: 40px;
+  height: 60px;
   border-radius: 12px;
   border-style: solid;
-  font-size: 15px;
-  padding: 10px;
+  font-size: $input-font-size;
+  padding: 16px;
   border-width: 2px;
-  border-color: #F2F2F2;
+  border-color: $global-color-grey;
 }
 
 .input-field:focus {
