@@ -5,12 +5,12 @@ import BasePage from '@pages/BasePage';
 import Typo, {TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
 import Button, {ButtonColor} from '@components/primitives/Button';
 import Http from '@network/Http';
-import BottomBar from '@components/a11y/BottomBar';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import QrCard from '@components/QrCard';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import {observer} from 'mobx-react-lite';
+import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -47,7 +47,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 		mainProps={{
 			style: {padding: 12},
 			body: () => <div>
-				<QrCard value={uuid}/>
+				{uuid?.length ? <QrCard value={uuid}/> : <SubscriptionCard/>}
 
 				<Typo
 					block
@@ -85,8 +85,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						{t(Phrase.gotoAllWorkPlaces)}
 					</Button>
 				</div>
-				{!uuid?.length && <BottomBar/>}
-			</div>,
+			</div>
 		}}
 	/>;
 };
