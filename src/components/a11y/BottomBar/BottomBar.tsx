@@ -48,32 +48,7 @@ const BottomBar:FC = ()=>{
 			<div className={cn('bottom-bar__content')}>
 				<span>{User.isSubscribed}</span>
 				<span>{User.isSubscribed}</span>
-				{!full ? <>
-
-					<Typo className="bottom-bar__title" textAlign={TypoTextAlign.center} type={TypographyType.h1}>
-						{waitingForPay ? t(Phrase.waitingPayTitle) :
-							<>Чтобы увидеть все заведения&nbsp;&mdash; оформите подписку</>}</Typo>
-					{waitingForPay ? <Typo
-						className="bottom-bar__subtitle"
-						textAlign={TypoTextAlign.center}
-						type={TypographyType.h3}
-						weight={TypoWeight.regular}><Typo type={TypographyType.h3} weight={TypoWeight.regular}>Если у Вас возникли проблемы во время оплаты, напишите
-							<Typo type={TypographyType.h3} weight={TypoWeight.regular} element="a" href = "mailto: ask@place-to-work.ru">&nbsp;Нам&nbsp;</Typo>.
-							Если платеж не был завешен - вы можете перейти к оплате</Typo></Typo> :
-						<Typo
-							className="bottom-bar__subtitle"
-							textAlign={TypoTextAlign.center}
-							type={TypographyType.h3}
-							weight={TypoWeight.regular}>
-							Получайте бесплатный чай, скидки в&nbsp;кафе, неограниченный доступ в&nbsp;рабочие пространства и&nbsp;многое другое</Typo>
-					}
-					<Button buttonSize={ButtonSize.xl} className="bottom-bar__button" full color={ButtonColor.accent}
-						onClick={handleReBuild}>
-						{waitingForPay ? t(Phrase.aboutSubscribe) : t(Phrase.getSubscription) }
-					</Button>
-				</> :
-					<SubscriptionMain/>
-				}
+				<SubscriptionMain/>
 			</div>
 
 		</Collapse>
