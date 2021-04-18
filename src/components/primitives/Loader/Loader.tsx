@@ -6,6 +6,6 @@ const Loader: React.FC = () => (
 		<div/>
 		<div/>
 	</div>
-)
+);
 
 export default Loader;

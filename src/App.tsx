@@ -10,6 +10,7 @@ import {createBrowserHistory} from 'history';
 import NotificationProvider from '@components/NotificationProvider';
 import {WidthProvider} from '@utils/devices';
 import {YMInitializer} from 'react-yandex-metrika';
+import Loader from '@components/primitives/Loader';
 
 
 const history = createBrowserHistory();
@@ -83,6 +84,10 @@ const App: React.FC = () => (
 
 					<Route path="/formik">
 						<FormikPage/>
+					</Route>
+
+					<Route path="/load">
+						<Loader/>
 					</Route>
 
 					<Redirect to="/login"/>

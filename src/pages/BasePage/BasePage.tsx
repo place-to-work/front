@@ -6,6 +6,7 @@ import Footer, {FooterProps} from '@pages/BasePage/Footer/Footer';
 import {useHistory, useParams} from 'react-router-dom';
 import {observer} from 'mobx-react-lite';
 import User, {UserType} from '@models/User';
+import Loader from '@components/primitives/Loader';
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -18,14 +19,17 @@ const BasePage: React.FC<BasePageProps> = ({
 	mainProps,
 	footerProps,
 }) => {
+	const [isLoading, setIsLoading] = React.useState(false);
 	const history = useHistory();
 	const {id} = useParams<{ id }>();
 
 
 	React.useEffect(() => {
 		if (!User.isAuthenticated) {
+			setIsLoading(true);
 			User.fetch()
 				.then(console.log)
+				.then(() => setIsLoading(false))
 				.catch(console.log);
 		}
 	}, []);
@@ -45,8 +49,7 @@ const BasePage: React.FC<BasePageProps> = ({
 
 	return <PageContainer>
 		<Header {...headerProps}/>
-		<Main {...mainProps}>
-		</Main>
+		{isLoading ? <Loader/> : <Main {...mainProps}/>}
 		<Footer {...footerProps}/>
 	</PageContainer>;
 };
