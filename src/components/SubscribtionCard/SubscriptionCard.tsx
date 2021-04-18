@@ -105,7 +105,7 @@ const SubscriptionCard: React.FC = () => {
 				</Typo>
 
 				<Button
-					disabled={Boolean(url)}
+					disabled={!Boolean(url)}
 					element={'a'}
 					href={url}
 					buttonSize={ButtonSize.xl}
