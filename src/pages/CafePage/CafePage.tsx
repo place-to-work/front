@@ -7,10 +7,6 @@ import BasePage from '@pages/BasePage';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
-import Tag from '@components/primitives/Tag';
-import {ButtonColor} from '@components/primitives/Button';
-import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
-import t, {Phrase} from '@models/Translate';
 import InWorkTag from '@components/InWorkTag';
 
 const CafePage: React.FC = () => {
