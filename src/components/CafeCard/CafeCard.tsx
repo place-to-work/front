@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './CafeCard.scss';
 import Typo, {TypographyType} from '@components/primitives/Typo';
-import { EarIcon, ElectricityIcon, LightIcon, WifiIcon} from '@components/primitives/Icon';
+import {EarIcon, ElectricityIcon, IconColor, LightIcon, WifiIcon} from '@components/primitives/Icon';
 import Separator from '@components/primitives/Separator';
 import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';
@@ -60,7 +60,7 @@ const CafeCard: React.FC<CafeCardProps> = (
 				<div className="cafe-card__description">
 					<CafeInfo time={time} address={address}/>
 					<div className="cafe-card__features">
-						{wifi && <WifiIcon/>}
+						{wifi && <WifiIcon color={IconColor.black}/>}
 						{light && <LightIcon/>}
 						{electricity && <ElectricityIcon/>}
 						{QUIET_PLACE.indexOf(quiet.toLocaleLowerCase()) !== -1 && <EarIcon/>}
