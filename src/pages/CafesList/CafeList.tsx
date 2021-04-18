@@ -4,7 +4,6 @@ import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import './CafeList.scss';
 import Http from '@network/Http/Http';
 import {useHistory} from 'react-router-dom';
-import BottomBar from '@components/a11y/BottomBar';
 import BasePage from '@pages/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
 import Button, {ButtonColor} from '@components/primitives/Button';
@@ -139,7 +138,6 @@ const CafeListPage: React.FC = () => {
 					<Contact/>
 				</div>
 				}
-				<BottomBar/>
 			</div>,
 		}}
 		footerProps={{}}

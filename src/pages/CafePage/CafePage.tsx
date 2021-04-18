@@ -7,11 +7,8 @@ import BasePage from '@pages/BasePage';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
-import Tag from '@components/primitives/Tag';
-import {ButtonColor} from '@components/primitives/Button';
-import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
-import t, {Phrase} from '@models/Translate';
 import InWorkTag from '@components/InWorkTag';
+import BottomBar from '@components/a11y/BottomBar';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{ id }>();
@@ -63,6 +60,7 @@ const CafePage: React.FC = () => {
 				<div className="cafe-page">
 					{cafe && <DetailedInfo {...cafe} />}
 				</div>
+				<BottomBar/>
 			</>,
 		}}/>);
 };
