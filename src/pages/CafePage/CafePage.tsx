@@ -8,7 +8,6 @@ import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
 import InWorkTag from '@components/InWorkTag';
-import BottomBar from '@components/a11y/BottomBar';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{ id }>();
@@ -60,7 +59,6 @@ const CafePage: React.FC = () => {
 				<div className="cafe-page">
 					{cafe && <DetailedInfo {...cafe} />}
 				</div>
-				<BottomBar/>
 			</>,
 		}}/>);
 };
