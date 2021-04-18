@@ -19,7 +19,7 @@ const CafePage = loadable(() => import('@pages/CafePage'));
 const LoginPage = loadable(() => import('@pages/LoginPage'));
 const SignupPage = loadable(() => import('@pages/SignupPage'));
 const MobxPage = loadable(() => import('@pages/useless/MobxPage'));
-const AuthPage = loadable(() => import('@pages/AuthPage'));
+// const AuthPage = loadable(() => import('@pages/AuthPage'));
 const StaffPage = loadable(() => import('@pages/StaffPage'));
 const SubscriptionMainPage = loadable(() => import('@pages/SubscriptionMain/SubscriptionMain'));
 const InWorkPlace = loadable(() => import('@pages/InWorkPlace'));
@@ -28,7 +28,7 @@ const SubscribePage = loadable(() => import('@pages/Subscribe'));
 const App: React.FC = () => (
 	<WidthProvider>
 		<NotificationProvider>
-			{ !IS_DEV && <YMInitializer accounts={[75731011]} />}
+			{ !IS_DEV && <YMInitializer accounts={[74587357]} />}
 			<Router history={history}>
 				<Switch>
 
@@ -81,20 +81,11 @@ const App: React.FC = () => (
 						<SubscriptionMainPage/>
 					</Route>
 
-
 					<Route path="/formik">
 						<FormikPage/>
 					</Route>
 
-					<Route path="/auth/:id">
-						<AuthPage/>
-					</Route>
-
-					<Route path="/auth">
-						<AuthPage/>
-					</Route>
-
-					<Redirect to="/auth"/>
+					<Redirect to="/login"/>
 
 				</Switch>
 			</Router>

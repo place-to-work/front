@@ -117,19 +117,19 @@ const SignupPage: React.FC = () => {
 					>
 						{t(Phrase.registerAction)}
 					</Button>
-					{/*<Typo*/}
-					{/*	block*/}
-					{/*	type={TypographyType.h5}*/}
-					{/*	textAlign={TypoTextAlign.center}*/}
-					{/*	weight={TypoWeight.bold}*/}
-					{/*	color={TypoColor.black}*/}
-					{/*	onClick={() => history.push('/login')}*/}
-					{/*	style={{*/}
-					{/*		cursor: 'pointer',*/}
-					{/*	}}*/}
-					{/*>*/}
-					{/*	{t(Phrase.haveAccount)}*/}
-					{/*</Typo>*/}
+					<Typo
+						block
+						type={TypographyType.h5}
+						textAlign={TypoTextAlign.center}
+						weight={TypoWeight.bold}
+						color={TypoColor.black}
+						onClick={() => history.push('/login')}
+						style={{
+							cursor: 'pointer',
+						}}
+					>
+						{t(Phrase.haveAccount)}
+					</Typo>
 				</Form>
 			</>}
 		/>}}
