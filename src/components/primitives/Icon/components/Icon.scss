@@ -50,6 +50,9 @@
   }
 
   &_color {
+    &-black {
+      color: $global-color-black;
+    }
     &-accent {
       color: $global-color-accent-text;
     }
