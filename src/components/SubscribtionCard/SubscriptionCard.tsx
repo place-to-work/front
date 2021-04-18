@@ -7,6 +7,7 @@ import {setPayOffer} from '@utils/payStorage';
 import t, {Phrase} from '@models/Translate/Translate';
 import Http from '@network/Http/Http';
 import Separator from '@components/primitives/Separator';
+import ym from 'react-yandex-metrika';
 
 
 const SubscriptionCard: React.FC = () => {
@@ -109,7 +110,10 @@ const SubscriptionCard: React.FC = () => {
 					href={url}
 					buttonSize={ButtonSize.xl}
 					full
-					onClick={setPayOffer}
+					onClick={() => {
+						setPayOffer();
+						ym('reachGoal','Переход в yookassa');;
+					}}
 					style={{margin: '13px 0'}}
 				>
 					{t(Phrase.pay)}
