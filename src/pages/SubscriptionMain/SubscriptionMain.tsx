@@ -8,6 +8,7 @@ import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import Http from '@network/Http/Http';
 import t, {Phrase} from '@models/Translate';
 import {setPayOffer} from '@utils/payStorage';
+import ym from 'react-yandex-metrika';
 
 
 interface PromoValues {
@@ -79,7 +80,10 @@ const SubscriptionMainPage: React.FC = () => {
 								href={url}
 								buttonSize={ButtonSize.xl}
 								full
-								onClick={setPayOffer}
+								onClick={()=>{
+									ym('reachGoal','Переход в yookassa');
+									setPayOffer();
+								}}
 								style={{margin: '13px 0'}}
 							>
 								{t(Phrase.pay)}
