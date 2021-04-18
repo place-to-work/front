@@ -36,9 +36,9 @@ const EventInformerCard: React.FC<EventInformer> = ({
 			textAlign={TypoTextAlign.end}
 			color={isBrief ? TypoColor.black : TypoColor.accent}
 			onClick={() =>{
-				setIsBrief(false);
 				console.log('Кнопка подробнее в информере test');
 				ym('reachGoal','Кнопка подробнее в информере');
+				setIsBrief(false);
 			}}
 			style={{
 				cursor: isBrief ? 'pointer' : 'auto',
