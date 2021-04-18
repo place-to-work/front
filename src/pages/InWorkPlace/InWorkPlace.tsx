@@ -47,37 +47,51 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 		mainProps={{
 			style: {padding: 12},
 			body: () => <div>
-				{uuid?.length ? null : t(Phrase.subscriptionNotActivated)}
-				{uuid?.length ? <QrCard value={uuid}/> : <SubscriptionCard/>}
-
+				{!uuid?.length &&
 				<Typo
 					block
 					type={TypographyType.h1}
 					textAlign={TypoTextAlign.center}
 					className="in-work-place__title"
-					style={{lineHeight: 1,...tmpMobileWidth}}
+					style={{lineHeight: 1, ...tmpMobileWidth}}
 				>
-					{uuid?.length ? t(Phrase.subscriptionActivated) : null}
+					{t(Phrase.subscriptionNotActivated)}
 				</Typo>
+				}
+				{uuid?.length ? <QrCard value={uuid}/> : <SubscriptionCard/>}
+
+				{Boolean(uuid?.length) &&
+				<Typo
+					block
+					type={TypographyType.h1}
+					textAlign={TypoTextAlign.center}
+					className="in-work-place__title"
+					style={{lineHeight: 1, ...tmpMobileWidth}}
+				>
+					{t(Phrase.subscriptionActivated)}
+				</Typo>}
 				{Boolean(uuid?.length) && <Typo
 					block
 					type={TypographyType.h4}
 					textAlign={TypoTextAlign.center}
-					style={{ margin:'0 auto',...tmpMobileWidth}}
+					style={{margin: '0 auto', ...tmpMobileWidth}}
 				>
 					{t(Phrase.showQrSuggestion)}
 				</Typo>
 				}
 
 				{Boolean(uuid?.length) &&
-				<div className="in-work-place__estimated-date" style={{ ...tmpMobileWidth}}>
+				<div className="in-work-place__estimated-date" style={{...tmpMobileWidth}}>
 					<Typo type={TypographyType.h4}>{t(Phrase.expirationDate)}<Typo
 						type={TypographyType.h4}
-						weight={TypoWeight.bold}>{t(Phrase.dayNMonth, {day, month})}</Typo></Typo>
+						weight={TypoWeight.bold}>{t(Phrase.dayNMonth, {
+							day,
+							month,
+						})}</Typo></Typo>
 				</div>
 				}
 
-				<div className="in-work-place__button">
+				<div className="in-work-place__button" style={{marginTop: 10}}>
 					<Button
 						full
 						onClick={() => history.push('/places')}
@@ -86,7 +100,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 						{t(Phrase.gotoAllWorkPlaces)}
 					</Button>
 				</div>
-			</div>
+			</div>,
 		}}
 	/>;
 };
