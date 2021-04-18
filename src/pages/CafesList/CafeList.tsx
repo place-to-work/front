@@ -23,19 +23,6 @@ const CafeListPage: React.FC = () => {
 	const [informersState, setInformersState] = React.useState<Informer[]>([]);
 
 	React.useEffect(() => {
-		InformerBucket.fetchInformers()
-			.then((informers) => {
-				console.log(`got informers = \n${JSON.stringify(informers, null, 4)}`);
-				return informers;
-			})
-			.then(setInformersState)
-			.catch((reason) => {
-				console.log('error reason = ', reason.message);
-				setInformersState([]);
-			});
-	}, []);
-
-	React.useEffect(() => {
 		Http.fetchGet({
 			path: '/places/',
 		})
@@ -71,6 +58,19 @@ const CafeListPage: React.FC = () => {
 				}));
 			})
 			.catch(() => setCafesState(null));
+	}, []);
+
+	React.useEffect(() => {
+		InformerBucket.fetchInformers()
+			.then((informers) => {
+				console.log(`got informers = \n${JSON.stringify(informers, null, 4)}`);
+				return informers;
+			})
+			.then(setInformersState)
+			.catch((reason) => {
+				console.log('error reason = ', reason.message);
+				setInformersState([]);
+			});
 	}, []);
 
 	const informersMemo = React.useMemo(() => informersState.map((informer: Informer) => informer.render()),
