@@ -31,7 +31,7 @@ const BasePage: React.FC<BasePageProps> = ({
 	}
 
 	React.useEffect(() => {
-		o9n.orientation.lock('portrait').then(console.log);
+		o9n.orientation.lock('portrait').then(console.log).catch(console.log);
 	}, []);
 
 	React.useEffect(() => {
