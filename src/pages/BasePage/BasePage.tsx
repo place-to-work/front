@@ -9,6 +9,7 @@ import User, {UserType} from '@models/User';
 import Loader from '@components/primitives/Loader';
 import {isMobileOnly} from 'react-device-detect';
 import NotMobilePage from '@pages/NotMobilePage';
+import o9n from 'o9n';
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -29,6 +30,9 @@ const BasePage: React.FC<BasePageProps> = ({
 		return <NotMobilePage/>;
 	}
 
+	React.useEffect(() => {
+		o9n.orientation.lock('portrait').then(console.log);
+	}, []);
 
 	React.useEffect(() => {
 		if (!User.isAuthenticated) {
