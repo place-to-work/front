@@ -7,6 +7,8 @@ import {useHistory, useParams} from 'react-router-dom';
 import {observer} from 'mobx-react-lite';
 import User, {UserType} from '@models/User';
 import Loader from '@components/primitives/Loader';
+import {isMobileOnly} from 'react-device-detect';
+import NotMobilePage from '@pages/NotMobilePage';
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -22,6 +24,10 @@ const BasePage: React.FC<BasePageProps> = ({
 	const [isLoading, setIsLoading] = React.useState(false);
 	const history = useHistory();
 	const {id} = useParams<{ id }>();
+
+	if (!isMobileOnly) {
+		return <NotMobilePage/>;
+	}
 
 
 	React.useEffect(() => {
