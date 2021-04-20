@@ -75,17 +75,15 @@ const NotMobilePage: React.FC = () => <main className="not-mobile-page__containe
 				}}
 				imageSrc={CafeScreen}
 			/>
-			<QrCard
-				value={'https://place-to-work.ru'}
-				style={{
-					width: 315,
-					height: 315,
-					position: 'absolute',
-					top: 'calc(5% + 180px)',
-					right: '0',
-					zIndex: 2,
-				}}
-			/>
+			<div className="not-mobile-page__qr">
+				<QrCard
+					value={'https://place-to-work.ru'}
+					style={{
+						width: 315,
+						height: 315,
+					}}
+				/>
+			</div>
 		</div>
 	</div>
 </main>;
