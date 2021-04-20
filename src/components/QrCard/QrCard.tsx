@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
 import './QrCard.scss';
 import QRCode from 'qrcode.react';
 
 interface OwnProps {
 	value: string;
+	style?: CSSProperties;
 }
 
-const QrCard: React.FC<OwnProps> = ({value}) => {
+const QrCard: React.FC<OwnProps> = ({value, ...rest}) => {
 	const [cardRotated, setCardRotated] = React.useState(false);
 
 	console.log('root domain = ', ROOT_DOMAIN);
@@ -16,6 +17,7 @@ const QrCard: React.FC<OwnProps> = ({value}) => {
 		onClick={() => {
 			setCardRotated(!cardRotated);
 		}}
+		{...rest}
 	>
 		<div className="qr-code-card__foreground">
 			<QRCode

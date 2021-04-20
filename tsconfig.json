@@ -19,7 +19,8 @@
 			"@pages/*": ["pages/*"],
 			"@models/*": ["models/*"],
 			"@network/*": ["network/*"],
-			"@utils/*": ["utils/*"]
+			"@utils/*": ["utils/*"],
+			"@assets/*": ["assets/*"]
 		},
 		"baseUrl": "./src"
 	},
