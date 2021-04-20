@@ -11,7 +11,8 @@ export enum TypoVerticalAlign {
 export enum TypoTextAlign {
     start = 'start',
     end = 'end',
-    center = 'center'
+    center = 'center',
+    justify = 'justify',
 }
 
 export enum TypographyType {
