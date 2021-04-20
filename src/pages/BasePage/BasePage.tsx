@@ -10,6 +10,7 @@ import Loader from '@components/primitives/Loader';
 import {isMobileOnly} from 'react-device-detect';
 import NotMobilePage from '@pages/NotMobilePage';
 import o9n from 'o9n';
+import Notification from '@models/Notification';
 
 interface BasePageProps {
 	headerProps?: HeaderProps;
@@ -31,7 +32,21 @@ const BasePage: React.FC<BasePageProps> = ({
 	}
 
 	React.useEffect(() => {
-		o9n.orientation.lock('portrait').then(console.log).catch(console.log);
+		o9n.orientation.lock('portrait')
+			.then((message) => {
+				Notification.error('luck' + message);
+				Notification.error('luck' + message);
+				Notification.error('luck' + message);
+				Notification.error('luck' + message);
+				Notification.error('luck' + message);
+			})
+			.catch((message) => {
+				Notification.error('error' + message);
+				Notification.error('error' + message);
+				Notification.error('error' + message);
+				Notification.error('error' + message);
+				Notification.error('error' + message);
+			});
 	}, []);
 
 	React.useEffect(() => {
