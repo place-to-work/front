@@ -58,7 +58,10 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					{t(Phrase.subscriptionNotActivated)}
 				</Typo>
 				}
-				{!User.isSubscribed ? <SubscriptionCard/> : <>{uuid?.length ? <QrCard value={uuid}/> : <Loader/>}</>}
+				{uuid?.length > 0
+					? <QrCard value={`https://place-to-work.${ROOT_DOMAIN}/staff/${uuid}`}/>
+					: <SubscriptionCard/>
+				}
 
 				{Boolean(uuid?.length) &&
 				<Typo
