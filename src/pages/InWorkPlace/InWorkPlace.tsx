@@ -11,7 +11,6 @@ import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import {observer} from 'mobx-react-lite';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
-import Loader from '@components/primitives/Loader';
 
 interface InWorkPlaceProps {
 	qrValue: string;
