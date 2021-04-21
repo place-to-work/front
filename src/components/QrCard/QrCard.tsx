@@ -1,26 +1,23 @@
 import React, {CSSProperties} from 'react';
 import './QrCard.scss';
 import QRCode from 'qrcode.react';
-import cn from 'classnames';
 
 interface OwnProps {
 	value: string;
 	style?: CSSProperties;
-	disabled?: boolean;
 }
 
-const QrCard: React.FC<OwnProps> = ({value, disabled = false, ...rest}) => {
+const QrCard: React.FC<OwnProps> = ({value, ...rest}) => {
 	const [cardRotated, setCardRotated] = React.useState(false);
 
 	return <div
-		className={cn('qr-code-card__background',cardRotated && 'qr-code-card__background-rotated' )}
+		className={`qr-code-card__background${cardRotated ? '-rotated' : ''}`}
 		onClick={() => {
 			setCardRotated(!cardRotated);
 		}}
 		{...rest}
 	>
-		{disabled && <div className="disabled-background"/>}
-		<div className={cn('qr-code-card__foreground')}>
+		<div className="qr-code-card__foreground">
 			{value.length > 0 &&
 				<QRCode
 					className="qr-code-card"

@@ -77,7 +77,7 @@ const NotMobilePage: React.FC = () => {
 				/>
 				<div className="not-mobile-page__qr">
 					<QrCard
-						value={'https://place-to-work.{$ROOT_DOMAIN}'}
+						value={`https://place-to-work.{$ROOT_DOMAIN}`}
 						style={{
 							width: 315,
 							height: 315,
