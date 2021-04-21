@@ -9,6 +9,7 @@ import Typo, {TypoColor, TypographyType, TypoTextAlign} from '@components/primit
 import ImageCard from '@components/primitives/ImageCard';
 import QrCard from '@components/QrCard';
 import {useMediaQuery} from 'react-responsive';
+import t, {Phrase} from '@models/Translate';
 
 
 const NotMobilePage: React.FC = () => {
@@ -45,15 +46,10 @@ const NotMobilePage: React.FC = () => {
 					}}
 					textAlign={TypoTextAlign.start}
 				>
-					Чтобы продолжить работу
-					с сервисом, отсканируйте qr-код и
-					зайдите с телефона
+					{t(Phrase.notMobileBold)}
 				</Typo>
 				<Typo type={TypographyType.h4} textAlign={TypoTextAlign.start}>
-					В мобильной версии Вы
-					сможете воспользоваться
-					всеми преимуществами
-					Рабочего места.
+					{t(Phrase.notMobileRegular)}
 				</Typo>
 			</div>
 			<div style={{position: 'relative'}}>
@@ -81,7 +77,7 @@ const NotMobilePage: React.FC = () => {
 				/>
 				<div className="not-mobile-page__qr">
 					<QrCard
-						value={'https://place-to-work.ru'}
+						value={`https://place-to-work.{$ROOT_DOMAIN}`}
 						style={{
 							width: 315,
 							height: 315,

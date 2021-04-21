@@ -42,9 +42,18 @@ export enum Phrase {
 	haveAccount,
 	confirmPassword,
 	inputConfirmPassword,
+	notMobileBold,
+	notMobileRegular,
 }
 
 const texts = {
+	[Phrase.notMobileRegular]: {
+		ru: () => 'Десктопная версия пока не готова :)',
+	},
+	[Phrase.notMobileBold]: {
+		ru: () => 'Отсканируйте qr-код и' +
+			' зайдите с телефона',
+	},
 	[Phrase.inputConfirmPassword]: {
 		ru: () => 'Введите пароль ещё раз',
 	},
