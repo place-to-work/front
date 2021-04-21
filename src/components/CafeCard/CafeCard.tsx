@@ -54,7 +54,15 @@ const CafeCard: React.FC<CafeCardProps> = (
 				history.push(`/place/${id}`);
 			}
 		}}>
-			<ImageCard imageSrc={imageSrc} scalable/>
+			<ImageCard
+				style={{
+					borderRadius: 0,
+					width: 'calc(100% + 16px)',
+					marginLeft: '-8px',
+				}}
+				imageSrc={imageSrc}
+				scalable
+			/>
 			<div className="cafe-card__data">
 				<Typo className="cafe-card__name" block type={TypographyType.h3}>{name}</Typo>
 				<div className="cafe-card__description">
