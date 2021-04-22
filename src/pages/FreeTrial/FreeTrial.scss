@@ -1,0 +1,59 @@
+@import "src/components/scss/index";
+
+.trial-background{
+  background-color: $global-color-black;
+}
+.free-trial{
+  background-color: $global-color-black;
+  height: 100%;
+  padding: 32px 24px;
+  &__buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 32px 0;
+    max-width: 500px;
+  }
+
+  &__today-btn{
+    border: 2px solid $global-color-white;
+  }
+
+  &__day-buttons{
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__day-btn{
+    @include square(49px);
+
+    margin-right: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+
+    color: $global-color-white;
+    background-color: $global-color-black;
+    border: 2px solid $global-color-white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_selected{
+      background-color: $global-color-white;
+      color: $global-color-black;
+      border: 2px solid $global-color-black;
+    }
+  }
+
+
+  &__access{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+}
+
+.days-hidden{
+  visibility: hidden;
+  opacity: 0;
+}

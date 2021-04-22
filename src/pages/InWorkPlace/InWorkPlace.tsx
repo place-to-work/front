@@ -2,15 +2,14 @@ import './InWorkPlace.scss';
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
-import Typo, {TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
-import Button, {ButtonColor} from '@components/primitives/Button';
+import Typo, {TypoColor, TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
 import Http from '@network/Http';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import QrCard from '@components/QrCard';
 import t, {Phrase} from '@models/Translate';
 import User from '@models/User';
 import {observer} from 'mobx-react-lite';
-import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
+import PaymentButtons from '@components/a11y/PaymentButtons';
 
 interface InWorkPlaceProps {
 	qrValue: string;
@@ -34,6 +33,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 			});
 	}, []);
 
+
 	const date = new Date(User.subscribedUntil);
 	console.log(`user = \n${JSON.stringify(User, null, 4)}`);
 	const day = date.getDate();
@@ -46,62 +46,51 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 		}}
 		mainProps={{
 			body: () => <div>
-				{!uuid?.length &&
-				<Typo
-					block
-					type={TypographyType.h1}
-					textAlign={TypoTextAlign.center}
-					className="in-work-place__title"
-					style={{lineHeight: 1, ...tmpMobileWidth}}
-				>
-					{t(Phrase.subscriptionNotActivated)}
-				</Typo>
-				}
-				{uuid?.length > 0
-					? <QrCard value={`https://place-to-work.${ROOT_DOMAIN}/staff/${uuid}`}/>
-					: <SubscriptionCard/>
-				}
-
-				{Boolean(uuid?.length) &&
-				<Typo
-					block
-					type={TypographyType.h1}
-					textAlign={TypoTextAlign.center}
-					className="in-work-place__title"
-					style={{lineHeight: 1, ...tmpMobileWidth}}
-				>
-					{t(Phrase.subscriptionActivated)}
-				</Typo>}
-				{Boolean(uuid?.length) && <Typo
-					block
-					type={TypographyType.h4}
-					textAlign={TypoTextAlign.center}
-					style={{margin: '0 auto', ...tmpMobileWidth}}
-				>
-					{t(Phrase.showQrSuggestion)}
-				</Typo>
-				}
-
-				{Boolean(uuid?.length) &&
-				<div className="in-work-place__estimated-date" style={{...tmpMobileWidth}}>
-					<Typo type={TypographyType.h4}>{t(Phrase.expirationDate)}<Typo
-						type={TypographyType.h4}
-						weight={TypoWeight.bold}>{t(Phrase.dayNMonth, {
-							day,
-							month,
-						})}</Typo></Typo>
-				</div>
-				}
-
-				<div className="in-work-place__button" style={{marginTop: 10}}>
-					<Button
-						full
-						onClick={() => history.push('/places')}
-						color={ButtonColor.accentGrey}
+				{Boolean(uuid?.length) && <>
+					<QrCard value={`https://place-to-work.${ROOT_DOMAIN}/staff/${uuid}`}/>
+					<Typo
+						block
+						type={TypographyType.h1}
+						textAlign={TypoTextAlign.center}
+						className="in-work-place__title"
+						style={{lineHeight: 1, ...tmpMobileWidth}}
 					>
-						{t(Phrase.gotoAllWorkPlaces)}
-					</Button>
-				</div>
+						{t(Phrase.subscriptionActivated)}
+					</Typo>
+					<Typo
+						block
+						type={TypographyType.h4}
+						textAlign={TypoTextAlign.center}
+						style={{margin: '0 auto', ...tmpMobileWidth}}
+					>
+						{t(Phrase.showQrSuggestion)}
+					</Typo>
+
+					<div className="in-work-place__estimated-date" style={{...tmpMobileWidth}}>
+						<Typo type={TypographyType.h4}>{t(Phrase.expirationDate)}<Typo
+							type={TypographyType.h4}
+							weight={TypoWeight.bold}>{t(Phrase.dayNMonth, {
+								day,
+								month,
+							})}</Typo></Typo>
+					</div>
+				</>
+				}
+				{!uuid.length && <>
+					<div className="qr-not-available-container">
+						<QrCard disabled value={`https://place-to-work.${ROOT_DOMAIN}/auth`}/>
+						<Typo  className="qr-not-available-container__text" color={TypoColor.white} weight={TypoWeight.regular}>QR-код не доступен</Typo>
+					</div>
+					<Typo type={TypographyType.h2}>
+						Вы еще не оформили подписку
+					</Typo>
+					<Typo type={TypographyType.h4}>
+						Оформив подписку, вы получите неограниченный доступ в кафе, бесплатные  кофе и чай, возможность пользоваться переговорками,
+						и многое другое.
+					</Typo>
+					<PaymentButtons/>
+				</>}
+
 			</div>,
 		}}
 	/>;

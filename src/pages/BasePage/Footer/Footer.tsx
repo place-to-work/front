@@ -7,6 +7,7 @@ export interface FooterProps {
 	middle?: () => React.ReactElement,
 	right?: () => React.ReactElement,
 	style?: CSSProperties;
+	className?: string;
 }
 
 const Footer: React.FC<FooterProps> = ({

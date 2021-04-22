@@ -79,6 +79,20 @@ class User implements UserInnerType{
 			});
 	}
 
+	async googleOAuth(values: any): Promise<void | null> {
+		return  Http.fetchPost({
+			path: '/oauth/convert-token',
+			body: JSON.stringify(values),
+		})
+			.then((resp) => {
+				if (!resp.ok) {
+					Message.error(t(Phrase.userExists));
+					return null;
+				}
+				return void 0;
+			});
+	}
+
 	async fetch(): Promise<User | null> {
 		const data = await Http.getCurrentUser()
 			.catch(((reason) => {

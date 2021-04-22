@@ -2,6 +2,7 @@
 @import "src/components/scss/index";
 
 %qr-code-card__background-shared {
+  position: relative;
   background-color: $global-color-accent-text;
   border-radius: 12px;
   margin: 0 auto;
@@ -32,11 +33,11 @@
 
   &__background {
     @extend %qr-code-card__background-shared;
-
     &-rotated {
       @extend %qr-code-card__background-shared;
       transform: rotateY(0.5turn) scaleX(-1);
     }
+
   }
 
   &__foreground {
@@ -45,4 +46,17 @@
     @extend %qr-code-card__inner;
     background-color: $global-color-white;
   }
+}
+
+.disabled-background{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: rgba(189, 189, 189, 0.8);
+  border-radius: 12px;
+  padding: -5.8%;
+
 }
