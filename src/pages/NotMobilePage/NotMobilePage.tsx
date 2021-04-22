@@ -1,9 +1,9 @@
 import React from 'react';
 import './NotMobilePage.scss';
 // @ts-ignore
-import AppScreen from '@assets/appScreen.png';
+// import AppScreen from '@assets/appScreen.png';
 // @ts-ignore
-import CafeScreen from '@assets/cafeScreen.png';
+// import CafeScreen from '@assets/cafeScreen.png';
 import Icon, {IconSize, IconType} from '@components/primitives/Icon';
 import Typo, {TypoColor, TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import ImageCard from '@components/primitives/ImageCard';
@@ -62,7 +62,7 @@ const NotMobilePage: React.FC = () => {
 						top: '5%',
 						zIndex: 1,
 					}}
-					imageSrc={AppScreen}
+					// imageSrc={AppScreen}
 				/>
 				<ImageCard
 					scalable
@@ -73,7 +73,7 @@ const NotMobilePage: React.FC = () => {
 						top: 'calc(5% + 94px)',
 						left: '140px',
 					}}
-					imageSrc={CafeScreen}
+					// imageSrc={CafeScreen}
 				/>
 				<div className="not-mobile-page__qr">
 					<QrCard

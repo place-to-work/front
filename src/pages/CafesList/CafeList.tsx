@@ -142,6 +142,8 @@ const CafeListPage: React.FC = () => {
 						{t(Phrase.tryAgain)}
 					</Button>
 				</>}
+
+				{!User.isSubscribed && <SubscriptionCard/>}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>

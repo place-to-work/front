@@ -11,6 +11,7 @@ import NotificationProvider from '@components/NotificationProvider';
 import {WidthProvider} from '@utils/devices';
 import {YMInitializer} from 'react-yandex-metrika';
 import Loader from '@components/primitives/Loader';
+import FreeTrial from '@pages/FreeTrial';
 
 
 const history = createBrowserHistory();
@@ -36,6 +37,9 @@ const App: React.FC = () => (
 
 					<Route path="/in-place">
 						<InWorkPlace qrValue={''}/>
+					</Route>
+					<Route path="/free-trial">
+						<FreeTrial/>
 					</Route>
 					<Route path="/example">
 						<MobxPage currentTime={new CurrentTime()}/>

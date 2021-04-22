@@ -1,8 +1,9 @@
 import * as React from 'react';
+import {useState} from 'react';
 import './SubscriptionCard.scss';
 import {CheckIcon, CupIcon, IconColor, IconSize, LaptopIcon, WorkIcon} from '@components/primitives/Icon';
 import Typo, {TypoColor, TypographyType, TypoTextAlign} from '@components/primitives/Typo';
-import Button, {ButtonSize} from '@components/primitives/Button';
+import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 import {setPayOffer} from '@utils/payStorage';
 import t, {Phrase} from '@models/Translate/Translate';
 import Http from '@network/Http/Http';
@@ -12,6 +13,8 @@ import ym from 'react-yandex-metrika';
 
 const SubscriptionCard: React.FC = () => {
 	const [url, setUrl] = React.useState<string | null>(null);
+
+	const [showTrial, setShowTrial] = useState(false);
 
 	React.useEffect(() => {
 		Http.fetchPost({
@@ -120,6 +123,22 @@ const SubscriptionCard: React.FC = () => {
 					>
 						{t(Phrase.pay)}
 					</Button>
+
+					<Button
+						// disabled={!url}
+						element={'a'}
+						href="/free-trial"
+						color={ButtonColor.black}
+						buttonSize={ButtonSize.xl}
+						full
+						onClick={() => {
+
+						}}
+						style={{margin: '13px 0'}}
+					>
+						Пробный день за 350 руб
+					</Button>
+
 				</div>
 			</div>
 		</div>

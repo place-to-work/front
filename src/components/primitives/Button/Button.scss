@@ -60,6 +60,18 @@ $local-icon-size: 12px;
       }
     }
 
+    &_tiny{
+      @include buttonText;
+      padding: 19px;
+      height: 36px;
+
+      @include textH5;
+
+      @include midget{
+        min-width: 32px;
+      }
+    }
+
   }
 
   &_type {
