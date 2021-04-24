@@ -9,3 +9,12 @@
 
 
 }
+
+.back-icon{
+  background-color: $global-color-white;
+  border-radius: 50%;
+  @include square(44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

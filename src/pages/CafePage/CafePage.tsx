@@ -8,6 +8,7 @@ import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
 import InWorkTag from '@components/InWorkTag';
+import cn from 'classnames';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{ id }>();
@@ -48,11 +49,12 @@ const CafePage: React.FC = () => {
 
 	return (<BasePage
 		headerProps={{
-			left: () => <BackIcon
+			left: () => <div className="back-icon"><BackIcon
 				size={IconSize.m}
 				onClick={() => history.push('/places')}
-			/>,
+			/></div>,
 			right: () => <InWorkTag/>,
+			transparent:true
 		}}
 		mainProps={{
 			body: () => <>

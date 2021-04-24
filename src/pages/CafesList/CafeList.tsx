@@ -120,7 +120,6 @@ const CafeListPage: React.FC = () => {
 				{
 					cafesState !== null &&
 					<>
-						{User.isSubscribed ? null : <SubscriptionCard/>}
 						<Typo className="title" type={TypographyType.h2}
 						      style={{padding: '16px', width: '100%'}}>
 							{t(Phrase.allPlaces)}

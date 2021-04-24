@@ -9,6 +9,7 @@ import t, {Phrase} from '@models/Translate/Translate';
 import Http from '@network/Http/Http';
 import Separator from '@components/primitives/Separator';
 import ym from 'react-yandex-metrika';
+import PaymentButtons from '@components/a11y/PaymentButtons';
 
 
 const SubscriptionCard: React.FC = () => {
@@ -109,35 +110,7 @@ const SubscriptionCard: React.FC = () => {
 						3900 руб / мес
 					</Typo>
 
-					<Button
-						disabled={!url}
-						element={'a'}
-						href={url}
-						buttonSize={ButtonSize.xl}
-						full
-						onClick={() => {
-							ym('reachGoal', 'Переход в yookassa');
-							setPayOffer();
-						}}
-						style={{margin: '13px 0'}}
-					>
-						{t(Phrase.pay)}
-					</Button>
-
-					<Button
-						// disabled={!url}
-						element={'a'}
-						href="/free-trial"
-						color={ButtonColor.black}
-						buttonSize={ButtonSize.xl}
-						full
-						onClick={() => {
-
-						}}
-						style={{margin: '13px 0'}}
-					>
-						Пробный день за 350 руб
-					</Button>
+					<PaymentButtons dark/>
 
 				</div>
 			</div>

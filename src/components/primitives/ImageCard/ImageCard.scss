@@ -3,7 +3,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-  border-radius: 8px;
   width: 100%;
   transition: all 100ms ease-in-out;
   margin-bottom: 12px;
@@ -19,9 +18,16 @@
     margin-bottom: 0;
     height: 150px;
   }
-
+  &-rounded{
+    border-radius: 8px;
+  }
   &-scalable:hover {
     transition: all 100ms ease-in-out;
     //transform: scale(1.01);
+  }
+
+  &-full{
+    height: 100%;
+    width: 100%;
   }
 }

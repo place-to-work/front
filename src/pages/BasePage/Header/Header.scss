@@ -7,11 +7,14 @@
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   height: $header-height;
-  border-style: solid;
-  border-bottom-width: 2px;
-  border-color: $global-color-grey;
   box-sizing: border-box;
   align-items: center;
+  z-index: 1111;
+  &-bordered{
+    border-style: solid;
+    border-bottom-width: 2px;
+    border-color: $global-color-grey;
+  }
 }
 
 .icon-center{
