@@ -2,12 +2,6 @@
 
 .cafe-page{
   display: flex;
-  padding: 0 8px;
-  @include lessThanTablet{
-    //align-items: center;
-  }
-
-
 }
 
 .back-icon{
