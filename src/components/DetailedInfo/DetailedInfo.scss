@@ -55,11 +55,11 @@
     &::after{
       position: absolute;
       background-color: $global-color-white;
-      width: 120%;
+      width: calc(100% + 2*8px);
       height: 100%;
       top:-10%;
-      left: -10%;
-      border-radius: 56px;
+      left: -8px;
+      border-radius: 16px;
       content: "";
       z-index: -1;
 
