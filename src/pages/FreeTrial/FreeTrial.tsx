@@ -68,10 +68,12 @@ const FreeTrial: React.FC = () => {
 
 				<div className="free-trial__buttons">
 					<Button buttonSize={ButtonSize.tiny} className="free-trial__today-btn" color={isToday ? ButtonColor.white: ButtonColor.black} onClick={()=>{
-						changeDay();
+						setIsToday(true);
 						setCurrentDay(today.getDate());
 					}} >Сегодня</Button>
-					<Button buttonSize={ButtonSize.tiny} className="free-trial__today-btn" color={!isToday ? ButtonColor.white: ButtonColor.black} onClick={changeDay}>Другой день</Button>
+					<Button buttonSize={ButtonSize.tiny} className="free-trial__today-btn" color={!isToday ? ButtonColor.white: ButtonColor.black} onClick={()=>{
+						setIsToday(false);}
+					}>Другой день</Button>
 				</div>
 				<div className={isToday && 'days-hidden'}>
 					<Typo block color={TypoColor.darkGrey}>Ближайшие 7 дней</Typo>

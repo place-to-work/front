@@ -142,6 +142,8 @@ const SignupPage: React.FC = () => {
 			/>
 			<GoogleLogin
 				clientId={'1044183237757-rf0ngragabmlck7dm60fb4t0ljdgf8de.apps.googleusercontent.com'}
+				redirectUri={'http://localhost:2021/'}
+				disabled={false}
 				onSuccess={
 					(response) => {
 						console.log('success', response);

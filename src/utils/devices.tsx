@@ -2,12 +2,12 @@ import * as React from 'react';
 
 export const DEVICES = {
 	phoneSmall: {
-		maxWidth: 500,
-		minWidth: 320
+		maxWidth: 350,
+		minWidth: 0
 	},
 	phone: {
 		maxWidth: 767,
-		minWidth: 320
+		minWidth: 350
 	},
 	tablet: {
 		maxWidth: 1024,
@@ -21,6 +21,7 @@ export const DEVICES = {
 		maxWidth: 1440,
 		minWidth: 1201
 	},
+	isSmallPhone: (width: number): boolean => width <= DEVICES.phoneSmall.maxWidth,
 	isPhone: (width: number): boolean => width <= DEVICES.phone.maxWidth,
 	isPhoneSmall: (width: number): boolean => width <= DEVICES.phoneSmall.maxWidth,
 	biggerThanTablet: (width: number): boolean => width >= DEVICES.tablet.minWidth,

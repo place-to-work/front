@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import './DetailedInfo.scss';
 import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
 import Separator from '@components/primitives/Separator';
@@ -8,9 +9,10 @@ import ImageCard from '@components/primitives/ImageCard';
 import DetailedFeatures from '@components/DetailedFeatures';
 import Button, {ButtonColor} from '@components/primitives/Button';
 
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import {useWidth} from '@utils/devices';
+import cn from 'classnames';
 
 export type CafeCardProps = {
     imageSrc?: string;
@@ -51,33 +53,73 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		averagePrice = '1000Р',
 		mapSrc
 	}: CafeCardProps) =>  {
-	const {biggerThanTablet} = useWidth();
+	const {isPhone, isSmallPhone ,biggerThanTablet} = useWidth();
 
-	const splideOptions = !biggerThanTablet ? {
-		type : 'loop',
-		gap : '0.5rem',
-		arrows : false,
-		padding: '0.5rem',
-		autoplay: true,
-		focus    : 'center',
-		perPage  : 1,
-		trimSpace: true,
-	} : {
-		type : 'loop',
-		gap : '1.5rem',
-		arrows : false,
-		padding: '0.5rem',
-		autoplay: true,
-		perPage  : 3,
-	};
+	// const splideOptions = !biggerThanTablet ? {
+	// 	type : 'loop',
+	// 	gap : '0.5rem',
+	// 	arrows : false,
+	// 	padding: '0.5rem',
+	// 	autoplay: true,
+	// 	focus    : 'center',
+	// 	perPage  : 1,
+	// 	trimSpace: true,
+	// } : {
+	// 	type : 'loop',
+	// 	gap : '1.5rem',
+	// 	arrows : false,
+	// 	padding: '0.5rem',
+	// 	autoplay: true,
+	// 	perPage  : 3,
+	// };
 
-	const carousel = React.useMemo(()=><Splide options={splideOptions}>
+	const splideOptions = React.useMemo(()=>{
+		if(isPhone){
+			return {
+				type : 'loop',
+				gap : '0.25rem',
+				fixedHeight:'60vh',
+				arrows : false,
+				autoplay: true,
+				focus    : 'center',
+				perPage  : 1,
+				trimSpace: true,
+			};
+		}
+
+		return {
+			type : 'loop',
+			gap : '1.5rem',
+			arrows : false,
+			padding: '0.5rem',
+			autoplay: true,
+			perPage  : 3,
+		};
+
+
+
+	},[]);
+
+	const carouselRef = React.useRef();
+	// @ts-ignore
+	const { offsetHeight } = carouselRef?.current?.splideRef?.current || { offsetHeight: null};
+	const [height, setHeight] = useState<number | null>();
+	console.log(offsetHeight);
+	useEffect(()=>{
+		// @ts-ignore
+		const { offsetHeight } = carouselRef?.current?.splideRef?.current || null;
+		const value = Number(offsetHeight) ? offsetHeight - 30  : null;
+		setHeight(value);
+	},[carouselRef]);
+
+
+	const carousel = React.useMemo(()=><Splide options={splideOptions} ref={carouselRef}>
 		{images.map((image, index)=><SplideSlide key={index}>
-			<ImageCard imageSrc={image}/>
+			<ImageCard imageSrc={image} full={isPhone} rounded={false}/>
 		</SplideSlide>)}
-	</Splide>,[images, splideOptions]);
+	</Splide>,[images, splideOptions,carouselRef]);
 
-	const statusesList = React.useMemo(()=>statuses?.map((status:string, index:number)=><Tag key={index}>
+	const statusesList = React.useMemo(()=>statuses?.map((status:string, index:number)=><Tag color={ButtonColor.white} key={index}>
 		<Typo type={TypographyType.h5} color={TypoColor.black}>{status}</Typo>
 	</Tag>),[statuses]);
 
@@ -117,34 +159,39 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	}
 	return (
 		<div className="cafe-detailed-info">
-			<div className="cafe-detailed-info__carousel">
+			<div className={cn('cafe-detailed-info__carousel', isPhone && 'cafe-detailed-info__carousel-absolute')}>
 				{carousel}
+				<div className="cafe-detailed-info__statuses">
+					{statusesList}
+				</div>
 			</div>
-			<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
-			<div className="cafe-detailed-info__statuses">
-				{statusesList}
+			<div className={cn(isPhone && 'cafe-info-slide')} style={offsetHeight ? {marginTop:height} : {}}>
+				<div className={cn(isPhone && 'cafe-info-slide__content')}>
+					<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
+					<Separator/>
+					<CafeInfo address={address} time={time}/>
+					<Separator/>
+					<DetailedFeatures
+						wifi={wifi}
+						light={light}
+						electricity={electricity}
+						quiet={quiet}
+						workLoad={workLoad}
+					/>
+					<Separator/>
+					{ workLoadText && <Typo type={TypographyType.h4} block>Загруженность:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{workLoadText}</Typo></Typo>}
+					{ averagePrice && <Typo type={TypographyType.h4} block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{averagePrice} &nbsp;руб. </Typo></Typo>}
+					<Separator invisible/>
+					{mapSrc && <Button
+						className="cafe-detailed-info__button"
+						full color={ButtonColor.black} onClick={()=>window.open(mapSrc, '_blank')}>
+						<Typo type={TypographyType.h3} weight={TypoWeight.regular}  color={TypoColor.white}>Открыть в картах
+						</Typo>
+					</Button>
+					}
+
+				</div>
 			</div>
-			<Separator/>
-			<CafeInfo address={address} time={time}/>
-			<Separator/>
-			<DetailedFeatures
-				wifi={wifi}
-				light={light}
-				electricity={electricity}
-				quiet={quiet}
-				workLoad={workLoad}
-			/>
-			<Separator/>
-			{ workLoadText && <Typo type={TypographyType.h4} block>Загруженность:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{workLoadText}</Typo></Typo>}
-			{ averagePrice && <Typo type={TypographyType.h4} block>Средний счет:{' '}<Typo weight={TypoWeight.semiBold} type={TypographyType.h4}>{averagePrice} &nbsp;руб. </Typo></Typo>}
-			<Separator invisible/>
-			{mapSrc && <Button
-				className="cafe-detailed-info__button"
-				full color={ButtonColor.accentGrey} onClick={()=>window.open(mapSrc, '_blank')}>
-				<Typo type={TypographyType.h3} weight={TypoWeight.semiBold}  color={TypoColor.black}>Открыть в картах
-				</Typo>
-			</Button>
-			}
 		</div>
 	);};
 

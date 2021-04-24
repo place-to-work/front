@@ -1,19 +1,16 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import BasePage from '@pages/BasePage';
-import Typo, {TypographyType, TypoTextAlign, TypoWeight} from '@components/primitives/Typo';
 import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
 import Http from '@network/Http';
-import {BackIcon, IconSize} from '@components/primitives/Icon';
-import QrCard from '@components/QrCard';
 import t, {Phrase} from '@models/Translate';
-import User from '@models/User';
 import {observer} from 'mobx-react-lite';
-import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import ym from 'react-yandex-metrika';
 import {setPayOffer} from '@utils/payStorage';
 
-const PaymentButtons: React.FC = () => {
+type Props = {
+	dark?: boolean;
+}
+const PaymentButtons: React.FC<Props> = ({dark = false}) => {
 	const history = useHistory();
 
 	const [url, setUrl] = React.useState<string | null>(null);
@@ -27,11 +24,7 @@ const PaymentButtons: React.FC = () => {
 					try {
 						if (data?.url) {
 							setUrl(data?.url);
-							// window.open(data.url, '_blank')
-						} else {
-							// window.open('http://google.com', '_blank')
 						}
-
 					} catch (e) {
 						console.log(`subscription main error: ${e}`);
 					}
@@ -61,7 +54,7 @@ const PaymentButtons: React.FC = () => {
 			// disabled={!url}
 			element={'a'}
 			href="/free-trial"
-			color={ButtonColor.black}
+			color={dark ? ButtonColor.white : ButtonColor.black}
 			buttonSize={ButtonSize.xl}
 			full
 			onClick={() => {
