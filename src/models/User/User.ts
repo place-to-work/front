@@ -93,7 +93,7 @@ class User implements UserInnerType{
 				const response = resp.json();
 				const accessToken =  response['access_token'];
 				const refreshToken = response['refresh_token'];
-				console.log('fff', accessToken, refreshToken);
+				console.log('fff', response, accessToken, refreshToken);
 				if(accessToken && refreshToken){
 					localStorage.setItem('access_token', accessToken);
 					localStorage.setItem('refresh_token', refreshToken);
