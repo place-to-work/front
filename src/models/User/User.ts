@@ -85,12 +85,12 @@ class User implements UserInnerType{
 			path: '/oauth/convert-token',
 			body: JSON.stringify(values),
 		})
-			.then((resp) => {
+			.then(async (resp) => {
 				if (!resp.ok) {
 					Message.error('Ошибка авторизации.');
 					return null;
 				}
-				const response = resp.json();
+				const response = await resp.json();
 				const accessToken =  response['access_token'];
 				const refreshToken = response['refresh_token'];
 				console.log('fff', response, accessToken, refreshToken);
