@@ -151,7 +151,7 @@ const SignupPage: React.FC = () => {
 							grant_type: 'convert_token',
 							client_id: 'Mf6dsbxLoW6Y6irmBstkBMUPXcZNVeHCeVXTdzdw',
 							backend: 'google-oauth2',
-							token: response['access_token']
+							token: response['accessToken']
 						});
 					}
 				}
