@@ -42,7 +42,7 @@ class Http {
 		}
 
 		if(accessToken){
-			console.log('access put');
+			console.log('access put', accessToken);
 			customHeaders[Http.ACCESS_TOKEN] = `${Http.ACCESS_TOKEN_BEARER} ${accessToken}`;
 		}
 

@@ -5,6 +5,7 @@ import Http from '@network/Http/Http';
 import {SignupValues} from '@pages/SignupPage/SignupPage';
 import Message from '@models/Notification';
 import t, {Phrase} from '@models/Translate';
+import {ref} from 'yup';
 
 export enum UserType {
 	client = 1,
@@ -90,8 +91,16 @@ class User implements UserInnerType{
 					return null;
 				}
 				const response = resp.json();
-				localStorage.setItem('access_token', response['access_token']);
-				localStorage.setItem('refresh_token', response['refresh_token']);
+				const accessToken =  response['access_token'];
+				const refreshToken = response['refresh_token'];
+				console.log('fff', accessToken, refreshToken);
+				if(accessToken && refreshToken){
+					localStorage.setItem('access_token', accessToken);
+					localStorage.setItem('refresh_token', refreshToken);
+				}
+
+
+
 
 			});
 	}
