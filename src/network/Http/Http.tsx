@@ -14,7 +14,8 @@ class Http {
 	static GET_CSRF_NAME = 'csrftoken';
 	static STORE_CSRF_NAME = 'csrftoken';
 	static PUT_CSRF_NAME = 'X-CSRFToken';
-
+	static ACCESS_TOKEN = 'Authorization'
+	static ACCESS_TOKEN_BEARER = 'Bearer'
 	constructor(public serverUrl) {
 	}
 
@@ -32,11 +33,17 @@ class Http {
 
 		// const cookieCsrf = getCookie(Http.GET_CSRF_NAME);
 		const cookieCsrf = localStorage.getItem(Http.STORE_CSRF_NAME);
+		const accessToken = localStorage.getItem('access_token');
 		console.log('test1', cookieCsrf);
 		const customHeaders = {};
 		if (cookieCsrf) {
 			console.log('test2');
 			customHeaders[Http.PUT_CSRF_NAME] = cookieCsrf;
+		}
+
+		if(accessToken){
+			console.log('access put');
+			customHeaders[Http.ACCESS_TOKEN] = `${Http.ACCESS_TOKEN_BEARER} ${accessToken}`;
 		}
 
 
