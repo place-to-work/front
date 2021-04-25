@@ -86,9 +86,10 @@ class User implements UserInnerType{
 		})
 			.then((resp) => {
 				if (!resp.ok) {
-					Message.error(t(Phrase.userExists));
+					Message.error('Ошибка авторизации.');
 					return null;
 				}
+				console.log('response oauth', resp);
 				return void 0;
 			});
 	}
