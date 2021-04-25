@@ -152,6 +152,8 @@ const SignupPage: React.FC = () => {
 							client_id: 'Mf6dsbxLoW6Y6irmBstkBMUPXcZNVeHCeVXTdzdw',
 							backend: 'google-oauth2',
 							token: response['accessToken']
+						}).then((response)=>{
+
 						});
 					}
 				}
