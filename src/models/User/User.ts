@@ -79,7 +79,7 @@ class User implements UserInnerType{
 			});
 	}
 
-	async googleOAuth(values: any): Promise<void | null> {
+	async googleOAuth(values: any): Promise<any> {
 		return  Http.fetchPost({
 			path: '/oauth/convert-token',
 			body: JSON.stringify(values),
@@ -89,8 +89,10 @@ class User implements UserInnerType{
 					Message.error('Ошибка авторизации.');
 					return null;
 				}
-				console.log('response oauth', resp);
-				return void 0;
+				const response = resp.json();
+				localStorage.setItem('access_token', response['access_token']);
+				localStorage.setItem('refresh_token', response['refresh_token']);
+
 			});
 	}
 
