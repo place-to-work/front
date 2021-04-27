@@ -33,7 +33,7 @@ const FreeTrial: React.FC = () => {
 	const history = useHistory();
 	// const [uuid, setUuid] = React.useState('');
 
-	// const [url, setUrl] = React.useState<string | null>(null);
+	const [url, setUrl] = React.useState<string | null>(null);
 
 	// const date = new Date(User.subscribedUntil);
 	// console.log(`user = \n${JSON.stringify(User, null, 4)}`);
@@ -80,7 +80,7 @@ const FreeTrial: React.FC = () => {
 					try {
 						if (data?.url) {
 							console.log(data?.url);
-							openTab(data.url);
+							setUrl(data.url);
 						} else{
 							Message.error('Сервис недоступен. Попробуйте еще раз.');
 						}
@@ -135,7 +135,11 @@ const FreeTrial: React.FC = () => {
 					<Typo color={TypoColor.white} type={TypographyType.h4}>Доступ на 24 часа</Typo>
 					<Typo color={TypoColor.white} type={TypographyType.h3}>350 руб</Typo>
 				</div>
-				<Button full color={ButtonColor.accent} onClick={getUrl}>Оплатить пробный период</Button>
+				<Button
+					disabled={!url}
+					element={'a'}
+					href={url}
+					full color={ButtonColor.accent} onClick={getUrl}>Оплатить пробный период</Button>
 
 			</div>,
 		}}
