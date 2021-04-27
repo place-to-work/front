@@ -11,23 +11,23 @@ import Message from '@models/Notification/Notification';
 type Props = {
 	dark?: boolean;
 }
-function openTab(url) {
-	// Create link in memory
-	const a = window.document.createElement('a');
-	a.target = '_blank';
-	a.href = url;
-
-	// Dispatch fake click
-	const e = window.document.createEvent('MouseEvents');
-	e.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-	a.dispatchEvent(e);
-}
+// function openTab(url) {
+// 	// Create link in memory
+// 	const a = window.document.createElement('a');
+// 	a.target = '_blank';
+// 	a.href = url;
+//
+// 	// Dispatch fake click
+// 	const e = window.document.createEvent('MouseEvents');
+// 	e.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+// 	a.dispatchEvent(e);
+// }
 
 const PaymentButtons: React.FC<Props> = ({dark = false}) => {
 	const history = useHistory();
 
 	const [url, setUrl] = React.useState<string | null>(null);
-	const getUrl = React.useCallback(() => {
+	React.useEffect(() => {
 		const now = new Date();
 		now.setHours(0);
 		now.setMinutes(0);
@@ -43,8 +43,7 @@ const PaymentButtons: React.FC<Props> = ({dark = false}) => {
 				r.json().then((data) => {
 					try {
 						if (data?.url) {
-							openTab(data.url);
-							// setUrl(data?.url);
+							setUrl(data?.url);
 						} else{
 							Message.error('Сервис недоступен. Попробуйте еще раз.');
 						}
@@ -59,15 +58,14 @@ const PaymentButtons: React.FC<Props> = ({dark = false}) => {
 
 	return <div>
 		<Button
-			// disabled={!url}
-			// element={'a'}
-			// href={url}
+			disabled={!url}
+			element={'a'}
+			href={url}
 			buttonSize={ButtonSize.xl}
 			full
 			onClick={() => {
 				ym('reachGoal', 'Переход в yookassa');
 				setPayOffer();
-				getUrl();
 			}}
 			style={{margin: '13px 0'}}
 		>
