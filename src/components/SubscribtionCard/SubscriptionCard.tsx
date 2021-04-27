@@ -13,32 +13,8 @@ import PaymentButtons from '@components/a11y/PaymentButtons';
 
 
 const SubscriptionCard: React.FC = () => {
-	const [url, setUrl] = React.useState<string | null>(null);
 
 	const [showTrial, setShowTrial] = useState(false);
-
-	React.useEffect(() => {
-		Http.fetchPost({
-			path: '/payments/',
-			body: null,
-		})
-			.then((r) => {
-				r.json().then((data) => {
-					try {
-						if (data?.url) {
-							setUrl(data?.url);
-							// window.open(data.url, '_blank')
-						} else {
-							// window.open('http://google.com', '_blank')
-						}
-
-					} catch (e) {
-						console.log(`subscription main error: ${e}`);
-					}
-				});
-			})
-			.catch(console.log);
-	}, []);
 
 	return (
 		<div className="card-container">

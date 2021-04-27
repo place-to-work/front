@@ -90,7 +90,15 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					</Typo>
 					<PaymentButtons/>
 				</>}
-
+				<Typo
+					style={{margin:'8px auto', width:'100%'}}
+					textAlign={TypoTextAlign.center}
+					type={TypographyType.h4}
+					color={TypoColor.darkGrey}
+					onClick={()=>{
+						Http.fetchGet('/users/logout/', {});
+					}}
+				>Выйти из системы</Typo>
 			</div>,
 		}}
 	/>;
