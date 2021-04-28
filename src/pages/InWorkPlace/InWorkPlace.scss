@@ -49,10 +49,10 @@
   &::after{
     position: absolute;
     background-color: $global-color-black;
-    width: 120%;
     height: 100%;
+    width: calc(100% + 2*8px);
     top:0;
-    left: -10%;
+    left: -8px;
     content: "";
     z-index: -1;
   }
