@@ -35,7 +35,7 @@ const PaymentButtons: React.FC<Props> = ({dark = false}) => {
 		Http.fetchPost({
 			path: '/payments/',
 			body: JSON.stringify({
-				'subscription': 2,
+				'subscription': 1,
 				'subscribe_begin': now.toISOString()
 			}),
 		})
