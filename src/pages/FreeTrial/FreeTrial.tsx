@@ -62,7 +62,7 @@ const FreeTrial: React.FC = () => {
 
 	const [currentDay, setCurrentDay] = useState<Date>(days[0]);
 
-	const getUrl = React.useCallback(() => {
+	React.useEffect(() => {
 
 		console.log({
 			'subscription': 2,
@@ -139,7 +139,7 @@ const FreeTrial: React.FC = () => {
 					disabled={!url}
 					element={'a'}
 					href={url}
-					full color={ButtonColor.accent} onClick={getUrl}>Оплатить пробный период</Button>
+					full color={ButtonColor.accent}>Оплатить пробный период</Button>
 
 			</div>,
 		}}
