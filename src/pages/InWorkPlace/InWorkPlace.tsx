@@ -79,7 +79,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				{!uuid.length && <>
 					<div className="qr-not-available-container">
 						<QrCard disabled value={`https://place-to-work.${ROOT_DOMAIN}/auth`}/>
-						<Typo  className="qr-not-available-container__text" color={TypoColor.white} weight={TypoWeight.regular}>QR-код не доступен</Typo>
+						<Typo className="qr-not-available-container__text" color={TypoColor.white} weight={TypoWeight.regular}>QR-код не доступен</Typo>
 					</div>
 					<Typo type={TypographyType.h2}>
 						Вы еще не оформили подписку
@@ -96,7 +96,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					type={TypographyType.h4}
 					color={TypoColor.darkGrey}
 					onClick={()=>{
-						// Http.fetchGet('/users/logout/', {});
+						Http.fetchGet({path:'/users/logout/'}).then(()=>history.push('/auth'));
 					}}
 				>Выйти из системы</Typo>
 			</div>,

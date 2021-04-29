@@ -10,24 +10,31 @@ import Loader from '@components/primitives/Loader';
 import {isMobileOnly} from 'react-device-detect';
 import NotMobilePage from '@pages/NotMobilePage';
 
+
 interface BasePageProps {
 	headerProps?: HeaderProps;
 	mainProps?: MainProps;
 	footerProps?: FooterProps;
 }
 
+import DeviceOrientation, { Orientation } from 'react-screen-orientation';
+
+
+
 const BasePage: React.FC<BasePageProps> = ({
 	headerProps,
 	mainProps,
 	footerProps,
 }) => {
+
+
 	const [isLoading, setIsLoading] = React.useState(false);
 	const history = useHistory();
 	const {id} = useParams<{ id }>();
-
 	if (!isMobileOnly) {
 		return <NotMobilePage/>;
 	}
+
 
 	React.useEffect(() => {
 		if (!User.isAuthenticated) {
