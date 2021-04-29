@@ -97,8 +97,8 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					color={TypoColor.darkGrey}
 					onClick={async ()=>{
 						await Http.fetchPost({path:'/users/logout/', body:undefined}).then(()=>{
-							User.setNoAuthenticated();
-							console.log('test');
+							document.location.reload();
+
 						});
 					}}
 				>Выйти из системы</Typo>
