@@ -18,7 +18,7 @@ export const NotificationComponent: React.FC<OwnProps> = ({notification, idx}) =
 	}, []);
 	return <div className="notification" style={style}>
 		<Typo
-			style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+			style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex:11111}}
 			type={TypographyType.h4}
 			textAlign={TypoTextAlign.center}
 			verticalAlign={TypoVerticalAlign.middle}
