@@ -42,7 +42,8 @@
   }
 
   &__foreground {
-
+    min-width: 164px;
+    min-height: 164px;
     padding: 5.8%;
     border-radius: 8px;
     @extend %qr-code-card__inner;

@@ -96,7 +96,11 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					type={TypographyType.h4}
 					color={TypoColor.darkGrey}
 					onClick={async ()=>{
-						await Http.fetchPost({path:'/users/logout/', body:undefined}).then(()=>console.log('test'));
+						await Http.fetchPost({path:'/users/logout/', body:undefined}).then(()=>{
+							User.
+								history.push('login');
+							console.log('test');
+						});
 					}}
 				>Выйти из системы</Typo>
 			</div>,
