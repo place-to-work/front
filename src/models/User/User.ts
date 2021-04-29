@@ -28,6 +28,9 @@ class User implements UserInnerType{
 	get isAuthenticated() {
 		return this.id >= 0;
 	}
+	set setNoAuthenticated(auth) {
+		this.id = -1;
+	}
 
 	get dateJoined(): Date {
 		return new Date(this.date_joined);

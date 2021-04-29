@@ -97,8 +97,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					color={TypoColor.darkGrey}
 					onClick={async ()=>{
 						await Http.fetchPost({path:'/users/logout/', body:undefined}).then(()=>{
-							User.fetch();
-							history.push('login');
+							User.setNoAuthenticated();
 							console.log('test');
 						});
 					}}
