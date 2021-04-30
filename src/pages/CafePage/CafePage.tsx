@@ -7,8 +7,6 @@ import BasePage from '@pages/BasePage';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
-import InWorkTag from '@components/InWorkTag';
-import cn from 'classnames';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{ id }>();
@@ -53,7 +51,7 @@ const CafePage: React.FC = () => {
 				size={IconSize.m}
 				onClick={() => history.push('/places')}
 			/></div>,
-			right: () => <InWorkTag/>,
+			// right: () => <InWorkTag/>,
 			transparent:true
 		}}
 		mainProps={{
