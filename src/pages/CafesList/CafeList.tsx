@@ -9,12 +9,8 @@ import {IconLeft, IconSize} from '@components/primitives/Icon';
 import Button, {ButtonColor} from '@components/primitives/Button';
 import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
-import InWorkTag from '@components/InWorkTag';
 import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
-import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
-import User from '@models/User';
-import ym from 'react-yandex-metrika';
 
 
 const CafeListPage: React.FC = () => {
@@ -113,7 +109,7 @@ const CafeListPage: React.FC = () => {
 	return (<BasePage
 		headerProps={{
 			left: () => <IconLeft size={IconSize.xl}/>,
-			right: () => <InWorkTag/>,
+			// right: () => <InWorkTag/>,
 		}}
 		mainProps={{
 			body: () => <div className="cafes-list">
@@ -142,7 +138,7 @@ const CafeListPage: React.FC = () => {
 					</Button>
 				</>}
 
-				{!User.isSubscribed && <SubscriptionCard/>}
+				{/*{!User.isSubscribed && <SubscriptionCard/>}*/}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>
