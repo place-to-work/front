@@ -111,10 +111,8 @@ class User implements UserInnerType{
 	}
 
 	async getUuid(): Promise<Nullable<Uuid>> {
-		const history = useHistory();
 		if (!this.isAuthenticated) {
 			Message.error('Вы не авторизованы');
-			history.replace('/login');
 			return null;
 		}
 
