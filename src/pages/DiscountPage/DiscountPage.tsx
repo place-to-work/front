@@ -54,7 +54,7 @@ const DiscountPage: React.FC = () => {
 			style: {backgroundColor: backgroundColor, borderColor: backgroundColor, padding: padding},
 			right: () => <Button full onClick={() => {
 				Http.fetchPost({
-					path: '$/products/choice/',
+					path: '/products/choice/',
 					body: JSON.stringify({uuid, promotion}),
 				}).then(console.log);
 			}}>
