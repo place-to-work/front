@@ -1,5 +1,6 @@
 @import "src/components/scss/index";
 
+$local-white-bg: rgba(242, 242, 242, 1);
 .cafe-detailed-info{
   max-width: 100vw;
   width: 100%;
@@ -7,6 +8,24 @@
   margin: auto;
   display: flex;
   flex-direction: column;
+
+  &__header{
+    position: relative;
+  }
+  &__icon-back{
+    position: absolute;
+    top:12px;
+    left: 24px;
+    background-color: $global-color-white;
+    border-radius: 50%;
+    @include square(44px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11111;
+    padding:8px;
+
+  }
 
   &__carousel{
     width: 90vw;
@@ -27,6 +46,7 @@
   &__name{
 
   }
+
   &__statuses{
     width: 100%;
     display: flex;
@@ -43,21 +63,21 @@
 }
 
 .cafe-info-slide{
-  background-color: $global-color-white;
+  background-color: $local-white-bg;
   z-index: 2;
   max-height: 100%;
 
   &__content{
     width: 100%;
     height: 100%;
-    background-color: $global-color-white;
+    background-color: $local-white-bg;
     position: relative;
     &::after{
       position: absolute;
-      background-color: $global-color-white;
+      background-color: $local-white-bg;
       width: calc(100% + 2*8px);
-      height: 100%;
-      top:-10%;
+      height: calc(100% + 28px);
+      top:-20px;
       left: -8px;
       border-radius: 16px;
       content: "";
