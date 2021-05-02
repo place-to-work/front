@@ -88,7 +88,8 @@ module.exports = {
 			inject: 'body',
 		}),
 		new webpack.DefinePlugin({
-			BASE_URL: `'https://place-to-work.${isDev ? 'online' : 'ru'}/api/v1'`,
+			BASE_URL: `'https://place-to-work.${isDev ? 'online' : 'ru'}'`,
+			API_SUFFIX: '/api/v1',
 			ROOT_DOMAIN: `'${isDev ? 'online' : 'ru'}'`,
 			IS_DEV: isDev
 		}),

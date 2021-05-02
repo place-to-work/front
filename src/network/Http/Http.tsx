@@ -16,7 +16,9 @@ class Http {
 	static PUT_CSRF_NAME = 'X-CSRFToken';
 	static ACCESS_TOKEN = 'Authorization'
 	static ACCESS_TOKEN_BEARER = 'Bearer'
+	public apiUrl: string;
 	constructor(public serverUrl) {
+		this.apiUrl = `${serverUrl}${API_SUFFIX}`;
 	}
 
 	fetchRequest({
@@ -52,7 +54,7 @@ class Http {
 		}
 		req.headers = customHeaders;
 
-		return fetch(`${this.serverUrl}${path}`, req)
+		return fetch(`${this.apiUrl}${path}`, req)
 			.then((response) => {
 				console.log(`ok response = ${JSON.stringify(response, null, 4)}`);
 				return response.ok ? retCSRFToken(response) : response;
