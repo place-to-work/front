@@ -59,7 +59,7 @@ const BasePage: React.FC<BasePageProps> = ({
 	return <PageContainer>
 		{headerProps && <Header {...headerProps}/>}
 		{isLoading ? <Loader/> : <Main {...mainProps}/>}
-		<Footer {...footerProps}/>
+		{footerProps && <Footer {...footerProps}/>}
 	</PageContainer>;
 };
 

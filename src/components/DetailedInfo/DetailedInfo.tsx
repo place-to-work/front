@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import './DetailedInfo.scss';
-import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
+import Typo, {TypoColor, TypographyType} from '@components/primitives/Typo';
 import Separator from '@components/primitives/Separator';
 import Tag from '@components/primitives/Tag';
 import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';
 import DetailedFeatures from '@components/DetailedFeatures';
-import Button, {ButtonColor} from '@components/primitives/Button';
+import {ButtonColor} from '@components/primitives/Button';
 
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import {useWidth} from '@utils/devices';
 import cn from 'classnames';
 import PromoCard from '@components/PromoCard';
-import {PromoCardColor} from '@components/PromoCard/PromoCard';
+import {PromoCardColor, PromoCardProps} from '@components/PromoCard/PromoCard';
 import Group from '@components/Group';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import {useHistory} from 'react-router-dom';
@@ -39,24 +39,26 @@ export type CafeCardProps = {
     workLoadText?: string;
     averagePrice?: string;
     mapSrc?: string;
+    promotions?: PromoCardProps[];
 
 };
 
 const DetailedInfo: React.FC<CafeCardProps> = (
 	{
-		name = 'Заведение "Кафетерий"',
-		address='',
-		time = '10:00 - 21:00',
+		name,
+		address,
+		time,
 		wifi = true,
 		light = true,
 		electricity = true,
 		quiet,
 		statuses = [],
 		images = [],
-		workLoad = 20,
-		workLoadText = 'средняя',
-		averagePrice = '1000Р',
-		mapSrc
+		workLoad,
+		workLoadText,
+		averagePrice,
+		mapSrc,
+		promotions
 	}: CafeCardProps) =>  {
 	const history = useHistory();
 	const {isPhone, isSmallPhone ,biggerThanTablet} = useWidth();
@@ -93,12 +95,15 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	// @ts-ignore
 	const { offsetHeight } = carouselRef?.current?.splideRef?.current || { offsetHeight: null};
 	const [height, setHeight] = useState<number | null>();
-	console.log(offsetHeight);
+	const [slideHeight, setSlideHeight] = useState<number | null>();
+
 	useEffect(()=>{
 		// @ts-ignore
 		const { offsetHeight } = carouselRef?.current?.splideRef?.current || null;
 		const value = Number(offsetHeight) ? offsetHeight - 10  : null;
 		setHeight(value);
+		setSlideHeight(value ? window.innerHeight - offsetHeight : null);
+
 	},[carouselRef]);
 
 
@@ -153,12 +158,12 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		<div className="cafe-detailed-info">
 			<div className={cn('cafe-detailed-info__carousel', isPhone && 'cafe-detailed-info__carousel-absolute')}>
 				{carousel}
-				<div className="cafe-detailed-info__statuses">
+				<div className={cn('cafe-detailed-info__statuses', statusesList.length <= 1 && 'cafe-detailed-info__statuses_start' )}>
 					{statusesList}
 				</div>
 			</div>
-			<div className={cn(isPhone && 'cafe-info-slide')} style={offsetHeight ? {marginTop:height} : {}}>
-				<div className={cn(isPhone && 'cafe-info-slide__content')}>
+			<div className={cn('cafe-info-slide')} style={offsetHeight ? {marginTop:height} : {}}>
+				<div className={cn('cafe-info-slide__content')} style={{minHeight:slideHeight}}>
 					<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
 					<Separator black/>
 					<CafeInfo address={address} time={time}/>
@@ -174,10 +179,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 					<Separator black/>
 					<Separator invisible/>
 					<Group title="Промо-акции">
-						<PromoCard color={PromoCardColor.dark} title='Скидка на салат' subtitle='8%'/>
-						<PromoCard color={PromoCardColor.dark} title='Скидка на кофе' subtitle='5%' img='https://www.restoclub.ru/uploads/place_thumbnail_big/8/0/c/e/80ce6962d6e749c10acf26928011c48f.jpg'/>
-						<PromoCard color={PromoCardColor.light} title='Скидка на котлетку' subtitle='15%'/>
-						<PromoCard color={PromoCardColor.light} title='Скидка на чай' subtitle='20%' img='https://www.restoclub.ru/uploads/place_thumbnail_big/8/0/c/e/80ce6962d6e749c10acf26928011c48f.jpg'/>
+						{ promotions && promotions.map((promo,i)=><PromoCard key={i} color={PromoCardColor.light} {...promo}/>)}
 					</Group>
 
 				</div>

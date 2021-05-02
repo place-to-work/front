@@ -56,6 +56,10 @@ $local-white-bg: rgba(242, 242, 242, 1);
     bottom: 10%;
     left: 0;
     height: 32px;
+    padding: 0 24px;
+    &_start{
+      justify-content: flex-start;
+    }
   }
   &__button{
     margin-top: auto;
