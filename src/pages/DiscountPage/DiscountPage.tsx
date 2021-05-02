@@ -55,7 +55,7 @@ const DiscountPage: React.FC = () => {
 			right: () => <Button full onClick={() => {
 				console.log(`sending request: on "${`${Http.apiUrl}/products/choice`}"\nbody: ${JSON.stringify({uuid, promotion}, null, 4)}`);
 				Http.fetchPost({
-					path: `${Http.apiUrl}/products/choice`,
+					path: '$/products/choice',
 					body: JSON.stringify({uuid, promotion}),
 				}).then(console.log);
 			}}>
