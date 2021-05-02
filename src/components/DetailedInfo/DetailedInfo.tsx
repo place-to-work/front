@@ -193,8 +193,9 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 								User.getUuid()
 									.then((uuid) => {
 										if (uuid) {
-											setLink(`${Http.serverUrl}/success-discount?uuid=${uuid}&promotion=${promo.id}`);
-											// setLink(`${Http.serverUrl}/products/choice?uuid=${uuid}&promotion=${promo.id}`);
+											console.log(`det inf uuid: ${uuid}`);
+											console.log(`det inf promotion: ${promo.id}`);
+											setLink(`${Http.serverUrl}/success-discount?uuid=${uuid.subscribe_uuid}&promotion=${promo.id}`);
 										} else {
 											Notification.error('ошибка получения uuid');
 										}
