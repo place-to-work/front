@@ -56,7 +56,7 @@ const BasePage: React.FC<BasePageProps> = ({
 	}, [User.id, User.userType]);
 
 
-	return <PageContainer>
+	return <PageContainer style={{backgroundColor:'#f2f2f2'}}>
 		{headerProps && <Header {...headerProps}/>}
 		{isLoading ? <Loader/> : <Main {...mainProps}/>}
 		{footerProps && <Footer {...footerProps}/>}

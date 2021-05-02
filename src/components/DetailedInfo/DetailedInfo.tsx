@@ -95,14 +95,12 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	// @ts-ignore
 	const { offsetHeight } = carouselRef?.current?.splideRef?.current || { offsetHeight: null};
 	const [height, setHeight] = useState<number | null>();
-	const [slideHeight, setSlideHeight] = useState<number | null>();
 
 	useEffect(()=>{
 		// @ts-ignore
 		const { offsetHeight } = carouselRef?.current?.splideRef?.current || null;
 		const value = Number(offsetHeight) ? offsetHeight - 10  : null;
 		setHeight(value);
-		setSlideHeight(value ? window.innerHeight - offsetHeight : null);
 
 	},[carouselRef]);
 
@@ -163,9 +161,8 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 				</div>
 			</div>
 			<div className={cn('cafe-info-slide')} style={offsetHeight ? {marginTop:height} : {}}>
-				<div className={cn('cafe-info-slide__content')} style={{minHeight:slideHeight}}>
+				<div className={cn('cafe-info-slide__content')}>
 					<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
-					<Separator black/>
 					<CafeInfo address={address} time={time}/>
 					<Separator black/>
 					<DetailedFeatures
@@ -176,7 +173,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						workLoad={workLoad}
 						averagePrice={averagePrice}
 					/>
-					<Separator black/>
 					<Separator invisible/>
 					<Group title="Промо-акции">
 						{ promotions && promotions.map((promo,i)=><PromoCard key={i} color={PromoCardColor.light} {...promo}/>)}
