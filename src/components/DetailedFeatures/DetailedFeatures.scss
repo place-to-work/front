@@ -1,9 +1,12 @@
 @import "src/components/scss/index";
 
-$local-width: calc(100% / 3);
+//$local-width: calc(100% / 3);
 .detailed-features{
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  align-items: baseline;
+
   @include lessThanTablet{
     flex-wrap: wrap;
     flex-direction: row;
@@ -12,10 +15,11 @@ $local-width: calc(100% / 3);
 
   max-width: 500px;
   &__item{
-    width: $local-width;
+    //width: $local-width;
+    white-space: nowrap;
   }
 }
 .ghost{
-  width: $local-width;
+  //width: $local-width;
   height: 0;
 }
