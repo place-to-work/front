@@ -1,14 +1,12 @@
 import React from 'react';
-import {useHistory, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Http from '@network/Http/Http';
 import {CafeCardProps} from '@components/CafeCard/CafeCard';
 import './CafePage.scss';
 import BasePage from '@pages/BasePage';
-import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
-import PromoCard from '@components/PromoCard';
-import {PromoCardColor, PromoCardProps} from '@components/PromoCard/PromoCard';
+import {PromoCardProps} from '@components/PromoCard/PromoCard';
 
 const normalizePlace = (data: any):CafeCardProps =>({
 	id: data.id,
@@ -34,6 +32,7 @@ const normalizePromotions = (data:any[]):PromoCardProps[] => {
 	}
 	console.log('norm', data);
 	return data.map((data:any):PromoCardProps => ({
+		id: data.pk,
 		img: data.image,
 		title: data.title,
 		subtitle: data['discount_value']
@@ -73,8 +72,6 @@ const CafePage: React.FC = () => {
 				.catch(console.log)
 		]);
 	}, []);
-
-	const history = useHistory();
 
 	return (<BasePage
 		mainProps={{
