@@ -89,7 +89,7 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin({
 			BASE_URL: `'https://place-to-work.${isDev ? 'online' : 'ru'}'`,
-			API_SUFFIX: '/api/v1',
+			API_SUFFIX: "'/api/v1'",
 			ROOT_DOMAIN: `'${isDev ? 'online' : 'ru'}'`,
 			IS_DEV: isDev
 		}),
