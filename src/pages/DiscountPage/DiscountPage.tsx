@@ -5,7 +5,7 @@ import {IconColor} from '@components/primitives/Icon';
 import CrossIcon from '@components/primitives/Icon/components/CrossIcon';
 import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
 import Button from '@components/primitives/Button';
-import {useHistory, useParams, useLocation} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import Http from '@network/Http';
 
 const backgroundColor = 'black';
