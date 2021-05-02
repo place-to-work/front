@@ -5,14 +5,16 @@ import {IconColor} from '@components/primitives/Icon';
 import CrossIcon from '@components/primitives/Icon/components/CrossIcon';
 import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitives/Typo';
 import Button from '@components/primitives/Button';
-import {useHistory, useParams} from 'react-router-dom';
+import {useHistory, useParams, useLocation} from 'react-router-dom';
 import Http from '@network/Http';
 
 const backgroundColor = 'black';
 const padding = 24;
 const DiscountPage: React.FC = () => {
 	const history = useHistory();
-	const {uuid, promotion} = useParams<{ uuid, promotion }>();
+	const search = useLocation().search;
+	const uuid = new URLSearchParams(search).get('uuid');
+	const promotion = new URLSearchParams(search).get('promotion');
 	console.log(`uuid = ${uuid}, promo = ${promotion}`);
 
 	return <BasePage
