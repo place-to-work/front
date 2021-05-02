@@ -7,6 +7,7 @@ import BasePage from '@pages/BasePage';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import DetailedInfo from '@components/DetailedInfo';
 import {observer} from 'mobx-react-lite';
+import QrPopup from '@components/QrPopup';
 
 const CafePage: React.FC = () => {
 	const {id} = useParams<{ id }>();
@@ -45,22 +46,25 @@ const CafePage: React.FC = () => {
 
 	const history = useHistory();
 
-	return (<BasePage
-		headerProps={{
-			left: () => <div className="back-icon"><BackIcon
-				size={IconSize.m}
-				onClick={() => history.push('/places')}
-			/></div>,
-			// right: () => <InWorkTag/>,
-			transparent:true
-		}}
-		mainProps={{
-			body: () => <>
-				<div className="cafe-page">
-					{cafe && <DetailedInfo {...cafe} />}
-				</div>
-			</>,
-		}}/>);
+	return (<>
+		<QrPopup/>
+		<BasePage
+			headerProps={{
+				left: () => <div className="back-icon"><BackIcon
+					size={IconSize.m}
+					onClick={() => history.push('/places')}
+				/></div>,
+				// right: () => <InWorkTag/>,
+				transparent: true,
+			}}
+			mainProps={{
+				body: () => <>
+					<div className="cafe-page">
+						{cafe && <DetailedInfo {...cafe} />}
+					</div>
+				</>,
+			}}/>
+	</>);
 };
 
 export default observer(CafePage);

@@ -31,7 +31,6 @@ const DiscountPage = loadable(() => import('@pages/DiscountPage'));
 const App: React.FC = () => (
 	<WidthProvider>
 		<NotificationProvider>
-
 			<YMInitializer accounts={[IS_DEV ? 75731011 : 74587357]} />
 			<Router history={history}>
 				<Switch>
