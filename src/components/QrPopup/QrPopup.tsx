@@ -3,14 +3,14 @@ import './QrPopup.scss';
 import CrossIcon from '@components/primitives/Icon/components/CrossIcon';
 import {IconColor} from '@components/primitives/Icon';
 import QRCode from 'qrcode.react';
-import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 
 interface OwnProps {
 	link?: string;
 	setLink?: (link?: string) => void;
 }
 
-const QrPopup: React.FC<OwnProps> = ({link = 'qwer', setLink}) => {
+const QrPopup: React.FC<OwnProps> = ({link, setLink}) => {
 	if (!link) {
 		return null;
 	}
@@ -33,7 +33,7 @@ const QrPopup: React.FC<OwnProps> = ({link = 'qwer', setLink}) => {
 					renderAs="svg"
 					value={link}
 				/>
-				<Typo type={TypographyType.h4} style={{width: '80%', marginTop: 30}} textAlign={TypoTextAlign.center}>
+				<Typo type={TypographyType.h4} style={{width: '80%', marginTop: 30}}>
 					Чтобы получить скидку, покажите QR-код бариста
 				</Typo>
 			</div>
