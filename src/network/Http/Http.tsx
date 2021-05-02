@@ -18,7 +18,8 @@ class Http {
 	static ACCESS_TOKEN_BEARER = 'Bearer'
 	public apiUrl: string;
 	constructor(public serverUrl) {
-		this.apiUrl = `${this.serverUrl}${API_SUFFIX}`;
+		const suffix = API_SUFFIX;
+		this.apiUrl = `${this.serverUrl}${suffix}`;
 	}
 
 	fetchRequest({
