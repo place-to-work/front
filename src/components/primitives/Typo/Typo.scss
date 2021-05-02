@@ -101,6 +101,10 @@
     &-regular {
       @include textWeight400;
     }
+
+    &-extra-regular {
+      @include textWeight500;
+    }
   }
 
   &_font {
