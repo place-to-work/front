@@ -57,7 +57,7 @@ const DiscountPage: React.FC = () => {
 			right: () => <Button full onClick={() => {
 				Http.fetchPost({
 					path: '/products/choice/',
-					body: JSON.stringify({uuid, promotion}),
+					body: JSON.stringify({user: uuid, promotion}),
 				}).then(console.log);
 			}}>
 				Сделать скидку
