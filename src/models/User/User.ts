@@ -5,11 +5,17 @@ import Http from '@network/Http/Http';
 import {SignupValues} from '@pages/SignupPage/SignupPage';
 import Message from '@models/Notification';
 import t, {Phrase} from '@models/Translate';
-import {ref} from 'yup';
+import {useHistory} from 'react-router-dom';
 
 export enum UserType {
 	client = 1,
 	staff,
+}
+
+type Nullable<T> = T | null;
+
+export interface Uuid {
+	subscribe_uuid: string;
 }
 
 class User implements UserInnerType{
@@ -28,7 +34,7 @@ class User implements UserInnerType{
 	get isAuthenticated() {
 		return this.id >= 0;
 	}
-	set setNoAuthenticated(auth) {
+	set setNoAuthenticated() {
 		this.id = -1;
 	}
 
@@ -101,14 +107,31 @@ class User implements UserInnerType{
 					localStorage.setItem('access_token', accessToken);
 					localStorage.setItem('refresh_token', refreshToken);
 				}
-
-
-
-
 			});
 	}
 
-	async fetch(): Promise<User | null> {
+	async getUuid(): Promise<Nullable<Uuid>> {
+		const history = useHistory();
+		if (!this.isAuthenticated) {
+			Message.error('Вы не авторизованы');
+			history.replace('/login');
+			return null;
+		}
+
+		return Http.fetchPost({
+			path: '/users/uuid/',
+			body:'',
+		})
+			.then((resp) => {
+				if (!resp.ok) {
+					Message.error('Ошибка авторизации');
+					return null;
+				}
+				return resp.json();
+			});
+	}
+
+	async fetch(): Promise<Nullable<User>> {
 		const data = await Http.getCurrentUser()
 			.catch(((reason) => {
 				console.log(`user fetch catch: ${JSON.stringify(reason, null, 4)}`);

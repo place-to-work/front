@@ -18,28 +18,32 @@ import {PromoCardColor, PromoCardProps} from '@components/PromoCard/PromoCard';
 import Group from '@components/Group';
 import {BackIcon, IconSize} from '@components/primitives/Icon';
 import {useHistory} from 'react-router-dom';
+import QrPopup from '@components/QrPopup';
+import Http from '@network/Http';
+import User from '@models/User';
+import Notification from '@models/Notification';
 
 export type CafeCardProps = {
-    imageSrc?: string;
-    name?: string;
-    address?: string;
-    time?: string;
+	imageSrc?: string;
+	name?: string;
+	address?: string;
+	time?: string;
 
-    // Иконки
-    wifi?:boolean;
-    light?:boolean;
-    electricity?:boolean;
-    quiet?:string;
+	// Иконки
+	wifi?: boolean;
+	light?: boolean;
+	electricity?: boolean;
+	quiet?: string;
 
-    // Подробная информация на странице кафе
-    statuses?: string[];
-    gallery?: string[];
-    images?: string[];
-    workLoad?: number;
-    workLoadText?: string;
-    averagePrice?: string;
-    mapSrc?: string;
-    promotions?: PromoCardProps[];
+	// Подробная информация на странице кафе
+	statuses?: string[];
+	gallery?: string[];
+	images?: string[];
+	workLoad?: number;
+	workLoadText?: string;
+	averagePrice?: string;
+	mapSrc?: string;
+	promotions?: PromoCardProps[];
 
 };
 
@@ -55,70 +59,70 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 		statuses = [],
 		images = [],
 		workLoad,
-		workLoadText,
 		averagePrice,
-		mapSrc,
-		promotions
-	}: CafeCardProps) =>  {
+		promotions,
+	}: CafeCardProps) => {
 	const history = useHistory();
-	const {isPhone, isSmallPhone ,biggerThanTablet} = useWidth();
+	const {isPhone} = useWidth();
+	const [link, setLink] = useState<string>();
 
 
-	const splideOptions = React.useMemo(()=>{
-		if(isPhone){
+	const splideOptions = React.useMemo(() => {
+		if (isPhone) {
 			return {
-				type : 'loop',
-				gap : '0.25rem',
-				fixedHeight:'60vh',
-				arrows : false,
+				type: 'loop',
+				gap: '0.25rem',
+				fixedHeight: '60vh',
+				arrows: false,
 				autoplay: true,
-				focus    : 'center',
-				perPage  : 1,
+				focus: 'center',
+				perPage: 1,
 				trimSpace: true,
 			};
 		}
 
 		return {
-			type : 'loop',
-			gap : '1.5rem',
-			arrows : false,
+			type: 'loop',
+			gap: '1.5rem',
+			arrows: false,
 			padding: '0.5rem',
 			autoplay: true,
-			perPage  : 3,
+			perPage: 3,
 		};
 
 
-
-	},[]);
+	}, []);
 
 	const carouselRef = React.useRef();
 	// @ts-ignore
-	const { offsetHeight } = carouselRef?.current?.splideRef?.current || { offsetHeight: null};
+	const {offsetHeight} = carouselRef?.current?.splideRef?.current || {offsetHeight: null};
 	const [height, setHeight] = useState<number | null>();
 	const [slideHeight, setSlideHeight] = useState<number | null>();
 
-	useEffect(()=>{
+	useEffect(() => {
 		// @ts-ignore
-		const { offsetHeight } = carouselRef?.current?.splideRef?.current || null;
-		const value = Number(offsetHeight) ? offsetHeight - 10  : null;
+		const {offsetHeight} = carouselRef?.current?.splideRef?.current || null;
+		const value = Number(offsetHeight) ? offsetHeight - 10 : null;
 		setHeight(value);
 		setSlideHeight(value ? window.innerHeight - offsetHeight : null);
 
-	},[carouselRef]);
+	}, [carouselRef]);
 
 
-	const carousel = React.useMemo(()=> <div className="cafe-detailed-info__header">
-		<BackIcon size={IconSize.normal} className="cafe-detailed-info__icon-back" onClick={() => history.push('/places')}/>
+	const carousel = React.useMemo(() => <div className="cafe-detailed-info__header">
+		<BackIcon size={IconSize.normal} className="cafe-detailed-info__icon-back"
+		          onClick={() => history.push('/places')}/>
 		<Splide options={splideOptions} ref={carouselRef}>
-			{images.map((image, index)=><SplideSlide key={index}>
+			{images.map((image, index) => <SplideSlide key={index}>
 				<ImageCard imageSrc={image} full={isPhone} rounded={false}/>
 			</SplideSlide>)}
 		</Splide>
-	</div>,[images, splideOptions,carouselRef]);
+	</div>, [images, splideOptions, carouselRef]);
 
-	const statusesList = React.useMemo(()=>statuses?.map((status:string, index:number)=><Tag color={ButtonColor.white} key={index}>
+	const statusesList = React.useMemo(() => statuses?.map((status: string, index: number) => <Tag
+		color={ButtonColor.white} key={index}>
 		<Typo type={TypographyType.h5} color={TypoColor.black}>{status}</Typo>
-	</Tag>),[statuses]);
+	</Tag>), [statuses]);
 
 
 	// if(biggerThanTablet){
@@ -154,17 +158,20 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	// 		</div>
 	// 	);
 	// }
-	return (
+	return (<>
+		<QrPopup link={link} setLink={setLink}/>
 		<div className="cafe-detailed-info">
 			<div className={cn('cafe-detailed-info__carousel', isPhone && 'cafe-detailed-info__carousel-absolute')}>
 				{carousel}
-				<div className={cn('cafe-detailed-info__statuses', statusesList.length <= 1 && 'cafe-detailed-info__statuses_start' )}>
+				<div className={cn('cafe-detailed-info__statuses', statusesList.length <= 1 && 'cafe-detailed-info__statuses_start')}>
 					{statusesList}
 				</div>
 			</div>
-			<div className={cn('cafe-info-slide')} style={offsetHeight ? {marginTop:height} : {}}>
-				<div className={cn('cafe-info-slide__content')} style={{minHeight:slideHeight}}>
-					<Typo className="cafe-detailed-info__name" block type={TypographyType.h1}>{name}</Typo>
+			<div className={cn('cafe-info-slide')} style={offsetHeight ? {marginTop: height} : {}}>
+				<div className={cn('cafe-info-slide__content')}
+					     style={{minHeight: slideHeight}}>
+					<Typo className="cafe-detailed-info__name" block
+						      type={TypographyType.h1}>{name}</Typo>
 					<Separator black/>
 					<CafeInfo address={address} time={time}/>
 					<Separator black/>
@@ -179,12 +186,28 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 					<Separator black/>
 					<Separator invisible/>
 					<Group title="Промо-акции">
-						{ promotions && promotions.map((promo,i)=><PromoCard key={i} color={PromoCardColor.light} {...promo}/>)}
+						{promotions && promotions.map((promo, i) => <PromoCard
+							key={i}
+							color={PromoCardColor.light}
+							onIconClick={() => {
+								User.getUuid()
+									.then((uuid) => {
+										if (uuid) {
+											setLink(`${Http.serverUrl}/products/choice?uuid=${uuid}`);
+										} else {
+											Notification.error('ошибка получения uuid');
+										}
+									});
+							}}
+							{...promo}
+						/>)}
 					</Group>
 
 				</div>
 			</div>
 		</div>
-	);};
+	</>
+	);
+};
 
 export default DetailedInfo;
