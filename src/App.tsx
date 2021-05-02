@@ -26,6 +26,7 @@ const StaffPage = loadable(() => import('@pages/StaffPage'));
 const SubscriptionMainPage = loadable(() => import('@pages/SubscriptionMain/SubscriptionMain'));
 const InWorkPlace = loadable(() => import('@pages/InWorkPlace'));
 const SubscribePage = loadable(() => import('@pages/Subscribe'));
+const DiscountPage = loadable(() => import('@pages/DiscountPage'));
 
 const App: React.FC = () => (
 	<WidthProvider>
@@ -34,7 +35,9 @@ const App: React.FC = () => (
 			<YMInitializer accounts={[IS_DEV ? 75731011 : 74587357]} />
 			<Router history={history}>
 				<Switch>
-
+					<Route path="/success-discount">
+						<DiscountPage/>
+					</Route>
 					<Route path="/in-place">
 						<InWorkPlace qrValue={''}/>
 					</Route>

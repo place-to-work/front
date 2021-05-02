@@ -66,6 +66,11 @@
   font-weight: 400;
 }
 
+//Для начертания ExtraRegular
+@mixin textWeight500 {
+  font-weight: 500;
+}
+
 //Для начертания SemiBold
 @mixin textWeight600 {
   font-weight: 600;

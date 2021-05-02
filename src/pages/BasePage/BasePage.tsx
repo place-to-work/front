@@ -17,9 +17,6 @@ interface BasePageProps {
 	footerProps?: FooterProps;
 }
 
-import DeviceOrientation, { Orientation } from 'react-screen-orientation';
-
-
 
 const BasePage: React.FC<BasePageProps> = ({
 	headerProps,
