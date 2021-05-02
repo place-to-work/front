@@ -140,27 +140,27 @@ const SignupPage: React.FC = () => {
 					</Form>
 				</>}
 			/>
-			<GoogleLogin
-				clientId={'1044183237757-rf0ngragabmlck7dm60fb4t0ljdgf8de.apps.googleusercontent.com'}
-				redirectUri={'http://localhost:2021/'}
-				disabled={false}
-				onSuccess={
-					(response) => {
-						console.log('success', response);
-						User.googleOAuth({
-							grant_type: 'convert_token',
-							client_id: 'Mf6dsbxLoW6Y6irmBstkBMUPXcZNVeHCeVXTdzdw',
-							backend: 'google-oauth2',
-							token: response['accessToken']
-						}).then((response)=>{
+			{/*<GoogleLogin*/}
+			{/*	clientId={'1044183237757-rf0ngragabmlck7dm60fb4t0ljdgf8de.apps.googleusercontent.com'}*/}
+			{/*	redirectUri={'http://localhost:2021/'}*/}
+			{/*	disabled={false}*/}
+			{/*	onSuccess={*/}
+			{/*		(response) => {*/}
+			{/*			console.log('success', response);*/}
+			{/*			User.googleOAuth({*/}
+			{/*				grant_type: 'convert_token',*/}
+			{/*				client_id: 'Mf6dsbxLoW6Y6irmBstkBMUPXcZNVeHCeVXTdzdw',*/}
+			{/*				backend: 'google-oauth2',*/}
+			{/*				token: response['accessToken']*/}
+			{/*			}).then((response)=>{*/}
 
-						});
-					}
-				}
-				onFailure={(response) => {console.log('fail',response);}}
-			>
-				<span> Login with Google</span>
-			</GoogleLogin>
+			{/*			});*/}
+			{/*		}*/}
+			{/*	}*/}
+			{/*	onFailure={(response) => {console.log('fail',response);}}*/}
+			{/*>*/}
+			{/*	<span> Login with Google</span>*/}
+			{/*</GoogleLogin>*/}
 		</div>
 		}}
 		footerProps={{right: () => <Contact/>}}

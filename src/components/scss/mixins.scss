@@ -61,6 +61,11 @@
 }
 
 
+//Для начертания Light
+@mixin textWeight300 {
+  font-weight: 300;
+}
+
 //Для начертания Regular
 @mixin textWeight400 {
   font-weight: 400;

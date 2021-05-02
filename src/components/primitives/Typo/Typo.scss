@@ -101,6 +101,9 @@
     &-regular {
       @include textWeight400;
     }
+    &-light{
+      @include textWeight300;
+    }
 
     &-extra-regular {
       @include textWeight500;
