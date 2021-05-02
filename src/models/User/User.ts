@@ -34,7 +34,7 @@ class User implements UserInnerType{
 	get isAuthenticated() {
 		return this.id >= 0;
 	}
-	set setNoAuthenticated() {
+	set setNoAuthenticated(auth) {
 		this.id = -1;
 	}
 
