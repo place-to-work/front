@@ -33,7 +33,7 @@ const QrPopup: React.FC<OwnProps> = ({link, setLink}) => {
 					renderAs="svg"
 					value={link}
 				/>
-				<Typo type={TypographyType.h4} style={{width: '80%', marginTop: 30}}>
+				<Typo type={TypographyType.h4} style={{width: '80%', marginTop: 30, paddingLeft: 25}}>
 					Чтобы получить скидку, покажите QR-код бариста
 				</Typo>
 			</div>
