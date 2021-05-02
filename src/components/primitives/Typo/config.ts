@@ -38,5 +38,6 @@ export enum TypoWeight {
     extraBold = 'extra-bold', // font-weight: 800
     bold = 'bold', // font-weight: 700
     semiBold = 'semi-bold', // font-weight: 600,
+    extraRegular = 'extra-regular', // font-weight: 500,
     regular = 'regular' // font-weight: 400
 }
