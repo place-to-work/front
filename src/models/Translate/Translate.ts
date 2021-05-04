@@ -44,9 +44,21 @@ export enum Phrase {
 	inputConfirmPassword,
 	notMobileBold,
 	notMobileRegular,
+	mustBeBaristaToDiscount,
+	qrConfirmedMain,
+	qrConfirmedAdditional,
 }
 
 const texts = {
+	[Phrase.qrConfirmedAdditional]: {
+		ru: () => 'Приятного аппетита!',
+	},
+	[Phrase.qrConfirmedMain]: {
+		ru: () => 'QR-код подтвержден, можно сделать скидку',
+	},
+	[Phrase.mustBeBaristaToDiscount]: {
+		ru: () => 'Вы должны быть баристой, чтобы подтвердить скидку',
+	},
 	[Phrase.notMobileRegular]: {
 		ru: () => 'Десктопная версия пока не готова :)',
 	},

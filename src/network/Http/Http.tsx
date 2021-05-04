@@ -1,5 +1,5 @@
 import {LoginValues} from '@pages/LoginPage/LoginPage';
-import Message from '@models/Notification';
+import Notification from '@models/Notification';
 import t, {Phrase} from '@models/Translate';
 
 type Nullable<T> = T | null;
@@ -67,7 +67,7 @@ class Http {
 				// - корсы
 				// - мб днс не резолвится
 				console.log(`fetch error: ${reason.message}`);
-				Message.error(t(Phrase.networkError));
+				Notification.error(t(Phrase.networkError));
 				return null;
 			});
 	}
@@ -101,6 +101,26 @@ class Http {
 			path,
 			body,
 		});
+	}
+
+	makeDiscount(uuid, promotion): Promise<Nullable<Response>> {
+		return this.fetchPost({
+			path: '/products/choice/',
+			body: JSON.stringify({user: uuid, promotion}),
+		})
+			.then((response) => {
+				if (response === null) {
+					return null;
+				}
+				if (response.ok) {
+					return response.json();
+				}
+				if (response.status === 403) {
+					Notification.error(t(Phrase.mustBeBaristaToDiscount));
+					return null;
+				}
+				return null;
+			})
 	}
 
 	getCurrentUser(): any {

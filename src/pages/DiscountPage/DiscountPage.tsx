@@ -7,6 +7,7 @@ import Typo, {TypoColor, TypographyType, TypoWeight} from '@components/primitive
 import Button from '@components/primitives/Button';
 import {useHistory, useLocation} from 'react-router-dom';
 import Http from '@network/Http';
+import t, {Phrase} from '@models/Translate';
 
 const backgroundColor = 'black';
 const padding = 24;
@@ -21,7 +22,10 @@ const DiscountPage: React.FC = () => {
 		headerProps={{
 			style: {backgroundColor: backgroundColor, borderColor: backgroundColor},
 			right: () => <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
-				<CrossIcon color={IconColor.white} onClick={() => history.goBack()}/>
+				<CrossIcon color={IconColor.white} onClick={() => {
+					console.log('history.go back');
+					history.goBack();
+				}}/>
 			</div>,
 		}}
 		mainProps={{
@@ -40,25 +44,28 @@ const DiscountPage: React.FC = () => {
 					weight={TypoWeight.extraRegular}
 					style={{lineHeight: 1}}
 				>
-					QR-код подтвержден, можно сделать скидку
+					{t(Phrase.qrConfirmedMain)}
 				</Typo>
 				<Typo
 					color={TypoColor.white}
 					type={TypographyType.h4}
 					style={{marginTop: '5%'}}
 				>
-					Тут может быть какая-то инфа о покупателе например
-					тут может быть еще какой-то текст о покупателе например
+					{t(Phrase.qrConfirmedAdditional)}
 				</Typo>
 			</>,
 		}}
 		footerProps={{
 			style: {backgroundColor: backgroundColor, borderColor: backgroundColor, padding: padding},
 			right: () => <Button full onClick={() => {
-				Http.fetchPost({
-					path: '/products/choice/',
-					body: JSON.stringify({user: uuid, promotion}),
-				}).then(console.log);
+				Http.makeDiscount(uuid, promotion)
+					.then((response) => {
+						if (response === null) {
+							return null;
+						}
+						console.log('successfull discount');
+						return response;
+					})
 			}}>
 				Сделать скидку
 			</Button>,
