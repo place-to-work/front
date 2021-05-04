@@ -189,7 +189,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						{promotions && promotions.map((promo, i) => <PromoCard
 							key={i}
 							color={PromoCardColor.light}
-							onIconClick={() => {
+							onClick={() => {
 								User.getUuid()
 									.then((uuid) => {
 										if (uuid) {
