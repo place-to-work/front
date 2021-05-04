@@ -25,7 +25,7 @@ const DiscountPage: React.FC = () => {
 			right: () => <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
 				<CrossIcon color={IconColor.white} onClick={() => {
 					console.log('history.push places');
-					history.push('/places');
+					history.replace('/places');
 				}}/>
 			</div>,
 		}}
@@ -66,7 +66,7 @@ const DiscountPage: React.FC = () => {
 						}
 						console.log('successfull discount');
 						Notification.info(t(Phrase.successfulDiscount));
-						history.push('/places');
+						history.replace('/places');
 						return response;
 					})
 			}}>
