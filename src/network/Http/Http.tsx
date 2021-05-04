@@ -113,7 +113,7 @@ class Http {
 					return null;
 				}
 				if (response.ok) {
-					return response.json();
+					return response;
 				}
 				if (response.status === 403) {
 					Notification.error(t(Phrase.mustBeBaristaToDiscount));
