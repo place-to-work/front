@@ -124,7 +124,7 @@ class Http {
 					return null;
 				}
 				return null;
-			})
+			});
 	}
 
 	getCurrentUser(): any {

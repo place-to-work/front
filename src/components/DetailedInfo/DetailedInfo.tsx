@@ -172,7 +172,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 					     style={{minHeight: slideHeight}}>
 					<Typo className="cafe-detailed-info__name" block
 						      type={TypographyType.h1}>{name}</Typo>
-					<Separator black/>
+					<Separator invisible/>
 					<CafeInfo address={address} time={time}/>
 					<Separator black/>
 					<DetailedFeatures
@@ -183,7 +183,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						workLoad={workLoad}
 						averagePrice={averagePrice}
 					/>
-					<Separator black/>
 					<Separator invisible/>
 					<Group title="Промо-акции">
 						{promotions && promotions.map((promo, i) => <PromoCard
