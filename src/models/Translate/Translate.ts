@@ -51,7 +51,7 @@ export enum Phrase {
 
 const texts = {
 	[Phrase.qrConfirmedAdditional]: {
-		ru: () => 'Приятного аппетита!',
+		ru: () => 'Приятных вам посетителей!',
 	},
 	[Phrase.qrConfirmedMain]: {
 		ru: () => 'QR-код подтвержден, можно сделать скидку',
