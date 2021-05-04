@@ -2,8 +2,7 @@ import React, {CSSProperties} from 'react';
 import {Notification, NotifType} from '@models/Notification';
 import './NotificationComponent.scss';
 import Typo, {TypographyType, TypoTextAlign, TypoVerticalAlign} from '@components/primitives/Typo';
-import {LightIcon} from '@components/primitives/Icon';
-import {WarningIcon} from '@components/primitives/Icon';
+import {LightIcon, WarningIcon} from '@components/primitives/Icon';
 
 interface OwnProps {
 	notification: Notification,
