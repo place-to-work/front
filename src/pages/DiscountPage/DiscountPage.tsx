@@ -8,6 +8,7 @@ import Button from '@components/primitives/Button';
 import {useHistory, useLocation} from 'react-router-dom';
 import Http from '@network/Http';
 import t, {Phrase} from '@models/Translate';
+import Notification from '@models/Notification';
 
 const backgroundColor = 'black';
 const padding = 24;
@@ -64,6 +65,8 @@ const DiscountPage: React.FC = () => {
 							return null;
 						}
 						console.log('successfull discount');
+						Notification.info(t(Phrase.successfulDiscount));
+						history.push('/places');
 						return response;
 					})
 			}}>

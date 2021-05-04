@@ -47,9 +47,13 @@ export enum Phrase {
 	mustBeBaristaToDiscount,
 	qrConfirmedMain,
 	qrConfirmedAdditional,
+	successfulDiscount,
 }
 
 const texts = {
+	[Phrase.successfulDiscount]: {
+		ru: () => 'Скидка успешно записана!',
+	},
 	[Phrase.qrConfirmedAdditional]: {
 		ru: () => 'Остался один небольшой шаг -- нажмите на кнопочку ниже',
 	},
