@@ -23,8 +23,8 @@ const DiscountPage: React.FC = () => {
 			style: {backgroundColor: backgroundColor, borderColor: backgroundColor},
 			right: () => <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
 				<CrossIcon color={IconColor.white} onClick={() => {
-					console.log('history.go back');
-					history.goBack();
+					console.log('history.push places');
+					history.push('/places');
 				}}/>
 			</div>,
 		}}
