@@ -4,7 +4,7 @@ const LIVE_TIME = 2000;
 const APPEAR_TIME = 300;
 const TOTAL_DELAY = LIVE_TIME + 2 * APPEAR_TIME;
 
-enum NotifType {
+export enum NotifType {
 	error,
 	info,
 	warning,

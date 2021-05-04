@@ -95,6 +95,5 @@ export {
 	CheckIcon,
 	CupIcon,
 	WorkIcon,
-
-
+	WarningIcon,
 };

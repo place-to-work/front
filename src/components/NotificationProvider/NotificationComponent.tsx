@@ -1,8 +1,9 @@
 import React, {CSSProperties} from 'react';
-import {Notification} from '@models/Notification';
+import {Notification, NotifType} from '@models/Notification';
 import './NotificationComponent.scss';
 import Typo, {TypographyType, TypoTextAlign, TypoVerticalAlign} from '@components/primitives/Typo';
-import Icon, {IconType} from '@components/primitives/Icon';
+import {LightIcon} from '@components/primitives/Icon';
+import {WarningIcon} from '@components/primitives/Icon';
 
 interface OwnProps {
 	notification: Notification,
@@ -23,7 +24,7 @@ export const NotificationComponent: React.FC<OwnProps> = ({notification, idx}) =
 			textAlign={TypoTextAlign.center}
 			verticalAlign={TypoVerticalAlign.middle}
 		>
-			<Icon type={IconType.warning}/>
+			{notification.type === NotifType.error ? <WarningIcon/> : <LightIcon/>}
 			{notification.message}
 		</Typo>
 	</div>;
