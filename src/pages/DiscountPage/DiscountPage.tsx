@@ -68,7 +68,7 @@ const DiscountPage: React.FC = () => {
 						Notification.info(t(Phrase.successfulDiscount));
 						history.replace('/places');
 						return response;
-					})
+					});
 			}}>
 				Сделать скидку
 			</Button>,

@@ -48,9 +48,13 @@ export enum Phrase {
 	qrConfirmedMain,
 	qrConfirmedAdditional,
 	successfulDiscount,
+	wrongBarista,
 }
 
 const texts = {
+	[Phrase.wrongBarista]: {
+		ru: () => 'Похоже, что бариста не из этого кафе',
+	},
 	[Phrase.successfulDiscount]: {
 		ru: () => 'Скидка успешно записана!',
 	},

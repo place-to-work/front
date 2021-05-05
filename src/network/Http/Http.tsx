@@ -115,12 +115,16 @@ class Http {
 				if (response.ok) {
 					return response;
 				}
+				if (response.status === 400) {
+					Notification.error(t(Phrase.wrongBarista));
+					return null;
+				}
 				if (response.status === 403) {
 					Notification.error(t(Phrase.mustBeBaristaToDiscount));
 					return null;
 				}
 				return null;
-			})
+			});
 	}
 
 	getCurrentUser(): any {
