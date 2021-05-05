@@ -54,7 +54,7 @@ export enum Phrase {
 
 const texts = {
 	[Phrase.showQrBarista]: {
-		ru: () => 'Похоже, что бариста не из этого кафе',
+		ru: () => 'Чтобы получить скидку, покажите QR-код бариста',
 	},
 	[Phrase.wrongBarista]: {
 		ru: () => 'Похоже, что бариста не из этого кафе',
