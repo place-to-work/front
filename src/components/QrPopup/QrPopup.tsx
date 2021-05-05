@@ -16,17 +16,19 @@ const QrPopup: React.FC<OwnProps> = ({link, setLink}) => {
 		return null;
 	}
 
-	return <div className="qr-popup__background">
+	const onClose = React.useCallback(() => {
+		console.log('cross icon clicked');
+		if (setLink) {
+			setLink(undefined);
+		}
+	}, [setLink]);
+
+	return <div className="qr-popup__background" onClick={onClose}>
 		<div className="qr-popup">
 			<CrossIcon
 				style={{position: 'absolute', right: 18, top: 22}}
 				color={IconColor.black}
-				onClick={() => {
-					console.log('cross icon clicked');
-					if (setLink) {
-						setLink(undefined);
-					}
-				}}
+				onClick={onClose}
 			/>
 			<div className="qr-popup__contents">
 				<QRCode
