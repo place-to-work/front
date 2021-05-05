@@ -4,6 +4,7 @@ import CrossIcon from '@components/primitives/Icon/components/CrossIcon';
 import {IconColor} from '@components/primitives/Icon';
 import QRCode from 'qrcode.react';
 import Typo, {TypographyType} from '@components/primitives/Typo';
+import t, {Phrase} from '@models/Translate';
 
 interface OwnProps {
 	link?: string;
@@ -34,7 +35,7 @@ const QrPopup: React.FC<OwnProps> = ({link, setLink}) => {
 					value={link}
 				/>
 				<Typo type={TypographyType.h4} style={{width: '80%', marginTop: 30, paddingLeft: 25}}>
-					Чтобы получить скидку, покажите QR-код бариста
+					{t(Phrase.showQrBarista)}
 				</Typo>
 			</div>
 		</div>
