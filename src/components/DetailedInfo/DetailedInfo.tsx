@@ -23,6 +23,8 @@ import Http from '@network/Http';
 import User from '@models/User';
 import Notification from '@models/Notification';
 import PaymentButtons from '@components/a11y/PaymentButtons';
+import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
+import InWorkTag from '@components/InWorkTag';
 
 export type CafeCardProps = {
 	imageSrc?: string;
@@ -113,6 +115,10 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	const carousel = React.useMemo(() => <div className="cafe-detailed-info__header">
 		<BackIcon size={IconSize.normal} className="cafe-detailed-info__icon-back"
 		          onClick={() => history.push('/places')}/>
+		          <div className="cafe-detailed-info__in-work-tag">
+					  <InWorkTag />
+				  </div>
+
 		<Splide options={splideOptions} ref={carouselRef}>
 			{images.map((image, index) => <SplideSlide key={index}>
 				<ImageCard imageSrc={image} full={isPhone} rounded={false}/>
@@ -204,6 +210,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							{...promo}
 						/>)}
 					</Group>
+					<SubscriptionCard/>
 					<PaymentButtons/>
 				</div>
 			</div>

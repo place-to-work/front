@@ -11,6 +11,7 @@ import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
 import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
+import InWorkTag from '@components/InWorkTag';
 
 
 const CafeListPage: React.FC = () => {
@@ -109,7 +110,7 @@ const CafeListPage: React.FC = () => {
 	return (<BasePage
 		headerProps={{
 			left: () => <IconLeft size={IconSize.xl}/>,
-			// right: () => <InWorkTag/>,
+			right: () => <InWorkTag/>,
 		}}
 		mainProps={{
 			body: () => <div className="cafes-list">
