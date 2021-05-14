@@ -95,15 +95,6 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				</div>
 				}
 
-				<div className="in-work-place__button" style={{marginTop: 10}}>
-					<Button
-						full
-						onClick={() => history.push('/places')}
-						color={ButtonColor.accentGrey}
-					>
-						{t(Phrase.gotoAllWorkPlaces)}
-					</Button>
-				</div>
 			</div>,
 		}}
 	/>;
