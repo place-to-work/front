@@ -12,6 +12,8 @@ import {observer} from 'mobx-react-lite';
 import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
 import InWorkTag from '@components/InWorkTag';
+import User from '@models/User';
+import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 
 
 const CafeListPage: React.FC = () => {
@@ -139,7 +141,7 @@ const CafeListPage: React.FC = () => {
 					</Button>
 				</>}
 
-				{/*{!User.isSubscribed && <SubscriptionCard/>}*/}
+				{!User.isSubscribed && <SubscriptionCard/>}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>

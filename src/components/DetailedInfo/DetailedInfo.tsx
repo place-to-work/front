@@ -210,7 +210,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							{...promo}
 						/>)}
 					</Group>
-					<SubscriptionCard/>
 				</div>
 			</div>
 		</div>
