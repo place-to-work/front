@@ -211,7 +211,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						/>)}
 					</Group>
 					<SubscriptionCard/>
-					<PaymentButtons/>
 				</div>
 			</div>
 		</div>
