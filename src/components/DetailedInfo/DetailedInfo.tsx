@@ -22,6 +22,7 @@ import QrPopup from '@components/QrPopup';
 import Http from '@network/Http';
 import User from '@models/User';
 import Notification from '@models/Notification';
+import PaymentButtons from '@components/a11y/PaymentButtons';
 
 export type CafeCardProps = {
 	imageSrc?: string;
@@ -203,7 +204,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							{...promo}
 						/>)}
 					</Group>
-
+					<PaymentButtons/>
 				</div>
 			</div>
 		</div>
