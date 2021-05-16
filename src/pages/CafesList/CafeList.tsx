@@ -104,9 +104,11 @@ const CafeListPage: React.FC = () => {
 		if (informers.length > 0) {
 			out.push(informers.shift());
 		}
-
+		// if(!User.isSubscribed) {
+		// 	out.push(<SubscriptionCard/>);
+		// }
 		return out;
-	}, [cafesMemo, informersMemo]);
+	}, [cafesMemo, informersMemo, User.isSubscribed]);
 
 	return (<BasePage
 		headerProps={{
@@ -139,7 +141,7 @@ const CafeListPage: React.FC = () => {
 					</Button>
 				</>}
 
-				{!User.isSubscribed && <SubscriptionCard/>}
+				{!User.isSubscribed && cafesState.length > 0 && <SubscriptionCard/>}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>
