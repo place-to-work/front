@@ -85,7 +85,6 @@ const CafeListPage: React.FC = () => {
 		const out = [];
 		const cafes = [...cafesMemo];
 		const informers = [...informersMemo];
-
 		// формируем ленту, где каждая 5-я карточка
 		// информер
 		for (let i = 1; cafes.length > 0; i++) {
