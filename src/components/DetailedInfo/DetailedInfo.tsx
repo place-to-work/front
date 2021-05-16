@@ -202,13 +202,12 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 										if(promo.type === 1 && !User.isSubscribed){
 											console.log('REDIRECT');
 											history.push('/in-place');
-										}
-										if ((User.isSubscribed || promo.type === 0 ) && uuid ) {
+										} else if ((User.isSubscribed || promo.type === 0 ) && uuid ) {
 											console.log('PROMO MODAL');
 											console.log(`det inf uuid: ${uuid}`);
 											console.log(`det inf promotion: ${promo.id}`);
 											setLink(`${Http.serverUrl}/success-discount?uuid=${uuid.subscribe_uuid}&promotion=${promo.id}`);
-										}else {
+										} else {
 											Notification.error('ошибка получения uuid');
 										}
 									});
