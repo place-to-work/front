@@ -194,6 +194,11 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							onClick={() => {
 								User.getUuid()
 									.then((uuid) => {
+										console.log({
+											sub: User.isSubscribed,
+											type:promo.type,
+											uuid
+										});
 										if(promo.type === 1 && !User.isSubscribed){
 											console.log('REDIRECT');
 											history.push('/in-work-place');
