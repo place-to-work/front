@@ -115,10 +115,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 	const carousel = React.useMemo(() => <div className="cafe-detailed-info__header">
 		<BackIcon size={IconSize.normal} className="cafe-detailed-info__icon-back"
 		          onClick={() => history.push('/places')}/>
-		          <div className="cafe-detailed-info__in-work-tag">
-					  <InWorkTag />
-				  </div>
-
 		<Splide options={splideOptions} ref={carouselRef}>
 			{images.map((image, index) => <SplideSlide key={index}>
 				<ImageCard imageSrc={image} full={isPhone} rounded={false}/>
@@ -198,11 +194,14 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							onClick={() => {
 								User.getUuid()
 									.then((uuid) => {
-										if (uuid) {
+										if(promo.type === 1 && !User.isSubscribed){
+											history.push('/in-work-place');
+										}
+										if ((User.isSubscribed && uuid ) || promo.type === 0 ) {
 											console.log(`det inf uuid: ${uuid}`);
 											console.log(`det inf promotion: ${promo.id}`);
 											setLink(`${Http.serverUrl}/success-discount?uuid=${uuid.subscribe_uuid}&promotion=${promo.id}`);
-										} else {
+										}else {
 											Notification.error('ошибка получения uuid');
 										}
 									});

@@ -111,8 +111,7 @@ const CafeListPage: React.FC = () => {
 
 	return (<BasePage
 		headerProps={{
-			left: () => <IconLeft size={IconSize.xl}/>,
-			right: () => <InWorkTag/>,
+			left: () => <IconLeft size={IconSize.xl}/>
 		}}
 		mainProps={{
 			body: () => <div className="cafes-list">

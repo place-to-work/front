@@ -18,7 +18,8 @@ export type PromoCardProps = {
 	className?: string;
 	onClick?: () => void;
 	icon?: IconType;
-	onIconClick?: () => void
+	onIconClick?: () => void,
+	type: 0 | 1;
 };
 
 const PromoCard: React.FC<PromoCardProps> = ({

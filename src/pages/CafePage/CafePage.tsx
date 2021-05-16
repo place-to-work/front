@@ -35,7 +35,8 @@ const normalizePromotions = (data:any[]):PromoCardProps[] => {
 		id: data.pk,
 		img: data.image,
 		title: data.title,
-		subtitle: data['discount_value']
+		subtitle: data['discount_value'],
+		type: data.type
 	}));
 };
 
