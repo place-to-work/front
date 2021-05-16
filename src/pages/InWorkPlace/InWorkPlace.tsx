@@ -44,7 +44,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	const hasSubscribe = Boolean(uuid?.length  && User.isSubscribed);
 	return <BasePage
 		headerProps={{
-			left: () => <BackIcon size={IconSize.m} onClick={() => history.push('/places')}/>,
+			left: () => <BackIcon size={IconSize.m} onClick={() => history.goBack()}/>,
 		}}
 		mainProps={{
 			body: () => <div>
