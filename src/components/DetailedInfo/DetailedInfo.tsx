@@ -22,6 +22,9 @@ import QrPopup from '@components/QrPopup';
 import Http from '@network/Http';
 import User from '@models/User';
 import Notification from '@models/Notification';
+import PaymentButtons from '@components/a11y/PaymentButtons';
+import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
+import InWorkTag from '@components/InWorkTag';
 
 export type CafeCardProps = {
 	imageSrc?: string;
@@ -191,7 +194,16 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							onClick={() => {
 								User.getUuid()
 									.then((uuid) => {
-										if (uuid) {
+										console.log({
+											sub: User.isSubscribed,
+											type:promo.type,
+											uuid
+										});
+										if(promo.type === 1 && !User.isSubscribed){
+											console.log('REDIRECT');
+											history.push('/in-place');
+										} else if ((User.isSubscribed || promo.type === 0 ) && uuid ) {
+											console.log('PROMO MODAL');
 											console.log(`det inf uuid: ${uuid}`);
 											console.log(`det inf promotion: ${promo.id}`);
 											setLink(`${Http.serverUrl}/success-discount?uuid=${uuid.subscribe_uuid}&promotion=${promo.id}`);
@@ -203,7 +215,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							{...promo}
 						/>)}
 					</Group>
-
 				</div>
 			</div>
 		</div>

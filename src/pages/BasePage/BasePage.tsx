@@ -52,6 +52,8 @@ const BasePage: React.FC<BasePageProps> = ({
 					id && history.push(`/staff/${id}`);
 				}
 			}
+		} else {
+			history.push('/login');
 		}
 	}, [User.id, User.userType]);
 

@@ -11,6 +11,9 @@ import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
 import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
+import InWorkTag from '@components/InWorkTag';
+import User from '@models/User';
+import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 
 
 const CafeListPage: React.FC = () => {
@@ -82,7 +85,6 @@ const CafeListPage: React.FC = () => {
 		const out = [];
 		const cafes = [...cafesMemo];
 		const informers = [...informersMemo];
-
 		// формируем ленту, где каждая 5-я карточка
 		// информер
 		for (let i = 1; cafes.length > 0; i++) {
@@ -102,14 +104,15 @@ const CafeListPage: React.FC = () => {
 		if (informers.length > 0) {
 			out.push(informers.shift());
 		}
-
+		// if(!User.isSubscribed) {
+		// 	out.push(<SubscriptionCard/>);
+		// }
 		return out;
-	}, [cafesMemo, informersMemo]);
+	}, [cafesMemo, informersMemo, User.isSubscribed]);
 
 	return (<BasePage
 		headerProps={{
-			left: () => <IconLeft size={IconSize.xl}/>,
-			// right: () => <InWorkTag/>,
+			left: () => <IconLeft size={IconSize.xl}/>
 		}}
 		mainProps={{
 			body: () => <div className="cafes-list">
@@ -138,7 +141,7 @@ const CafeListPage: React.FC = () => {
 					</Button>
 				</>}
 
-				{/*{!User.isSubscribed && <SubscriptionCard/>}*/}
+				{!User.isSubscribed && cafesState.length > 0 && <SubscriptionCard/>}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>

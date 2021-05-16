@@ -12,6 +12,12 @@ $local-white-bg: rgba(242, 242, 242, 1);
   &__header{
     position: relative;
   }
+  &__in-work-tag{
+    position: absolute;
+    top:12px;
+    right: 24px;
+    z-index: 11111;
+  }
   &__icon-back{
     position: absolute;
     top:12px;

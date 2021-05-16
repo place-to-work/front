@@ -40,13 +40,15 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 	const month = date.getMonth();
 
 	const tmpMobileWidth = {maxWidth: 360};
+
+	const hasSubscribe = Boolean(uuid?.length  && User.isSubscribed);
 	return <BasePage
 		headerProps={{
-			left: () => <BackIcon size={IconSize.m} onClick={() => history.push('/places')}/>,
+			left: () => <BackIcon size={IconSize.m} onClick={() => history.goBack()}/>,
 		}}
 		mainProps={{
 			body: () => <div>
-				{!uuid?.length &&
+				{!uuid?.length || !User.isSubscribed &&
 				<Typo
 					block
 					type={TypographyType.h1}
@@ -57,12 +59,12 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 					{t(Phrase.subscriptionNotActivated)}
 				</Typo>
 				}
-				{uuid?.length > 0
+				{hasSubscribe
 					? <QrCard value={`https://place-to-work.${ROOT_DOMAIN}/staff/${uuid}`}/>
 					: <SubscriptionCard/>
 				}
 
-				{Boolean(uuid?.length) &&
+				{hasSubscribe &&
 				<Typo
 					block
 					type={TypographyType.h1}
@@ -72,7 +74,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				>
 					{t(Phrase.subscriptionActivated)}
 				</Typo>}
-				{Boolean(uuid?.length) && <Typo
+				{hasSubscribe && <Typo
 					block
 					type={TypographyType.h4}
 					textAlign={TypoTextAlign.center}
@@ -82,7 +84,7 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				</Typo>
 				}
 
-				{Boolean(uuid?.length) &&
+				{hasSubscribe &&
 				<div className="in-work-place__estimated-date" style={{...tmpMobileWidth}}>
 					<Typo type={TypographyType.h4}>{t(Phrase.expirationDate)}<Typo
 						type={TypographyType.h4}
@@ -93,15 +95,6 @@ const InWorkPlace: React.FC<InWorkPlaceProps> = () => {
 				</div>
 				}
 
-				<div className="in-work-place__button" style={{marginTop: 10}}>
-					<Button
-						full
-						onClick={() => history.push('/places')}
-						color={ButtonColor.accentGrey}
-					>
-						{t(Phrase.gotoAllWorkPlaces)}
-					</Button>
-				</div>
 			</div>,
 		}}
 	/>;
