@@ -53,7 +53,7 @@ const BasePage: React.FC<BasePageProps> = ({
 				}
 			}
 		} else {
-			history.push('/login');
+			// history.push('/login');
 		}
 	}, [User.id, User.userType]);
 
