@@ -6,11 +6,14 @@ class Places {
 	placesArr: PlaceInnerType[] = [];
 
 	async getPlaces(): Promise<PlaceInnerType[] | null> {
+		console.log('start get places');
+
 		if (this.placesArr.length !== 0) {
 			return this.placesArr;
 		}
 
 		const places = await Places.fetchPlaces();
+		console.log(`fetched places: ${JSON.stringify(places, null, 4)}`);
 		if (places === null) {
 			/* не авторизован */
 			Notification.error('Войдите в сервис, пожалуйста');
