@@ -9,9 +9,9 @@ const InnerCafeMap: React.FC = () => {
 	return <YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
 		<Map
 			style={{
-				width: '100vh',
+				width: '100vw',
 				height: '100vh',
-				margin: '-10px -10px',
+				margin: '-10px',
 			}}
 			defaultState={{
 				center: [55.7522, 37.6156],
