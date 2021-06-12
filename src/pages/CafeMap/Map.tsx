@@ -10,7 +10,7 @@ const InnerCafeMap: React.FC = () => {
 		<Map
 			style={{
 				width: '100vw',
-				height: '100vh',
+				height: 'calc(100vh - 76px)',
 				margin: '-10px',
 			}}
 			defaultState={{
