@@ -12,7 +12,6 @@ const CafeListButton: React.FC = () => {
 	}}>
 		<Button
 			style={{
-				boxShadow: '0 0 3px #fff',
 				width: 173,
 				height: 39,
 				backgroundColor: 'black',
