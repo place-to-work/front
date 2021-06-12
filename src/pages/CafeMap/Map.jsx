@@ -5,7 +5,7 @@ const hardcodedApiKey = '71388d1c-1b81-4355-8a11-e3e4b5dbedd0';
 const locale = 'ru_RU';
 
 const InnerCafeMap = () => {
-	return <YMaps>
+	return <YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
 		<Map defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}>
 			<Placemark defaultGeometry={[55.751574, 37.573856]} />
 		</Map>
