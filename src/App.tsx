@@ -27,6 +27,7 @@ const SubscriptionMainPage = loadable(() => import('@pages/SubscriptionMain/Subs
 const InWorkPlace = loadable(() => import('@pages/InWorkPlace'));
 const SubscribePage = loadable(() => import('@pages/Subscribe'));
 const DiscountPage = loadable(() => import('@pages/DiscountPage'));
+const CafeMap = loadable(() => import('@pages/CafeMap'));
 
 const App: React.FC = () => (
 	<WidthProvider>
@@ -67,6 +68,10 @@ const App: React.FC = () => (
 
 					<Route path="/places">
 						<CafeListPage/>
+					</Route>
+
+					<Route path="/place-map">
+						<CafeMap/>
 					</Route>
 
 					<Route path="/places/:id">

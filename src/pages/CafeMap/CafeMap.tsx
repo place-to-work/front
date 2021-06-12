@@ -17,3 +17,5 @@ const CafeMap: React.FC = () => {
 		}}
 	/>);
 }
+
+export default CafeMap;
