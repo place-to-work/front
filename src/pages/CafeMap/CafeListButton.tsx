@@ -3,7 +3,13 @@ import Button from '@components/primitives/Button';
 
 
 const CafeListButton: React.FC = () => {
-	return <div style={{width: '100vw', position: 'absolute', bottom: 10}}>
+	return <div style={{
+		width: '100vw',
+		position: 'absolute',
+		bottom: 10,
+		marginLeft: -10,
+		display: 'flex',
+	}}>
 		<Button
 			style={{
 				width: 173,
