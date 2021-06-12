@@ -2,6 +2,7 @@ import React from 'react';
 import BasePage from '@pages/BasePage/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
 import InnerCafeMap from './Map';
+import CafeListButton from '@pages/CafeMap/CafeListButton';
 
 
 const CafeMap: React.FC = () => {
@@ -13,6 +14,7 @@ const CafeMap: React.FC = () => {
 		mainProps={{
 			body: () => <div>
 				<InnerCafeMap/>
+				<CafeListButton/>
 			</div>
 		}}
 	/>);
