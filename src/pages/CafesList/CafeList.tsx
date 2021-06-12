@@ -70,9 +70,15 @@ const CafeListPage: React.FC = () => {
 	const informersMemo = React.useMemo(() => informersState.map((informer: Informer) => informer.render()),
 		[informersState]);
 
-	const cafesMemo = React.useMemo(() => cafesState.map((cafe: CafeCardProps, index: number) => (
-		<CafeCard {...cafe} key={`${index}-cafe`} className="cafes-list__card"/>
-	)), [cafesState]);
+	const cafesMemo = React.useMemo(() => {
+		if (cafesState !== null) {
+			return cafesState.map((cafe: CafeCardProps, index: number) => (
+				<CafeCard {...cafe} key={`${index}-cafe`} className="cafes-list__card"/>
+			));
+		} else {
+			return [];
+		}
+	}, [cafesState]);
 
 
 	const feed = React.useMemo(() => {
