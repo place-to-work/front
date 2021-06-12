@@ -2,7 +2,6 @@ import React from 'react';
 import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import './CafeList.scss';
-import Http from '@network/Http/Http';
 import {useHistory} from 'react-router-dom';
 import BasePage from '@pages/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
@@ -11,7 +10,6 @@ import t, {Phrase} from '@models/Translate';
 import {observer} from 'mobx-react-lite';
 import Contact from '@components/Contact/Contact';
 import Informer, {InformerBucket} from '@models/Informer';
-import InWorkTag from '@components/InWorkTag';
 import User from '@models/User';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import Places from '@models/Places';
@@ -62,7 +60,7 @@ const CafeListPage: React.FC = () => {
 				return informers;
 			})
 			.then(setInformersState)
-			.catch((reason) => {
+			.catch(() => {
 				setInformersState([]);
 			});
 	}, []);
@@ -125,6 +123,7 @@ const CafeListPage: React.FC = () => {
 						</Typo>
 					</>
 				}
+				{!User.isSubscribed && cafesState && cafesState.length > 0 && <SubscriptionCard/>}
 				<div className="cafes-container">
 					{feed}
 				</div>
@@ -141,7 +140,6 @@ const CafeListPage: React.FC = () => {
 					</Button>
 				</>}
 
-				{!User.isSubscribed && cafesState && cafesState.length > 0 && <SubscriptionCard/>}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>
