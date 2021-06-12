@@ -14,7 +14,7 @@ const InnerCafeMap: React.FC = () => {
 				margin: '-10px -10px',
 			}}
 			defaultState={{
-				center: [55.751574, 37.573856],
+				center: [55.7522, 37.6156],
 				zoom: 9,
 			}}
 		>
