@@ -30,9 +30,8 @@ function convertPlaceInnerToCafeCardProps(placeObj: PlaceInnerType): CafeCardPro
 		electricity: placeObj.powerSocket,
 		quiet: placeObj.silence,
 		light: placeObj.light,
-		time: placeObj.openingHours && placeObj.openingHours.closeTime,
-		time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] && `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
-
+		images: placeObj.images,
+		time: placeObj.openingHours && placeObj.openingHours.closeTime && placeObj.openingHours.openTime && `${placeObj.openingHours.openTime} - ${placeObj.openingHours.closeTime}`,
 		workLoad: placeObj.workPlaces,
 		mapSrc: placeObj.address,
 	}
@@ -47,6 +46,7 @@ const CafeListPage: React.FC = () => {
 	React.useEffect(() => {
 		Places.getPlaces()
 			.then((result) => {
+				console.log(`result = ${JSON.stringify(result, null, 4)}`);
 				if (result === null) {
 					history.push('/auth');
 					return;
