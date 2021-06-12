@@ -14,6 +14,29 @@ import Informer, {InformerBucket} from '@models/Informer';
 import InWorkTag from '@components/InWorkTag';
 import User from '@models/User';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
+import Places from '@models/Places';
+import {PlaceInnerType} from '@models/Places/PlacesTypes';
+
+function convertPlaceInnerToCafeCardProps(placeObj: PlaceInnerType): CafeCardProps {
+	return {
+		id: String(placeObj.id),
+		imageSrc: placeObj.mainImage,
+		name: placeObj.fullName,
+		statuses: placeObj.categories,
+		averagePrice: String(placeObj.averageBill),
+		workLoadText: placeObj.occupancy,
+		wifi: placeObj.wifi,
+		address: placeObj.address,
+		electricity: placeObj.powerSocket,
+		quiet: placeObj.silence,
+		light: placeObj.light,
+		time: placeObj.openingHours && placeObj.openingHours.closeTime,
+		time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] && `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
+
+		workLoad: placeObj.workPlaces,
+		mapSrc: placeObj.address,
+	}
+}
 
 
 const CafeListPage: React.FC = () => {
@@ -22,39 +45,13 @@ const CafeListPage: React.FC = () => {
 	const [informersState, setInformersState] = React.useState<Informer[]>([]);
 
 	React.useEffect(() => {
-		Http.fetchGet({
-			path: '/places/',
-		})
-			.then((r) => {
-				if (!r.ok) {
-					console.log('response', {r});
+		Places.getPlaces()
+			.then((result) => {
+				if (result === null) {
 					history.push('/auth');
-					return null;
+					return;
 				}
-				r.json().then(((data) => {
-					if (!data || !Array.isArray(data)) {
-						return null;
-					}
-					console.log('effect list', {data});
-					data?.forEach((el) => {
-						setCafesState((old) => [...old, {
-							id: el.id,
-							imageSrc: el['main_image'] || (el['images'] && el['images'][0]),
-							name: el['full_name'] || el['short_name'],
-							statuses: el.categories,
-							averagePrice: el['average_bill'],
-							workLoadText: el.occupancy,
-							wifi: el.wifi,
-							address: el.address,
-							electricity: el['power_socket'],
-							quiet: el.silence,
-							light: el.light,
-							time: el['opening_hours'] && el['opening_hours']['open_time'] && el['opening_hours']['close_time'] && `${el['opening_hours']['open_time']} - ${el['opening_hours']['close_time']}`,
-							workLoad: el['work_places'],
-							mapSrc: (el.address || el['full_name'] || el['short_name']) && `https://yandex.ru/maps/213/moscow/search/${el.address || el['full_name'] || el['short_name']}`,
-						} as CafeCardProps]);
-					});
-				}));
+				setCafesState(result.map(convertPlaceInnerToCafeCardProps));
 			})
 			.catch(() => setCafesState(null));
 	}, []);
@@ -62,12 +59,10 @@ const CafeListPage: React.FC = () => {
 	React.useEffect(() => {
 		InformerBucket.fetchInformers()
 			.then((informers) => {
-				console.log(`got informers = \n${JSON.stringify(informers, null, 4)}`);
 				return informers;
 			})
 			.then(setInformersState)
 			.catch((reason) => {
-				console.log('error reason = ', reason.message);
 				setInformersState([]);
 			});
 	}, []);
@@ -79,7 +74,6 @@ const CafeListPage: React.FC = () => {
 		<CafeCard {...cafe} key={`${index}-cafe`} className="cafes-list__card"/>
 	)), [cafesState]);
 
-	console.log(`cafe list: \n${JSON.stringify(informersState, null, 4)}`);
 
 	const feed = React.useMemo(() => {
 		const out = [];
