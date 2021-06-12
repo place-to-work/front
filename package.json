@@ -52,6 +52,7 @@
 		"react-responsive": "^8.2.0",
 		"react-router-dom": "^5.2.0",
 		"react-screen-orientation": "0.0.4",
+		"react-yandex-maps": "^4.6.0",
 		"react-yandex-metrika": "^2.6.0",
 		"recompose": "^0.30.0",
 		"sass": "^1.32.8",
