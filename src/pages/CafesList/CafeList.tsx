@@ -141,7 +141,7 @@ const CafeListPage: React.FC = () => {
 					</Button>
 				</>}
 
-				{!User.isSubscribed && cafesState.length > 0 && <SubscriptionCard/>}
+				{!User.isSubscribed && cafesState && cafesState.length > 0 && <SubscriptionCard/>}
 				{feed &&
 				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
 					<Contact/>
