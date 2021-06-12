@@ -70,7 +70,7 @@ const App: React.FC = () => (
 						<CafeListPage/>
 					</Route>
 
-					<Route path="/place-map">
+					<Route path="/places-map">
 						<CafeMap/>
 					</Route>
 
