@@ -7,7 +7,17 @@ const locale = 'ru_RU';
 const InnerCafeMap: React.FC = () => {
 
 	return <YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
-		<Map style={{width: '100vh', height: '100vh'}}  defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}>
+		<Map
+			style={{
+				width: '100vh',
+				height: '100vh',
+				margin: '-10px -10px',
+			}}
+			defaultState={{
+				center: [55.751574, 37.573856],
+				zoom: 9,
+			}}
+		>
 			<Placemark defaultGeometry={[55.751574, 37.573856]} />
 		</Map>
 	</YMaps>
