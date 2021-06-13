@@ -13,6 +13,7 @@ const InnerCafeMap: React.FC = () => {
 	React.useEffect(() => {
 		Places.getPlaces()
 			.then((result) => {
+				console.log(`places result: \n${JSON.stringify(result, null, 4)}`);
 				if (result === null) {
 					// no authorization
 					history.push('/login/');
