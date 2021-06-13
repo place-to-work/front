@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@components/primitives/Button';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 
 
 const CafeListButton: React.FC = () => {
@@ -21,7 +22,7 @@ const CafeListButton: React.FC = () => {
 			}}
 			href={'/places/'}
 		>
-			Списком
+			<Typo type={TypographyType.h3}>Списком</Typo>
 		</Button>
 	</div>;
 }

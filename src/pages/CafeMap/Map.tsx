@@ -8,7 +8,7 @@ const hardcodedApiKey = '71388d1c-1b81-4355-8a11-e3e4b5dbedd0';
 const locale = 'ru_RU';
 
 const InnerCafeMap: React.FC = () => {
-	const history = useHistory();
+	// const history = useHistory();
 	const [places, setPlaces] = React.useState<PlaceInnerType[]>([]);
 	React.useEffect(() => {
 		Places.getPlaces()
@@ -16,7 +16,8 @@ const InnerCafeMap: React.FC = () => {
 				console.log(`places result: \n${JSON.stringify(result, null, 4)}`);
 				if (result === null) {
 					// no authorization
-					history.push('/login/');
+					console.log('no auth');
+					// history.push('/login/');
 					return;
 				}
 
