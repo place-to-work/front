@@ -25,7 +25,8 @@ const InnerCafeMap: React.FC = () => {
 
 	const placesPlacemarks = React.useMemo(
 		() => places.map(
-			(place) => <Placemark
+			(place, idx) => <Placemark
+				key={idx}
 				defaultGeometry={[55.751574, 37.573856]}
 				options={{iconColor: 'black', preset: 'islands#icon'}}
 			/>),
