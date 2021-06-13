@@ -20,7 +20,7 @@ const InnerCafeMap: React.FC = () => {
 		>
 			<Placemark
 				defaultGeometry={[55.751574, 37.573856]}
-				options={{iconColor: 'black'}}
+				options={{iconColor: 'black', preset: 'islands#dotIcon'}}
 			/>
 		</Map>
 	</YMaps>
