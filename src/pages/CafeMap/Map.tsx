@@ -25,12 +25,14 @@ const InnerCafeMap: React.FC = () => {
 	}, []);
 
 	const placesPlacemarks = React.useMemo(
-		() => places.map(
-			(place, idx) => <Placemark
-				key={idx}
-				defaultGeometry={[place.latitude, place.longitude]}
-				options={{iconColor: 'black', preset: 'islands#icon'}}
-			/>),
+		() => {
+			return places.map(
+				(place, idx) => <Placemark
+					key={idx}
+					defaultGeometry={[place.latitude, place.longitude]}
+					options={{iconColor: 'black', preset: 'islands#icon'}}
+				/>)
+		},
 		places,
 	);
 
