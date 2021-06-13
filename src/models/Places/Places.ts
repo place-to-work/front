@@ -8,6 +8,7 @@ class Places {
 	async getPlaces(): Promise<PlaceInnerType[] | null> {
 		console.log('start get places');
 
+		// dummy cache
 		if (this.placesArr.length !== 0) {
 			return this.placesArr;
 		}
@@ -15,7 +16,7 @@ class Places {
 		const places = await Places.fetchPlaces();
 		console.log(`fetched places: ${JSON.stringify(places, null, 4)}`);
 		if (places === null) {
-			/* не авторизован */
+			/* no authorization */
 			Notification.error('Войдите в сервис, пожалуйста');
 			return null;
 		}
