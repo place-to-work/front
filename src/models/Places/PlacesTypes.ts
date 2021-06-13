@@ -19,6 +19,8 @@ export interface PlaceInnerType {
 	mainImage: string;
 	openingHours: OpeningHoursInnerType;
 	images: string[];
+	latitude: number;
+	longitude: number;
 }
 
 export interface PlaceApiType {
@@ -36,6 +38,8 @@ export interface PlaceApiType {
 	main_image: string;
 	opening_hours: OpeningHoursApiType;
 	images: string[];
+	lat: number;
+	lon: number;
 }
 
 export function convertPlaceApiToInner(placeObj: PlaceApiType): PlaceInnerType {
@@ -54,5 +58,7 @@ export function convertPlaceApiToInner(placeObj: PlaceApiType): PlaceInnerType {
 		mainImage: placeObj.main_image,
 		openingHours: convertOpeningHoursApiToInner(placeObj.opening_hours),
 		images: placeObj.images,
+		latitude: placeObj.lat,
+		longitude: placeObj.lon,
 	}
 }

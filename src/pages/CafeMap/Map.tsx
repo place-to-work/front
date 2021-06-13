@@ -28,7 +28,7 @@ const InnerCafeMap: React.FC = () => {
 		() => places.map(
 			(place, idx) => <Placemark
 				key={idx}
-				defaultGeometry={[55.751574, 37.573856]}
+				defaultGeometry={[place.latitude, place.longitude]}
 				options={{iconColor: 'black', preset: 'islands#icon'}}
 			/>),
 		places,
