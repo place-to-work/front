@@ -34,6 +34,7 @@ class Places {
 				return r.json() as Promise<PlaceApiType[]>
 			})
 			.then((data: PlaceApiType[]) => {
+				console.log(`api data got:\n${JSON.stringify(data, null, 4)}`)
 				return data.map(convertPlaceApiToInner);
 			});
 	}
