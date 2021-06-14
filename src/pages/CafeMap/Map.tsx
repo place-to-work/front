@@ -47,9 +47,8 @@ const InnerCafeMap: React.FC = () => {
 		[places, setActivePlace],
 	);
 
-	return <div id={'outer'} onClick={() => console.log('outer')}>
-		<div id={'inner'} onClick={() => console.log('inner')}>
-			<YMaps onClick={() => console.log('ymap click')} query={{lang: locale, apikey: hardcodedApiKey}}>
+	return <div>
+			<YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
 				<Map
 					style={{
 						width: '100vw',
@@ -60,12 +59,11 @@ const InnerCafeMap: React.FC = () => {
 						center: [55.7522, 37.6156],
 						zoom: 9,
 					}}
-					onClick={() => console.log('map click')}
+					onClick={() => setActivePlace(null)}
 				>
 					{placesPlacemarks}
 				</Map>
 			</YMaps>
-		</div>
 		<ActivePlace point={activePlace}/>
 	</div>
 }
