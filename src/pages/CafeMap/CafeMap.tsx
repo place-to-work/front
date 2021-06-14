@@ -14,9 +14,9 @@ const CafeMap: React.FC = () => {
 		mainProps={{
 			body: () => <div>
 				<InnerCafeMap/>
+				<CafeListButton/>
 			</div>
 		}}
-		footerProps={{left: () => <CafeListButton/>}}
 	/>);
 }
 

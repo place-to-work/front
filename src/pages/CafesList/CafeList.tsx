@@ -90,44 +90,48 @@ const CafeListPage: React.FC = () => {
 
 	return (<BasePage
 		headerProps={{
-			left: () => <IconLeft size={IconSize.xl}/>
+			left: () => <IconLeft size={IconSize.xl}/>,
 		}}
 		mainProps={{
-			body: () => <div className="cafes-list">
-				{
-					cafesState !== null &&
-					<>
-						<Typo className="title" type={TypographyType.h2}
-						      style={{padding: '16px', width: '100%'}}>
-							{t(Phrase.allPlaces)}
+			body: () => <div>
+				<div className="cafes-list">
+					{
+						cafesState !== null &&
+						<>
+							<Typo className="title" type={TypographyType.h2}
+							      style={{padding: '16px', width: '100%'}}>
+								{t(Phrase.allPlaces)}
+							</Typo>
+						</>
+					}
+					{!User.isSubscribed && cafesState && cafesState.length > 0 &&
+					<SubscriptionCard/>}
+					<div className="cafes-container">
+						{feed}
+					</div>
+					{cafesState === null && <>
+						<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>
+							{t(Phrase.technicalWork)}
 						</Typo>
-					</>
-				}
-				{!User.isSubscribed && cafesState && cafesState.length > 0 && <SubscriptionCard/>}
-				<div className="cafes-container">
-					{feed}
-				</div>
-				{cafesState === null && <>
-					<Typo block type={TypographyType.h1} textAlign={TypoTextAlign.center}>
-						{t(Phrase.technicalWork)}
-					</Typo>
-					<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>
-						{t(Phrase.apologize)}
-					</Typo>
+						<Typo block type={TypographyType.h5} textAlign={TypoTextAlign.center}>
+							{t(Phrase.apologize)}
+						</Typo>
 
-					<Button onClick={() => history.push('/login')} full color={ButtonColor.accent}>
-						{t(Phrase.tryAgain)}
-					</Button>
-				</>}
+						<Button onClick={() => history.push('/login')} full
+						        color={ButtonColor.accent}>
+							{t(Phrase.tryAgain)}
+						</Button>
+					</>}
 
-				{feed &&
-				<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
-					<Contact/>
+					{feed &&
+					<div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '28px'}}>
+						<Contact/>
+					</div>
+					}
 				</div>
-				}
+				<CafeMapButton/>
 			</div>,
 		}}
-		footerProps={{left: () => <CafeMapButton/>}}
 	/>);
 };
 
