@@ -2,7 +2,7 @@ import React from 'react';
 import {Map, Placemark, YMaps} from 'react-yandex-maps';
 import Places from '@models/Places';
 import {PlaceInnerType} from '@models/Places/PlacesTypes';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import ActivePlace from '@pages/CafeMap/ActivePlace';
 
 const hardcodedApiKey = '71388d1c-1b81-4355-8a11-e3e4b5dbedd0';
@@ -26,6 +26,10 @@ const InnerCafeMap: React.FC = () => {
 					return;
 				}
 
+				const {id} = useParams<{ id }>();
+				if (id !== undefined && id !== null) {
+					setActivePlace(result.find((el) => el.id === id));
+				}
 				setPlaces(result);
 			});
 

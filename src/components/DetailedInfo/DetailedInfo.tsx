@@ -45,10 +45,12 @@ export type CafeCardProps = {
 	mapSrc?: string;
 	promotions?: PromoCardProps[];
 
+	id?: string,
 };
 
 const DetailedInfo: React.FC<CafeCardProps> = (
 	{
+		id,
 		name,
 		address,
 		time,
@@ -173,7 +175,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 					<Typo className="cafe-detailed-info__name" block
 						      type={TypographyType.h1}>{name}</Typo>
 					<Separator invisible/>
-					<CafeInfo address={address} time={time}/>
+					<CafeInfo id={id} address={address} time={time}/>
 					<Separator black/>
 					<DetailedFeatures
 						wifi={wifi}
