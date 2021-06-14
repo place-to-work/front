@@ -14,6 +14,8 @@ import User from '@models/User';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import Places from '@models/Places';
 import CafeMapButton from '@pages/CafesList/CafeMapButton';
+import Separator from '@components/primitives/Separator';
+import CafeViewButton from '@components/CafeViewButton';
 
 
 const CafeListPage: React.FC = () => {
@@ -105,7 +107,7 @@ const CafeListPage: React.FC = () => {
 						</>
 					}
 					{!User.isSubscribed && cafesState && cafesState.length > 0 &&
-					<SubscriptionCard/>}
+					<><SubscriptionCard/><Separator/></>}
 					<div className="cafes-container">
 						{feed}
 					</div>
@@ -129,7 +131,11 @@ const CafeListPage: React.FC = () => {
 					</div>
 					}
 				</div>
-				<CafeMapButton/>
+				<CafeViewButton isList={false} style={{
+					position: 'fixed',
+					top: 0,
+					zIndex: 1,
+				}}/>
 			</div>,
 		}}
 	/>);

@@ -68,7 +68,6 @@ const InnerCafeMap: React.FC = () => {
 						width: '100vw',
 						height: 'calc(100vh - 60px)',
 						margin: '-10px',
-						overflow: 'hidden',
 					}}
 					defaultState={{
 						center: id && activePlace ? [activePlace.latitude, activePlace.longitude] : defaultCenter,
