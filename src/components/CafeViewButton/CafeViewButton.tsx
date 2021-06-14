@@ -35,27 +35,6 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 			padding: 2,
 		}}>
 			<div style={{
-				backgroundColor: listButtonBackground,
-				borderRadius: 8,
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
-				width: 150,
-			}}
-			     onClick={() => {
-				     console.log('list button clicked');
-				     if (!isList) {
-					     console.log('redirect to places');
-					     history.push('/places');
-				     }
-			     }}
-			>
-				<Typo color={listButtonColor} type={TypographyType.h5}>
-					Списком
-				</Typo>
-			</div>
-
-			<div style={{
 				backgroundColor: mapButtonBackground,
 				borderRadius: 8,
 				display: 'flex',
@@ -73,6 +52,26 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 			>
 				<Typo color={mapButtonColor} type={TypographyType.h5}>
 					На карте
+				</Typo>
+			</div>
+			<div style={{
+				backgroundColor: listButtonBackground,
+				borderRadius: 8,
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				width: 150,
+			}}
+			     onClick={() => {
+				     console.log('list button clicked');
+				     if (!isList) {
+					     console.log('redirect to places');
+					     history.push('/places');
+				     }
+			     }}
+			>
+				<Typo color={listButtonColor} type={TypographyType.h5}>
+					Списком
 				</Typo>
 			</div>
 		</div>
