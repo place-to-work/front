@@ -12,7 +12,17 @@ const ActivePlace: React.FC<OwnProps> = ({point}) => {
 		return null;
 	}
 
-	return <div style={{position: 'absolute', left: 0, bottom: 0}}>
+	return <div
+		style={{
+			position: 'absolute',
+			left: 0,
+			bottom: 0,
+			backgroundColor: 'white',
+			zIndex: 1,
+			borderRadius: '8px 8px 0 0',
+			overflow: 'hidden',
+		}}
+	>
 		<CafeCard {...convertPlaceInnerToCafeCardProps(point)}/>
 	</div>
 }
