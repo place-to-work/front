@@ -9,8 +9,8 @@ const hardcodedApiKey = '71388d1c-1b81-4355-8a11-e3e4b5dbedd0';
 const locale = 'ru_RU';
 
 const defaultCenter = [55.7522, 37.6156];
-const defaultZoom = 8;
-const activeZoom = 2;
+const defaultZoom = 10;
+const activeZoom = 12;
 
 const InnerCafeMap: React.FC = () => {
 	const history = useHistory();
