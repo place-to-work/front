@@ -189,6 +189,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						buttonSize={ButtonSize.xl}
 					        full
 					>
+						<Separator invisible/>
 						<Typo type={TypographyType.h4}>
 							Забронировать
 						</Typo>
