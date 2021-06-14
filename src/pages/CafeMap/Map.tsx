@@ -40,7 +40,7 @@ const InnerCafeMap: React.FC = () => {
 					options={{iconColor: 'black', preset: 'islands#icon'}}
 				/>)
 		},
-		places,
+		[places],
 	);
 
 	return <YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
