@@ -2,7 +2,6 @@ import React from 'react';
 import BasePage from '@pages/BasePage/BasePage';
 import {IconLeft, IconSize} from '@components/primitives/Icon';
 import InnerCafeMap from './Map';
-import CafeListButton from '@pages/CafeMap/CafeListButton';
 import CafeViewButton from '@components/CafeViewButton';
 
 
@@ -18,8 +17,8 @@ const CafeMap: React.FC = () => {
 				<CafeViewButton isList={false} style={{
 					position: 'fixed',
 					zIndex: 1,
-					top: 90,
-					left: 0,
+					top: 10,
+					right: 10,
 				}}/>
 			</div>,
 		}}

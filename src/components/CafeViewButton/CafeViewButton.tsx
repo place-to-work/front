@@ -24,7 +24,7 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 	}}>
 		<div style={{
 			borderRadius: 8,
-			width: 308,
+			width: 208,
 			height: '100%',
 			margin: '0 auto',
 			backgroundColor: '#F2F2F2',
@@ -38,7 +38,7 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				width: 150,
+				width: 100,
 			}}
 			     onClick={() => {
 				     console.log('map button clicked');
@@ -58,7 +58,7 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				width: 150,
+				width: 100,
 			}}
 			     onClick={() => {
 				     console.log('list button clicked');
