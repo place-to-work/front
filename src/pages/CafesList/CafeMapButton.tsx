@@ -19,6 +19,7 @@ const CafeMapButton: React.FC = () => {
 				backgroundColor: 'black',
 				borderRadius: 8,
 				margin: '0 auto',
+				zIndex: 1,
 			}}
 			href={'/places-map/'}
 		>
