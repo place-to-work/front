@@ -11,8 +11,10 @@ const InnerCafeMap: React.FC = () => {
 	const history = useHistory();
 	const [places, setPlaces] = React.useState<PlaceInnerType[]>([]);
 	React.useEffect(() => {
+		let isMounted = true;
 		Places.getPlaces()
 			.then((result) => {
+				if (!isMounted) return;
 				console.log(`places result: \n${JSON.stringify(result, null, 4)}`);
 				if (result === null) {
 					// no authorization
@@ -22,7 +24,11 @@ const InnerCafeMap: React.FC = () => {
 				}
 
 				setPlaces(result);
-			})
+			});
+
+		return () => {
+			isMounted = false;
+		};
 	}, []);
 
 	const placesPlacemarks = React.useMemo(
