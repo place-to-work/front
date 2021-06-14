@@ -6,7 +6,7 @@ import Typo, {TypographyType} from '@components/primitives/Typo';
 const CafeListButton: React.FC = () => {
 	return <div style={{
 		width: '100vw',
-		position: 'absolute',
+		position: 'fixed',
 		bottom: 10,
 		marginLeft: -10,
 		display: 'flex',
