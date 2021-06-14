@@ -92,10 +92,10 @@ const CafeListPage: React.FC = () => {
 	return (<BasePage
 		headerProps={{
 			left: () => <IconLeft size={IconSize.xl}/>,
+			middle: () => <CafeViewButton isList={true}/>,
 		}}
 		mainProps={{
 			body: () => <div>
-				<CafeViewButton isList={true}/>
 				<div className="cafes-list">
 					{
 						cafesState !== null &&
