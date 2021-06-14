@@ -36,6 +36,7 @@ const InnerCafeMap: React.FC = () => {
 			return places.map(
 				(place, idx) => <Placemark
 					key={idx}
+					onClick={() => alert('Hello!!!')}
 					defaultGeometry={[place.latitude, place.longitude]}
 					options={{iconColor: 'black', preset: 'islands#icon'}}
 				/>)
