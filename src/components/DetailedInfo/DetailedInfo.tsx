@@ -204,7 +204,6 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							key={i}
 							color={PromoCardColor.light}
 							onClick={() => {
-								ym('reachGoal','action');
 								User.getUuid()
 									.then((uuid) => {
 										console.log({
@@ -214,6 +213,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 										});
 										if(promo.type === 1 && !User.isSubscribed){
 											console.log('REDIRECT');
+											ym('reachGoal','action');
 											history.push('/in-place');
 										} else if ((User.isSubscribed || promo.type === 0 ) && uuid ) {
 											console.log('PROMO MODAL');
