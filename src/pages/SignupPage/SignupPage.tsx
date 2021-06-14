@@ -115,15 +115,18 @@ const SignupPage: React.FC = () => {
 							block
 							type={TypographyType.h5}
 							textAlign={TypoTextAlign.center}
-							weight={TypoWeight.bold}
 							color={TypoColor.black}
-							onClick={() => history.push('/login')}
-							style={{
-								cursor: 'pointer',
-							}}
 						>
 							Нажимая кнопку "{t(Phrase.registerAction)}", вы принимаете
-							<Typo type={TypographyType.h5} href={'/legal/privacy_policy.pdf'}>лицензионное соглашение</Typo>.
+							<Typo
+								type={TypographyType.h5}
+								href={'/legal/privacy_policy.pdf'}
+								style={{
+									cursor: 'pointer',
+								}}
+							>
+								лицензионное соглашение
+							</Typo>.
 						</Typo>
 						<Button
 							onClick={()=>{
