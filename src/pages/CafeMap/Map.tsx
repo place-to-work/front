@@ -28,7 +28,9 @@ const InnerCafeMap: React.FC = () => {
 				}
 
 				if (id !== undefined && id !== null) {
-					setActivePlace(result.find((el) => el.id === id));
+					const activePlace = result.find((el) => el.id === id);
+					console.log(`active place = ${JSON.stringify(activePlace)}`);
+					setActivePlace(activePlace);
 				}
 				setPlaces(result);
 			});
