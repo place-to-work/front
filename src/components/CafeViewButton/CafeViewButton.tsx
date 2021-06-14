@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom';
 
 interface OwnProps {
 	isList: boolean;
-	style: CSSProperties;
+	style?: CSSProperties;
 }
 
 const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
