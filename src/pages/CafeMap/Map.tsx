@@ -48,7 +48,10 @@ const InnerCafeMap: React.FC = () => {
 			return places.map(
 				(place, idx) => <Placemark
 					key={idx}
-					onClick={() => setActivePlace(place)}
+					onClick={() => {
+						setActivePlace(place);
+						history.replace(`/places-map/${place.id}`);
+					}}
 					defaultGeometry={[place.latitude, place.longitude]}
 					options={{
 						iconColor: activePlace?.id === place.id ? '#FF774C' : 'black',
@@ -70,7 +73,10 @@ const InnerCafeMap: React.FC = () => {
 						center: id && activePlace ? [activePlace.latitude, activePlace.longitude] : defaultCenter,
 						zoom: id && activePlace ? activeZoom : defaultZoom,
 					}}
-					onClick={() => setActivePlace(null)}
+					onClick={() => {
+						setActivePlace(null);
+						history.replace('/places-map');
+					}}
 				>
 					{placesPlacemarks}
 				</Map>
