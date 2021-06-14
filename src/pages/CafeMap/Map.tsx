@@ -47,8 +47,8 @@ const InnerCafeMap: React.FC = () => {
 		[places, setActivePlace],
 	);
 
-	return <div>
-		<div onClick={() => console.log('qewr')}>
+	return <div onClick={() => console.log('outer')}>
+		<div onClick={() => console.log('inner')}>
 			<YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
 				<Map
 					style={{
