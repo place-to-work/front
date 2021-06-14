@@ -41,10 +41,12 @@ const InnerCafeMap: React.FC = () => {
 					key={idx}
 					onClick={() => setActivePlace(place)}
 					defaultGeometry={[place.latitude, place.longitude]}
-					options={{iconColor: 'black', preset: 'islands#icon'}}
+					options={{
+						iconColor: activePlace?.id === place.id ? '#FF774C' : 'black',
+						preset: 'islands#icon'}}
 				/>)
 		},
-		[places, setActivePlace],
+		[places, setActivePlace, activePlace],
 	);
 
 	return <div>
