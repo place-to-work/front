@@ -10,6 +10,7 @@ const locale = 'ru_RU';
 const InnerCafeMap: React.FC = () => {
 	const history = useHistory();
 	const [places, setPlaces] = React.useState<PlaceInnerType[]>([]);
+	const [activePlace, setActivePlace] = React.useState<PlaceInnerType | null>(null);
 	React.useEffect(() => {
 		let isMounted = true;
 		Places.getPlaces()
@@ -36,12 +37,12 @@ const InnerCafeMap: React.FC = () => {
 			return places.map(
 				(place, idx) => <Placemark
 					key={idx}
-					onClick={() => alert('Hello!!!')}
+					onClick={() => setActivePlace(place)}
 					defaultGeometry={[place.latitude, place.longitude]}
 					options={{iconColor: 'black', preset: 'islands#icon'}}
 				/>)
 		},
-		[places],
+		[places, setActivePlace],
 	);
 
 	return <YMaps query={{lang: locale, apikey: hardcodedApiKey}}>

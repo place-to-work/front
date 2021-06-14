@@ -22,7 +22,7 @@ const CafeListButton: React.FC = () => {
 			}}
 			href={'/places/'}
 		>
-			<Typo type={TypographyType.h3}>Списком</Typo>
+			<Typo type={TypographyType.h4}>Списком</Typo>
 		</Button>
 	</div>;
 }
