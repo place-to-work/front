@@ -1,12 +1,19 @@
 import * as React from 'react';
+import {useState} from 'react';
 import './SubscriptionCard.scss';
 import {CheckIcon, CupIcon, IconColor, IconSize, LaptopIcon, WorkIcon} from '@components/primitives/Icon';
 import Typo, {TypoColor, TypographyType, TypoTextAlign} from '@components/primitives/Typo';
+import Button, {ButtonColor, ButtonSize} from '@components/primitives/Button';
+import {setPayOffer} from '@utils/payStorage';
+import t, {Phrase} from '@models/Translate/Translate';
+import Http from '@network/Http/Http';
 import Separator from '@components/primitives/Separator';
+import ym from 'react-yandex-metrika';
 import PaymentButtons from '@components/a11y/PaymentButtons';
 
 
 const SubscriptionCard: React.FC = () => {
+	const [showTrial, setShowTrial] = useState(false);
 	return (
 		<div className="card-container">
 			<div className="card">
@@ -31,14 +38,14 @@ const SubscriptionCard: React.FC = () => {
 						                size={IconSize.xs}/>}
 						type={TypographyType.h4}
 					>
-						Дружное коммьюнити
+						Крутой мерч
 					</Typo>
 					<Typo
 						color={TypoColor.white}
 						icon={<LaptopIcon color={IconColor.white} className="card__icon"
 						                  size={IconSize.xs}/>}
 						type={TypographyType.h4}>
-						Крутой мерч
+						Дружное коммьюнити
 					</Typo>
 					<Typo
 						color={TypoColor.white}
