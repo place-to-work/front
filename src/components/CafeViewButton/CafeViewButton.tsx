@@ -43,7 +43,9 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 				width: 150,
 			}}
 			     onClick={() => {
+				     console.log('list button clicked');
 				     if (!isList) {
+					     console.log('redirect to places');
 					     history.push('/places');
 				     }
 			     }}
@@ -62,7 +64,9 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 				width: 150,
 			}}
 			     onClick={() => {
+				     console.log('map button clicked');
 				     if (isList) {
+					     console.log('redirect to map');
 					     history.push('/places-map');
 				     }
 			     }}
