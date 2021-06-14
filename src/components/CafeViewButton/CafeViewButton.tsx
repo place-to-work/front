@@ -27,7 +27,7 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 	}}>
 		<div style={{
 			borderRadius: 8,
-			width: 38,
+			width: 308,
 			height: '100%',
 			margin: '0 auto',
 			backgroundColor: '#F2F2F2',
