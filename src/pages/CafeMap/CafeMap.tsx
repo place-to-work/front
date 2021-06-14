@@ -21,7 +21,6 @@ const CafeMap: React.FC = () => {
 					top: 90,
 					left: 0,
 				}}/>
-				<CafeListButton/>
 			</div>,
 		}}
 	/>);
