@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from '@components/primitives/Button';
+import Typo, {TypographyType} from '@components/primitives/Typo';
 
 
-const CafeListButton: React.FC = () => {
+const CafeMapButton: React.FC = () => {
 	return <div style={{
 		width: '100vw',
 		position: 'absolute',
@@ -12,6 +13,7 @@ const CafeListButton: React.FC = () => {
 	}}>
 		<Button
 			style={{
+				boxShadow: '0 0 3px #fff',
 				width: 173,
 				height: 39,
 				backgroundColor: 'black',
@@ -20,9 +22,9 @@ const CafeListButton: React.FC = () => {
 			}}
 			href={'/places/'}
 		>
-			Списком
+			<Typo type={TypographyType.h4}>На карте</Typo>
 		</Button>
 	</div>;
 }
 
-export default CafeListButton;
+export default CafeMapButton;

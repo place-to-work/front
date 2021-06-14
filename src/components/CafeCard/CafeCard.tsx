@@ -7,6 +7,7 @@ import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';
 import {useHistory} from 'react-router-dom';
 import cn from 'classnames';
+import {PlaceInnerType} from '@models/Places/PlacesTypes';
 
 export type CafeCardProps = {
 	id?: string;
@@ -31,6 +32,26 @@ export type CafeCardProps = {
 	mapSrc?: string;
 	className?: string;
 };
+
+export function convertPlaceInnerToCafeCardProps(placeObj: PlaceInnerType): CafeCardProps {
+	return {
+		id: String(placeObj.id),
+		imageSrc: placeObj.mainImage,
+		name: placeObj.fullName,
+		statuses: placeObj.categories,
+		averagePrice: String(placeObj.averageBill),
+		workLoadText: placeObj.occupancy,
+		wifi: placeObj.wifi,
+		address: placeObj.address,
+		electricity: placeObj.powerSocket,
+		quiet: placeObj.silence,
+		light: placeObj.light,
+		images: placeObj.images,
+		time: placeObj.openingHours && placeObj.openingHours.closeTime && placeObj.openingHours.openTime && `${placeObj.openingHours.openTime} - ${placeObj.openingHours.closeTime}`,
+		workLoad: placeObj.workPlaces,
+		mapSrc: placeObj.address,
+	}
+}
 
 const QUIET_PLACE = ['тихо','спокойно','тихонечко','клуб немых'];
 const CafeCard: React.FC<CafeCardProps> = (

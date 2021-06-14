@@ -1,5 +1,5 @@
 import React from 'react';
-import CafeCard, {CafeCardProps} from '@components/CafeCard/CafeCard';
+import CafeCard, {CafeCardProps, convertPlaceInnerToCafeCardProps} from '@components/CafeCard/CafeCard';
 import Typo, {TypographyType, TypoTextAlign} from '@components/primitives/Typo';
 import './CafeList.scss';
 import {useHistory} from 'react-router-dom';
@@ -13,27 +13,7 @@ import Informer, {InformerBucket} from '@models/Informer';
 import User from '@models/User';
 import SubscriptionCard from '@components/SubscribtionCard/SubscriptionCard';
 import Places from '@models/Places';
-import {PlaceInnerType} from '@models/Places/PlacesTypes';
-
-function convertPlaceInnerToCafeCardProps(placeObj: PlaceInnerType): CafeCardProps {
-	return {
-		id: String(placeObj.id),
-		imageSrc: placeObj.mainImage,
-		name: placeObj.fullName,
-		statuses: placeObj.categories,
-		averagePrice: String(placeObj.averageBill),
-		workLoadText: placeObj.occupancy,
-		wifi: placeObj.wifi,
-		address: placeObj.address,
-		electricity: placeObj.powerSocket,
-		quiet: placeObj.silence,
-		light: placeObj.light,
-		images: placeObj.images,
-		time: placeObj.openingHours && placeObj.openingHours.closeTime && placeObj.openingHours.openTime && `${placeObj.openingHours.openTime} - ${placeObj.openingHours.closeTime}`,
-		workLoad: placeObj.workPlaces,
-		mapSrc: placeObj.address,
-	}
-}
+import CafeMapButton from '@pages/CafesList/CafeMapButton';
 
 
 const CafeListPage: React.FC = () => {
@@ -145,6 +125,7 @@ const CafeListPage: React.FC = () => {
 					<Contact/>
 				</div>
 				}
+				<CafeMapButton/>
 			</div>,
 		}}
 		footerProps={{}}

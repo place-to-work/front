@@ -3,6 +3,7 @@ import {Map, Placemark, YMaps} from 'react-yandex-maps';
 import Places from '@models/Places';
 import {PlaceInnerType} from '@models/Places/PlacesTypes';
 import {useHistory} from 'react-router-dom';
+import ActivePlace from '@pages/CafeMap/ActivePlace';
 
 const hardcodedApiKey = '71388d1c-1b81-4355-8a11-e3e4b5dbedd0';
 const locale = 'ru_RU';
@@ -11,6 +12,7 @@ const InnerCafeMap: React.FC = () => {
 	const history = useHistory();
 	const [places, setPlaces] = React.useState<PlaceInnerType[]>([]);
 	const [activePlace, setActivePlace] = React.useState<PlaceInnerType | null>(null);
+	console.log(`active place = ${JSON.stringify(activePlace, null, 4)}`)
 	React.useEffect(() => {
 		let isMounted = true;
 		Places.getPlaces()
@@ -45,21 +47,24 @@ const InnerCafeMap: React.FC = () => {
 		[places, setActivePlace],
 	);
 
-	return <YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
-		<Map
-			style={{
-				width: '100vw',
-				height: 'calc(100vh - 60px)',
-				margin: '-10px',
-			}}
-			defaultState={{
-				center: [55.7522, 37.6156],
-				zoom: 9,
-			}}
-		>
-			{placesPlacemarks}
-		</Map>
-	</YMaps>
+	return <div>
+		<YMaps query={{lang: locale, apikey: hardcodedApiKey}}>
+			<Map
+				style={{
+					width: '100vw',
+					height: 'calc(100vh - 60px)',
+					margin: '-10px',
+				}}
+				defaultState={{
+					center: [55.7522, 37.6156],
+					zoom: 9,
+				}}
+			>
+				{placesPlacemarks}
+			</Map>
+		</YMaps>
+		<ActivePlace point={activePlace}/>
+	</div>
 }
 
 export default InnerCafeMap;
