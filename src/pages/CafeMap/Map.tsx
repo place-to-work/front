@@ -10,6 +10,7 @@ const locale = 'ru_RU';
 
 const InnerCafeMap: React.FC = () => {
 	const history = useHistory();
+	const {id} = useParams<{ id }>();
 	const [places, setPlaces] = React.useState<PlaceInnerType[]>([]);
 	const [activePlace, setActivePlace] = React.useState<PlaceInnerType | null>(null);
 	console.log(`active place = ${JSON.stringify(activePlace, null, 4)}`)
@@ -26,7 +27,6 @@ const InnerCafeMap: React.FC = () => {
 					return;
 				}
 
-				const {id} = useParams<{ id }>();
 				if (id !== undefined && id !== null) {
 					setActivePlace(result.find((el) => el.id === id));
 				}
