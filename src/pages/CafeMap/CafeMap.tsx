@@ -12,10 +12,10 @@ const CafeMap: React.FC = () => {
 			left: () => <IconLeft size={IconSize.xl}/>,
 		}}
 		mainProps={{
-			body: () => <InnerCafeMap/>,
-		}}
-		footerProps={{
-			middle: () => <CafeListButton/>,
+			body: () => <div>
+				<InnerCafeMap/>
+				<CafeListButton/>
+			</div>,
 		}}
 	/>);
 }
