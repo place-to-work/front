@@ -46,7 +46,7 @@ const SubscriptionCard: React.FC = () => {
 						                size={IconSize.xs}/>}
 						type={TypographyType.h4}
 					>
-						Крутой мерч
+						Рабочая обстановка
 					</Typo>
 					<Typo
 						color={TypoColor.white}
