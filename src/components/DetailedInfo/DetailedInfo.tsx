@@ -7,7 +7,7 @@ import Tag from '@components/primitives/Tag';
 import CafeInfo from '@components/CafeInfo';
 import ImageCard from '@components/primitives/ImageCard';
 import DetailedFeatures from '@components/DetailedFeatures';
-import {ButtonColor} from '@components/primitives/Button';
+import Button, {ButtonColor} from '@components/primitives/Button';
 
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
@@ -183,6 +183,8 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						workLoad={workLoad}
 						averagePrice={averagePrice}
 					/>
+					<Separator invisible/>
+					<Button element={'a'} href={'/in-place/'}><Typo type={TypographyType.h4}>Забронировать</Typo></Button>
 					<Separator invisible/>
 					<Group title="Промо-акции">
 						{promotions && promotions.map((promo, i) => <PromoCard
