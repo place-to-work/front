@@ -13,7 +13,6 @@ import User from '@models/User';
 import Contact from '@components/Contact';
 import CenterLogo from '@components/primitives/CenterLogo/CenterLogo';
 import ym from 'react-yandex-metrika';
-import GoogleLogin from 'react-google-login';
 
 export interface SignupValues {
 	name: string;
@@ -112,6 +111,20 @@ const SignupPage: React.FC = () => {
 						{/*>*/}
 						{/*	Забыли пароль?*/}
 						{/*</Typo>*/}
+						<Typo
+							block
+							type={TypographyType.h5}
+							textAlign={TypoTextAlign.center}
+							weight={TypoWeight.bold}
+							color={TypoColor.black}
+							onClick={() => history.push('/login')}
+							style={{
+								cursor: 'pointer',
+							}}
+						>
+							Нажимая кнопку "{t(Phrase.registerAction)}", вы принимаете
+							<Typo type={TypographyType.h5} href={'/legal/privacy_policy.pdf'}>лицензионное соглашение</Typo>.
+						</Typo>
 						<Button
 							onClick={()=>{
 								ym('reachGoal','Клик зарегестрироваться на сайте',);
