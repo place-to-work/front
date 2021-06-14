@@ -34,6 +34,14 @@ const SubscriptionCard: React.FC = () => {
 					</Typo>
 					<Typo
 						color={TypoColor.white}
+						icon={<CheckIcon color={IconColor.white} className="card__icon"
+						                 size={IconSize.xs}/>}
+						type={TypographyType.h4}
+					>
+						Бронирование рабочих мест
+					</Typo>
+					<Typo
+						color={TypoColor.white}
 						icon={<WorkIcon color={IconColor.white} className="card__icon"
 						                size={IconSize.xs}/>}
 						type={TypographyType.h4}
@@ -46,14 +54,6 @@ const SubscriptionCard: React.FC = () => {
 						                  size={IconSize.xs}/>}
 						type={TypographyType.h4}>
 						Дружное коммьюнити
-					</Typo>
-					<Typo
-						color={TypoColor.white}
-						icon={<CheckIcon color={IconColor.white} className="card__icon"
-						                 size={IconSize.xs}/>}
-						type={TypographyType.h4}
-					>
-						Бронирование рабочих мест
 					</Typo>
 
 					<Separator style={{backgroundColor: 'white', marginTop: 24}}/>
