@@ -8,6 +8,10 @@ import ActivePlace from '@pages/CafeMap/ActivePlace';
 const hardcodedApiKey = '71388d1c-1b81-4355-8a11-e3e4b5dbedd0';
 const locale = 'ru_RU';
 
+const defaultCenter = [55.7522, 37.6156];
+const defaultZoom = 8;
+const activeZoom = 2;
+
 const InnerCafeMap: React.FC = () => {
 	const history = useHistory();
 	const {id} = useParams<{ id }>();
@@ -63,8 +67,8 @@ const InnerCafeMap: React.FC = () => {
 						margin: '-10px',
 					}}
 					defaultState={{
-						center: [55.7522, 37.6156],
-						zoom: 9,
+						center: id && activePlace ? [activePlace.latitude, activePlace.longitude] : defaultCenter,
+						zoom: id && activePlace ? activeZoom : defaultZoom,
 					}}
 					onClick={() => setActivePlace(null)}
 				>
