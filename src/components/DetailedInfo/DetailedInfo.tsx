@@ -22,6 +22,7 @@ import QrPopup from '@components/QrPopup';
 import Http from '@network/Http';
 import User from '@models/User';
 import Notification from '@models/Notification';
+import ym from 'react-yandex-metrika';
 
 export type CafeCardProps = {
 	imageSrc?: string;
@@ -191,6 +192,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						href={'/in-place/'}
 						buttonSize={ButtonSize.xl}
 					        full
+						onClick={() => ym('reachGoal','book')}
 					>
 						<Typo type={TypographyType.h4}>
 							Забронировать
@@ -202,6 +204,7 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 							key={i}
 							color={PromoCardColor.light}
 							onClick={() => {
+								ym('reachGoal','action');
 								User.getUuid()
 									.then((uuid) => {
 										console.log({
