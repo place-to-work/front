@@ -9,15 +9,13 @@ const CafeMap: React.FC = () => {
 
 	return (<BasePage
 		headerProps={{
-			left: () => <IconLeft size={IconSize.xl}/>
+			left: () => <IconLeft size={IconSize.xl}/>,
+			middle: () => <CafeListButton/>,
 		}}
 		mainProps={{
 			body: () => <div>
-				<div>
-					<InnerCafeMap/>
-				</div>
-				<CafeListButton/>
-			</div>
+				<InnerCafeMap/>
+			</div>,
 		}}
 	/>);
 }
