@@ -116,10 +116,10 @@ const SignupPage: React.FC = () => {
 							type={TypographyType.h5}
 							textAlign={TypoTextAlign.center}
 							color={TypoColor.black}
-							onClick={() => history.push('/login')}
 						>
 							{`Нажимая кнопку "${t(Phrase.registerAction)}", вы принимаете `}
 							<Typo
+								element={'a'}
 								type={TypographyType.h5}
 								href={'/legal/privacy_policy.pdf'}
 								style={{
