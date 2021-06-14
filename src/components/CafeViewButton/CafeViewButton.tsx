@@ -27,12 +27,13 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 	}}>
 		<div style={{
 			borderRadius: 8,
-			width: 310,
+			width: 38,
 			height: '100%',
 			margin: '0 auto',
 			backgroundColor: '#F2F2F2',
 			display: 'flex',
-			padding: 2,
+			justifyContent: 'space-between',
+			padding: 3,
 		}}>
 			<div style={{
 				backgroundColor: mapButtonBackground,
