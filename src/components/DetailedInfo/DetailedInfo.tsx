@@ -183,13 +183,13 @@ const DetailedInfo: React.FC<CafeCardProps> = (
 						workLoad={workLoad}
 						averagePrice={averagePrice}
 					/>
+					<Separator invisible/>
 					<Button
 						element={'a'}
 						href={'/in-place/'}
 						buttonSize={ButtonSize.xl}
 					        full
 					>
-						<Separator invisible/>
 						<Typo type={TypographyType.h4}>
 							Забронировать
 						</Typo>
