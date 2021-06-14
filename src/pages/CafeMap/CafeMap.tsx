@@ -14,12 +14,7 @@ const CafeMap: React.FC = () => {
 		mainProps={{
 			body: () => <div>
 				<InnerCafeMap/>
-				<CafeViewButton isList={false} style={{
-					position: 'fixed',
-					zIndex: 1,
-					top: 10,
-					right: 10,
-				}}/>
+				<CafeViewButton isList={false}/>
 			</div>,
 		}}
 	/>);

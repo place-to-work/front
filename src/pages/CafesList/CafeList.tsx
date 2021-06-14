@@ -95,6 +95,7 @@ const CafeListPage: React.FC = () => {
 		}}
 		mainProps={{
 			body: () => <div>
+				<CafeViewButton isList={true}/>
 				<div className="cafes-list">
 					{
 						cafesState !== null &&
@@ -103,7 +104,6 @@ const CafeListPage: React.FC = () => {
 							      style={{padding: '16px', width: '100%'}}>
 								{t(Phrase.allPlaces)}
 							</Typo>
-							<CafeViewButton isList={true}/>
 						</>
 					}
 					{!User.isSubscribed && cafesState && cafesState.length > 0 &&

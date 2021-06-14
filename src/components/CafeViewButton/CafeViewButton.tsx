@@ -1,14 +1,13 @@
-import React, {CSSProperties} from 'react';
+import React from 'react';
 import Typo, {TypoColor, TypographyType} from '@components/primitives/Typo';
 import {useHistory} from 'react-router-dom';
 
 
 interface OwnProps {
 	isList: boolean;
-	style?: CSSProperties;
 }
 
-const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
+const CafeViewButton: React.FC<OwnProps> = ({isList}) => {
 	const listButtonBackground = isList ? 'black' : 'white';
 	const listButtonColor = isList ? TypoColor.white : TypoColor.black;
 
@@ -18,9 +17,11 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 	const history = useHistory();
 
 	return <div style={{
-		...style,
+		position: 'fixed',
+		zIndex: 3,
+		top: 10,
+		right: 10,
 		height: 38,
-		width: '100%',
 	}}>
 		<div style={{
 			borderRadius: 8,
