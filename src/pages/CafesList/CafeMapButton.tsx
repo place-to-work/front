@@ -20,7 +20,7 @@ const CafeMapButton: React.FC = () => {
 				borderRadius: 8,
 				margin: '0 auto',
 			}}
-			href={'/places/'}
+			href={'/places-map/'}
 		>
 			<Typo type={TypographyType.h4}>На карте</Typo>
 		</Button>

@@ -125,10 +125,9 @@ const CafeListPage: React.FC = () => {
 					<Contact/>
 				</div>
 				}
-				<CafeMapButton/>
 			</div>,
 		}}
-		footerProps={{}}
+		footerProps={{left: () => <CafeMapButton/>}}
 	/>);
 };
 
