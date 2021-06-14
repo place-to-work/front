@@ -15,10 +15,11 @@ const CafeMap: React.FC = () => {
 		mainProps={{
 			body: () => <div>
 				<InnerCafeMap/>
-				<CafeViewButton isList={true} style={{
+				<CafeViewButton isList={false} style={{
 					position: 'fixed',
 					zIndex: 1,
-					top: 0,
+					top: 90,
+					left: 0,
 				}}/>
 				<CafeListButton/>
 			</div>,
