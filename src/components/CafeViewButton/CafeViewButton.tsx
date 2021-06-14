@@ -22,7 +22,7 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 		height: 38,
 		width: '100%',
 		position: 'fixed',
-		top: 0,
+		top: 90,
 		left: 0,
 	}}>
 		<div style={{
@@ -32,10 +32,15 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 			margin: '0 auto',
 			backgroundColor: '#F2F2F2',
 			display: 'flex',
+			padding: 2,
 		}}>
 			<div style={{
 				backgroundColor: listButtonBackground,
 				borderRadius: 8,
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				width: 100,
 			}}
 			     onClick={() => {
 				     if (!isList) {
@@ -51,6 +56,10 @@ const CafeViewButton: React.FC<OwnProps> = ({isList, style}) => {
 			<div style={{
 				backgroundColor: mapButtonBackground,
 				borderRadius: 8,
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+				width: 100,
 			}}
 			     onClick={() => {
 				     if (isList) {
