@@ -21,6 +21,7 @@ const ActivePlace: React.FC<OwnProps> = ({point}) => {
 			zIndex: 1,
 			borderRadius: '8px 8px 0 0',
 			overflow: 'hidden',
+			touchAction: 'none',
 		}}
 	>
 		<CafeCard {...convertPlaceInnerToCafeCardProps(point)}/>
