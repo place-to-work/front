@@ -14,7 +14,7 @@ const ActivePlace: React.FC<OwnProps> = ({point}) => {
 
 	return <div
 		style={{
-			position: 'absolute',
+			position: 'fixed',
 			left: 0,
 			bottom: 0,
 			backgroundColor: 'white',
